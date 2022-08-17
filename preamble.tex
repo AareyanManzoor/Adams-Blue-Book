@@ -1,0 +1,218 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{enumitem}
+
+\usepackage[style=alphabetic-verb]{biblatex}
+\addbibresource{references.bib}
+%mathtools extensions
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\iprod}{\langle}{\rangle}
+
+\usepackage{microtype}
+
+\usepackage{tikz-cd,tikz}
+    \usetikzlibrary{calc}
+
+\usepackage{subfiles}
+\usepackage{titlesec}
+
+\usepackage{comment} 
+
+
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+{\scshape\fillast}
+{\thechapter .}
+{0.5em}
+{}
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[C]{\scshape Chapter \thechapter: \leftmark }
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{\iffootnote{0pt}{0.3pt}}
+
+\fancyfoot[C]{\thepage}
+
+\titleformat{\part}[display]
+{\centering\scshape\huge}
+{Part \thepart}
+{0.5em}
+{}
+
+\let\oldprintbibliography=\printbibliography
+
+\def\printbibliography{\clearpage
+\pagestyle{plain}
+\oldprintbibliography
+\clearpage
+\pagestyle{fancy}}
+
+%AMS-style theorem environments:
+
+%all of these follow the same counter, which is relative to each chapter:
+\theoremstyle{remark}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{preposition}[theorem]{Preposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{condition}[theorem]{Condition}
+
+%numberless env's:
+\newtheorem*{definition}{Definition}
+\newtheorem*{examples}{Example}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{notes}{Notes}
+\newtheorem*{note}{Note}
+\newtheorem*{hint}{Hint}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{explanation}{Explanation}
+\newtheorem*{warning}{Warnings}
+
+%examples with their own counters
+\newtheorem{example_different}{Example}
+
+%solution for custom numbering in theorems and lemmata:
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+\newcustomtheorem{customthm}{Theorem}
+\newcustomtheorem{customlemma}{Lemma}
+\newcustomtheorem{customcor}{Corollary}
+\newcustomtheorem{customprop}{Proposition}
+\newcustomtheorem{customexample}{Examples}
+\newcustomtheorem{customremark}{Remark}
+
+%%%%%
+
+%%% Used for downsizing tikzcd diagrams, don't remove. Extremely important.
+\usepackage{adjustbox}
+
+\usepackage{setspace}
+\linespread{1.25}%for spacing
+
+\usepackage[b5paper]{geometry}%page size
+
+\usepackage{xcolor}
+\newcommand{\plscite}[1]{{\color{purple} #1}} %Changed from green to purple to stop the eye massacre
+
+\usepackage[bookmarks=true, colorlinks=true, linkcolor=blue, citecolor= red]{hyperref}
+
+%fix for equals arrows
+%copy & paste
+%\ar[-,double line with arrow={-,-}]{r}
+\usetikzlibrary{decorations.markings}
+\tikzset{double line with arrow/.style args={#1,#2}{decorate,decoration={markings,%
+mark=at position 0 with {\coordinate (ta-base-1) at (0,1pt);
+\coordinate (ta-base-2) at (0,-1pt);},
+mark=at position 1 with {\draw[#1] (ta-base-1) -- (0,1pt);
+\draw[#2] (ta-base-2) -- (0,-1pt);
+}}}}
+
+
+\makeindex
+
+
+\newcommand{\lal}[1]{\overset{#1}{\longleftarrow}} %same thing above but left instead of right
+\newcommand{\lra}{\longrightarrow} %just a shorthand for longrightarrow
+
+\newcommand{\te}[1]{\mathrm{#1}} %for functions with like, text names. for example do \te{Cyl}(X)
+
+\makeatletter
+
+\def\@@varrightarrow#1#2#3{\begingroup%
+\setbox0=\hbox{$#1\xrightarrow[#3]{#2}$}%
+\setbox1=\hbox{$#1\longrightarrow$}%
+\ifdim\wd0<\wd1 \mathrel{\mathop{\longrightarrow}\limits^{#2}_{#3}}
+\else \xrightarrow[#3]{#2} \fi\endgroup}
+
+\def\@varrightarrow#1#2{\@@varrightarrow#1#2}
+
+% \varrightarrow[under material]{over material} puts material over and under a right arrow.
+% It automatically prints the longer option between an xrightarrow and a longrightarrow
+\newcommand\varrightarrow[2][]{\mathpalette\@varrightarrow{{#2}{#1}}}
+
+% Because y'all like shortcuts so much
+\let\vra=\varrightarrow
+
+\newcommand{\lar}[1]{\vra{#1}} %shorthand for longrightarrow with something set above it
+
+\makeatother
+
+\newcommand{\nth}{^{\text{th}}} %numbers
+
+
+% BLACKBOARD BOLD
+\let\mbb=\mathbb
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbC}{\mathbb{C}}
+%TeXit's blackboard bold
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bC}{\mathbb{C}}
+
+%% Fixing greek-vargreek
+
+% gobbles a single token
+\def\gobble#1{}
+
+% \prependmacro{<text>}\cs -> \<text>cs
+\def\prependmacro#1#2{\csname #1\expandafter\gobble\string#2\endcsname}
+
+% \restoremacro\cs1\cs2 -> \let\oldcs1=\cs1
+%                          \let\cs1=\cs2
+\def\restoremacro#1#2{%
+    \expandafter\expandafter\expandafter\let\prependmacro{old}{#1}=#1 %
+    \let#1=#2 %
+}
+
+\restoremacro\phi\varphi
+
+% some operators
+\newcommand{\Hom}{\te{Hom}}
+\newcommand{\Int}{\te{Int}}
+\newcommand{\Ext}{\te{Ext}}
+\DeclareMathOperator{\Tor}{\te{Tor}}
+\DeclareMathOperator{\Ker}{\te{Ker}}
+
+\DeclareMathOperator{\MU}{MU}
+\DeclareMathOperator{\BU}{BU}
+\newcommand{\cf}{\mathrm{cf}}
+
+\newcommand{\limi}{\mathop{\mathrm{lim}^1}}
+\newcommand{\limo}{\mathop{\mathrm{lim}^0}}
+
+
+
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+
+
+
+\usepackage[bottom]{footmisc}
+
+\renewcommand{\tilde}[1]{\widetilde{#1}}

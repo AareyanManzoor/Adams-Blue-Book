@@ -1,0 +1,41 @@
+\documentclass[twoside]{book}
+\usepackage{makeidx}
+\makeindex
+\input{preamble}
+
+\title{\scshape\huge Stable Homotopy and Generalized Homology}
+\author{J. F. Adams}
+\date{July 16, 2022}
+
+%\input{font/dyslexic-font}%dyslexic font, use luatex, otherwise comment out
+
+\begin{document}
+
+\subfile{cover/frontcover}
+\subfile{cover/seriespage}
+\subfile{cover/titlepage}
+\subfile{cover/copyrightpage}
+
+\phantomsection
+\pagestyle{empty}
+\addtocontents{toc}{\protect\hypertarget{toc}{}}
+\tableofcontents
+\markboth{}{}
+\cleardoublepage
+
+\subfile{Preface to the new typesetting}
+\subfile{intro}
+\cleardoublepage
+
+\pagestyle{fancy}
+
+\subfile{Part 1/part1}
+\subfile{Part 2/part2}
+\subfile{Part 3/part3}
+
+\clearpage
+\pagestyle{plain}
+\printindex
+
+\subfile{cover/backcover}
+\end{document}

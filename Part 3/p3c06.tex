@@ -1,0 +1,542 @@
+\documentclass[../main]{subfiles}
+\usepackage{quiver}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\begin{document}
+%DarQ
+\label{sec:p3c06}
+\chapter{Homology and Cohomology}
+
+
+Suppose given a spectrum $E$. Then we define the $E$-homology and $E$-cohomology of other spectra $X$ as follows.
+\begin{enumerate}
+    \item $E_n(X) = [S, E \wedge X]_n$
+    \item $E^n(X) = [X, E]_{-n}$
+\end{enumerate}
+% TODO: add reference
+In order to convince ourselves these functors do deserve the name of generalized homology and cohomology, let's list their trivial properties.
+\begin{proposition}\label{prop:p3c06.1}
+\begin{enumerate}
+    \item $E_\ast(X)$ is a covariant functor of two variables $E$, $X$ in our category, and with values in the category of graded abelian groups.
+    
+    (Note: A morphism $f\colon X \lra Y$ of degree $r$ induces $f_\ast\colon E_n(X)\lra E_{n+r}(Y)$, etc.)
+    
+    The same is true for $E^\ast(X)$, except that it is covariant in $E$ and contravariant in $X$. 
+    \item If we vary $E$ or $X$ along a cofibering, we obtain an exact sequence, That is, if
+    \[X \lar{f} Y \lar{g} Z\]
+    is a cofiber sequence, then
+    \[E_n(X) \lar{f_\ast} E_n(Y) \lar{g_\ast}E_n(Z)\]
+    and
+    \[E^n(X) \lal{f^\ast} E^n(Y) \lal{g^\ast} E^n(Z)\]
+    are exact; if $E \lar{i} F \lar{j} G$ is a cofiber sequence, then
+    \[E_n(X) \lar{i_\ast} F_n(X) \lar{j_\ast} G_n(X)\]
+    and
+    \[E^n(X) \lar{i_\ast} F^n(X) \lar{j_\ast} G^n(X)\]
+    are exact.
+    \item There are natural isomorphisms
+    \begin{align}
+        %weird: I'm not sure if that's an l or a 1, if someone knows which is correct feel free to correct me
+        E_n(X) &\cong E_{n+1}(S^1 \wedge X) \nonumber \\
+        E^n(X) &\cong E^{n+1}(S^1 \wedge X)\nonumber
+    \end{align}
+    \item
+    \begin{align}
+        E_n(S)=E^{-n}(S)=\pi_n(E) \nonumber
+    \end{align}
+\end{enumerate}
+\end{proposition}
+The proofs are mostly easy, Part (ii) uses \ref{prop:p3ch04.12}, \ref{prop:p3ch03.9} and \ref{prop:p3ch03.10}. Part (iii) uses \ref{prop:p3c04.9}--the fact that we have an equivalence $X\lra S^1 \wedge X$ of degree 1. %weird l
+These statements give the analogues for a theory defined on spectra of the Eilenberg-Steenrod axioms.
+
+Once we have defined homology and cohomology of spectra, of course we can define homology and cohomology of CW-complexes, That is, if $L$ is a CW-complex, we define $\widetilde{E}_n(L)$ to be $E_n$ applied to the suspension spectrum of the complex $L$, and similarly for $\widetilde{E}^n$. The theory on complexes satisfies the same axioms.
+
+For example, let $H\pi$ be an Eilenberg-MacLane spectrum with a single non-vanishing homotopy group $\pi$ in dimension 0; then $(H\pi)_\ast$ is a homology theory  defined on spectra with a single non-vanishing coefficient group, $\pi$ in dimension 0. Apply $(H\pi)_\ast$ to the suspension spectrum of a complex $L$; it must coincide with the ordinary homology theory of $L$. If one happens to have seen the ordinary homology groups of a spectrum defined before, then $(H\pi)_\ast$ is the same thing, as we see by passing to limits.
+
+\begin{theorem}\label{thm:p3c06.2}
+(G. W. Whitehead). $E_n(X) \cong X_n(E)$
+\end{theorem}
+
+\begin{proof}
+$E\wedge X \lar{c} X \wedge E$ is an equivalence, so
+\[[S, E\wedge X]_n \cong [S, X\wedge E]_n\]
+\end{proof}
+
+\begin{corollary}\label{cor:p3c06.3}
+$(H\pi)_n(HG) \cong (HG)_n(H\pi)$.
+\end{corollary}
+
+This was found empirically by Cartan, but it is non-trivial to prove directly. G.W. Whitehead's discovery of the proof just given was probably an important step in his thinking about the connection between spectra and homology theories.
+
+\begin{proposition}\label{prop:p3c06.4}
+if $X$ is a finite spectrum, $E_n(X^\ast) \cong E^{-n}(X)$
+\end{proposition}
+
+\begin{proof}
+$[S, E\wedge X^\ast]_n \lar{T} [X, E]_n$ is an isomorphism by \ref{rmk:p3ch05.3}.
+\end{proof}
+This shows that generalized homology and cohomology behave correctly under $S$-duality.
+
+\begin{proof}[Proof of \ref{lem:p3ch05.5}]\label{proof:p3ch05.5}
+that is, if $X$ is a finite spectrum, then $X^\ast$ is equivalent to a finite spectrum.
+
+Let $X$ be a finite spectrum. Then $\left[ S, X^\ast \right]_n \cong [X, S]_n$, and the right-hand side is zero if $n$ is negative with sufficiently large absolute value. But $H_n(X^\ast)=H^{-n}(X)$, which is finitely generated in each dimension and zero outside a finite range of dimensions. Therefore $X^\ast$ is equivalent to a finite spectrum. 
+\end{proof}
+
+\begin{remark}\label{rmk:p3c06.5}
+Every generalized homology or cohomology theory defined on the category of CW-complexes arises by G.W. Whitehead’s construction from some spectrum $E$.
+\end{remark}
+
+In order to have a proper statement, it is necessary to spell out the assumptions we make on the homology or cohomology of infinite complexes, In the case of homology we assume that
+\[\lim_{\underset{a}{\to}} \widetilde{E}_n(L_\alpha) \lra \widetilde{E}_n(L)\]
+is an isomorphism, where $L_\alpha$, runs over the finite subcomplexes of $L$, In the case of cohomology we assume the Wedge Axiom of Milnor and Brown, that is
+\[\widetilde{E}^n\bigg( \underset{a}{\bigvee}L_\alpha \bigg) \lra \prod_\alpha\widetilde{E}^n(L_\alpha)\]
+is an isomorphism.
+
+I propose to omit the proof of Remark \ref{rmk:p3c06.5}. In the case of cohomology the results is fairly easily deduced from E. H. Brown's theorem in $G$ the category of CW-complexes, and this was done in G. W. Whitehead's original paper \cite{whitehead}. The argument is essentially that given in section \ref{sec:p3ch02}. In the case of homology we first obtain a homology theory on spectra in an obvious way. One then converts one's homology theory into a cohomology theory defined only on finite spectra, by the definition
+\[E^{-n}(X)=E_n(X^\ast)\]
+(So one only needs the homology theory on finite spectra, in which case it is trivial to define it.) One then has a contravariant functor defined on finite spectra or finite complexes, and we have the task of representing it. I have proved the required result \cite{adams4}.
+
+We now consider generalized homology and cohomology groups with coefficients. Let $G$ be an abelian group. We can take a resolution \[0\lra R \lar{i} F \lra G \lra 0\] by free $\bZ$-modules (a subgroup of a free abelian group is free). Take $\bigvee_{\alpha\in A} S$, $\bigvee_{\beta\in B} S$ such that
+\begin{align}
+    \pi_0 \bigg(\bigvee_{\alpha\in A} S \bigg) &= R \nonumber \\
+    \pi_0 \bigg(\bigvee_{\beta \in B} S \bigg) &= F \nonumber
+\end{align}
+Take a map $f\colon \bigvee_{\alpha\in A} S \lra \bigvee_{\beta \in B} S$ inducing $i$. Form \[M=\bigg( \bigvee_{\beta\in B} S \bigg) \bigcup_f C\bigg( \bigvee_{\alpha\in A} S \bigg);\] this is a Moore spectrum of type $G$\index{Moore spectrum}. That is we have
+\begin{align}
+    \pi_r(M) &= 0 &\text{for } r<0 \nonumber \\
+    \pi_0(M) &=H_0(M)=G \nonumber \\
+    H_r(M) &=0 &\text{for } r>0 \nonumber
+\end{align}
+Now for any spectrum $E$, we define the corresponding spectrum with coefficients in $G$ by
+\[EG=E\wedge M\]
+
+\begin{example}
+$SG$ means $S\wedge M = M$, so a Moore spectrum of type $G$ may be written $SG$.
+\end{example}
+
+\begin{proposition}\label{prop:p3c06.6}
+% TODO: the enumeration looks weird
+\begin{enumerate}
+    \item There exists an exact sequence
+    % TODO: that weird l again + not sure if that's a Z or \bZ
+    \[0\lra \pi_n(E)\otimes G \lra (EG)_n(X)\lra \mathrm{Tor}_1^\bZ \left(\pi_{n-1}(E)\right) \lra 0\]
+    (This need not split, e.g., take $E=\te{KO}, G=\bZ_2$.)
+    \item More generally, there exists exact sequences
+    \[0\lra E_n(X)\otimes G \lra (EG)_n(X)\lra \mathrm{Tor}_1^\bZ \left(E_{n-1}(X), G\right) \lra 0\]
+    and (if $X$ is a finite spectrum or $G$ is finitely generated)
+    \[0\lra E^n(E)\otimes G \lra (EG)^n(X)\lra \mathrm{Tor}_1^\bZ \left(E^{n+1}(X), G\right) \lra 0\]
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+$\bigvee_\alpha S\lra \bigvee_\beta S\lra M$ is cofibering, hence the top row of
+\[\begin{tikzcd}
+	{E\wedge\left( \bigvee_\alpha S\right)} & {E\wedge\left( \bigvee_\beta S\right)} & {E\wedge M} \\
+	{\bigvee_\alpha E} & {\bigvee_\beta E}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["\simeq"', from=1-2, to=2-2]
+	\arrow["\simeq"', from=1-1, to=2-1]
+\end{tikzcd}\]
+is a cofibering. Similarly
+\[\begin{tikzcd}
+	{E\wedge\left( \bigvee_\alpha S\right)\wedge X} & {E\wedge\left( \bigvee_\beta S\right)\wedge X} & {E\wedge M \wedge X} \\
+	{\bigvee_\alpha E \wedge X} & {\bigvee_\beta E \wedge X}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["\simeq"', from=1-2, to=2-2]
+	\arrow["\simeq"', from=1-1, to=2-1]
+\end{tikzcd}\]
+is a cofibering. Therefore we get exact sequences
+\[\begin{tikzcd}
+	{} & {} & {\pi_n\left( \bigvee_\alpha E \right)} & {\pi_n \left( \bigvee_\beta E \right)} & {\pi_n(E\wedge M)} & {} \\
+	&& {R\otimes \pi_n(E)} & {F\otimes \pi_n(E)}
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+	\arrow["\cong"', from=1-4, to=2-4]
+	\arrow[from=1-3, to=1-4]
+	\arrow["{i\otimes 1}", from=2-3, to=2-4]
+	\arrow["\cong"', from=1-3, to=2-3]
+	\arrow[from=1-2, to=1-3]
+\end{tikzcd}\]
+and more generally,
+\[\begin{tikzcd}
+	{} & {[S, \bigvee_\alpha E\wedge X]_n} & {[S, \bigvee_\beta E\wedge X]_n} & {[S, E\wedge M\wedge X]_n} & {} \\
+	& {R\otimes [S, E\wedge X]_n} & {F\otimes [S, E\wedge X]_n}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow["\cong", from=1-2, to=2-2]
+	\arrow["\cong", from=1-3, to=2-3]
+	\arrow["{i\otimes 1}", from=2-2, to=2-3]
+\end{tikzcd}\]
+\[\begin{tikzcd}
+	{} & {[X, \bigvee_\alpha E]_{-n}} & {[X, \bigvee_\beta E]_{-n}} & {[X, E\wedge M]_{-n}} & {} \\
+	& {R\otimes [X, E]_{-n}} & {F\otimes [X, E]_{-n}}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow["\cong", from=1-2, to=2-2]
+	\arrow["\cong", from=1-3, to=2-3]
+	\arrow["{i\otimes 1}", from=2-2, to=2-3]
+\end{tikzcd}\]
+\end{proof}
+% TODO: I think the proof ended here but I'm not sure
+
+To pet the isomorphisms in the last case we assume either that $X$ is a finite spectrum or that $\alpha$ and $\beta$ run over finite sets, which we can arrange if $G$ is finitely generated. Now the cokernel and kernel of $i\otimes l$ are, according to the case
+\begin{align}
+    G\otimes \pi_n(E) && \text{and} && \mathrm{Tor}_1^\bZ \left( G, \pi_n(E) \right) \nonumber \\
+    G\otimes E_n(X) && \text{and} && \mathrm{Tor}_1^\bZ \left( G, E_n(X) \right) \nonumber \\
+    G\otimes E^n(X) && \text{and} && \mathrm{Tor}_1^\bZ \left( G, E^n(X) \right) \nonumber
+\end{align}
+
+\begin{example}
+If $H$ means an Eilenberg-Mac Lane spectrum of type $\bZ$, then $H\bZ$ does indeed mean the Eilenberg-MacLane spectrum of type $G$.
+\end{example}
+
+\begin{proof}
+The $\mathrm{Tor}$ term is zero in
+\[0\lra \bZ\otimes G\lra \pi_\ast(HG)\lra \mathrm{Tor}_{\bZ}^1(\bZ, G)\lra 0\]
+\end{proof}
+
+
+\begin{proposition}\label{prop:p3c06.7}
+If $G$ is torsion-free, then
+\[\pi_\ast (E)\otimes G\lra \pi_\ast(EG)\]
+and
+\[E_\ast(X)\otimes G\lra (EG)_\ast(X)\]
+are isomorphisms, and if $X$ is finite or $G$ finitely generated,
+\[E^\ast(X)\otimes G\lra (EG)^\ast (X)\]
+is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+\begin{align}
+    \mathrm{Tor}_1^\bZ(\pi_\ast(E), G) &= 0 \nonumber \\
+    \mathrm{Tor}_1^\bZ(E_\ast(X), G) &= 0 \nonumber \\
+    \mathrm{Tor}_1^\bZ(E^\ast(X), G) &= 0 \nonumber
+\end{align}
+\end{proof}
+% I took the liberty to delete the word "and" coz I didn't know how to add it to the align env lel
+
+\begin{example}
+take $G=\bQ$, and take a map $i\colon S \lra H$ representing a generator of $\pi_0(H)=\bZ$, Then $i$ induces an equivalence $S\bQ\vra{\simeq}H\bQ$, i.e., the Moore spectrum for $\bQ$ is the same as the Eilenberg-MacLane spectrum.
+\end{example}
+
+\begin{proof}
+In the diagram
+\[\begin{tikzcd}
+	{\pi_n(S)\otimes \bQ} & {\pi_n(S\bQ)} \\
+	{\pi_n(H)\otimes \bQ} & {\pi_n(H\bQ)}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{i_\ast \otimes 1}"', no head, from=1-1, to=2-1]
+	\arrow[no head, from=1-2, to=2-2]
+\end{tikzcd}\]
+the top and bottom rows are isomorphism by \ref{prop:p3c06.7}. But by theorem of Serre, $\pi_n(S)\otimes \bQ=0$ for $n\neq 0$; and for $n=0$, $i_\ast\colon\pi_0(S)\lra\pi_0(H)$ is an isomorphism.
+\end{proof}
+
+\begin{example}
+ The map $i\colon S \lra H$ induces
+ \[\pi_\ast(X)\otimes \bQ\lra H_\ast(X)\otimes \bQ\]
+ that is, rational stable homotopy is the same as rational homology.
+\end{example}
+
+\begin{proof}
+$\pi_\ast(X)=S_\ast(X)$. Again by \ref{prop:p3c06.7} the top and bottom rows of the following diagram are isomorphisms.
+\[\begin{tikzcd}
+	{S_\ast(X)\otimes \bQ} & {S\bQ_\ast(X)} \\
+	{H_\ast(X)\otimes \bQ} & {H\bQ_\ast(X)}
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+\end{tikzcd}\]
+By the previous example $S\bQ\lra H\bQ$ is an equivalence, so the right-hand arrow is an isomorphism.
+\end{proof}
+% TODO: again, I think the proof ends here but I'm not sure
+
+Now we give a checklist of the standard spectra corresponding to the usual generalized homology and cohomology theories.
+\begin{enumerate}[label = (\roman*)]
+    \item $HG$, the Eilenberg-MacLane spectrum for the group $G$, so that
+    \[\pi_n(HG) = 
+    \begin{cases}
+    G &n=0 \\
+    0 &n\neq 0
+    \end{cases}\]
+    The theories $(HG)_\ast$, $(GH)^\ast$ are ordinary homology and cohomology with coefficients in $G$.
+    
+    For greater interest, let $G_\ast$ be a graded group, and define \newline $H(G_\ast)=\bigvee_n H(G_n, n)\cong \prod_n H(G_n, n)$; the second map is an equivalence by \ref{prop:p3ch03.14} Then by the first form
+    \[H(G_\ast)_r(X)=\sum_n H_{r-n}(X;G_n)\]
+    and by the second
+    \[H(G_\ast)^r(X)=\sum_n H^{r+n}(X;G_n)\]
+    \item $S$, the sphere spectrum. The corresponding homology and cohomology theories are stable homotopy and stable cohomotopy. With all due respect to anyone who is interested in them, the coefficient groups $\pi_n(S)$ are a mess. There is a lot of detailed information known about them, but I won't try to summarize it.
+    \item $K$, the classical $\te{BU}$-spectrum. This is an $\Omega$- or $\Omega_0$-spectrum; each even term is space $\te{BU}$ or $\bZ\times \te{BU}$; each odd term is the space $\te{U}$.
+    
+    The corresponding homology and cohomology theories are complex $K$-homology and $K$-cohomology. In fact it is rather easy to see that for a finite-dimensional CW-complex $X$, $[X, \bZ\times \te{BU}]$ agrees with the Atiyah-Hirzebruch definition of $K(X)$ or $\widetilde{K}(X)$ in terms of complex vector-bundles over $X$. (Here we have to take $\widetilde{K}(X)$ if $[X, \bZ\times \te{BU}]$ means homotopy classes of maps preserving the base-point, or $K(X)$ if we work without base-points.) This shows that our definition of $K^\ast(X)$ agrees with the Atiyah-Hirzebruch definition if $X$ is a finite-dimensional CW-complex. For infinite~dimensional complexes our $K^\ast(X)$ is the variant called ``representable K-theor'', i.e., we take $[X,\bZ\times \te{BU}]$ as the definition. 
+    
+    The coefficient groups are given by the Bott periodicity theorem:
+    \[\pi_n(K) =
+    \begin{cases}
+     \bZ &\text{(n is even)} \\
+     0 &\text{(n is odd)}
+    \end{cases}\]
+    We have a map $K\simeq S\wedge K\vra{i\wedge 1} H\wedge K \lra H\left( \pi_\ast(K)\otimes \bQ \right)$. This map is universal Chern character.
+    \item $K$-theory with coefficients. Suppose we are willing to localize $\bZ$ at the prime $p$; i.e., let $\bZ_{(p)}$ be the ring of fractions $a/b$ with $b$ prime to $p$. Then we can form $K\bZ_{(p)}$. It splits as the sum or product of $(p-1)$ similar spectra $E$. The typical one has
+    \[\pi_n(E)=
+    \begin{cases}
+    \bZ_{(p)} &(n\equiv 0 \pmod{2(p-1)} \\
+    0 & \text{otherwise}
+    \end{cases}\]
+    Of course you may just want to split $K$ into the sum or product of $d$ similar Spectra, so that a typical one has
+    \[\pi_n(E)=
+    \begin{cases}
+    R &(n\equiv 0 \pmod{2(p-1)} \\
+    0 & \text{otherwise}
+    \end{cases}\]
+    % TODO: again, not sure if that's Z or \bZ
+    where $R$ is a subring of $\bQ$. In this case one need only invert those primes $p$ such that $p\not\equiv 1 \pmod{d}$. For example, for $d=2$ take $R=\bZ[1/2]$. See \cite{adams3}.
+    \item Connective $K$-theory. $\te{bu}$\index{bu/Connective $K$-theory} is a spectrum having a map $\te{bu}\lra K$ such that
+    \begin{align}
+        \pi_r(\te{bu})\lra\pi_r(K) &\text{ is an isomorphism for }r\geq 0 \text{, and} \nonumber \\
+        \pi_r(bu)=0 &\text{ for } r<0 \nonumber
+    \end{align}
+    We may take the $0\nth$ term of $\te{bu}$ to be $\bZ\times \te{BU}$ and the second term to be $\te{BU}$. If $X$ is a complex, we have
+    \[\mathrm{bu}^0(X)=K^0(X)\]
+    but the groups $\mathrm{bu}^n(X)$ and $K^n(X)$ are different in general for $n>0$.
+    \item Similarly, one can consider connective $K$-theory with coefficients.
+    \item $\te{KO}$, the classical $\te{BO}$-spectrum. This is an $\Omega$- or $\Omega_0$-spectrum; every term $E_{8r}$ is the space $\te{BO}$ or $\bZ\times \te{BO}$; every term $E_{8r+4}$ is the space $\te{BSp}$ or $\bZ\times \te{BSp}$, The other terms are the ones which com in Bott's periodicity theorem for the real case:
+    \[\te{O, O/U, U/Sp, BSp}, \te{Sp}/\te{U, U/O, BO}\]
+    
+    The corresponding homology and cohomology theories are real $K$-homology and real $K$-cohomology. In fact (as for the complex case) for a finite-dimensional CW-complex $X$, $[X,\bZ\times \te{BO}]$ agrees with the Atiyah-Hirzebruch definition of $\te{KO}(X)$ or $\widetilde{\te{KO}}(X)$ in terms of real vector-bundles over $X$. So our definition of $\mathrm{KO}^\ast(X)$ agrees with Atiyah and Hirzebruch if $X$ is a finite-dimensional CW-complex.
+    
+    The coefficient groups are given by the Bott periodicity theorem:
+    % courtesy of plante and slurp :)
+    \[\ialign{$\hfil#$&\quad$#$&&\quad$#$\hfil\cr
+    n&\equiv&0&1&2&3&4&5&6&7&8&\pmod 8\cr
+    \pi_n(\te{KO})&=&\bZ&\bZ_2&\bZ_2&0&\bZ&0&0&0&\bZ.\cr}\]
+    
+    \item $\te{KO}$-theory with coefficients. The quickest thing to say is that by a theorem of Reg Wood, $\te{KO}\wedge \left( S^0\cup_\eta e^2 \right) \simeq K$. Here $S^0\cup_\eta e^2$ means the suspension spectrum whose second term is $\mathbb{CP}^2$. The attaching map $\eta$ is stable of order $2$. So $S\bZ[1/2]\vra{\eta\wedge 1}S\bZ[1/2]$ factors through $\left( S^0\cup_2e^1 \right) \bZ[1/2]$, which is contractible. So
+    \begin{align}
+        K\bZ[1/2] &\simeq \te{KO}\wedge \left( S^0\cup_\eta e^1 \right) \bZ[1/2] \nonumber \\
+        &\simeq \te{KO} \wedge \bigg( S^0\bigvee S^2 \bigg) \bZ[1/2] \nonumber \\
+        &\simeq \te{KO}\bZ[1/2]\bigg( S^0\bigvee S^2 \bigg) \nonumber
+    \end{align}
+    So the two summands into which $K\bZ[1/2]$ splits are actually copies of $\te{KO}\bZ[1/2]$, it follows that if you introduce a ring of coefficients containing $1/2$, $K$ cannot be distinguished from two copies of $\te{KO}$. Of course this is classical, by a more direct proof.
+    \item Connective real $K$-theory. $\te{bo}$ \index{bo/Connective real $K$-theory} is a spectrum having a map $\te{bo}\lra \te{KO}$ with properties like those of $\te{bu}\lra K$
+    \item $\te{KSC}$, the self-conjugate $K$-theory \index{KSC/Self-conjugate $K$ theory} of Anderson and Green, The quickest way to say it is this. To each bundle $\xi$ we have its complex conjugate $\overline{\xi}$ which has the same underlying space but a new $C$-module structure on each fiber; the mew action of $z$ is the old action of $\overline{z}$. Stably, this is induced by a map $\bZ \times \te{BU} \vra{t} \bZ \times \te{BU}$. We can define a map of spectra $T\colon K\lra K$ which has components $t$ in dimensions divisible by $4$, and $-t$ in dimensions of the form $4r+2$. Now take $\te{KSC}$ to be the fiber of
+    \[K\vra{1-\tau}K\]
+    You can read its homotopy groups off from the exact sequence of this fibering: we have 
+    \[\ialign{$\hfil#$&\quad$#$&&\quad$#$\hfil\cr
+    n&\equiv&0&1&2&3&4&\pmod 4\cr
+    \pi_n(\te{KO})&=&\bZ&\bZ_2&0&\bZ&\bZ.\cr}\]
+    \item $\te{MO}$, the Thom spectrum of the group $\te{O}$ . The corresponding theories are unoriented bordism and cobordism. To connect our definition of $\te{MO}_\ast(X)$ with a geometrical definition in terms of manifolds one  has to make use of a transversality theorem at some point; see e.g \cite{connerfloyd}.
+    
+    We have
+    \[\te{MO}\simeq H \left( \pi_\ast(\te{MO}) \right)\]
+    $\pi_\ast(\te{MO})$ is a polynomial algebra over $\bZ_2$, with one generator in every dimension $d>0$ such that $d+1$ is not a power of $2$, The decomposition of $\te{MO}$ as a wedge of copies of $H\bZ_2$, shows that the theories $\te{MO}_\ast$ and $\te{MO}^\ast$ are not very powerful, but they are good for studying unoriented manifolds.
+    \item $\te{MSO}$. The corresponding theories are oriented bordism and cobordism. We have\footnote{Adam's originally just had $\te{MSO}$ as the Eilenberg-Maclane spectrum, however this is only true after localizing at $2$.}
+    \[\te{MSO}_{(2)}\simeq H \left( \pi_\ast(\te{MSO}_{(2)}) \right)\]
+    $\pi_\ast(\te{MSO}_{(2)})$ is a direct sum of copies of $\bZ$ and $\bZ_2$. It is known but somewhat complicated to describe.
+    \item $\te{MU}$. The corresponding theories are complex bordism and cobordism. $\pi_\ast(\te{MU})$ is a polynomial algebra over $\bZ$ with generators of dimension $2,4,6,8\dots$ There is a very good map $\te{MU}\lra K$  due to Atiyah-Hirzebrach, Conner-Floyd \cite{atiyahhirzebruch}, \cite{connerfloyd}. The theories $\te{MU}_\ast$, $\te{MU}^\ast$ are powerful.
+    \item $\te{MU}$ with coefficients. If one takes $\te{MU}\bZ_{(p)}$ , it splits as a sum of suspensions of similar spectra. A typical one is $\te{BP}$, the Brown-Peterson spectrum. $\pi_\ast(\te{BP})$ is a polynomial algebra over $\bZ_{(p)}$, on generators of dimension $2(p^f-1)$ for $f=1, 2, \dots$
+    \item $\te{MSpin}$, $\te{MSU}$, $\te{MSp}$. $\pi_\ast(\te{MSpin})$ and $\pi_\ast(\te{MSU})$ are known but $\pi_\ast(\te{MSp})$ is not yet known. %add reference if changed
+    \end{enumerate}
+    For a general reference on bordism and cobordism, I suggest Stong \cite{stong2}.
+    
+    We now consider the elementary additive properties of generalized homology and cohomology theories.
+    
+    Recall that I had my theories $E_\ast$, $E^\ast$ defined on spectra, and then I defined them on CW-complexes with base-point by saying
+    \begin{align}
+        \widetilde{E}_\ast(L) &= E_\ast(\overline{L}) \nonumber \\
+        \widetilde{E}^\ast(L) &= E^\ast(\overline{L}) \nonumber
+    \end{align}
+    where $\overline{L}$ is the suspension spectrum of $L$. I should say how one defines relative groups $E_\ast(X,A)$, $E^\ast(X, A)$. This is well enough known. One defines $K/A$ to be the quotient complex in which $A$ is identified to a new point, which becomes the base-point. In particular, $X/\varnothing=X\cup \te{pt}$., also written $X^+$. Alternatively, one constructs the unreduced cone $CA$ and forms $X\cup CA$, taking the base-point at the vertex. This happens to be the same as the reduced cone $X^+ \cup CA^+$. Then one has a map $X\cup CA\vra{r} X/A$, which is a homotopy equivalence. Then one defines
+    \[E_\ast(X,A) = \widetilde{E}_\ast(X\cup CA)=\widetilde{E}_\ast(X/A)\]
+    using the isomorphism $r_\ast$ to identify the last two groups. Similarly,
+    \[E^\ast(X,A) = \widetilde{E}^\ast(X\cup CA)=\widetilde{E}^\ast(X/A)\]
+    Note that $E_\ast(X, \te{pt}.)=\widetilde{E}_\ast(X)$, as it should be, similarly for $E_\ast(X, \te{pt}.)=\widetilde{E}_\ast(X)$.
+    
+    The induced homomorphism are obvious: a map $f\colon X, A\lra Y, B$ induces
+    \[\begin{tikzcd}
+    	{X\cup CA} & {Y\cup CB} \\
+    	{X/A} & {Y/B}
+    	\arrow[from=1-1, to=1-2]
+    	\arrow["r"', from=1-2, to=2-2]
+    	\arrow["r"', from=1-1, to=2-1]
+    	\arrow[from=2-1, to=2-2]
+    \end{tikzcd}\]
+    and we take the induces homomorphisms of $\widetilde{E}_\ast$ or $\widetilde{E}^\ast$
+    
+    Excision is now obvious. Suppose a CW-complex is the union of two subcomplexes $U$, $V$. Then
+    \[U/U\cap V\lra U\cup V/V\]
+    is actually a homeomorphism, so it surely induces an isomorphism of $\widetilde{E}$. and $\widetilde{E}^\ast$. Homotopy is equally obvious, Now we would like to have boundary maps and exactness. Given an inclusion $X\lra Y$, we have a cofibering
+    \[X^+\vra{i} Y^+ \vra{j} Y^+/X^+ \simeq Y^+\cup CX^+ \lra \Sigma X^+ \vra{\Sigma i} \Sigma Y^+\lra \dots\]
+    So applying $\widetilde{E}_n$ we have the following exact sequence
+    \[\adjustbox{scale=0.9, center}{
+        \begin{tikzcd}
+        	{E_n(X)} & {E_n(Y)} & {E_n(Y, X)} & {\widetilde{E}_n(\Sigma X^+)} & {\widetilde{E}_n(\Sigma Y^+)} & \dots \\
+        	&&& {\tilde{E}_{n-1}(X^+)} & {\tilde{E}_{n-1}(Y^+)} \\
+        	&&& {E_{n-1}(X)} & {E_{n-1}(Y)}
+        	\arrow["{i_\ast}", from=1-1, to=1-2]
+        	\arrow["{\Sigma i_\ast}", from=1-4, to=1-5]
+        	\arrow[from=1-5, to=1-6]
+        	\arrow["\cong", from=1-4, to=2-4]
+        	\arrow[Rightarrow, no head, from=2-4, to=3-4]
+        	\arrow["\cong", from=1-5, to=2-5]
+        	\arrow[Rightarrow, no head, from=2-5, to=3-5]
+        	\arrow["{i_\ast}", from=2-4, to=2-5]
+        	\arrow["{i_\ast}", from=3-4, to=3-5]
+        	\arrow[from=1-3, to=1-4]
+        	\arrow["{j_\ast}", from=1-2, to=1-3]
+        	\arrow["\partial"', from=1-3, to=3-4]
+        \end{tikzcd}
+    }\]
+    If define $\partial$ to be the composite indicated, the sequence will be exact, So in order to fix the boundary map and have it natural I simply want to make some quite explicit choice of isomorphism $\widetilde{E}_n(X^+)\cong \widetilde{E}_{n+1}(S^1 \wedge X^+)$.
+    
+    Let's recall that almost the last thing I did in Section \ref{sec:p3c04} was to make the smash-product a functor of maps of degrees other than zero. So I look at the sphere-spectrum
+    \[S=(S^0, \:S^1, \:S^2, \:\dots)\]
+    and the $S^1$-spectrum
+    \[S=(S^1, \:S^2, \:S^3, \:\dots)\]
+    
+    and I make a map from one to the other by taking the identity map from $S^n$, the $n^\text{th}$ component of $S$, to $S^n$, the $(n-1)$-st component of $S^1$. This gives me a morphism of degree 1, say $\sigma\colon \underline{S}\lra \underline{S}$. (This is actually $\gamma_1$ for the spectrum $S$, but you are allowed to have forgotten about $\gamma_1$ by now.) $\sigma$ is clearly an equivalence. Since I have smash-products of morphisms of nonzero degree, I am entitled to form
+    \[X\simeq S\wedge X \vra{\tau\wedge 1} S^1\wedge X\]
+    This is an equivalence too. (Of course, the smash-product of morphisms of nonzero degree was defined in terms of the maps $\gamma_r$. and if you go back to the definition and unwrap it, you find that this is just the map $\gamma_1$ for the spectrum X.) I now say that this map
+    \[X\vra{\sigma\wedge 1}S^1\wedge X\]
+    is the one to be used in inducing
+    \begin{align}
+        E_n(X) &\vra{\cong}E_{n+1}(S^1\wedge X) \nonumber \\
+        E^n(X) &\longleftarrow E^{n+1}(S^1\wedge X) \nonumber
+    \end{align}
+    This gets my suspension isomorphism in a form convenient for later work, and makes the boundary and coboundary quite precise.
+
+Now we would like to assure ourselves that all the contents of Eilenberg-Steenrod, Chapter I, go through. But we can also put the question in this form: is there anything in Ellenberg-Steenrod Chapter I which can't be derived from our constructions? The grand conclusion should be that the homology groups of sphere are the right thing, and we already know that
+\begin{align}
+    \widetilde{E} &= [S^n, E]_r \nonumber \\
+    &\cong [S^0, E]_{r-n} \nonumber \\
+    &\cong \pi_{r-n}(E) \nonumber
+\end{align}
+The only problem is to compute $\pi_\ast(E)$ for a given $E$, So what about the other things in Eilenberg-Steenrod Chapter I? One very useful thing is the exact sequence of a triple. Suppose we have CW-complexes $X\supset Y\supset Z$. We would like to know that the following sequence is exact.
+\[E_n(Y, Z)\vra{i_\ast} E_n(X, Z) \vra{j_\ast} E_n(X, Y) \vra{\Delta} E_{n-1}(Y, Z) \lra \dots\]
+Here $\Delta$ is the composite
+\[E_n(X,Y) \vra{\delta} E_{n-1}(Y)\vra{j_\ast} E_{n-1}(Y, Z)\]
+No special proof is needed. We know that the following is a cofibering:
+\[Y^+/Z^+ \vra{} X^+/Z^+\vra{}X^+/Y^+ \vra{} \Sigma(Y^+/Z^+) \vra{} \Sigma(X^+/Y^+)\]
+Therefore I know that I have an exact sequence
+\[E_n(Y,Z) \vra{i_\ast} E_n(X, Z)\vra{j_\ast}E_n(X, Y) \vra{\partial} E_{n-1}(Y, Z) \vra{i_\ast} E_{n-1}(X, Z)\]
+provided that $\partial$ is induced by the top line of the following commutative diagram.
+\[\begin{tikzcd}
+	{X^+/Y^+} & {(X^+/Z^+)\cup C(Y^+/Z^+)} & {\Sigma(Y^+/Z^+)} \\
+	\\
+	& {X^+\cup CY^+} & {\Sigma Y^+}
+	\arrow["j", from=1-2, to=1-3]
+	\arrow["r"', from=1-2, to=1-1]
+	\arrow["\simeq", from=1-2, to=1-1]
+	\arrow["q"', from=3-2, to=1-2]
+	\arrow["\simeq", from=3-2, to=1-1]
+	\arrow["j", from=3-2, to=3-3]
+	\arrow["q"', from=3-3, to=1-3]
+	\arrow["r"', from=3-2, to=1-1]
+\end{tikzcd}\]
+The rest of the diagram shows that $\delta$ is the same as $\Delta$.
+
+There is however a moral to be drawn. We know how to display the various groups and homomorphisms involved here in a sine wave diagram
+% TODO: the diagram might be too small.
+\[\adjustbox{scale=0.75, center}
+{
+\begin{tikzcd}
+	{E_\ast(Z)} && {E_\ast(X)} && {E_\ast(X, Y)} && {E_\ast(Y, Z)} \\
+	& {E_\ast(Y)} && {E_\ast(X, Z)} && {E_\ast(Y)} && {E_\ast(X, Z)} \\
+	&& {E_\ast(Y, Z)} && {E_\ast(Z)} && {E_\ast(X)}
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=2-2, to=1-3]
+	\arrow[from=1-3, to=2-4]
+	\arrow[from=2-4, to=1-5]
+	\arrow["\delta", from=1-5, to=2-6]
+	\arrow[from=2-6, to=1-7]
+	\arrow[from=2-2, to=3-3]
+	\arrow[from=3-3, to=2-4]
+	\arrow["\delta", from=2-4, to=3-5]
+	\arrow[from=3-5, to=2-6]
+	\arrow[from=2-6, to=3-7]
+	\arrow[from=3-7, to=2-8]
+	\arrow[from=1-7, to=2-8]
+	\arrow[bend left=15, from=1-1, to=1-3]
+	\arrow[bend left=15, from=1-3, to=1-5]
+	\arrow["\Delta", bend left=15, from=1-5, to=1-7]
+	\arrow["\delta"', bend right=15, from=3-3, to=3-5]
+	\arrow[bend right=15, from=3-5, to=3-7]
+\end{tikzcd}
+}\]
+It is useful to know that we can obtain this whole diagram from a diagram of cofiberings.
+\begin{lemma}\label{lem:p3c06.8}
+Suppose given a commutative diagram
+\[\begin{tikzcd}
+	Z && X \\
+	& Y
+	\arrow["h", from=1-1, to=1-3]
+	\arrow["g"', from=2-2, to=1-3]
+	\arrow["f"', from=1-1, to=2-2]
+\end{tikzcd}\]
+of CW-complexes with base-point. Then there exists following commutative diagram of cofiber sequence.
+\[\adjustbox{scale=0.75, center}{
+\begin{tikzcd}
+	Z && X && {X\cup_g CY} && {\Sigma(Y\cup_f CZ)} \\
+	& Y && {X\cup_h CZ} && \Sigma Y && {\Sigma(X\cup_h CZ)} \\
+	&& {Y\cup_f CZ} && \Sigma Z && \Sigma X
+	\arrow["f"', from=1-1, to=2-2]
+	\arrow["g"', from=2-2, to=1-3]
+	\arrow["i"', from=1-3, to=2-4]
+	\arrow["{f'}"', from=2-4, to=1-5]
+	\arrow["j", from=1-5, to=2-6]
+	\arrow["Si"', from=2-6, to=1-7]
+	\arrow["i"', from=2-2, to=3-3]
+	\arrow["{g'}"', from=3-3, to=2-4]
+	\arrow["j", from=2-4, to=3-5]
+	\arrow["\Sigma f"', from=3-5, to=2-6]
+	\arrow["\Sigma g"', from=2-6, to=3-7]
+	\arrow["\Sigma i"', from=3-7, to=2-8]
+	\arrow["{\Sigma g'}", from=1-7, to=2-8]
+	\arrow["h", bend left=15, from=1-1, to=1-3]
+	\arrow["i", bend left=15, from=1-3, to=1-5]
+	\arrow["j", bend left=15, from=1-5, to=1-7]
+	\arrow["j"', bend right=15, from=3-3, to=3-5]
+	\arrow["\Sigma h", bend right=15, from=3-5, to=3-7]
+\end{tikzcd}
+}\]
+Here $g'$ is induced from $g$, etc. If the original diagram is only homotopy-commutative, then by choosing a homotopy you can reduce to the case in which it is commutative,
+\end{lemma}
+
+This is sometimes known as Verdier's axiom. The proof is elementary. One way to say it is this: you can assume without loss of generality that $f$ and $g$ are inclusions, and then I have told you everything necessary already. Since the constructions are elementary, they commute with suspensions on the right and carry over to spectra. So the corresponding lemma is true for spectra. In a fully Bourbakized treatment this lemma would go in Section \ref{sec:p3ch03}. 
+
+The next thing we would like to know is the Mayer-Vietoris sequence, This needs no special proof either. Suppose that we have a CW-complex which is the union of two subcomplexes $U$ and $V$. We wish to know the relationship of $E_\ast(U\cup V)$, $E_\ast(U)$, $E_\ast(V)$, $E_\ast(U\cap V)$. We may replace these by $E_\ast(\Sigma (U\cup V)^+)$, etc. So we take $\Sigma (U\cap V)^+$ and $\Sigma (U^+\vee V^+)$ and make a map from one to the other by taking $i_1$-$i_2$, where $i_1\colon (U\cap V)^+\lra U^+$ and $i_2\colon (U\cap V)^+\lra V^+$ are the inclusions. Now let me form the cofiber sequence
+\[\Sigma (U\cap V)^+ \lra \Sigma (U^+\vee V^+) \lra \Sigma (U^+\vee V^+)\cup_{i_1-i_2} C\Sigma (U\cap V)^+ \lra \Sigma^2(U\cap V)^+\lra\dots\]
+The third term is the same as
+\[\Sigma U^+\vee \Sigma V^+\cup \te{Cyl}(\Sigma(U\cap V)^+)\]
+where the (reduced) cylinder is attached by $i_1$ to $SU^+$ and $i_2$ to $SV^+$. But this is clearly has the same homotopy type as $\Sigma(U\cup V)^+$. So we get a cofibering
+\[\Sigma(U\cap V)^+ \vra{i_1-i_2} \Sigma(U^+\vee V^+) \lra \Sigma(U\cup V)^+ \lra \Sigma^2(U\cap V)^+\lra\dots\]
+Here the third map can be written either as
+\[\Sigma(U\cup V)^+\lra \Sigma(U\cup V/V) \lal{\cong} \Sigma(U/U\cap V)\lra \Sigma^2(U\cap V)^+\]
+or as minus
+\[\Sigma(U\cup V)^+\lra \Sigma(U\cup V/U) \lal{\cong} \Sigma(V/U\cap V)\lra \Sigma^2(U\cap V)^+\]
+So we get the following long exact sequence
+\[E_n(U\cap V)\vra{i_{1\ast}, -i_{2\ast}} E_n(U)\oplus E_n(V) \vra{j_{1\ast}, j_{2\ast}} E_n(U\cup V)\vra{\Delta}E_{n-1}(U\cap V) \lra \dots\]
+Here the boundary is given by
+\[E_n(U\cup V) \lra E_n(U\cup V, V) \lal{\cong}E_n(U, U\cap V)\vra{\partial} E_{n-1}(U\cap V)\]
+or minus
+\[E_n(U\cup V) \lra E_n(U\cup V, U) \lal{\cong}E_n(V, U\cap V)\vra{\partial} E_{n-1}(U\cap V)\]
+We proceed similarly in cohomology.
+
+Of course this construction also carries over to spectra. In fact for spectra we need not bother about writing the suspension, because up to equivalence everything is a suspension. We obtain:
+\begin{lemma}\label{lem:p3c06.9}
+Suppose a CW-spectrum is the union of two closed subspectra $U$, $V$. Then there is a cofibering
+\[U\cap V\vra{(i_1, -i_2)}U\vee V \vra{(j_1, j_2)}U\cup V\lra \te{Susp}(U\cap V)\lra \dots\]
+in which the third morphism is
+\[U\cup V\lra U\cup V/V\lal{\cong}U/U\cap V\lra \te{Susp}(U\cap V)\]
+or minus
+\[U\cup V\lra U\cup V/U\lal{\cong}V/U\cap V\lra \te{Susp}(U\cap V)\]
+\end{lemma}
+We may call this the Mayer-Vietoris cofibering.
+
+\end{document}

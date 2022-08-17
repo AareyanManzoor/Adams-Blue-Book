@@ -1,0 +1,147 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p1c5}
+
+\chapter{The Novikov Operations}
+The basic analogy which Novikov follows is now: as the Steenrod squares are to the Stiefel-Whitney classes, so the Novikov operations are to the Conner-Floyd characteristic classes.
+This will be made precise in Theorem~\ref*{thm:p1c05.1}~\ref{li:p1c05.1:vii} below.
+
+\begin{theorem}[S.P. Novikov]
+\label{thm:p1c05.1}
+For each $\alpha = (\alpha_1, \alpha_2, \alpha_3, \ldots)$ there exists an operation 
+\begin{equation*}
+	s_\alpha\colon \Omega_U^q(X, Y) \longrightarrow \Omega_U^{q + 2\abs{\alpha}} (X, Y)
+\end{equation*}
+with the following properties:
+\begin{enumerate}[label=(\roman*)]
+	\item \label{li:p1c05.1:i}$s_0 = 1$, the identity operation.
+	\item \label{li:p1c05.1:ii} $s_\alpha$ is natural: $s_\alpha f^\ast = f^\ast s_\alpha$.
+	\item \label{li:p1c05.1:iii} $s_\alpha$ is stable: $s_\alpha \delta = \delta s_\alpha$.
+	\item \label{li:p1c05.1:iv}$s_\alpha$ is additive: $s_\alpha (x + y) = (s_\alpha x) + (s_\alpha y)$.
+	\item \label{li:p1c05.1:v} Cartan formula:
+		\begin{equation*}
+			s_\alpha(xy) = \sum_{\beta + \gamma = \alpha} (s_\beta x) (s_\gamma y)\,.
+		\end{equation*}
+	\item \label{li:p1c05.1:vi} Suppose that an element $\omega \in \Omega^2(X)$ is represented by a map $X \stackrel{g}{\longrightarrow} \te{MU}(1)$. 
+	Then 
+		\begin{equation*}
+			s_\alpha(\omega) = \sum_i (c_\alpha, b_i) \omega^{i + 1}\,.
+		\end{equation*}
+	\item \label{li:p1c05.1:vii} Suppose that $\xi$ is an $\te{U}(n)$-bundle over $X$, and consider the following diagram.
+	\begin{equation*}
+		\begin{tikzcd}[row sep=large, column sep=large]
+			\Omega_U^{2n}(E, E_0) \arrow[r, "s_\alpha"]	& {\Omega^{2n + 2\abs{\alpha}}(E, E_0)}\\ 
+			\Omega_U^0(X) \arrow[u, "\phi", "\cong"']	& \Omega_U^{2\abs{\alpha}}(X) \arrow[u, "\phi", "\cong"']
+		\end{tikzcd}
+	\end{equation*}
+	(Here the pair $E, E_0$ is as in \S~\ref{sec:p1c2}, and $\phi$ is the Thom isomorphism for $\Omega_U^\ast$.) 
+	Then we have 
+		\begin{equation*}
+			\mathrm{cf}_\alpha(\xi) = \phi^{-1} s_\alpha \phi 1\,.
+		\end{equation*}
+\end{enumerate}
+\end{theorem}
+
+\begin{explanation}
+	In \ref{li:p1c05.1:v}, the addition of the sequences $\beta$ and $\gamma$ is done term-by-term. 
+	The cup product $xy$ may be taken in any one of the three senses explained above, and then the cup product $(s_\beta x)(s_\gamma y)$ is to be taken in the same sense.
+	
+	For the coefficients $(c_\alpha, b_i)$ in $(vi)$, see the note on Theorem~\ref*{thm:p1ch04.1}~\ref{li:p1ch04.1:iv}.
+\end{explanation}
+
+\begin{proof}[Sketch Proof]
+We take \ref{li:p1c05.1:vii} as our guide. 
+We have a Thom isomorphism 
+\begin{equation*}
+	\phi\colon \Omega_U^\ast(\te{BU}(n)) \longrightarrow \tilde \Omega_U^\ast(\te{MU}(n))
+\end{equation*}
+Consider the elements $\phi \mathrm{cf}_\alpha \in \tilde \Omega_U^{2n + 2\abs{\alpha}}(\te{MU}(n))$. 
+They yield a unique element $s_\alpha \in \Omega^{2\abs{\alpha}}(\MU)$ (the $\lim\!^1$ argument again). This element defines an operation on the cohomology theory $\Omega_U^\ast.$
+
+Property \ref{li:p1c05.1:vii} results immediately from the definition, and properties \ref{li:p1c05.1:ii}, \ref{li:p1c05.1:iii} and \ref{li:p1c05.1:iv} are trivial. 
+For example if $x, y : X \longrightarrow \MU$ are maps, and if we represent $s_\alpha$ by a map $s\colon \MU \longrightarrow \Sigma^{2a}\MU$, then the maps $s(x + y)$ and $(sx)+(sy) \colon X \longrightarrow \Sigma^{2a} \MU$ are homotopic, since we are working in a stable category.
+
+Properties \ref{li:p1c05.1:i}, \ref{li:p1c05.1:v} and \ref{li:p1c05.1:vi} are deduced from the corresponding properties \ref{li:p1ch04.1:i}, \ref{li:p1ch04.1:iii} and \ref{li:p1ch04.1:iv} of the Conner-Floyd classes (Theorem \ref{thm:p1ch04.1}) by using appropriate properties of the Thom isomorphism $\phi$.
+For example: in proving \ref{li:p1c05.1:v}, it is sufficient to consider the case in which $x$ and $y$  are both the identity map $i\colon \MU \longrightarrow \MU$ so that $x y$ is the product map $\mu\colon \MU \wedge \MU \longrightarrow \MU$. 
+Using the $\lim\!^1$ argument again, it is sufficient to consider the case in which $x$ and $y$ are generators for ${\tilde{\Omega}}_U^{2n}(\te{MU}(n))$, ${\tilde{\Omega}}_U^{2m}(\te{MU}(m))$. 
+Now we use the fact that if $\xi$ is a $\te{U}(n)$ bundle over $X$ and $\eta$ is a $\te{U}(m)$-bundle over $Y$ the following diagram is commutative. 
+
+% TODO: Column sep=large
+\begin{equation*}
+\begin{tikzcd}
+{\tilde \Omega}_U^{p + 2n}(\te{M}(\xi)) \otimes {\breve \Omega}^{q + 2m}(\te{MU}(\eta)) \arrow[rr, "\mathrm{product}"] &  & {\tilde \Omega}^{p + q + 2n + 2m}(\te{M}(\xi) \wedge \te{M}(\eta))                             \\
+                                                                                                                      &  & {\tilde \Omega}^{p + q + 2n + 2m}(\te{M}(\xi \times \eta)) \arrow[u, equals] \\
+\Omega_U^p(X) \otimes \Omega_U^q(Y) \arrow[rr, "\mathrm{product}"] \arrow[uu, "\phi_\xi \otimes \phi_\eta"]           &  & \Omega_U^{p + q}(X \times Y) \arrow[u, "\phi_{\xi \times \eta}"']                   
+\end{tikzcd}
+\end{equation*}
+
+The application, of course, is with $\xi$ the universal bundle over $\te{BU}(\eta)$ and $\eta$ the universal bundle over $\te{BU}(m)$.
+
+For \ref{li:p1c05.1:vi} we need to know that for the universal $\te{U}(1)$-bundle over $\te{BU}(1)$, the homomorphism 
+\begin{equation*}
+	\Omega_U^{2i}(\te{BU}(1)) \longrightarrow {\tilde \Omega}_U^{2 i + 2}(\te{MU}(1)) = \Omega_U^{2i + 2}(\te{MU}(1)) \quad i \ge 0
+\end{equation*} 
+carries $\overline \omega^i$ to $\overline \omega^{i + 1}$. (Here $\overline \omega$ is the universal element in $\Omega_U^2(\te{BU}(1))$ or $\Omega_U^2(\te{MU}(1))$.)
+
+Since $s_\alpha$ is a homotopy class of maps 
+\begin{equation*}
+	\MU \longrightarrow \Sigma^{2\abs{\alpha}} \MU,
+\end{equation*}
+it induces a homomorphism \[s_\alpha : H_q(\MU) \longrightarrow H_{q - 2\abs{\alpha}} (\mathrm {MU}).\] It is reasonable to ask for this homomorphism to be made explicit. Since we have seen in \hyperref[sec:p1c3]{\S 3} that $H_\ast(\MU)$ is a polynomial ring, it is reasonable to ask (i) how $s_\alpha$ acts on products, and (ii) how $s_\alpha$ acts on the generators $b_i'$. Set $\displaystyle b' = \sum_{i = 0}^\infty b_i'$; then it is sufficient to know $s_\alpha(b')$, since one can separate the components again.
+\end{proof}
+
+\begin{theorem}\label{thm:p1c05.2}
+(i) If $x ,y \in H_\ast(\MU)$, then \[s_\alpha (xy) = \sum_{\beta + \gamma = \alpha} (s_\beta x) (s_\gamma y).\] 
+(ii) $\displaystyle s_\alpha(b') = \sum_{i \ge 0} (c_\alpha, b_i)(b')^{i + 1}.$
+\end{theorem}
+
+\begin{proof}[Sketch Proof]
+Part (i). By Theorem \ref{thm:p1c05.1}(v), we have the commutative diagram. 
+
+\begin{center}
+\begin{tikzcd}
+\MU \wedge \MU \arrow[rr, "\mu"] \arrow[dd, "\displaystyle\sum_{\beta + \gamma = \alpha} s_\beta \wedge s_\gamma"'] &  & \MU \arrow[dd, "s_\alpha"] \\
+&  & \\
+\displaystyle\bigvee_{\beta + \gamma = \alpha} S^{2|\beta|} \MU \wedge S^{2|\gamma|} \MU \arrow[rr, "\mu"] &  & S^{2\abs{\alpha}} \MU         
+\end{tikzcd}
+\end{center}
+
+Pass to induced maps of homology.
+
+Part (ii). Since the generators $b_t'$ come from $\te{MU}(1)$, we can make use of Theorem \ref{thm:p1c05.1}(vi). If $\omega$ is the canonical element of $\Omega^2(\te{MU}(1))$, we wish to compute the effect on homology of the element $\omega^{i + 1} \in \Omega^{2i + 2} (\te{MU}(1))$, that is, the effect of the following composite map.
+
+\begin{center}
+\begin{tikzcd}
+\te{MU}(1) \arrow[rr, "\Delta"] &  & \te{MU}(1) \wedge \te{MU}(1) \wedge \ldots \te{MU}(1) \arrow[d, "\mu"] & (i + 1) \text { factors} \\
+                                    &  & \te{MU}(i + 1)                                                                 &                         
+\end{tikzcd}
+\end{center} 
+
+Now, the diagonal map \[\te{BU}(1) \lar{\Delta} \te{BU}(1) \times \te{BU}(1) \times \ldots \times \te{BU}(1)\] induces a map of cohomology given by \[\Delta^\ast (x^{u_1} \otimes x^{u_2} \otimes \ldots \otimes x^{u_{i + 1}}) = x^{u_1 + u_2 + \ldots + u_{i + 1}};\] therefore it induces a map of homology given by \[\Delta_\ast b_t = \sum_{u_1 + u_2 + \ldots + u_{i + 1} = t} b_{u_1} \otimes b_{u_2} \otimes \ldots \otimes b_{u_{i + 1}}.\]
+
+The map of ${\tilde H}_\ast$ induced by \[\te{BU}(1) \lar{\Delta} \te{BU}(1) \wedge \te{BU}(1) \wedge \ldots \te{BU}(1)\] is given by the same formula, provided we now interpret $b_0$ as $0$. Next recall that $b_t'$ in $\te{MU}(1)$ corresponds to $b_{t + 1}$ in $\te{BU}(1)$. We deduce that \[\Delta_\ast b_t' = \sum_{u_1 + u_2 + \ldots + u_{i + 1} = t - i} b'_{u_1} \otimes b'_{u_2} \otimes \ldots \otimes b'_{u_{i + 1}}\] and \[\mu_\ast \Delta_\ast b_t' = \sum_{u_1 + u_2 + \ldots + u_{i + 1} = t - i} b'_{u_1} b'_{u_2} \ldots b'_{u_{i + 1}}.\] Adding, we see that \[\mu_\ast \Delta_\ast b' = (b')^{i + 1}.\]
+
+By Theorem \ref{thm:p1c05.1}(vi), we have the following commutative diagram.
+
+\begin{center}
+\begin{tikzcd}
+& \Sigma^2 \MU \arrow[rd, "s_\alpha"] & \\
+\te{MU}(1) \arrow[ru, "\overline \omega"] \arrow[rr, "{(c_\alpha, b_{\abs{\alpha}}) \overline \omega^{i + 1}}"] & 
+& \Sigma^{2\abs{\alpha} + 2} \MU
+\end{tikzcd}
+\end{center}
+
+Pass to induced maps of homology.
+\end{proof} 
+
+\begin{corollary}
+\label{cor:p1c05.3}
+$s_\alpha : H^0(\MU) \longrightarrow H^{2\abs{\alpha}} (\MU)$ is given by \[s_\alpha \phi 1 = \phi c_\alpha.\]
+\end{corollary}
+
+\begin{proof}
+By Theorem \ref{thm:p1c05.1}(ii), \[s_\alpha(b_i') = \begin{cases}0 & i < \abs{\alpha} \text { (trivially)} \\ (c_\alpha, b_i) 1 & i = \abs{\alpha}.\end{cases}\] Using Theorem \ref{thm:p1c05.1}(i) we have \[s_\alpha (b_{i_1}' b_{i_2}' \ldots b_{i_r}') = \sum_{\beta_1 + \beta_2 + \ldots + \beta_r = \alpha} (s_{\beta_1} b_{i_1}') (s_{\beta_2} b'_{i_2}) \ldots (s_{\beta_r} b'_{i_r}).\]
+
+If we assume that $i_1 + i_2 + \ldots + i_r = \abs{\alpha}$, then the only terms which can contribute to this sum are those with \[|\beta_1| = i_1, \quad |\beta_2| = i_2, \ldots, |\beta_r| = i_r,\] and we obtain \[\sum (c_{\beta_1}, b_{i_1}) (c_{\beta_2}, b_{i_2}) \ldots (c_{\beta_r}, b_{i_r}) 1\] where the sum runs over each such $\beta_1, \beta_2, \ldots, \beta_r$. This of course yields \[(c_\alpha, b_{i_1}, b_{i_2}, \ldots, b_{i_r}) 1.\] We have shown that \[s_\alpha(\phi x) = (c_\alpha, x) 1\] for $x \in H_{2\abs{\alpha}} (\BU)$. Transposing to cohomology, we obtain \[s_\alpha \phi 1 = \phi c_\alpha.\]
+\end{proof}
+\end{document}

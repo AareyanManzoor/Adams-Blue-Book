@@ -1,0 +1,330 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p3ch03}
+%johnDS
+\chapter{Elementary properties of the category of CW-spectra}
+%\chaptermark{\protect\parbox{0.7\linewidth}{Elementary properties of the category of CW-spectra}}
+
+
+    
+We want to show that CW-spectra can be manipulated very much
+like CW-complexes. The standard way to make constructions for
+CW-complexes is by induction over the cells. Now we can define "stable
+cells" \index{stable cells} for CW-spectra, Let $C_n$ be the set of cells in $E_n$ other than
+the base-point. Then we get a function 
+\[C_n \lar{}C_{n+1} \text{ by } c_\alpha \mapsto \varepsilon_n(\Sigma c_\alpha)\]
+This function is an injection. Let $C$ be the direct limit \[\lim_{n\to\infty} C_n;\]
+an element of $C$ may be called a ``stable cell.'' Unwrapping the definition, a stable cell is an equivalence class of cells: for each $n$ such
+an equivalence class contains at most one cell in $E_n$. Take two cells,
+$c_\alpha$ in $E_n$ . and $c_\beta$ in $E_m$ and suppose without loss of generality $n\leq m$; then $c_\alpha$ and $c_\beta$ are equivalent if 
+\[
+\begin{tikzcd}
+C_n \arrow[r] & C_{n+1} \arrow[r] & \dots \arrow[r] & C_m
+\end{tikzcd}\]
+maps $c_\alpha$ into $c_\beta$.
+
+\begin{examples}
+$E'\subset E$ is cofinal if and only if $C'\lar{} C$ is a bijection.
+
+I said that the standard way to make constructions for CW-complexes is by induction over the cells, It is usual to order the cells of a
+CW-complex by dimension: first we take the cells of dimension 0, then
+the cells of dimension 1, and so on. For a CW-spectrum we can order
+the stable cells by ``stable dimension'', but this ordering is not inductive
+ in general, because we can have stable cells of arbitrarily large negative
+stable dimension. Nevertheless we can perform inductive proofs, because each stable cell is attached to only a finite number of predecessors.
+\end{examples}More formally, we have:
+\begin{lemma}\label{lem:p3ch03.1}
+let $E$ be a CW-spectrum, and G a subspectrum
+of $E$ which is not cofinal. Then $E$ has a subspectrum $F$ such that
+$E\supset F\supset G$ and $F$ contains just one more stable cell than $G$. 
+\end{lemma}
+\begin{proof}
+$G$ is not cofinal, so there exists a stable cell $c$ in $E$
+not in $G$. It has a representative $c_\alpha$,which is contained in a finite subcomplex $K\subset E_n$. So there exist finite subcomplexes $K$ containing representatives for stable cells in $E$ not in $G$. Among such $K$, choose
+one with fewest cells. Let $K=L\cup e$, where $e$ is a top-dimensional
+cell of $K$. Then $L$ fails to satisfy the conditions, for it has fewer cells
+than $K$. So all the stable cells in $L$ represent stable cells in $G$. Then
+there exists $m$ such that $\Sigma^mL$ gives a finite subcomplex of $G_{m+n}$
+Form $F$ by adjoining $\Sigma^re$ to $G_{n+r}$ for $r>m$.
+\end{proof}
+We illustrate the use of this lemma by proving the homotopy extension theorem, Actually we prove something slightly more general. 
+\begin{lemma}\label{lem:p3ch03.2}
+Let $X,A$ be a pair of CW-spectra, and $Y,B$ a
+pair of spectra such that $\pi_\ast(Y,B)= 0$. Suppose given a map $f:X\lar{}Y$
+and a homotopy $h: \te{Cyl}(A)\lar{} Y$ from $f|_A$ to a map $g:A\lar{}B$. Then the homotopy can be extended over $\te{Cyl}(X)$ so as to deform $f$ to a map $X\lar{}B$.
+\end{lemma}
+The homotopy extension theorem is a special case when $B=Y$.
+\begin{proof}
+Work at the level of functions. Suppose $f$ is represented by a function $f':X'\lar{}Y$, and $h$ by a function $h':\te{Cyl}(A')\lar{}Y$, where $X'\supset A'$, $X'$ is cofinal in $X$ and $A'$ is cofinal in $A$. We make our induction using Zorn's Lemma. The objects to be ordered are pairs $(U,k')$ where $A'\subset U\subset X'$ and $k':\te{Cyl}(U)\lar{} Y$ is a function which deforms $f'|_U$ to a function into $B$. 
+The set of such pairs is non-empty since $(A',h')$ qualifies; and it is clearly inductive. So we can choose a
+maximal element $(U,k')$. I claim the maximal element has $U$ cofinal
+in $X'$. If not, then by lemma \ref{lem:p3ch03.1} we can find $U\subset V\subset X'$ where $V$ contains just one more stable cell than $U$, say $V_n=U_n\cup e^m$. Then the maps \[f'_n|_{0\wedge e}: 0\wedge e\lar{} Y_{n-r} \]
+\[k_n'|_{I^+ \wedge \partial e}: I^+ \wedge \partial e, 1\wedge \partial e\lar{} Y_{n-r},B_{n-r} \]
+define an element of $\pi_m(Y_{n-r},B_{n-r})$. Now $\pi_\ast(Y,B)=0$, so that this element vanishes after sufficiently many suspensions.So on passing to $V_{n+p}= U_{n+p}\cup e^{m+p}$, we can extend $k'_{n+p}$ to a map \[k''_{n+p}: I^+\wedge e, 1\wedge e \lar{} Y_{p+n-r},B_{p+n-r}.. \]
+Then define $k''_{n+q}$ for $q>p$ by suspension. This extension of $k'$ shows that $(U,k')$ is not maximal, a contradiction. This contradiction shows that $U$ is cofinal in $X'$, i.e., $U$ is cofinal in $X$. This gives the required map of $\te{Cyl}(X)$.
+\end{proof}
+A generalized version of Lemma \ref{lem:p3ch03.2} works when the inclusion $B\lar{}Y$ is replaced by a general function. 
+
+\begin{customlemma}{$3.2'$} \label{lem:p3ch03.2'}
+Let $X,A$ be a pair of CW-spectra and $\emptyset: B\lar{}  Y$ a function of spectra such that $\emptyset_\ast:\pi_\ast (B)\lar{}\pi_\ast(Y)$ is an isomorphism. Suppose given maps $f:X\lar{}Y$ and $g:A\lar{}B$ and a homotopy $h:\te{Cyl}(A)\lar{}Y$ from $f|_A$ to $\emptyset g$. Then we can extend $g$ over $X$ and $h$ over $\te{Cyl}(X)$ so that $h$ becomes a homotopy from $f$ to $\emptyset g:X\lar{}Y$.
+\end{customlemma}
+The proof is similar to that of $3.2$, except that we order triples $(U,k',g')$ where $g':U\lar{}B$ and $k' i_l = \emptyset g'$. The element \[k'_n|_{I^+\wedge \partial e}: I^+\wedge \partial e\lar{} Y_{n-r}\]
+can be patched together with a contracting homotopy for $f|_{\partial e}$ to define an element of $\pi_m(\emptyset_{n-r}),$ say $k''_n$, which under the hypotheses must vanish on passing to $\emptyset_{p+n-r}$ for some $p$.
+
+\begin{customlemma}{3.3} \label{lem:p3ch03.3}
+Suppose that $\pi_\ast(Y)=0$, and $X,A$ is a pair of CW-spectra. Then any map $f:A\lar{}Y$ can be extended over $X$.
+\end{customlemma}
+\begin{proof}
+Exercise. Either copy the proof of \ref{lem:p3ch03.2} or else quote the result of $\ref{lem:p3ch03.2}$.
+\end{proof}
+
+\begin{customthm}{3.4}\label{lem:p3ch03.4}
+Let $f:E\lar{}F$ be a function between spectra such that $f_\ast:\pi_\ast(E)\lar{} \pi_\ast(F)$ is an isomorphism. Then for any CW-spectrum $X$, \[f_\ast:[X,E]_\ast \lar{}[X,F]_\ast\] is a (1-1) correspondence.
+\end{customthm}
+I emphasize that $E$ and $F$ are not assumed to be CW-spectra.
+By analogy with the case of CW-complexes, a function $f: E\lar{} F$
+between spectra such that $ [X,E]_\ast \lar{f_\ast}[X,F]_\ast$ correspondence
+for all CW-spectra X would be called a weak equivalence. 
+
+\begin{proof}
+(First argument). Without loss of generality we
+can suppose that $f$ is an inclusion; for if not, replace $F$ by the
+spectrum $M$ in which $M_n$ is the mapping cylinder of $f_n$, Then
+$\pi_\ast(F,E) = 0$ by the exact sequence. Now we see that $f_\ast$ is an epimorphism by applying lemma \ref{lem:p3ch03.2}, taking the pair $X$ mod $A$ to be $X$ mod $\te{pt.}$
+Similarly, we see that $f_\ast$ is a monomorphism by applying lemma \ref{lem:p3ch03.2}, taking the pair $X$ mod $A$ to be $\te{Cyl}(X)$ mod its ends.
+
+(Second argument). Instead of using the mapping cylinder spectrum,
+use Lemma \ref{lem:p3ch03.2'} in the above argument. 
+\end{proof}
+
+\begin{customcor}{3.5}[Compare the theorem of J.H.C. Whitehead.] \label{cor:p3ch03.5} Let $f:E\lar{}F$ be a morphism between CW-spectra such that:
+\[f_\ast:\pi_\ast(E)\lar{} \pi_\ast(F)\]
+is an isomorphism. Then $f$ is an equivalence in our category. 
+\end{customcor}
+The deduction of \ref{cor:p3ch03.5} from \ref{lem:p3ch03.4} is a triviality, valid in any category. 
+
+\begin{examples}
+Let $f: E\lar{} F$ be a function such that $f_n: E_n\lar{} F_n$ is a
+homotopy equivalence for each $n$. Then $f$ is an equivalence in our
+category. 
+\end{examples}
+\begin{exercise}
+Use (\ref{cor:p3ch03.5}) to show that any CW-spectrum $Y$ is equivalent in our category to an $\Omega_0$-spectrum.
+\end{exercise}
+\begin{hint}
+Construct a functor $T_n$ from CW-complexes to spectra by \[(T_nX)_r =\begin{cases}\Sigma^{r-n}X & r\geq n\\ \te{pt.} & r<n\end{cases}\]
+Form the set of morphisms in our category \[[T_nX,Y]_0,\] and check that it is a representable functor, represented say by $Z_n$. Observe that the $Z_n$ give the components of an $\Omega_0$-spectrum $Z$; construct a function $Y\lar{}Z$ and apply \ref{cor:p3ch03.5}.
+\end{hint}
+
+Now I must reveal that we would really like a relative form of the
+theorem of J.H.C. Whitehead. If $X$ is a spectrum, let $\te{Cone}(X)$ be
+the spectrum whose $n\nth$ term is $I\wedge X_n$, with maps
+\[\begin{tikzcd}
+(I\wedge X_n)\wedge S^1 \arrow[rr, "1\wedge \varepsilon_n"] &  & I\wedge X_{n+1} 
+\end{tikzcd} \text{(We take the base-point in I to be 0.)}\] 
+We have an obvious inclusion function $i:X\lar{} \te{Cone}(X)$ (use the end of the cone).
+\begin{customthm}{3.6}\label{thm:p3ch03.6}
+Let $f:E,A\lar{} F,B$ be a function between pairs of spectra such that \[f_\ast:\pi_\ast(E,A)\lar{} \pi_\ast (F,B)\] is an isomorphism. Then for any CW-spectrum X, \[f_\ast:[\te{Cone}(X),X; E,A]_\ast \lar{}[\te{Cone}(X),X; F,B]_\ast\]
+is a 1-1 correspondence.
+\end{customthm}
+\begin{proof}[Proof Sketch]
+Construct a new spectrum $R$ (for relative) with $R_n=L(E_n,A_n)$ (the space of paths in $E_n$ starting at the base-point and finishing in $A_n$) and structure maps $\rho_n$ given by 
+\[\begin{tikzcd}
+{L(E_n,A_n)} \arrow[rr, "L\varepsilon'_n"] &  & {L(E_{n+1} \Omega, A_{n+1} \Omega)\cong (L(E_{n+1},A_{n+1}))\Omega}
+\end{tikzcd}  \]
+where the $\Omega$ is written on the right to keep the "loops" coordinates out of the way of the path coordinate. Similarly, construct $S$ (not, for the moment, the sphere spectrum) with $S_n=L(F_n,B_n)$. Then $f$ induces a function of spectra $R\lar{} S$, inducing an isomorphism of absolute homotopy groups. By theorem \ref{lem:p3ch03.4}, 
+\[[X,R]_\ast \lar{} [X,S]_\star \]
+is a 1-1 correspondence. Unwrapping this, it says \[f_\ast:[\te{Cone}(X),X; E,A]_\ast \lar{}[\te{Cone}(X),X; F,B]_\ast\]
+is a 1-1 correspondence.
+\end{proof}
+This application shows why I specified that $E$ and $F$ in \ref{lem:p3ch03.4} need
+not be CW-spectra. 
+
+Now for any spectrum $X$, we will define $\te{Susp}(X)$ so that its $n\nth$ term is $S^1\wedge X_n$ and its structure maps are 
+\[\begin{tikzcd} (S^1\wedge X_n) \wedge S^1 \arrow[rr,"1\wedge \xi_n"]& &S^1\wedge X_{n+1}\end{tikzcd}.\] $\te{Susp}$ is obviously a functor.
+
+\begin{customthm}{3.7}\label{thm:p3ch03.7}
+$\te{Susp}:[X,Y]_\ast\lar{} [\te{Susp}(X),\te{Susp}(Y)]_\ast$ is a $1-1$ correspondence.
+\end{customthm}
+This theorem assures us that in some sense we did succeed in getting into a stable situation.
+\begin{proof}
+We have the following commutative diagram.
+\[\begin{tikzcd}
+{[X,Y]_\ast} \arrow[d, "\te{Susp}"] \arrow[rr, "\te{Cone}"] &  & {[\te{Cone}(X),X; \te{Susp}(Y),Y]_\ast} \arrow[d, "j_\ast"] \\
+{[\te{Susp}(X),\te{Susp}(Y)]_\ast} \arrow[rr, "j^\ast"]     &  & {[\te{Cone}(X),X; \te{Susp}(Y),\te{pt.}]_\ast}             
+\end{tikzcd}\]
+Now the map $\te{Cone}$ is clearly injective (since restriction gives an inverse for it) and surjective (by Lemma \ref{lem:p3ch03.3}). Also $j^\ast$ is clearly a 1-1
+correspondence. The proof will be complete as soon as we show that $j_\ast$
+is a 1-1 correspondence, by quoting Theorem \ref{thm:p3ch03.6} and proving: 
+
+\begin{customlemma}{3.8} \label{lem:p3ch03.8}
+$j_\ast : \pi_\ast(\te{Cone}(Y),Y)\lar{} \pi_\ast(\te{Susp}(Y),\te{pt.})$ is a 1-1 correspondence. 
+\end{customlemma}
+
+
+Consider the following commutative diagram:
+
+\[
+\adjustbox{scale=0.9,center}{
+\begin{tikzcd}
+{\pi_{n+r+1}(I\wedge Y_n,Y_n)} \arrow[swap]{r}{\cong}[swap]{\partial} \arrow[dd] \arrow[rrrd, "j_\ast", bend left=35] &   \pi_{n+r}(Y_n) \arrow[d]                                                                   &  &                                                                       \\
+                                                                                                        & \pi_{n+r+1} (Y_n \wedge S^1) \arrow[d, "(\eta_n)_\ast"] \arrow[rr, "(-1)^{n+r} \tau_\ast"] &  & \pi_{n+r+1}(S^1\wedge Y_n) \arrow[d]                                  \\
+{\pi_{n+r+2}(I\wedge Y_{n+1},Y_{n+1})} \arrow[swap]{r}{\cong}[swap]{\partial} \arrow[rrrd, "j_\ast", bend right=35]    & \pi_{n+r+1} (Y_{n+1}) \arrow[d]                                                            &  & \pi_{n+r+2}(S^1\wedge Y\wedge S^1) \arrow[d, "(1\wedge \eta_n)_\ast"] \\
+                                                                                                        & \pi_{n+r+2} (Y_{n+1} \wedge S^1) \arrow[rr, "(-1)^{n+r+1} \tau_\ast"]                      &  & \pi_{n+r+2}(S^1\wedge Y_n)                                           
+\end{tikzcd}
+}\]
+$\pi_\ast(\te{Cone}(Y),Y)$ is the direct limit of the left-hand column, and the
+diagram shows it is isomorphic to $\displaystyle \lim_{n\to \infty} \pi_{n+r}(Y_n).$ $\pi_\ast(\te{Susp}(Y),\te{pt.})$ is
+the direct limit of the right-hand column, and the diagram shows that it
+ig isomorphic to the direct limit of the system in which the groups are $\pi_{n+r+1}(Y_n\wedge S^1)$ and the maps are the vertical arrows in the center
+column. But the center column shows that these two direct limits are the
+same, This proves Lemma \ref{lem:p3ch03.8}, which proves Theorem \ref{thm:p3ch03.7}.
+\end{proof}
+Now we can remark that $[\te{Susp}(X), Z]$ is obviously a group, because in $\te{Susp}(X)$ we have a spare suspension coordinate out in front to manipulate. And for the same reason, $[\te{Susp}^2(X), Z]$ is an abelian
+group. But now we can give $[X, Y]$ the structure of an abelian group,
+because $[X,Y]$ is in 1-1 correspondence with $[ \te{Susp}^2(X), \te{Susp}^2(Y)]$,
+and we pull back the group structure on that. So now our sets of
+morphisms $[X,Y]$ are abelian groups, and it's easy to see that composition is bilinear. 
+
+Actually there is a unique way to give each set of morphisms $[X,Y]$
+the structure of an abelian group so that composition is bilinear; this is
+standard once I've said the usual categorical things about sums and
+products.
+
+Well, now I would like to say that I have an additive category. The
+existence of a trivial object is easy: we take the spectrum $E_n=\te{pt.}$ for all $n$. Then $[X,\te{pt.}]=0$ and $[\te{pt.},X]=0 $.
+
+I claim this category has arbitrary sums (= coproducts). In fact,
+given spectra $X_\alpha$ for $\alpha\in A$, we form $X=\bigvee_\alpha X_\alpha$ by $X_n=\bigvee (X_\alpha)_n$ with the obvious structure maps.
+
+\begin{tikzcd}
+	{X_n\wedge S^1 = \left(\bigvee_\alpha (X_\alpha)_n\right)\wedge S^1 = \bigvee_\alpha (X_\alpha)\wedge S^1} && {\bigvee_\alpha (X_\alpha)_{n+1}}
+	\arrow["{\bigvee_\alpha \xi_{\alpha n}}", from=1-1, to=1-3]
+\end{tikzcd}
+
+This obviously has the required property:
+\[\bigg[\bigvee_\alpha X_\alpha,Y\bigg] \lar{\cong} \prod_\alpha [X_\alpha,Y] \]
+
+Now I must talk about cofiberings. Suppose given a map $f:X\lar{}Y$ between CW-spectra. It is represented by a function $f':X'\lar{}Y$, where $X'$ is a cofinal subspectrum. Without loss of generality I can suppose $f'$ is cellular, i.e., $f'_n$ is a cellular map of CW-complexes for each $n$. We form the mapping cone $Y\cup_{f'} CX$ as follows: its $n\nth$ terms is $Y_n \cup_{f_n'} (I\wedge X_n')$ and the structure maps are the obvious ones. If we replace $X'$ by a smaller cofinal subspectrum $X''$, we get $Y\cup_{f''} CX''$ which is smaller than $Y\cup_{f'} CX'$, but cofinal in it, and so equivalent. So the construct depends essentially only on the map $f$, and we can write it $Y\cup_f CX$. If we vary $f$ by a homotopy, $Y\cup_{f_0} CX$ and $Y\cup_{f_1} CX$ are equivalent, but the equivalence depends on the choice of homotopy.
+
+Let $X$ be a CW-spectrum, $A$ a subspectrum. I will say $A$ is a \emph{closed} \index{closed subspectrum} if for every finite subcomplex $K\subset X_n$, $\Sigma^mK\subset A_{m+n}$ implies $K\subset A_n$. That is, if a cell gets into $A$ later, I put it into $A$ to start with. It is equivalent to saying that $A\subset B\subset X$, $A$ cofinal in $B$ implies that $A=B$.
+
+Suppose that $i:X\lar{}Y$ is the inclusion of a closed subspectrum. Then we can form $Y/X$, with the $n\nth$ term $Y_n/X_n$. In this case there is a map \[r:Y\cup_i CX\lar{} Y/X \]
+with components \[Y_n\cup_{i_n} CX_n \lar{} Y_n/X_n \]
+The map $r$ is an equivalence, by corollary \ref{cor:p3ch03.5}.
+
+Let's return to the general case. We have morphisms \[X\lar{f}Y\lar{i} Y\cup_f CX\]
+
+\begin{customprop}{3.9}\label{prop:p3ch03.9}
+For each $Z$ the sequence \[[X,Z]\lal{f^\ast} [Y,Z]\lal{i^\ast} [Y\cup_f CX,Z]\]
+is exact
+\end{customprop}
+The proof is the same as for CW-complexes, and is trivial, because homotopies were defined in terms of maps of cylinders.
+
+The sequence $X\lar{f}Y\lar{i} Y\cup_f CX$, or anything equivalent to it, is called a \emph{cofibre sequence} or \emph{Puppe sequence} \index{cofibre sequence} \index{Puppe sequence}. We can extend cofiberings to the right, by taking 
+\[X\lar{f} Y\lar{i} Y\cup_f CX \lar{} (Y\cup_f CX)\cup_i CY \]
+The last spectrum is equivalent to $(Y\cup_f CX)/Y = \te{Susp}(X)$. If we continue the sequence further, we get
+\[\begin{tikzcd}
+	X & Y & {Y\cup_f CX} & {\te{Susp}(X)} && {\te{Susp}(Y)}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["i", from=1-2, to=1-3]
+	\arrow["j", from=1-3, to=1-4]
+	\arrow["{-\te{Susp}(f)}", from=1-4, to=1-6]
+\end{tikzcd}\]
+as for CW-complexes. It follows that the exact sequence of Proposition \ref{prop:p3ch03.9} can also be extended to the right.
+
+\begin{customprop}{3.10}\label{prop:p3ch03.10}
+The sequence \[[W,X]\lar{f_\ast} [W,Y] \lar{i_\ast} [W,Y\cup_f CX] \]
+is exact.
+\end{customprop}
+In other words, in our category cofiberings are the same as fibering.
+\begin{proof}
+Since $if \sim 0$, $i_\star f_\star=0$. Suppose given $g:W\lar{} Y$ such that $ig\sim 0$. Then we can construct the following diagram of cofiberings.
+
+\[
+\adjustbox{scale=1, center}{
+\begin{tikzcd}
+	X & Y & {Y\cup_f CX} & {\te{Susp}(X)} && {\te{Susp}(Y)} \\
+	W & W & CW & {\te{Susp}(W)} && {\te{Susp}(W)}
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["i", from=1-2, to=1-3]
+	\arrow["j", from=1-3, to=1-4]
+	\arrow["{-\te{Susp}(f)}", from=1-4, to=1-6]
+	\arrow["1", from=2-1, to=2-2]
+	\arrow["i", from=2-2, to=2-3]
+	\arrow["j", from=2-3, to=2-4]
+	\arrow["{-1}", from=2-4, to=2-6]
+	\arrow["g"', from=2-2, to=1-2]
+	\arrow["h"', from=2-3, to=1-3]
+	\arrow["k"', from=2-4, to=1-4]
+	\arrow["{\te{Susp}(g)}"', from=2-6, to=1-6]
+\end{tikzcd}}\]
+
+(The homotopy $ig\sim 0$ gives us $h$, and the rest follows automatically.)
+
+Now by Theorem \ref{thm:p3ch03.7} we have $k=\te{Susp}(\ell)$ for some $\ell \in [W,X]$, and \[\left(-\te{Susp}(f)\right) \left(\te{Susp}(\ell)\right) \simeq \left(\te{Susp}(g)\right)(-1) \]
+i.e.,
+\[\te{Susp}(f\ell) \simeq \te{Susp}(g)\]
+so using Theorem \ref{thm:p3ch03.7} again, we have $f\ell \simeq g$. This proves Proposition \ref{prop:p3ch03.10}.
+\end{proof}
+\begin{customprop}{3.11}\label{prop:p3ch03.11}
+Finite sums are products.
+\end{customprop}
+In fact, \[X\lar{} X\vee Y \lar{} Y \]
+is clearly a cofibering, because $(X\vee Y)\cup CX \simeq Y$. So by \ref{prop:p3ch03.10}
+
+\[[W,X] \lar{} [W,X\vee Y] \lar{} [W,Y] \]
+is exact; but it is clearly split short exact, so \[[W,X\vee Y] \cong [W,X]\oplus [W,Y] \] and $X\vee Y$ is also the product $X$ and $Y$.
+
+Now I know that my category in an additive category.
+
+\begin{customthm}{3.12}\label{thm:p3ch03.12}
+The Representability Theorem of E.H. Brown is valid in the category of CW-spectra and morphisms of degree $0$.
+\end{customthm}
+The proof is as usual, but arrange the induction right.
+
+\begin{exercise}
+Use \ref{thm:p3ch03.12} to show that any spectrum $Y$ is weakly equivalent to a CW-spectrum. (Consider the functor $[X,Y]_0$.)
+\end{exercise}
+\begin{customprop}{3.13}\label{prop:p3ch03.13}
+The stable category has arbitrary products.
+\end{customprop}
+\begin{proof}
+The functor of $X$ given by \[\prod_\alpha [X,Y_\alpha]_0 \] satisfies the data of Brown's theorem, so it is representable, Now we
+see that this representing object works for maps of degree $r$ as well.
+\end{proof}
+
+Note next that for any collection of $X_\alpha$ we have a morphism \[\bigvee_\alpha X_\alpha \lar{} \prod_\alpha X_\alpha\]
+Namely, for each $\alpha$ and $\beta$ I have to give a component which is a map $X_\alpha \lar{} X_\beta$; I take it to be $1$ if $\alpha=\beta$, $0$ if $\alpha\neq \beta$.
+
+\begin{customprop}{3.14}\label{prop:p3ch03.14}
+(This form is due to Boardman). Suppose that for each $n$, $\pi_n(X_\alpha) =0$ for all but a finite number of $\alpha$. Then the map  \[\bigvee_\alpha X_\alpha \lar{} \prod_\alpha X_\alpha\]
+is an equivalence.
+\end{customprop}
+\begin{proof}
+First note that \[\pi_n(X_1\vee X_2) \cong \pi_n(X_1)\oplus \pi_n(X_2)\]
+under the obvious maps. (see \ref{prop:p3ch03.11}) \begin{exercise}
+Prove this directly from the definitions of $\pi_\ast$ and $X_1\vee X_2$.
+\end{exercise}
+By induction, we have \[\pi_n(X_1\vee \dots \vee X_m) \cong \sum_{i=1}^m \pi_n(X_i) \]
+for finite wedges. Now we have \[\pi_n\bigg(\bigvee_\alpha X_\alpha\bigg) = \sum_\alpha \pi_n(X_\alpha)\]
+by passing to direct limits. Also \[\pi_n\bigg(\prod_\alpha X_\alpha\bigg)= \prod_\alpha \pi_n (X_\alpha), \text{ by definition.} \]
+Now the data was chosen precisely so that $\displaystyle \sum_\alpha \pi_n (X_\alpha) \lar{} \prod_\alpha \pi_n(X_\alpha) $ is an isomorphism. Therefore $\displaystyle \bigvee_\alpha X_\alpha \lar{} \prod_\alpha X_\alpha$ is an equivalence, by \ref{cor:p3ch03.5}.
+\end{proof}
+
+\begin{remark*}
+If we use the direct proof that \[\pi_n(X_1\vee X_2)\cong \pi_n(X_1)\oplus \pi_n(X_2)\]
+this gives a proof that finite sums are products, independently of \ref{thm:p3ch03.7},
+but depending on Brown's theorem. This can be used, in a way which is
+familiar to categorists, to define an addition in the sets $[X, Y]$; this
+way of introducing the addition is independent of \ref{thm:p3ch03.7}. Of course you have
+to show that the addition makes the sets $[X,Y]$ into abelian groups; the
+main point is to establish the existence of inverses. I recommend making
+use of an argument which is standard for H-spaces, as follows. Since
+$X\vee X$ is both a sum and product, you can make a map
+
+\[X\vee X\lar{} X\vee X\]
+with components $\begin{bmatrix}1&1\\0&1\end{bmatrix}$. Check that it satisfies the hypotheses of \ref{cor:p3ch03.5}, so it has an inverse. The inverse has the form $\begin{bmatrix}1&\nu\\0&1\end{bmatrix}$. But you know the inverse of $\begin{bmatrix}1&1\\0&1\end{bmatrix}$ is $\begin{bmatrix}1&-1\\0&1\end{bmatrix}$; so you use $\nu$ for inversion and it works.
+\end{remark*}
+
+\end{document}

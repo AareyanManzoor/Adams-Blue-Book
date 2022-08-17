@@ -1,0 +1,168 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c2}
+%TODO: I have used itemize for the numbered bullet points for now but they should have labels and add to the counter
+
+\chapter{Examples from Algebraic Topology}
+In this section we will explain how examples of formal products arise in studying generalized cohomology theories. According to \cite{whitehead}, generalized cohomology theories are closely connected with stable homotopy theory and the study of spectra. For convenience we will suppose that we are working in a suitable category of spectra, such as that constructed by Boardman \cite{boardman,boardman2}, so that we can form smash-products of spectra. A ring-spectrum is a spectrum $E$ provided with a product map $\mu : E \wedge E \lar{} E$. All our ring-spectra will be associative and commutative up to homotopy, and will be provided with a map $i : S^0 \lar{} E$ which acts as a unit up to homotopy. We shall suppose known the work of G. W. Whitehead \cite{whitehead}, according to which a ring-spectrum determines a generalized homology theory $E_\ast$ and a generalized cohomology theory $E^\ast$. These theories admit all the usual products. The coefficient groups for these two theories are given by \[E^{-n}(\mathrm{pt}) = E_n(\mathrm{pt}) = \pi_n(E) = [S^n, E].\] 
+
+Initially we are interested in three examples. First, the Eilenberg-MacLane spectrum for the group of integers. Since the corresponding homology and cohomology theories are universally written $H_\ast$ and $H^\ast$, we will write $H$ for this spectrum. Secondly, the BU-spectrum; since the corresponding homology and cohomology theories are called $K$-theory, and written $K_\ast$, $K^\ast$ (and since we have just dispense with the use of $K$ for the Eilenberg-Mac Lane spectrum) we will write $K$\index{K/BU-spectrum} for the BU-spectrum. (Note that we would anyway have to find different notation for the BU-space and the BU-spectrum, since we have to distinguish between them.) Thirdly, the Milnor spectrum \cite{milnor2}; this is always written $\te{MU}$ \index{MU/Milnor spectrum}; the corresponding homology and cohomology theories are complex bordism and complex cobordism. 
+
+We do not need homology and cohomology with coefficients until \hyperref[sec:p2c15]{\S 15}; but it seems best to deal with the matter now. Let $G$ be an abelian group; then we can construct a Moore spectrum $M = M(G)$ so that 
+
+\begin{align*}
+\pi_r(M) & = 0 \qquad \text {for } r < 0 \\ \pi_0(M) & \cong G \\ H_r(M) & = 0 \qquad \text {for } r > 0
+\end{align*}
+
+We define a ``spectrum with coefficients'' by \[\mathrm{EG} = E \wedge M.\] For example, HG is the Eilenberg-Maclane spectrum for the group $G$. The homology and cohomology theories associated with EG are written $\mathrm {EG}_\ast$, $\mathrm {EG}^\ast$.
+
+We will study spectra $E$ which are provided with ``orientations'', in the following sense (which owes much to a seminar by A. Dold). 
+
+\begin{enumerate}
+    \item[(2.1)] There is given an element $x \in {\tilde E}^\ast(\mathbb {CP}^\infty)$ such that ${\tilde E}^\ast(\mathbb {CP}^1)$ is a free module over $\pi_\ast(E)$ on the generator $i^\ast x$, where $i : \mathbb {CP}^1 \lar{} \mathbb {CP}^\infty$ is the inclusion map. 
+\end{enumerate}
+
+We know, of course that $\mathbb {CP}^1$ can be identified with $S^2$ and that ${\breve E}^\ast(S^2)$ is free over $\pi_\ast(E)$ on one generator $\gamma$, which lies in ${\tilde E}^2(S^2)$, and is represented by the unit map $S^0 \lar{} E$; but we do not insist that $i^\ast x$ is the generator, or even that it lies in ${\tilde E}^2(S^2)$. Our assumption says only that $i^\ast x = u \gamma$, where $u$ is an invertible element in $\pi_\ast(E)$. 
+
+If we have more than one spectrum in sight, we write $x^E$ for the generator in ${\breve E}^\ast(\mathbb {CP}^\infty)$, and $u^E$ for $u$.
+
+We make a blanket assumption that objects to be studied are pairs $(E, x^E)$; any $E$ which appears in what follows is supposed to be provided with a class $x^E$. 
+
+\begin{examples}
+\begin{enumerate}
+    \item[(2.2)] $E = H$. We take $x^H \in H^2(\mathbb {CP}^\infty)$ to be the usual generator.
+    \item[(2.3)] $E = K$. We identify $\mathbb {CP}^\infty$ with $\mathrm{BU}(1)$, we take $\xi$ to be the universal line bundle over $\mathrm{BU}(1)$, and we take \[x^K = \xi - 1 \in {\breve K}^0(\mathbb {CP}^\infty).\] 
+\end{enumerate}
+
+\begin{notes}
+It is justifiable to take $x^K$ in ${\breve K}^0(\mathbb {CP}^\infty)$ instead of ${\tilde K}^2(\mathbb {CP}^\infty)$, because it makes the ``$n$-th Chern class in $K$-cohomology'' lie in dimension 0 instead of dimension $2n$, so that it is more conveniently related to bundles and representation-theory. Also we get a better formula at \ref{ex:p2c02.8} below. The unit $u^K$ is the usual generator in $\pi_2(K)$; this provides some justification for writing $i^\ast x = u \gamma$ rather than $\gamma = u i^\ast x$.
+\end{notes}
+\end{examples}
+
+\begin{enumerate}
+    \item[(2.4)] $E = \mathrm{MU}$. We have a canonical homotopy equivalence $\omega : \mathbb {CP}^\infty \lar{} \mathrm{MU}(1)$. In fact, $\mathrm{MU}(1)$ is a quotient space formed from a disc-bundle over $\mathrm{BU}(1)$ by identifying to one point a subbundle whose fibers are circles. This subbundle is the universal $\mathrm{U}(1)$-bundle, so it is contractible, and the quotient map is a homotopy equivalence. The disc-bundle is clearly equivalent to $\mathrm{BU}(1)$ under the projection. 
+\end{enumerate}
+
+We take $x^{\mathrm{MU}} \in \mathrm {MU}^2(\mathbb {CP}^\infty)$ to be the class of $\omega$. 
+
+Let us return to the general case. By using the projections of $\mathbb {CP}^\infty \times \mathbb {CP}^\infty$ onto its two factors, we obtain two elements \[x_1, x_2 \in {\tilde E}^\ast(\mathbb {CP}^\infty \times \mathbb {CP}^\infty).\]
+
+\begin{customlemma}{2.5}
+\label{lem:p2c02.5}
+\begin{enumerate}
+    %TODO: standardise space? 
+    \item[(i)] The spectral sequences \[H^\ast(\mathbb {CP}^n; \pi_\ast(E)) \xRightarrow{\phantom{.....}} E^\ast(\mathbb {CP}^n)\]
+    \[H^\ast(\mathbb {CP}^\infty, \pi_\ast(E))  \xRightarrow{\phantom{.....}} E^\ast(\mathbb {CP}^\infty)\]
+    \[H^\ast(\mathbb {CP}^n \times \mathbb {CP}^m; \pi_\ast(E))  \xRightarrow{\phantom{.....}} E^\ast(\mathbb {CP}^n \times \mathbb {CP}^m)\]
+    \[H^\ast(\mathbb {CP}^\infty \times \mathbb {CP}^\infty)  \xRightarrow{\phantom{.....}} E^\ast(\mathbb {CP}^\infty \times \mathbb {CP}^\infty)\]
+    Are trivial.
+    \item[(ii)] $E^\ast(\mathbb {CP}^n)$ is the ring of polynomials $\pi_\ast[E]$ modulo the ideal generated by $x^{n + 1}$.
+    
+    $E^\ast(\mathbb {CP}^\infty)$ is the ring of formal power series $\pi_\ast(E)[[x]]$.
+    
+    $E^\ast(\mathbb {CP}^n \times \mathbb {CP}^m)$ is the ring of polynomials $\pi_\ast(E)[x_1, x_2]$ modulo the ideal generated by $x_1^{n + 1}$ and $x_2^{m + 1}$.
+    
+    $E^\ast(\mathbb {CP}^\infty)$ is the ring of formal power series $\pi_\ast(E)[[x_1, x_2]]$.
+\end{enumerate}
+\end{customlemma}
+
+\begin{proof}
+Consider each spectral sequence of part (i); the relevant powers $x^i$ or $x_1^i x_2^j$ give a $\pi_\ast(E)$-base for the $E_2$-term on which all differentials $d_r$ vanish. Since the differentials $d_r$ are linear over $\pi_\ast(E)$, they vanish on everything.
+\end{proof}
+We know that $\mathbb {CP}^\infty$ is an Eilenberg-Mac Lane space of type $(\bbZ, 2)$; in particular it is an $H$-space, and its product map \[m : \mathbb {CP}^\infty \times \mathbb {CP}^\infty \lar{} \mathbb {CP}^\infty\] is unique up to homotopy. One way to describe $m$ is to say that it is the classifying map for the tensor product $\xi_1 \xi_2$ of two line-bundles over $\mathbb {CP}^\infty \times \mathbb {CP}^\infty$; in other words $m^\ast \xi = \xi_1 \xi_2$. 
+
+
+In general, we can form $m^\ast x$, and by Lemma~\ref{lem:p2c02.5} it is a formal power-series in two variables:
+\begin{equation}
+\tag{2.6}
+\label{eqn:p2c02.6}
+m^\ast x = \mu(x_1, x_2) = \sum_{i, j} a_{ij} x_1^i x_2^j \quad (a_{ij} \in \pi_\ast(E)).
+\end{equation}
+
+\begin{customlemma}{2.7}
+This formal power-series is a commutative formal product, in the sense of \hyperref[sec:p2c1]{\S 1}, over the ring $\pi_\ast(E)$. 
+\end{customlemma}
+
+The proof is easy.
+
+If we have more than one spectrum $E$ in sight, we write $\mu^E$ for $E$ and $a_{ij}^E$ for the coefficients in $\pi_\ast(E)$. 
+
+\begin{examples}
+\begin{enumerate}
+    \item[(2.8)]\label{ex:p2c02.8}$E = H$. We have \[m^\ast x^H = x_1^H + x_2^H.\] We get the ``additive formal product'' of \eqref{eqn:p2c01.4}.
+    \item[(2.9)]\label{ex:p2c02.9}$E = K$. We have \[m^\ast \xi = \xi_1 \xi_2,\] that is, \[m^\ast(1 + x) = (1 + x_1) (1 + x_2)\] or \[m^\ast x = x_1 + x_2 + x_1 x_2.\] We get the ``multiplicative formal product'' of \eqref{eqn:p2c01.5}.
+    \item[(2.10)] We see that there is a formal product defined over $\pi_\ast(\mathrm{MU})$ with \[a_{ij} \in \pi_{2(i + j - 1)} (\mathrm{MU}).\] In this way we get a lot of useful elements in $\pi_\ast(\mathrm{MU})$.
+    \item[(2.11)] Let $n : \mathbb {CP}^\infty \lar{} \mathbb {CP}^\infty$ be the map which classifies the line bundle $\xi^{-1}$ inverse to $\xi$ in the sense of the tensor-product. (Alternatively, $n$ is the map of classifying spaces induced by the homomorphism $z \mapsto z^{-1} = \overline z : \mathrm{U}(1) \lar{} \mathrm{U}(1)$.) Then we have \[n^\ast x^{\mathrm{MU}} = \sum_{j \ge 0} a_j' \big(x^{\mathrm{MU}}\big)^j,\] where $\displaystyle \sum_{j \ge 1} a_j' x^j$ is the ``formal inverse'' corresponding to the formal product $\mu^{\mathrm{MU}}$ (see \eqref{eqn:p2c01.8}--\eqref{lem:p2c01.10}).
+\end{enumerate}
+\end{examples}
+
+Next a remark on naturality. Suppose given a homomorphism $f : E \lar{} F$ of ring-spectra. If $x^E$ is as above, then $i^\ast x^E = u^E \gamma^E$, so $i^\ast(f_\ast x^E) = (f_\ast u^E) \gamma^E$; here $f_\ast u^E$ is invertible in $\pi_\ast(F)$, so we can take $f_\ast x^E$ as a generator $x^F$. With this choice of generator we have $a_{ij}^F = f_\ast a_{ij}^E$, or in other words $\mu^F = f_\ast \mu^E$. 
+
+More usually, however, both $E$ and $F$ have given generators $x^E$, $x^F$. In this case we have \[f_\ast x^E = \sum_{i \ge 1} c_i \big(x^F\big)^i,\] where the $c_i$ are coefficients in $\pi_\ast(F)$ and
+\begin{equation}
+\tag{2.12}
+\label{eqn:p2c02.12}
+f_\ast u^E = c_1 u^F.
+\end{equation}
+
+Let us set \[\sum_{i \ge 1} c_i (x^F)^i = g(x^F);\] then we have the following result. 
+
+\begin{customlemma}{2.13}
+\label{lem:p2c02.13}
+$g(\mu^F(x_1^F, x_2^F)) = (f_\ast \mu^E) (g(x_1^F), g(x_2^F))$.
+\end{customlemma}
+
+The proof is immediate, by naturality. 
+
+This lemma states that the power-series $g$ is an isomorphism from the formal group with product $\mu^F$ to the formal group with product $f_\ast \mu^E$. 
+
+\begin{examples}
+\begin{enumerate}
+    \item[(i)] We will see in \hyperref[sec:p2c4]{\S 4} that we have a map $f : \mathrm{MU} \lar{} H$ such that $f_\ast x^{\mathrm{MU}} = x^H$. Then $f_\ast a_{ij} = 0$ if $i \ge 1$ and $j \ge 1$.
+    \item[(ii)] We will see in \hyperref[sec:p2c4]{\S 4} that we have a map $g : \mathrm{MU} \lar{} K$ such that $g_\ast x^{\mathrm{MU}} = u^{-1} x^K$. Then $g_\ast a_{11} = u$ and $g_\ast(a_{ij}) = 0$ if $i > 1$ or $j > 1$.
+\end{enumerate}
+\end{examples}
+
+Many calculations which are familiar for ordinary homology and cohomology can be carried over to $E$. 
+
+\begin{customlemma}{2.14}
+\label{lem:p2c02.14}
+\begin{enumerate}
+    \item[(i)] The spectral sequence \[H_\ast(\mathbb {CP}^n; \pi_\ast(E)) \xRightarrow{\phantom{.....}} E_\ast(\mathbb {CP}^n)\] \[H_\ast(\mathbb {CP}^\infty); \pi_\ast(E)) \xRightarrow{\phantom{.....}} E_\ast(\mathbb {CP}^\infty)\]\[H_\ast(\mathbb {CP}^n \times \mathbb {CP}^m; \pi_\ast(E)) \xRightarrow{\phantom{.....}} E_\ast(\mathbb {CP}^n \times \mathbb {CP}^m)\]\[H_\ast(\mathbb {CP}^\infty \times \mathbb {CP}^\infty; \pi_\ast(E)) \xRightarrow{\phantom{.....}} E_\ast(\mathbb {CP}^\infty \times \mathbb {CP}^\infty)\] are trivial.
+    \item[(ii)] $E^\ast(\mathbb {CP}^n)$ and $E_\ast(\mathbb {CP}^n)$ are dual finitely-generated free modules over $\pi_\ast(E)$.
+    \item[(iii)] There is a unique element $\beta_n \in E_\ast(\mathbb {CP}^n)$ such that \[\langle x_i, \beta_n\rangle = \begin{cases}1 & i = n \\ 0 & i \ne n.\end{cases}\] We can then consider the image of $\beta_n$ in $E_\ast(\mathbb {CP}^m)$ for $m \ge n$ and in $E_\ast(\mathbb {CP}^\infty)$; these images we also write $\beta_m$. 
+    \item[(iv)] $E_\ast(\mathbb {CP}^n)$ is free over $\pi_\ast(E)$ on generators $\beta_0, \beta_1, \ldots, \beta_n$.
+    
+    $E_\ast(\mathbb {CP}^\infty)$ is free over $\pi_\ast(E)$ on generators $\beta_0, \beta_1, \ldots, \beta_n, \ldots$.
+    
+    $E_\ast(\mathbb {CP}^n \times \mathbb {CP}^m)$ is free over $\pi_\ast(E)$ with a base containing the external products $\beta_i \beta_j$ for $0 \le i \le n$, $0 \le j \le m$. 
+    
+    $E_\ast(\mathbb {CP}^\infty \times \mathbb {CP}^\infty)$ is free over $\pi_\ast(E)$ with a base consisting of the external products $\beta_i \beta_j$. 
+    \item[(v)] The external product \[E_\ast(\mathbb {CP}^\infty) \otimes_{\pi_\ast(E)} E_\ast(\mathbb {CP}^\infty) \lar{} E_\ast(\mathbb {CP}^\infty \times \mathbb {CP}^\infty)\] is an isomorphism.
+\end{enumerate}
+\end{customlemma}
+
+The proof of part (i) is easy, by considering the pairing of these spectral sequences with those of \ref{lem:p2c02.5}(iv). (Compare \cite[p.~21]{adams3}, where however one is arguing in the opposite direction) This leads immediately to parts (ii) and (iii). We see that in part (i), the $E^2$-term of each spectral sequence has a $\pi_\ast(E)$-base consisting of the appropriate elements $\beta_i$ or $\beta_{ij}$. This leads to parts (iv) and (v).
+
+If we have more than one spectrum $E$ in sight, we write $\beta_i^E$ for the generators in $E_\ast(\mathbb {CP}^\infty)$. If we have a homomorphism $f : E \lar{} F$ of ring-spectra, and if we choose $x^F = f_\ast x^E$ (as above), then we have $\beta_\ast^F = f_\ast \beta_i^E$. More usually, however, both $E$ and $F$ have given generators $x^E$, $x^F$. In this case we have \[f_\ast x^E = \sum_{i \ge 1} c_i \big(x^F\big)^i = g(x^F),\] where the $c_i$ are coefficients in $\pi_\ast(F)$ and $f_\ast u^E = c_1 u^F$, as above. In this case the appropriate move is to invert the power-series and get \[x^F = g^{-1}(f_\ast x^E) = \sum_i d_i (f_\ast x^E)i;\] passing to powers, we get \[(x^F)^j = \sum_i d_i^j (f_\ast x^E)^i\] for some coefficients $d_i^j \in \pi_\ast(E)$. Then we have
+
+\begin{customlemma}{2.15}
+\label{lem:p2c02.15} $\displaystyle f_\ast \beta_i^E = \sum_j d_i^j \beta_j^F.$
+\end{customlemma}
+
+The proof is immediate, by exploiting the pairing between generalized homology and cohomology.
+
+\begin{examples}
+\begin{enumerate}
+    \item[(2.16)] We will see in \hyperref[sec:p2c4]{\S 4} that we have a map $f : \mathrm{MU} \lar{} H$ such that $f_\ast x^{\mathrm{MU}} = x^H$. Thus we have $f_\ast \beta_i^{\mathrm{MU}} = \beta_i^H$.
+    \item[(2.17)] We will see in \hyperref[sec:p2c4]{\S 4} that we have a map $g : \mathrm{MU} \lar{} K$ such that $g_\ast x^{\mathrm{MU}} = u^{-1} x^K$. Thus we have $g_\ast \beta_i^{\mathrm{MU}} = u_i \beta_i^K$. 
+\end{enumerate}
+\end{examples}
+
+\begin{customcor}{2.18}
+\label{cor:p2c02.18}
+The diagonal map \[\Delta : \mathbb {CP}^\infty \lar{} \mathbb {CP}^\infty \times \mathbb {CP}^\infty\] gives $E_\ast(\mathbb {CP}^\infty)$ the structure of a coalgebra, whose coproduct map is given by \[\psi \beta_k = \sum_{i + j = k} \beta_i \otimes \beta_j.\]
+\end{customcor}
+
+This follows immediately from (\ref{lem:p2c02.14}). It suggests that we regard $E_\ast(\mathbb {CP}^\infty)$ as a Hopf algebra, with product induced by \[m : \mathbb {CP}^\infty \times \mathbb {CP}^\infty \lar{} \mathbb {CP}^\infty\] and coproduct as in (\ref{cor:p2c02.18}). We note that if we do this we shall have \[m_\ast(\beta_i \otimes \beta_j) = \sum_k a_{ij}^k \beta_k,\] where the sum runs over $k \le i + j$; for by cellular approximation we can suppose that $m$ maps $\mathbb {CP}^i \times \mathbb {CP}^j$ into $\mathbb {CP}^{i + j}$. Of course, the formulae which hold here can be written down in the general abstract case, and we will now indicate this.  
+\end{document}

@@ -1,0 +1,190 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p3c5}
+
+%Manan
+
+\chapter{Spanier-Whitehead Duality}
+Suppose I have a compact subset $X\subset S^n$, say $X\neq\emptyset,X\neq S^n$. Then I know that the homology of the complement $\mathcal{C} X$ of $X$ is determined by the cohomology of $X$. This is given by the Alexander duality theorem:
+
+\begin{equation*}
+    \widetilde{\check{H}^r}(X)\cong\check{H}^r(X,\mathrm{pt.})\cong H_{n-r}(\mathcal{C}\mathrm{pt.},\mathcal{C}X)\cong H_{n-r-1}(\mathcal{C}X,\mathrm{pt.})\cong\check{H}_{n-r-1}(\mathcal{C}X).
+\end{equation*}
+
+However, the homotopy type of $\mathcal{C}X$ is clearly not determined by $X$; it depends on the embedding. For example, take $X=S^1$, $n=3$; we can embed $S^1$ in $S^3$ as a knotted circle or an unknotted circle, and make $\pi_1(\mathcal{C}X)$ different in the two cases. It would be reasonable to ask the following question. Suppose $X$ is a good subset, i.e., a finite simplical complex linearly embedded in $\partial\sigma^{n+1}$. (We make this assumption to avoid pathologies.) How far does $X$ determine anything about $\mathcal{C}X$ beyond its bare homology groups?
+
+It was proved by Spanier and Whitehead that $X$ does determine the stable homotopy type of $\mathcal{C}X$; even the stable homotopy type of $X$ suffices to do this. This may easily be seen as follows. First, suppose that I take $X\subset S^n$. Now embed $S^n$ as an equatorial sphere in $S^{n+1}$, and embed the suspension of $\Sigma X$ of $X$ in $S^{n+1}$ by joining to the two poles. Then the complement of $\Sigma X$ in $S^{n+1}$ is homotopy-equivalent to the complement of $X$ in $S^n$. So if somebody gives me $X\subset S^n$, $Y\subset S^m$ and a homotopy equivalence $f\colon \Sigma^pX\longrightarrow \Sigma^qY$, I may as well embed $\Sigma^pX$ in $S^{n+p}$ and $\Sigma^qY$ in $S^{m+q}$, because I can do so without changing the complements. So without loss of generality I can suppose I have $X'\subset S^{n'}$, $Y'\subset S^{m'}$ and a homotopy equivalence $f\colon X'\longrightarrow Y'$. I can even suppose that $f$ is PL.
+
+Now suppose we take $X'\subset S^{n'}$ and embed $S^{n'}$ as an equatorial sphere in $S^{n'+1}$ without changing $X'$. Then the complement of $X'$ suspends; more precisely, the complement of $X'$ in $S^{n'+1}$ is the suspension of that in $S^{n'}$. So now consider $S^{n'}\!\ast S^{m'}$. In this sphere we can embed the mapping-cylinder $M$ of $f'$. In this sphere we have 
+\begin{align*}
+    S^{m'+n'+1}-X&=\Sigma^{m'+1}(S^{n'}-X)\\
+    S^{m'+n'+1}-Y&=\Sigma^{n'+1}(S^{m'}-Y)
+\end{align*}
+and two maps
+\begin{center}
+\begin{tikzcd}
+    S^{m'+n'+1}-X &\arrow[l,swap,"f"] S^{m'+n'+1}-M\arrow[r,"g"] & S^{m'+n'+1}-Y.
+\end{tikzcd}
+\end{center}
+But the injections 
+\begin{center}
+\begin{tikzcd}
+    X\arrow[r] & M &\arrow[l] Y
+\end{tikzcd}
+\end{center}
+induce isomorphisms of cohomology. The Alexander duality isomorphism is natural for inclusion maps, and therefore $f$ and $g$ induce isomorphisms of homology. But now I can suspend further if necessary to make everything simply-connected. So $f$ and $g$ are stable homotopy equivalences, and we have proved the result.
+
+With a little more attention to detail we can show that the passage from $X$ to the stable homotopy type of its complement in a sphere is essentially functorial; a map $f\colon X\longrightarrow Y$ induces a stable class of maps $f^{\ast}\colon\mathcal{C}Y\longrightarrow\mathcal{C}X$. The functor is contravariant, as we would expect.
+
+The next step was taken by Spanier, and it was to eliminate the embedding in $S^n$. More precisely, suppose I have two finite simplical complexes $K$ and $L$ embedded in $S^n$ so as to be disjoint. I am really interested in the case when the inclusion $L\longrightarrow\mathcal{C}K$, $K\to\mathcal{C}L$ are homotopy equivalences, but this is not necessary for the construction. Run a PL path from some point in $K$ to some point in $L$; without loss of generality we can suppose the first point is the only point where it meets $K$, and the last point is the only point where it meets $L$. Without loss of generality we can suppose these points are vertices and take them as base-points in $K$ and $L$, writing bpt.\index{bpt.} for either. Take some point in the middle of the path as the point at $\infty$. Then we have an embedding of $K$ and $L$ in $\mathbb{R}^n$. Define a map \[\mu\colon K\times L\longrightarrow S^{n-1}\]by
+
+\begin{equation*}
+    \mu(k,l)=\frac{k-l}{\norm{k-l}}.
+\end{equation*}
+
+The maps $u\vert K\times\te{bpt.}$ and $\mu\vert\te{bpt.}\times L$ are null homotopic, so we get a map \[\mu\colon K\wedge L\longrightarrow S^{n-1}.\]
+
+Spanier's essential step was to realize that everything could be said in terms of this map $\mu$. To begin with, he considered maps $\mu\colon K\wedge L\longrightarrow S^{n-1}$ whose homological behaviour was such as you would expect. In order to explain what you would expect, I need slant products, which I have not done yet.
+
+So we use the framework we already have. Let $X$ be a CW-spectrum. Then we can form \[[W\wedge X,S]_0.\]
+
+With $X$ fixed this is a contravariant functor of $W$, and it satisfies the axioms of E.H. Brown. So it is representable; there is a spectrum $X^{\ast}$ and a natural isomorphism 
+\begin{center}
+\begin{tikzcd}
+    \left[W\wedge X,S\right]_0 & \arrow[l,"T"]\left[W,X^{\ast}\right]_0.
+\end{tikzcd}
+\end{center}
+Taking $W=X^{\ast}$ and $1\colon X^{\ast}\longrightarrow X^{\ast}$ on the right, we see that there is a map \[e\colon X^{\ast}\wedge X\longrightarrow S.\]Using the fact that $T$ is natural, we see that $T$ carries \[f\colon W\longrightarrow X^{\ast}\]into
+
+\begin{center}
+    \begin{tikzcd}
+        W\wedge X\arrow[r,"f\wedge 1"] & X^{\ast}\wedge X\arrow[r,"e"] &S.
+    \end{tikzcd}
+\end{center}
+Of course, this prescription defines \[T\colon [W,X^{\ast}]_r\longrightarrow[W\wedge X,S]_r,\]and by applying the canonical isomorphism to a different choice of $W$ we see that \[T\colon [W,X^{\ast}]_r\longrightarrow[W\wedge X,S]_r\]is an isomorphism also.
+
+We think of this as being like duality for vector-spaces over a field $K$. In that case we have 
+
+\begin{equation*}
+    V^{\ast}=\mathrm{Hom}_K(V,K);
+\end{equation*}
+there is a canonical evaluation map \[e\colon V^{\ast}\otimes V\longrightarrow K;\]
+and there is a 1-1 correspondence 
+\begin{center}
+    \begin{tikzcd}
+        \mathrm{Hom}_K(U\otimes V,K) & \arrow[l,"T"] \mathrm{Hom}_K(U,\mathrm{Hom}_K(V,K)).
+    \end{tikzcd}
+\end{center}
+
+The dual $X^{\ast}$ is a contravariant functor of $X$. For if we take a map $g\colon X\longrightarrow Y$, it induces a natural transformation 
+
+\begin{center}
+    \begin{tikzcd}[row sep=large,column sep=large]
+        \left[W\wedge X,S\right]_0\arrow[d, equal] & \left[W\wedge Y,S\right]_0\arrow[l,swap,"\text{ }(1\wedge g)^{\ast}"] \arrow[d, equal]\\
+        \left[W,X^{\ast}\right]_0 & \left[W,Y^{\ast}\right]_0
+    \end{tikzcd}
+\end{center}
+and this natural transformation must be induced by a unique map \[g^{\ast}\colon Y^{\ast}\longrightarrow X^{\ast}.\](We go through the usual argument of substituting $W=Y^{\ast}$ and $1\colon Y^{\ast}\longrightarrow Y^{\ast}$ on the right.) In terms of maps $e$, the relation between $g$ and $g^{\ast}$ is that the following diagram commutes.
+
+\begin{center}
+    \begin{tikzcd}[row sep=large, column sep=large]
+        Y^{\ast}\wedge X\arrow[d,swap,"g^{\ast}\wedge 1"]\arrow[r,"1\wedge g"] & Y^{\ast}\wedge Y\arrow[d,"e_Y"]\\
+        X^{\ast}\wedge X\arrow[r,"e_X"] & S
+    \end{tikzcd}
+\end{center}
+Let $Z$ be a third spectrum; we can make a map
+\begin{center}
+    \begin{tikzcd}
+        \left[W,Z\wedge X^{\ast}\right]_r\arrow[r,"T"]&\left[W\wedge X,Z\right]_r
+    \end{tikzcd}
+\end{center}
+as follows. Given
+\begin{center}
+    \begin{tikzcd}
+        W\arrow[r,"f"]& Z\wedge X^{\ast}
+    \end{tikzcd}
+\end{center}
+we take
+\begin{center}
+    \begin{tikzcd}
+        W\wedge X\arrow[r,"f\wedge 1"] & Z\wedge X^{\ast}\wedge X\arrow[r,"1\wedge e"]& Z.
+    \end{tikzcd}
+\end{center}
+$T$ is clearly a natural transformation if we vary $Z$.
+
+\begin{remark}
+\label{rmk:p3ch05.1}
+$T$ is an isomorphism if $Z$ is the spectrum $S^n$. (The case $n=0$ has already been considered, and changing $n$ just changes the degrees.)
+\end{remark}
+
+\begin{remark}
+\label{rmk:p3ch05.2}
+Suppose given a cofibering 
+\begin{center}
+    \begin{tikzcd}[column sep=large]
+        Z_1\arrow[r]&Z_2\arrow[r]&Z_3\arrow[r]&Z_4\arrow[r]&Z_5.
+    \end{tikzcd}
+\end{center}
+If $T$ is an isomorphism for $Z_1,Z_2,Z_4$ and $Z_5$, then it is an isomorphism for $Z_3$.
+\end{remark}
+\begin{proof}
+% Might want to rescind the adjustbox for the diagram if page size is changed
+Use the five lemma. 
+\[
+\adjustbox{scale=0.85,center}{
+    \begin{tikzcd}
+        \left[W,Z_1\wedge X^{\ast}\right]_r\arrow[d]\arrow[r]&\left[W,Z_2\wedge X^{\ast}\right]_r\arrow[d]\arrow[r]&\left[W,Z_3\wedge X^{\ast}\right]_r\arrow[d]\arrow[r]&\left[W,Z_4\wedge X^{\ast}\right]_r\arrow[d]\arrow[r]&\left[W,Z_5\wedge X^{\ast}\right]_r\arrow[d]\\
+        \left[W\wedge X,Z_1\right]_r\arrow[r]&\left[W\wedge X,Z_2\right]_r\arrow[r]&\left[W\wedge X,Z_3\right]_r\arrow[r]&\left[W\wedge X,Z_4\right]_r\arrow[r]&\left[W\wedge X,Z_5\right]_r
+    \end{tikzcd}
+}\]
+\end{proof}
+
+\begin{remark}
+\label{rmk:p3ch05.3}
+$T$ is an isomorphism if $Z$ is any finite spectrum. This is immediate by induction, using \ref{rmk:p3ch05.1} and \ref{rmk:p3ch05.2}.
+\end{remark}
+
+\begin{proposition}
+If $W$ and $X$ are finite spectra, then \[T\colon[W,Z\wedge X^{\ast}]_r\longrightarrow[W\wedge X,Z]_r\]is an isomorphism for any spectrum $Z$.
+\end{proposition}
+\begin{proof}
+Pass to direct limits from the case of finite spectra.
+\end{proof}
+
+%TODO: counter change?
+
+\begin{lemma}
+\label{lem:p3ch05.5}
+If $X$ is a finite spectrum, then $X^{\ast}$ is equivalent to a finite spectrum.
+\end{lemma}
+
+The proof is postponed until section 6, for a reason which will appear. \footnote{The proof is linked: \ref{proof:p3ch05.5} } 
+
+\begin{proposition}
+Let $X$ be a finite spectrum, $Y$ any spectrum. Then we have an equivalence $(X\wedge Y)^{\ast}\xrightarrow{h}X^{\ast}\wedge Y^{\ast}$ which makes the following diagram commute.
+\begin{center}
+    \begin{tikzcd}[row sep=large,column sep=large]
+    (X\wedge Y)^{\ast}\wedge X\wedge Y\arrow[d,swap,"h\wedge 1"]\arrow[r,"e_{X\wedge Y}"]& S\\
+    X^{\ast}\wedge Y^{\ast}\wedge X\wedge Y\arrow[r,"1\wedge c\wedge 1"]& X^{\ast}\wedge X\wedge Y^{\ast}\wedge Y.\arrow[u,swap,"e_{X}\wedge e_{Y}"]
+    \end{tikzcd}
+\end{center}
+\end{proposition}
+\begin{proof}
+By \ref{lem:p3ch05.5} we can assume that $X^{\ast}$ is a finite spectrum. By \ref{rmk:p3ch05.3}, 
+\begin{center}
+    \begin{tikzcd}
+    \left[W,X^{\ast}\wedge Y^{\ast}\right]_r\arrow[r,"T_Y"]&\left[W\wedge Y,X^{\ast}\right]_r
+    \end{tikzcd}
+\end{center}
+is an isomorphism for any spectrum $W$, and so is
+\begin{center}
+    \begin{tikzcd}
+    \left[W\wedge Y,X^{\ast}\right]_r\arrow[r,"T_X"]&\left[W\wedge Y\wedge X,S\right]_r
+    \end{tikzcd}
+\end{center}
+by the original property of $X^{\ast}$ applied to the spectrum $W\wedge Y$. This state of affairs reveals $X^{\ast}\wedge Y^{\ast}$ as the dual of $Y\wedge X$ with $T_{Y\wedge X}=T_XT_Y$. Writing this equation in terms of maps $e$, we obtain the diagram given by a little diagram-chasing.
+\end{proof}
+
+I should perhaps emphasize that I have only done what I need later. In particular, I have not proved that $S$-duality converts a cofibering of finite spectra into another cofibering. This is true, but it needs a slightly more precise argument, given in Spanier's exercises. Also, I have only talked about maps \emph{into} $X^{\ast}$ or $Z\wedge X^{\ast}$. Once we have the result on cofiberings we can talk about maps \emph{from} $X^{\ast}$, at least when $X$ is a finite spectrum, and so prove $X^{\ast\ast}\simeq X$. %not sure if this is meant to be \simeq
+
+\end{document}

@@ -1,0 +1,115 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+
+\chapter{Cobordism Groups}
+\label{sec:p1c2}
+
+Let $\xi$ be a $\te{U}(n)$-bundle over the CW-complex $X$. 
+Let $E$ and $E_0$ be the total spaces of the associated bundles whose fibers are respectively the unit disc $E^{2n} \subset \bbC^n$ and the unit sphere $S^{2n-1} \subset \bbC^n$.
+Then the Thom complex is by definition the quotient space $E/E_0$; it is a CW-complex with base point. 
+In particular, if we take $\xi$ to be the universal $\te{U}(n)$-bundle over $\te{BU}(n)$, then the resulting Thom complex $M(\xi)$ is written $\te{MU}(n)$.
+\begin{example}
+\label{ex:p1c02.1}
+There is a homotopy equivalence $\te{MU}(1) \sim \te{BU}(1)$.
+\end{example}
+\begin{proof}
+Since $E$ is a bundle with contractible fibers, the projection $p\colon E \lar{} \te{BU}(1)$ and the zero cross-section $s_0\colon \te{BU}(1) \lar{} E$ are mutually inverse equivalences. 
+Since $S^{1} = \te{U}(1)$ and $E_0$ is the total space of the universal $\te{U}(1)$-bundle over $\te{BU}(1)$, $E_0$ is contractible, and the quotient map $E \lar{} E/E_0$ is a homotopy equivalence.
+\end{proof}
+
+We have an obvious map $\Sigma^2 \te{MU}(n) \stackrel{i_n}{\lar{}} \te{MU}(n+1)$. 
+In this way the sequence of spaces 
+\begin{equation*}
+	(\te{MU}(0), \te{MU}(1), \te{MU}(2), \ldots , \te{MU}(n), \ldots)
+\end{equation*}
+and maps $i_n$ becomes a spectrum. 
+Associated with this spectrum we have a cohomology functor, as in \cite{whitehead}. 
+The groups of this cohomology functor are written $\Omega_U^q (X, Y)$, and called complex cobordism groups. 
+For other accounts, see \cite{atiyah}, and \cite{connerfloyd}.
+
+We will generally suppose that this cohomology functor is defined on some category of spectra or stable objects. 
+This assumption can easily be removed, if the reader wishes, at the cost of making some of the proof more complicated; one would have to replace the appropriate spectra by sequences of complexes approximating to them.
+
+Next we wish to discuss the cup-products in this cohomology theory.
+We therefore wish to introduce the product map
+\begin{equation*}
+	\mu \colon \MU \wedge \MU \lar{} \MU\,.
+\end{equation*}
+Here ``$\wedge$'' means the smash product, and we assume that $\MU \wedge \MU$ can be formed in our stable category. 
+We further assume that $\MU \wedge \MU$ has skeletons $(\MU \wedge \MU)^q$, in a suitable sense, so that we have a short exact sequence
+% CHECK: Confirm that the limit here looks as it should. (earlier version had issues with spacing).
+\[
+\adjustbox{scale=1,center}{
+
+$
+	0 \lar{} \displaystyle \lim_{q}\!^1 [\Sigma (\MU \wedge \MU)^q, \MU] \lar{} [\MU \wedge \MU, \MU] \lar{} \displaystyle \lim_q\!^0 [(\MU \wedge \MU)^q, \MU]  \lar{} 0$
+}
+\]
+% Using inline limit here rather than the display version since that messes up the vertical spacing. message on discord to discuss.
+(Here $\limo$ means the inverse limit, $\limi$ means the first derived functor of the inverse limit, and $[X, Y]$ means the group of stable homotopy classes of maps from $X$ to $Y$ in our stable category.) 
+In this exact sequence, the group $\displaystyle \lim_{q}\!^1 [\Sigma (\MU \wedge \MU)^q, \MU]$ is zero. 
+(This follows from the facts that \newline $H_r (\MU \wedge \MU) = 0$ for $r$ odd and $\pi_r (\MU)=0$ for $r$ odd---see below.
+Thus the spectral sequence
+\begin{equation*}
+	H^{*} (\MU \wedge \MU, \pi_{*} (\MU)) \lar{} [\MU \wedge \MU, \MU]
+\end{equation*} 
+has all its differentials zero.)
+It will therefore be sufficient to give an element of $\displaystyle \lim_{q}\!^0 [(\MU \wedge \MU)^q, \MU]$.
+
+Now, we have a map
+\begin{equation*}
+	\te{BU}(n) \times \te{BU}(m) \lar{} \te{BU}(n+m)\,,
+\end{equation*}
+namely the classifying map for the Whitney sum of universal bundles over $\te{BU}(n)$ and $\te{BU}(m)$.
+Over this map we have map
+\begin{equation*}
+	\mu_{n, m}\colon \te{MU}(n) \wedge \te{MU}(m) \lar{} \te{MU}(n+m)\,.
+\end{equation*}
+The map $\mu_{n,m}$ yield an element of $\displaystyle \lim_{q}\!^0 [ (\MU \wedge \MU)^q, \MU ]$, and therefore they yield a unique homotopy class of maps
+\begin{equation*}
+	\mu\colon  \MU \wedge \MU \lar{}  \MU\,.  
+\end{equation*}
+
+The map $\mu$ is commutative and associative (up to homotopy).
+
+Using the map $\mu$, one introduces products in cobordism. 
+More precisely, one has a product
+\begin{equation*}
+	\Omega_{U}^q(X) \otimes \Omega_{U}^r(Y) \lar{} \Omega_{U}^{q+r} (X \wedge Y)
+\end{equation*}
+where $X$ and $Y$ are spectra, and therefore a similar product for the reduced groups $\tilde{\Omega}^{\ast}_{U}$ where $X$ and $Y$ are spaces.
+For spaces we have also an external product 
+\begin{equation*}
+  \Omega^{q}_{U}(X,A) \otimes \Omega^{r}_{U}(Y,B) \lar{} \Omega^{q+r}_{U}(X \times Y, A \times Y \cup X \times B)
+\end{equation*}
+and an internal product
+\begin{equation*}
+  \Omega^{q}_{U}(X,A) \otimes \Omega^{r}_{U}(X,B) \lar{} \Omega^{q+r}_{U}(X, A \cup  B )\, .
+\end{equation*}
+The products satisfy the axioms which products should satisfy, that is, naturality, associativity, anticommutativity, existence of a unit, and behavior with respect to suspension or coboundary.
+
+Next we must mention the Thom isomorphism.
+For each $\te{U}(n)$-bundle $\xi$ over $X$ the classifying map for $\xi$ induces a map
+\begin{equation*}
+	\gamma\colon \te{M}(\xi) \lar{}  \te{MU}(n).
+\end{equation*}
+The map $\gamma$ represents a canonical element $g$ in $\Omega^{2n}_{U}(E,E^{0})$. 
+We define the Thom isomorphism
+\begin{equation*}
+	\phi\colon  \Omega^{q}_{U}(X) \lar{} \Omega^{q+2n}_{U}(E,E^{0})
+\end{equation*}
+by $\phi(x) \in {(p^{\ast} x)g,}$ as usual. 
+(See \cite{Dold})
+
+Only one thing remains before we have a fair grasp on the cohomology functor $\Omega^{}_{U}$; 
+we need to know the coefficient groups $\Omega^{q}_{U}(P)$, where $P$ is a point. 
+In fact $\Omega^{\ast}_{U}(P)$ is a polynomial ring
+\begin{equation*}
+	\bZ[x_1,x_2,\ldots,x_{i},\ldots]\, ,
+\end{equation*}
+where $x_{i} \in \Omega^{-2i}_{U}(P)$. 
+A good grasp on $\Omega^{\ast}_{U}(P)$ is provided by the following authors: \cite{milnor2}; 
+\cite{stong};\cite{hattori}.
+
+
+\end{document}

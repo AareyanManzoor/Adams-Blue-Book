@@ -1,0 +1,222 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p3c07}
+% Manan
+
+% Lot of instances of using Z, not sure if some of them were meant to be \mathbb Z instead. Can be reviewed.
+
+\chapter{The Atiyah-Hirzebruch Spectral Sequence}
+In this section we study the machine which plays the same role in the study of generalized homology theories as the Eilenberg-Steenrod uniqueness theorem plays for ordinary homology theories. Let us suppose for convenience that $X$ is a finite-dimensional CW-complex.
+
+% need an unnumbered theorem environment
+
+\begin{theorem*}
+For each CW-spectrum $F$ there exist spectral sequences 
+\begin{center}
+    \begin{tikzcd}[column sep=large]
+    H_p(X;\pi_q(F))\arrow[r,Rightarrow,"p"]&F_{p+q}(X)\\
+    H^p(X;\pi_q(F))\arrow[r,Rightarrow,"p"]&F^{p+q}(X).
+    \end{tikzcd}
+\end{center}
+\end{theorem*}
+
+These spectral sequences were probably first invented by G.W. Whitehead, but he got them just after he wrote the paper \cite{whitehead2} in which they ought to have appeared. They then became a folk-theorem and were eventually published by Atiyah and Hirzebruch, who needed them for the case $F=K$.
+
+It is probably desirable to give the first part of the construction in greater generality. Suppose I have a CW-complex $X$ with a finite filtration by subcomplexes,
+\begin{equation*}
+    \emptyset=X_{-1}\subset X_0\subset X_1\subset X_2\subset\cdots\subset X_n=X.
+\end{equation*}
+To get the Atiyah-Hirzebruch spectral sequence you take $X_r=X^r$, the $r$-skeleton; but other choices of filtration are possible, and sometimes useful. If we then apply a functor $F_{\ast}$ or $F^{\ast}$ to all the available pairs and triples, we get a maze of interlocking exact sequences. The spectral sequence helps us find out way through this maze and to distill out the essential information.
+
+There are two ways to present the distillation. The first is due to Massey, and it is the method of exact couples. We observe that we have an exact sequence, which we write in a triangle like this.
+\begin{center}
+    \begin{tikzcd}[column sep=tiny,row sep=large]
+    F_{\ast}(X_{p-1})\arrow[rr,"i_{\ast}"]&& F_{\ast}(X_p)\arrow[dl,"j_{\ast}"]\\
+    &F_{\ast}(X_p,X_{p-1})\arrow[ul,"\partial"] 
+    \end{tikzcd}
+\end{center}
+
+If we add over $p$, we obtain
+
+\begin{center}
+    \begin{tikzcd}[column sep=tiny,row sep=large]
+    \sum_pF_{\ast}(X_{p-1})\arrow[rr,"i_{\ast}"]&& \sum_pF_{\ast}(X_p)\arrow[dl,"j_{\ast}"]\\
+    &\sum_pF_{\ast}(X_p,X_{p-1})\arrow[ul,"\partial"] 
+    \end{tikzcd}
+\end{center}
+
+Here we interpret $F_{\ast}(X_p)$ as $0$ for $p<0$ and as $F_{\ast}(X)$ for $p\geq n$. Now we have a triangle of the following form.
+
+\begin{center}
+    \begin{tikzcd}
+    A\arrow[rr,"i_{\ast}"]&& A\arrow[dl,"j_{\ast}"]\\
+    & C\arrow[ul,"\partial"] 
+    \end{tikzcd}
+\end{center}
+
+Massey called such a triangle an \emph{exact couple}\index{exact couple}, and he showed that from such an exact couple you could obtain a derived exact couple
+
+\begin{center}
+    \begin{tikzcd}
+    A\arrow[rr]&& A\arrow[dl]\\
+    & C\arrow[ul] 
+    \end{tikzcd}
+\end{center}
+
+For example you define $d_1=j_{\ast}\partial\colon C\longrightarrow C$ and define $C'=\te{Ker} d_1/\te{Im} d_1$.
+
+Iterating this procedure, you obtain at $C',C'',C'''$, etc. all the terms of the spectral sequence. A suitable reference is Massey \cite{massey}.
+
+The second method probably goes back to Eilenberg, and it is essentially equivalent; it consists simply of writing down explicit definitions of the desired groups and homomorphisms. For example, we define
+
+%not sure if this would look better with tikz-cd, could fix this later
+
+\begin{align*}
+    Z_{p,q}^r&=\te{Ker}\{F_{p+q}(X_p,X_{p-1})\xrightarrow{\partial}F_{p+q-1}(X_{p-1},X_{p-r})\}\\
+    &=\te{Im}\{F_{p+q}(X_p,X_{p-r})\xrightarrow{j_{\ast}}F_{p+q}(X_p,X_{p-1})\},\\
+    B_{p,q}^r&=\te{Im}\{F_{p+q+1}(X_{p+r-1},X_p)\xrightarrow{\partial}F_{p+q}(X_p,X_{p-1})\}\\
+    &=\te{Ker}\{F_{p+q}(X_p,X_{p-1})\xrightarrow{i_{\ast}}F_{p+q}(X_{p+r-1},X_{p-1})\},
+\end{align*}
+
+check $B_{p,q}^r\subset Z_{p,q}^r$ and define
+
+\begin{equation*}
+    E_{p,q}^r=Z_{p,q}^r/B_{p,q}^r.
+\end{equation*}
+We define the boundary maps $d_r$ by passing to the quotient from boundary maps $\partial$ in an appropriate way. We prove $\te{Ker}d_r/\te{Im}d_r\cong E_{p,q}^{r+1}$ by diagram-chasing. For $r$ sufficiently large groups $Z_{p,q}^r,B_{p,q}^r$ and $E_{p,q}^r$ become independent of $r$, and may be written $Z_{p,q}^{\infty},B_{p,q}^{\infty}$ and $E_{p,q}^{\infty}$.
+
+We filter the groups $F_m(X)$ by taking the images of the maps
+\begin{center}
+    \begin{tikzcd}[column sep=large]
+    F_m(X_p)\arrow[r]&F_m(X);
+    \end{tikzcd}
+\end{center}
+
+the image of $F_m(X_n)$ is the whole of $F_m(X)$, the image of $F_m(X_{-1})$ is zero, and the quotients of the successive filtration subgroups are isomorphic to the groups $E_{p,q}^{\infty}$ for $p+q=m$, as one sees with a little diagram-chasing.
+
+So one gets a spectral sequence with 
+
+\begin{center}
+    \begin{tikzcd}
+    E_{p,q}^1=F_{p+q}(X_p,X_{p-1})\arrow[r,Rightarrow,swap,"p"]& F_{p+q}(X).
+    \end{tikzcd}
+\end{center}
+
+A similar construction works in cohomology.
+
+Now we revert to the case in which we take the skeleton filtration on $X$, so that $X_r=X^r$ and $X=X^n$. Then we have
+
+\begin{align*}
+    E_{p,q}^1&=F_{p+q}(X^p,X^{p-1})\\
+    &=\widetilde{F_{p+q}}(X^p/X^{p-1})\\
+    &=\widetilde{F_{p+q}}\bigg(\bigvee_\alpha S^p\bigg)\\
+    &=\sum_{\alpha}\pi_q(F)\\
+    &=C_p(X;\pi_q(F)),\text{ the cellular chains of }X\text{ with coefficients in }\pi_q(F).
+\end{align*}
+
+Now we need to know that we have the following commutative diagram. 
+
+\begin{center}
+    \begin{tikzcd}[column sep=tiny]
+    E_{p,q}^1\arrow[d,"d_1"]& \cong & C_p(X;\pi_q(F))\arrow[d,"\partial"]\\
+    E_{p-1,q}^1& \cong & C_{p-1}(X;\pi_q(F))
+    \end{tikzcd}
+\end{center}
+
+If so, then we have $E_{p,q}^2\cong H_p(X;\pi_q(F))$. For this purpose there are two alternative methods of proceeding.
+\begin{enumerate}[label=(\roman*)]
+    \item Suppose we know that $\pi_p(S^p)=\bZ$. Then we argue that we simply have to find one component of our map $\partial$, say
+    \begin{center}
+        \begin{tikzcd}[column sep=large,row sep=large]
+        \sum_{\alpha}\pi_q(F)\arrow[r]&\sum_{\beta}\pi_q(F)\arrow[d,"p_{\beta}"]\\
+        \pi_q(F)\arrow[u,"i_{\alpha}"]& \pi_q(F)
+        \end{tikzcd}
+    \end{center}
+    %might want to change the tilde to widetilde
+    One sees by diagram-chasing that this is the homomorphism of $\tilde{F}_{p+q-1}(S^{p-1})$ induced by the following map.
+    \begin{center}
+        \begin{tikzcd}[column sep=large]
+        S^{p-1}\arrow[r]& X^{p-1}\arrow[r]& X^{p-1}/X^{p-2}=\bigvee_{\beta}S^{p-1}\arrow[r]& S^{p-1}
+        \end{tikzcd}
+    \end{center}
+    Here the first map is the attaching map for the cell indexed by $\alpha$, and the last is the projection to that indexed by $\beta$. This composite map has to have a degree $\nu$, and the homomorphism of $\widetilde{F_{p+q-1}}(S^{p-1})$ which it induces is multiplication by $\nu$. But then $\nu$ is also the incidence number between the cells $e_{\alpha}^p$ and $e_{\beta}^{p-1}$ which figures in the definition of \begin{center}
+        \begin{tikzcd}
+        \partial\colon C_p(X;G)\arrow[r]& C_{p-1}(X;G).
+        \end{tikzcd}
+    \end{center}
+    \item If you deny me the knowledge that $\pi_p(S^p)=\bZ$, then I have to begin by assuming that $X$ is a finite simplicial complex. In this case 
+    \begin{center}
+        \begin{tikzcd}
+        \partial\colon C_p(X;G)\arrow[r]& C_{p-1}(X;G)
+        \end{tikzcd}
+    \end{center}
+    is given by a combinatorial formula. I arrange the proof that
+    \begin{equation*}
+        F_{p+q}(X^p,X^{p-1})\cong C_p(X;\pi_q(F))
+    \end{equation*}
+    with slightly more care and diagram-chasing, so as to incorporate a proof that the isomorphism takes $d_1$ onto the boundary $\partial$ given by the combinatorial formula. This is essentially as in Eilenberg-Steenrod, where they prove the uniqueness theorem. It issues in the result that when $X$ is a finite simplicial complex, you can take the $H$ in 
+    \begin{center}
+        \begin{tikzcd}
+        H_p(X;\pi_q(F))\arrow[r,Rightarrow,swap,"p"]& F_{p+q}(X)
+        \end{tikzcd}
+    \end{center}
+    to mean finite simplicial homology. Of course this form of the result is the one which includes the Eilenberg-Steenrod uniqueness theorem: for a finite simplicial complex, any ordinary homology theory agrees with finite simplicial homology with the same coefficients.
+\end{enumerate}
+
+
+\begin{examples}
+% Notational clarification on BU and CP^n needed
+Take $F=K$, the classical $\te{BU}$-spectrum, and $X=\mathbb{CP}^n$. We have 
+\begin{equation*}
+    H^p(X;\pi_{-q}(K))=
+    \begin{cases}
+    \bZ&p\text{ even, }0\leq p\leq 2n,\text{ }q\text{ even}\\
+    0&\text{otherwise.}
+    \end{cases}
+\end{equation*}
+
+The $E_2$-term is illustrated as follows.
+
+\begin{center}
+    \begin{tikzpicture}
+    \draw[->] (0,-2.25)--(0,2.25);
+    \draw[->] (0,0)--(7.25,0);
+    \draw (0.5,1.5) node {$\mathbb Z$};
+    \draw (0.5,0.5) node {$\mathbb Z$};
+    \draw (0.5,-0.5) node {$\mathbb Z$};
+    \draw (0.5,-1.5) node {$\mathbb Z$};
+    \draw (1.5,1.5) node {$\mathbb Z$};
+    \draw (1.5,0.5) node {$\mathbb Z$};
+    \draw (1.5,-0.5) node {$\mathbb Z$};
+    \draw (1.5,-1.5) node {$\mathbb Z$};
+    \draw (2.5,1.5) node {$\mathbb Z$};
+    \draw (2.5,0.5) node {$\mathbb Z$};
+    \draw (2.5,-0.5) node {$\mathbb Z$};
+    \draw (2.5,-1.5) node {$\mathbb Z$};
+    \draw (3.5,1.5) node {$\mathbb Z$};
+    \draw (3.5,0.5) node {$\mathbb Z$};
+    \draw (3.5,-0.5) node {$\mathbb Z$};
+    \draw (3.5,-1.5) node {$\mathbb Z$};
+    \draw (5,1.5) node {$\mathbb Z$};
+    \draw (5,0.5) node {$\mathbb Z$};
+    \draw (5,-0.5) node {$\mathbb Z$};
+    \draw (5,-1.5) node {$\mathbb Z$};
+    \draw (4.25,0.5) node {$\cdots$};
+    \draw (3.5,2) node {$\cdots$};
+    \draw (3.5,-2) node {$\cdots$};
+    \draw (6.25,1.25) circle [radius=10pt];
+    \draw (6.25,-1) circle [radius=10pt];
+    \draw (0,2.5) node {$q$};
+    \draw (7.5,0) node {$p$};
+    \end{tikzpicture}
+\end{center}
+
+Since the terms with either grading odd are zero, the spectral sequence collapses, and 
+\begin{equation*}
+    K^{2m}(\mathbb{CP}^n)=\sum_{0}^n\mathbb{Z}.
+\end{equation*}
+\end{examples}
+The Atiyah-Hirzebruch spectral sequence works for infinite complexes, but we need the discussion of limits in the following section.
+
+The spectral sequence also works for spectra $X$, provided they are bounded below, i.e., there exists $\nu$ such that $\pi_r(X)=0$ for $r<\nu$. For spectra which are not bounded below you can still formally set up the spectral sequence, but the convergence is so bad that the spectral sequence is unusable in practice.
+\end{document}

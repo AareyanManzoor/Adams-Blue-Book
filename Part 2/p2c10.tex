@@ -1,0 +1,92 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c10}
+\chapter{Various Formulae in $\pi_\ast(\mathrm{MU})$}
+In this section we will derive various relations between different elements lying in $\pi_\ast(\mathrm{MU})$ or $\pi_\ast(\mathrm{MU}) \otimes \bbQ$. In particular, we will give the relationship between the coefficients $a_{ij}$ and Milnor's hypersurfaces of type $(1,1)$ in $\mathbb {CP}^i \times \mathbb {CP}^j$ (\ref{prop:p2c10.6}).
+
+To begin with we try to answer various questions that might arise in practical calculations.
+
+\begin{enumerate}
+    \item[(i)] To write the coefficients $m_i$ in the $\log^H$ series in terms of the coefficients $b_i$ in the $\exp^H$ series. See \ref{prop:p2c07.5}.
+    \item[(ii)] To write the coefficients $b_i$ in the $\exp^H$ series in terms of the coefficients $m_i$ in the $\log^H$ series. See \ref{prop:p2c07.5}.
+    \item[(iii)] To write the coefficients $a_{ij}$ in terms of the $b_i$ or the $m_i$, regarded as elements of $\pi_\ast(\mathrm{MU}) \otimes \bbQ$. See \eqref{cor:p2c06.6}.
+    \item[(iv)] To write the $b_i$ or $m_i$ regarded as elements of $\pi_\ast(\mathrm {MU}) \otimes \bbQ$, in terms of the $a_{ij}$. The most convenient formula is the following. 
+\end{enumerate}
+
+\begin{theorem}
+\label{thm:p2c10.1}
+\begin{equation}
+        \tag{10.1}
+        [\mathbb {CP}^n] = (n + 1)m_n = \bigg(\sum_{i \ge 0} a_{il}\bigg)_n^{-1}.
+\end{equation}
+\end{theorem}
+
+\begin{corollary}
+\label{cor:p2c10.2}
+If $n \ge 1$, we have $[\mathbb {CP}^n] \equiv -a_{n1}$ mod decomposibles in $\pi_\ast(\mathrm{MU})$.
+\end{corollary}
+
+\begin{proof}[Proof of (\ref{thm:p2c10.1})]
+Take the equation \[\log \bigg(x_1 + \sum_{i \ge 0, \, j > 1} a_{ij} x_1^i x_2^j\bigg) = \log x_1 + \log x_2\] and equate the coefficients of $x_2$. We obtain \[\bigg(\sum_{n \ge 0} (n + 1) m_n x_1^n\bigg) \bigg(\sum_{i \ge 0} a_{i1} x_1^i\bigg) = 1\] Following Lemma \ref{lem:p2c09.1}, it is plausible to observe that the injection $i_n : \mathbb {CP}^n \lar{} \mathbb {CP}^\infty$ defines an element $\mathrm {MU}_{2n} (\mathbb {CP}^\infty)$, and to relate this element to those we have already studied. The element $[i_n]$ is not equal to $\beta_n^{\mathrm{MU}}$ because the constant map $c : \mathbb{CP}^\infty \lar{} \mathrm{pt}$ sends $[i_n]$ to $[\mathbb {CP}^n]$ and $\beta_n^{\mathrm{MU}}$ to $0$. The required relation will be given in (\ref{cor:p2c10.5}).
+\end{proof}
+
+\begin{lemma}
+\label{lem:ch210.3}
+If $n \ge 1$, we have \[x^{\mathrm{MU}} \cap [i_n] = [i_{n - 1}] \text { in } \mathrm{MU}_{2(n - 1)} (\mathbb {CP}^\infty).\]
+\end{lemma}
+
+This is the sort of result that should obviously be proved geometrically. However, since we are proceeding homologically and not assuming much familiarity with the geometric approach, we check the result by applying the homomorphism \[\mathrm{MU}_\ast (\mathbb {CP}^\infty) \lar{} (H \wedge \mathrm{MU})_\ast (\mathbb {CP}^\infty),\] which we know to be monomorphic by \ref{lem:p2c02.14}, \ref{cor:p2c08.11}. 
+
+The image of $[i_n]$ in $(H \wedge \mathrm{MU})_{2n} (\mathbb {CP}^\infty)$ is \[\sum_{p + q = n} \bigg(b\sum_{k = 0}^\infty b_k\bigg)_p^{-n - 1} \otimes \beta_q\] where $b_k = b_k^H$, $\beta_q = \beta_q^H$. The image of $x^{\mathrm{MU}}$ in $(H \wedge \mathrm{MU})^2(\mathbb {CP}^\infty)$ \[\sum_r b_r \big(x^H\big)^{r + 1},\] by \eqref{lem:p2c06.3}. The cap product of these two classes is \[\sum_{{p + q = n} \atop r} \bigg(\sum_{k = 0}^\infty b_k\bigg)_p^{-n - 1} b_r \otimes \beta_{q - r - 1}.\] Set $q - r - 1 = s$; we obtain \[\sum_{p + r + s = n - 1} \bigg(\sum_{k = 0}^\infty b_k\bigg)_p^{-n - 1} b_r \otimes \beta_s = \sum_{t + s = n - 1} \bigg(\sum_{k = 0}^\infty b_k\bigg)_t^{-n} \otimes \beta_s.\]
+
+This is the same as the image of $[i_{n - 1}]$. 
+
+\begin{corollary}
+\label{cor:p2c10.4}
+\[\big(x^{\mathrm{MU}}\big)^r \cap [i_n] = \begin{cases}[i_{n - r}] & r \le n \\ 0 & r > n.\end{cases}\]
+\end{corollary}
+
+This follows immediately, by induction over $r$. 
+
+\begin{corollary}
+\label{cor:p2c10.5}
+\[[i_n] = \sum_{r + s = n} [\mathbb {CP}^r] \beta_s^{\mathrm{MU}} \text { in } \mathrm {MU}_{2n} (\mathbb {CP}^\infty).\]
+\end{corollary}
+\begin{proof}
+%CORRECTION: an extraneous bracket appears here in print
+\[\big\langle x^{\mathrm{MU}}, [i_n]\big\rangle = c_\ast \big(\big(x^{\mathrm {MU}}\big)^s \cap [i_n]\big).\]
+
+If $s > n$ we obtain $0$; if $s \le n$ we obtain $c_\ast[i_{n - s}] = [\mathbb {CP}^{n - s}]$.
+\end{proof}
+
+We are now ready to explain the connection between the coefficients $a_{ij}$ of \ref{ex:p2c02.8} and Milnor's hypersurfaces $H_{i, j}$ of type $(1, 1)$ in $\mathbb {CP}^i \times \mathbb {CP}^j$.
+
+\begin{proposition}
+\label{prop:p2c10.6}
+\[[H_{p, q}] = \sum_{{r + u = p} \atop {s + v = q}} a_{r, s} [\mathbb {CP}^u] [\mathbb {CP}^v].\]
+\end{proposition}
+(I understand this formula was also obtained by Boardman.)
+\begin{corollary}
+\label{cor:p2c10.7}
+If $p > 1$ and $q > 1$, we have \[[H_{p, q}] \equiv a_{p, q} \text { mod decomposibles in } \pi_\ast(\mathrm {MU}).\]
+\end{corollary}
+
+\begin{proof}[Proof of (\ref{prop:p2c10.6})]
+The construction of $H_{p, q}$ yields the following formula. \[[H_{p, q}] = c_\ast \big(\big(m^\ast x^{\mathrm{MU}}\big) \cap ([i_p] \times [i_q])\big).\] Here $c : \mathbb {CP}^\infty \times \mathbb {CP}^\infty \lar{} \mathrm{pt}$ is the constant map, and $m : \mathbb {CP}^\infty \times \mathbb {CP}^\infty \lar{} \mathbb {CP}^\infty$ is the product map of \hyperref[sec:p2c2]{\S 2}; we have \[m^\ast x^{\mathrm{MU}} \in \mathrm{MU}^2(\mathbb {CP}^\infty \times \mathbb {CP}^\infty)\] and \[[i_p] \times [i_q] \in \mathrm{MU}_{2(p + q)} (\mathbb {CP}^\infty \times \mathbb {CP}^\infty).\] This yields \[[H_{p, q}] = \big\langle m^\ast x^{\mathrm{MU}}, [i_p] \times [i_q]\big\rangle.\] But here we have
+
+\[m^\ast x^{\mathrm{MU}} = \sum_{r, s} a_{rs} \big(x_1^{\mathrm{MU}}\big)^r \big(x_2^{\mathrm{MU}}\big)^s,\]
+\[[i_p] = \sum_{r + u = p} [\mathbb {CP}^u] \beta_r^{\mathrm{MU}},\]
+\[[i_q] = \sum_{s + v = q} [\mathbb {CP}^v] \beta_s^{\mathrm{MU}}.\]
+
+The result follows immediately. 
+\end{proof} 
+
+\begin{corollary}
+\label{cor:p2c10.8}
+$\pi_\ast(\mathrm {MU})$ is generated by the elements $[\mathbb {CP}^n]$ for $n \ge 1$ together with the elements $[H_{p, q}]$ for $p > 1$, $q > 1$. 
+\end{corollary}
+
+\begin{proof}
+By \ref{thm:p2c08.2}, $\pi_\ast(\mathrm{MU})$ is generated by the $a_{ij}$; but by (\ref{cor:p2c10.2}) and (\ref{cor:p2c10.7}) these coincide with $[\mathbb {CP}^n]$ and $[H_{p, q}]$ modulo decomposibles. 
+\end{proof} 
+\end{document} 

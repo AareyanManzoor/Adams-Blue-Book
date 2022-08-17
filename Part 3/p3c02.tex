@@ -1,0 +1,554 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+
+\chapter{Spectra} %derivada.schwarziana
+\label{sec:p3ch02}
+%p.131
+
+The notion of a spectrum is due to Lima \cite{lima}. It is generally supposed that G. W. Whitehead also had something to do with it, but the latter takes a modest attitude about that.
+
+By definition, a \emph{spectrum}\index{spectrum} $E$ is a sequence of spaces $E_n$ with basepoint, provided with structure maps, either
+\[
+\varepsilon_n: \Sigma   E_n \lar{} E_{n+1}
+\]
+or
+\[
+\varepsilon_n': E_n \lar{} \Omega E_{n+1}
+\]
+Of course giving a map $\varepsilon_n$ is equivalent to giving a map $\varepsilon_n'$, as $\Sigma$ and $\Omega$ are adjoint. There is one other variant; if we choose to work with connected spaces, then $E_n$ will automatically map into $\Omega_0 E_{n+1}$, where $\Omega_0$ is the component of the base-point in $\Omega$; we might prefer to write
+\[
+\varepsilon_n': E_n \lar{} \Omega_0 E_{n+1}
+\]
+
+The index $n$ may run over the integers or over $\{0,1,2,3,\, \hdots\}$.
+
+Examples will appear in a moment.
+
+The notion of a spectrum is very natural if one starts from cohomology theory. Let $K^\ast$ be a generalized cohomology theory, defined on CW pairs. We have
+\[
+K^n(X) = K^n(X, \mathrm{pt.}) + K^n(\mathrm{pt.}),
+\]
+and so define $\widetilde{K^n}(X) = K^n(X, \mathrm{pt.})$. We assume that $K^\ast$ satisfies the wedge axiom of Milnor and Brown. More precisely, let $X_\alpha$ ($\alpha\in A$) be CW-complexes with base-point, and let $i_\alpha: X_\alpha \lar{} \bigvee_\alpha X_\alpha$ be the inclusion of one summand in the wedge-sum. This induces
+\[
+i_\alpha^\ast:
+\widetilde{K^n} \bigg( \bigvee_\alpha X_\alpha \bigg) \lar{} K^n(X_\alpha).
+\]
+Let
+\[
+\theta: 
+\widetilde{K^n} \bigg( \bigvee_\alpha X_\alpha \bigg) \lar{} \prod_{\alpha\in A} \widetilde{K^n}(X_\alpha)
+\]
+be the homomorphism with components $i_\alpha^\ast$. We assume that $\theta$ is an isomorphism (for all choices of $\{X_\alpha\}$ and $n$.)
+
+We can now apply the representability theorem of E. H. Brown \cite{brown}. We see that there exist connected CW-complexes $E_n$ with base-point and natural equivalences
+\[
+\widetilde{K^n}(X) \cong [X,E_n].
+\]
+(Here $X$ runs over connected CW-complexes with base-point.) So we obtain a collection of spaces $E_n$ ($n\in\mathbb Z$). %assuming Z here is the integers.
+However, a cohomology theory does not consist only of functors $K^n$; they are connected by coboundary maps. If we divert attention from the relative groups $K^n(X,Y)$ to reduced groups $\widetilde{K^n}(X)$, we should divert attention from the coboundary maps $\delta$ to the suspension isomorphisms
+\[
+\Sigma  : \widetilde{K^n}(X) \lar{\cong} \widetilde{K^{n+1}}(\Sigma   X).
+\]%was typo in original book
+Here $\Sigma   X$ is considered as the union of two cones $CX$ and $C'X$ over the same copy of $X$. The suspension isomorphism is defined as
+\[
+\begin{tikzcd}
+	{K^n(X, \mathrm{pt.})} && {K^{n+1}(CX,X)} \\
+	&& {K^{n+1}(\Sigma   X,C'X)} \\
+	&& {K^{n+1}(\Sigma   X,\mathrm{pt.})}
+	\arrow["\text{\rotatebox{-90}{$\!\!\!\cong$} \qquad excision}"', from=2-3, to=1-3] %there's probs. a less ugly way to do this
+	\arrow["\text{\rotatebox{-90}{$\!\!\!\cong$} \qquad ($C'X$ contractible)}", from=2-3, to=3-3]
+	\arrow["\delta", "\cong"', from=1-1, to=1-3]
+	\arrow["\Sigma  ", from=1-1, to=3-3]
+\end{tikzcd}
+\]
+The map $\delta$ is the coboundary for the exact sequence of the triple $(CX,X,\mathrm{pt.})$. The vertical isomorphism is also induced by the collapsing map $(CX,X)\lar{} (\Sigma   X,\mathrm{pt.})$.
+
+We now observe that we have the following natural equivalences, at least if $X$ is connected.
+    \begin{align*}
+    [X,E_n]
+    &\cong
+    \widetilde{K^n}(X)
+        \cong \widetilde{K^{n+1}}(\Sigma   X)
+        \\
+    &\cong
+    [\Sigma   X, E_{n+1}]
+        \cong [X, \Omega_0 E_{n+1}]. %fixed a typo
+    \end{align*}
+This natural equivalence must be induced by a weak equivalence
+\[
+\varepsilon_n': E_n \lar{} \Omega_0 E_{n+1}.
+\]
+So our sequence of spaces becomes a spectrum.
+
+It is usual to make the following definition. A spectrum $E$ is an \emph{$\Omega$-spectrum}\index{$\Omega$-spectrum} (resp. \emph{$\Omega_0$-spectrum}\index{$\Omega$-spectrum!$\Omega_0$-spectrum}) if $\varepsilon_n': E_n \lar{} \Omega E_{n+1}'$ (resp. $\Omega_0 E_{n+1}'$) is a weak equivalence for each $n$. So we have constructed an $\Omega_0$-spectrum.
+
+These consideration also show us how to construct a CW-complex $F_n$ (with base-point) and a natural equivalence $[X,F_n] \cong \widetilde{K^n}(X)$ valid whether $X$ is connected or not. In fact, we have only to take $F_n$ weakly equivalent to $\Omega E_{n+1}$. Then we have
+    \begin{align*}
+    \widetilde{K^n}(X)
+    &\cong
+    \widetilde{K^{n+1}}(\Sigma   X)
+        \cong [\Sigma   X, E_{n+1}]
+        \\
+    &\cong
+    [X, \Omega E_{n+1}]
+        \cong [X, F_{n+1}].
+    \end{align*}
+As before, we have the following natural equivalences.
+    \begin{align*}
+    [X,F_n]
+    &\cong
+    \widetilde{K^n}(X)
+        \cong \widetilde{K^{n+1}}(\Sigma   X)
+        \\
+    &\cong
+    [\Sigma   X, F_{n+1}]
+        \cong [X, \Omega F_{n+1}]. %fixed a typo
+    \end{align*}
+This time we conclude that this natural equivalence must be induced by a weak homotopy equivalence
+\[
+\varphi_n: F_n \lar{} \Omega F_{n+1}.
+\]
+We have constructed an $\Omega$-spectrum.
+
+\begin{example} \label{ex:p3ch02.1}
+Take $K^\ast$ to be ordinary cohomology; $K^n(X,Y)=H^n(X,Y;\pi)$. The corresponding spectrum $E$ is the Eilenberg-MacLane spectrum for the group $\pi$; the $n^{\text{th}}$ space is the Eilenberg-MacLane space \index{H/Eilenberg-Maclane spectrum} of type $(\pi,n)$. That is, we have
+\[
+\pi_r(E_n)
+=
+[S^r,E_n]
+\cong
+\widetilde{H^n}(S^r;\pi)
+=
+\begin{cases}
+\pi &(r=n) \\
+  0 &(r\neq n).
+\end{cases}
+\]
+\end{example}
+
+\begin{example} \label{ex:p3ch02.2}
+Take $K^\ast$ to be complex $K$-theory. The corresponding spectrum is called the $\te{BU}$-spectrum \index{K/BU-spectrum}. Each even term $E_{2n}$ is the space $\te{BU}$, or $\mathbb Z \times \te{BU}$, depending on whether you choose to work with connected spaces or not. Each odd term $E_{2n+1}$ is the space U.
+
+Similarly, we can take $K^\ast$ to be real $K$-theory. The corresponding spectrum is called the $\te{BO}$-spectrum\index{BO spectrum}. Every eighth term $E_{8n}$ is the space $\te{BO}$, or $\mathbb Z \times \te{BO}$, depending on whether you choose to work with connected spaces or not. Each term $E_{8n+4}$ is the space $\te{BSp}$.
+\end{example}
+
+Of course, not all spectra are $\Omega$-spectra.
+
+\begin{example} \label{ex:p3ch02.3}
+Given a CW-complex $X$, let 
+$
+E_n
+=
+\begin{cases}
+\Sigma  ^nX        &(n\geq 0) \\
+\mathrm{pt} &(n<0)
+\end{cases}
+$
+ with the obvious maps. We might define a spectrum $F$ to be a \emph{suspension spectrum}\index{suspension spectrum ($\Sigma$-spectrum)} or \emph{$\Sigma$-spectrum} if
+\[
+\varphi_n: \Sigma   F_n \lar{} F_{n+1}
+\]
+is a weak homotopy equivalence for $n$ sufficiently large. Then this spectrum $E$ would be an $\Sigma$-spectrum, but usually not an $\Omega$-spectrum. $E$ is called the \emph{suspension spectrum} of $X$. In particular, the \emph{sphere spectrum}\index{suspension spectrum (S-spectrum)!sphere spectrum} $S$ is the suspension spectrum of $S^0$; it has $n^{\text{th}}$ term $S^n$ for $n\geq 0$.
+\end{example}
+
+\begin{example} \label{ex:p3ch02.4}
+Let $\te{MO}(n)$ be the Thom complex of the universal $n$-plane bundle $\xi_n$ over $\te{BO}(n)$. Then the Whitney sum $\xi_n \oplus 1$ admits a bundle map to $\xi_{n+1}$. (Here $1$ means the trivial line bundle.) The Thom complex of $\xi_n \oplus 1$ is $\te{MO}(n) \wedge S^1$ and the Thom complex of $\xi_{n+1}$ is $\te{MO}(n+1)$; so we get a map $\te{MO}(n)\wedge S^1 \lar{} \te{MO}(n+1)$. The Thom spectrum $\te{MO}$ is the spectrum in which the $n\nth$ space is $\te{MO}(n)$ and the maps are the ones just indicated. \index{Thom Spectrum MO}
+
+Similar remarks apply to the Thom spectra $\te{MSO}$, $\te{MSpin}$, $\te{MU}$, $\te{MSU}$ and $\te{MSp}$. However, $\te{MU}(n)$ is the $2n\nth$ term of the spectrum $\te{MU}$, the $(2n+1)\nth$ term being $\te{MU}(n)\wedge S^1$ (because in the complex case we have $M(1)=S^2$.) Similarly for $\te{MSU}$. For $\te{MSp}$, the term $E_{4n+\varepsilon}$ is $\te{MSp}(n)\wedge S^\varepsilon$ for $\varepsilon=0,1,2,3$. \index{Thom Spectrum MSO}\index{Thom Spectrum MSpin}\index{Thom Spectrum MU}\index{Thom Spectrum MSU}
+\end{example}
+
+These spectra arise in cobordism theory, as I said before.
+
+We now define the homotopy groups of a spectrum. These are really stable homotopy groups. We have the following homomorphisms.
+\[
+\pi_{n+r}(E_n)
+\lar{}
+\pi_{n+r+1}(\Sigma   E_{n+1})
+\vra{(\varepsilon_n)_\ast}
+\pi_{n+r+1}(E_{n+1})
+\]
+We define the stable homotopy groups: \index{stable homotopy groups}
+\[
+\pi_r(E) = \lim_{n\to \infty} \pi_{n+r}(E_n);
+\]
+here the homomorphisms of the direct system are those displayed above.
+
+If $E$ is an $\Omega$-spectrum or an $\Omega_0$-spectrum, then the homomorphism
+\[
+\pi_{n+r}(E_n)
+\lar{}
+\pi_{n+r+1}(E_{n+1})
+\]
+is an isomorphism for $n+r\geq 1$; the direct limit is attained, and we have
+\[
+\pi_r(E)=\pi_{n+r}(E_n)
+\qquad
+\text{for $n+r\geq 1$.}
+\]
+Thus, in Example \ref{ex:p3ch02.1}, the Eilenberg-MacLane spectrum, we have
+\[
+\pi_r(E)
+=
+\begin{cases}
+\pi &(r=0) \\
+  0 &(r\neq 0)
+\end{cases}
+\]
+In Example \ref{ex:p3ch02.2}, the BU-spectrum, we have
+\[
+\pi_r(E)
+=
+\begin{cases}
+\mathbb Z &\text{($r$ even)} \\
+  0 &\text{($r$ odd)}
+\end{cases}
+\]
+by the Bott periodicity theorem. For the BO-spectrum we have
+\[
+\begin{tabular}{rccccccccccc}
+$r$ & = & 
+0&1&2&3&4&5&6&7&8&mod 8 \\
+$\pi_r(E)$ & = &
+$\mathbb Z$ & $\mathbb Z_2$ & $\mathbb Z_2$ & 0 & $\mathbb Z$ & 0 & 0 & 0 & $\mathbb Z$ &
+\end{tabular}
+\]
+by Bott periodicity again.
+
+In Example \ref{ex:p3ch02.3} we have
+\[
+E_n
+=
+\begin{cases}
+\Sigma  ^nX         &(n\geq 0) \\
+\mathrm{pt.} &(n<0)
+\end{cases}
+\]
+so that
+\[
+\pi_r(E) = \lim_{n\to \infty} \pi_{n+r}(\Sigma  ^nX).
+\]
+The limit is attained for $n>r+1$. The homotopy groups of $E$ are the stable homotopy groups of $X$.
+
+In Example \ref{ex:p3ch02.4} the homotopy groups of the spectrum $\te{MO}$ are precisely those which arise in Thom's work, namely
+\[
+\pi_r(\te{MO}) = \lim_{n\to \infty} \pi_{n+r}(\te{MO}(n)).
+\]
+The limit is attained for $n>r+1$. Similarly for other Thom spectra.
+
+In general, there is no reason why the limit $\displaystyle \lim_{n\to \infty} \pi_{n+r}(E_n)$ should be attained. Exercise: Construct a counterexample.
+
+Similarly, of course, we can define relative homotopy groups. To do so we need subobjects. Let $X$ be a spectrum; then a \emph{subspectrum}\index{subspectrum} $A$ of $X$ consists of subspaces $A_n\subseteq X_n$ such that the structure map $\xi_n: \Sigma   X_n \lar{} X_{n+1}$ maps $\Sigma   A_n$ into $A_{n+1}$. Of course we take $\left. \xi_n \right\rvert \Sigma   A_n$ as the structure map $\alpha_n$ for $A$. And if we think in terms of maps $\xi_n': X_n\to\Omega X_{n+1}$, we ask that $\xi_n'$ maps $A_n$ into $\Omega A_{n+1}$.
+
+In fact we want to define not only relative homotopy groups, but also boundary homomorphisms. For this purpose we want the exact homotopy sequences of the pairs $(X_n,A_n)$ and $(X_{n+1},A_{n+1})$ to fit into the following commutative diagram.
+\[
+\adjustbox{scale=0.8, center}{
+
+\begin{tikzcd}
+	\hdots & {\pi_{n+r}(A_n)} & {\pi_{n+r}(X_n)} & {\pi_{n+r}(X_n,A_n)} & {\pi_{n+r-1}(A_n)} & \hdots \\
+	\hdots & {\pi_{n+r+1}(A_{n+1})} & {\pi_{n+r+1}(X_{n+1})} & {\pi_{n+r+1}(X_{n+1},A_{n+1})} & {\pi_{n+r}(A_{n+1})} & \hdots
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow["\partial", from=1-4, to=1-5]
+	\arrow[from=1-5, to=1-6]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-4, to=2-4]
+	\arrow[from=1-5, to=2-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow["\partial", from=2-4, to=2-5]
+	\arrow[from=2-5, to=2-6]
+\end{tikzcd}
+}
+\]
+But here we must be careful of the signs. If $\partial E^m = S^{m-1}$, then with the usual conventions,
+\[
+\partial (S^1 \wedge E^m)
+=
+-S^1 \wedge \partial E^m
+	\qquad
+	\text{and}
+	\qquad
+\partial (E^m \wedge S^1)
+=
+S^{m-1} \wedge S^1.
+\]
+So at this point we prefer to interpret $\Sigma   X_n$ as $X_n\wedge S^1$, as is done in Puppe's paper on stable homotopy theory. With this convention, the ladder diagram commutes; we can define
+\[
+\pi_r(X,A)
+=
+\lim_{n\to\infty} \pi_{n+r}(X_n,A_n)
+\]
+and we obtain our exact homotopy sequence
+\[
+\hdots
+\lar{}
+\pi_\ast(A)
+\lar{}
+\pi_\ast(X)
+\lar{}
+\pi_\ast(X,A)
+\lar{}
+\pi_\ast(A)
+\lar{}
+\hdots .
+\]
+
+We have seen how to associate a spectrum to a generalized cohomology theory. The converse is also possible: with any spectrum $E$ we can associate a generalized homology theory and a generalized cohomology theory. This is due to G. W. Whitehead, in a celebrated paper \cite{whitehead2}. I'll get back to this later. If we have a spectrum $E$, it is very convenient to write $E_\ast$ and $E^\ast$ for this associated homology and cohomology theories. I will also reverse this. Ordinary homology and cohomology (with $\mathbb Z$ coefficients) are always written $H_\ast$, $H^\ast$; therefore, $H$ will mean the Eilenberg-MacLane spectrum for the group $\mathbb Z$. (For coefficients in the group $G$, we write $HG$.) This frees the letter $K$ for other uses. Classical complex $K$-theory is always written $K^\ast$ ; therefore, $K$ will mean the $\te{BU}$-spectrum. This is fine, because I would anyway need notation to distinguish the space $\te{BU}$ from the $\te{BU}$-spectrum. Similarly, we write $\te{KO}$ for the $\te{BO}$-spectrum. 
+
+The coefficient groups of the theories $E_\ast$, $E^\ast$ will be given by
+\[
+E_r(\mathrm{pt})=E^{-r}(\mathrm{pt})=\pi_r(E).
+\]
+
+I take it that in Chicago I need not make propaganda for taking spectra as the objects of a category. For one thing only, I would like to define the $E$-cohomology of the spectrum $X$, in dimension 0, to be
+\[
+E^0(X)=[X,E]_0, %was typo in book
+\]
+the set of morphisms from $X$ to $E$ in our category. (Morphisms will correspond to homotopy classes of maps.) In fact I would like to go further and construct a graded category, so that we can define
+\[
+E^r(X) = [X,E]_{-r}
+\]
+(morphisms which lower dimension by $r$).
+
+Next I must explain why one would want to introduce smash products of spectra. First, we would like to define the $E$-homology of the spectrum $X$ to be
+\[
+E_r(X)=\pi_r(E\wedge X)=[S,E\wedge X]_r.
+\]
+Secondly, we would like to introduce products, for example, cup-products in cohomology. In order to define cup-products in ordinary cohomology, say
+\[
+H^n(X;A) \otimes H^m(X;B)
+\lar{}
+H^{n+m}(X;C)
+\]
+we need a pairing $A\otimes B \lar{} C$. George Whitehead wanted to introduce cup-products in generalized cohomology
+\[
+E^n(X) \otimes F^m(X)
+\lar{}
+G^{n+m}(X)
+\]
+and he found he needed a pairing of spectra from $E$ and $F$ to $G$. Now it would be very nice if a pairing of spectra were just a morphism
+\[
+\mu: E\wedge F \lar{} G
+\]
+in our category. Thirdly, for example, we might want to restate a result of R. Wood in the form $\mathrm{KO}\wedge\, \mathbb{CP}^2 \simeq \mathrm{K}$.
+
+When we come to undertake a complicated piece of work, the convenience of having available smash products of spectra is so great that I, for one, would hate to do without it.
+
+Now let me get on and define my category.
+
+I say $E$ is a \emph{CW-spectrum}\index{CW-spectrum} if
+    \begin{enumerate}
+    \item[(i)]  the terms $E_n$ are CW-complexes with base-point, and
+    \item[(ii)] each map $\varepsilon_n: \Sigma   E_n \lar{} E_{n+1}$ is an isomorphism from $\Sigma   E_n$ to a sub-complex of $E_{n+1}$.
+    \end{enumerate}
+
+\begin{notes}
+    \begin{enumerate}
+    \item[(i)]   There is no essential loss of generality in restricting to CW-spectra. (See the exercise after \ref{thm:p3ch03.12} or the discussion of the telescope functor in \S\ref{sec:p3c04}.)
+    \item[(ii)]  An isomorphism between CW-complexes is a homeomorphism $h$ such that $h$ and $h^{-1}$ are cellular. The CW structure on $\Sigma   E_n$ is the obvious one on $E_n\wedge S^1$, where $S^1$ is regarded as a CW-complex with one 0-cell and one 1-cell. Thus $\Sigma   E_n$ has a base-point and one cell $Sc_\alpha$ for each cell $c_\alpha$ of $E_n$ other than the base-point.
+    \item[(iii)] It would be possible to identify $\Sigma   E_n$ with its image under $\varepsilon_n$ and so suppose $\Sigma   E_n\subset E_{n+1}$. Sometimes it may be convenient to speak in this way. On the whole, it seems best to leave the definition as I've given it.
+    \end{enumerate}
+\end{notes}
+
+The ideas which come next are introduced to help in defining the morphisms of our category.
+
+A \emph{subspectrum}\index{subspectrum!of a CW-spectrum} $A$ of a CW-spectrum $E$ will be a subspectrum as defined above, with the added condition that $A_n\subset X_n$ be a subcomplex for each $n$.
+
+Let $E$ be a CW-spectrum, $E'$ a subspectrum of $E$. We say $E'$ is \emph{cofinal}\index{subspectrum!cofinal subspectrum} in $E$ (Boardman says \emph{dense}\index{subspectrum!dense subspectrum}) if for each $n$ and each finite sub-complex $K\subset E_n$ there is an $m$ (depending on $n$ and $K$) such that $\Sigma  ^mK$ maps into $E_{m+n}'$ under the obvious map
+\[
+\Sigma  ^mE_n
+\vra{\Sigma  ^{m-1}\varepsilon_n}
+\Sigma  ^{m-1}E_{n+1}
+\lar{}
+\hdots
+\lar{}
+\Sigma   E_{m+n-1}
+\vra{\varepsilon_{m+n-1}}
+E_{m+n}.
+\]
+The essential point if that each cell in each $E_n$ gets into $E'$ after enough suspensions. I said that $m$ depends on $n$ and $K$, but there is no need to suppose that it does so in any particular way.
+
+The construction of our category is in several steps. In particular, we will distinguish between ``functions'', ``maps'' and ``morphisms''.
+
+A \emph{function}\index{function (between spectra)} $f$ from one spectrum $E$ to another $F$, and of degree $r$, is a sequence of maps $f_n: E_n\lar{} F_{n-r}$ such that the following diagrams are strictly commutative for each $n$.
+\[
+\begin{tikzcd}
+	{\Sigma   E_n} & {E_{n+1}} \\
+	{\Sigma   F_{n-r}} & {F_{n-r+1}}
+	\arrow["{\varepsilon_n}", from=1-1, to=1-2]
+	\arrow["{f_{n+1}}", from=1-2, to=2-2]
+	\arrow["{\Sigma   F_n}"', from=1-1, to=2-1]
+	\arrow["{\varphi_{n-r}}", from=2-1, to=2-2]
+\end{tikzcd}
+\quad \text{or equivalently} \quad
+\begin{tikzcd}
+	{E_n} & {\Omega E_{n+1}} \\
+	{F_{n-r}} & {\Omega F_{n-r+1}}
+	\arrow["{\varepsilon_n'}", from=1-1, to=1-2]
+	\arrow["{\Omega f_{n+1}}", from=1-2, to=2-2]
+	\arrow["{f_n}"', from=1-1, to=2-1]
+	\arrow["{\varphi_{n-r}'}", from=2-1, to=2-2]
+\end{tikzcd}
+\]
+\begin{notes}
+\item[(i)]   The diagrams are to be strictly commutative. If we allowed the diagrams to be commutative up to homotopy, then to make any further construction we would need to know what the homotopies were, so we would have to take the homotopies as part of the given structure of a function. It seems better to proceed as I said.
+\item[(ii)]  Composition of functions is done in the obvious way, and we have identity functions.
+\item[(iii)] If $E'$ is a subspectrum of $E$, the injection $i$ of $E'$ in $E$ is a function in good standing. Restriction of functions from $E$ to $E'$ is the same as composition with $i$.
+\item[(iv)]  For graded functions, it is convenient if $n$ runs over $\mathbb Z$.
+\item[(v)]   The details of the grading are cooked up so that in the end we get $\pi_r(F)=[S,F]_r$.
+\end{notes}
+
+If $E$ is a CW-spectrum and $F$ is an $\Omega$-spectrum, then the functions from $E$ to $F$ are usable as they stand. But it is convenient to deal with spectra which are not $\Omega$-spectra, and then there are examples to show that there are not enough functions to do what we want.
+
+For one example, consider the Hopf map $S^3\lar{\eta}S^2$. We would like to have a corresponding function $S\lar{} S$ of degree 1. But there are no candidates for the maps $S^1\lar{} S^0$, or $S^2\lar{} S^1$ required to make a function.
+
+For another example, take two spectra with
+    \begin{align*}
+    E_n
+    &=
+    S^{n+3} \vee S^{n+7} \vee S^{n+11} \vee \hdots \\
+    F_n &= S^n.
+    \end{align*}
+We would like to have a function from $E$ to $F$ whose component from $S^{n+4k-1}$ to $S^n$ is a generator for the image of $J$ in the stable $(4k-1)$-stem. But there is no single value of $n$ for which all the requisite maps exist as maps into $S^n$; we have to concede that for the different cells of $E$ the maps come into existence for different values of $n$.
+
+So we need the following construction. Let $E$ be a CW-spectrum and $F$ a spectrum. Take all cofinal subspectra $E'\subset E$ and all functions $f': E'\lar{} F$. Say that two functions $f': E'\lar{} F$ and $f'': E''\lar{} F$ are equivalent if there is a cofinal subspectrum $E'''$ contained in $E'$ and $E''$ such that the restrictions of $f'$ and $f''$ to $E'''$ coincide. (Check that this is an equivalence relation.)
+
+\begin{definition}
+A \emph{map}\index{map (between spectra)} from $E$ to $F$ is an equivalence class of such functions.
+\end{definition}
+
+This amounts to saying that if you have a cell $c$ in $E_n$, a map need not be defined on it at once; you can wait till $E_{m+n}$ before defining the map on $\Sigma  ^mc$. The slogan is, ``cells now -- maps later.''
+
+\begin{notes}
+    \begin{enumerate}
+    \item[(i)] In order to prove that the relation is an equivalence relation, we use the following lemma.
+        \begin{lemma}
+	    If $E'$ and $E''$ are cofinal subspectra of $E$, then so is $E'\cap E''$.
+	    \end{lemma}
+    The proof is trivial.
+    \item[(ii)] It would amount to the same to say that two functions $f': E'\lar{} F$, $f'': E''\lar{} F$ are equivalent if their restrictions to $E'\cap E''$ coincide. This comes from the following fact: if $g,h: K\lar{} L$ are maps of CW-complexes with base-point, and $\Sigma   g=\Sigma   h$, then $g=h$.
+    \end{enumerate}
+\end{notes}
+
+Let $E$, $F$, $G$ be spectra, of which $E$ and $F$ are CW-spectra. Then we define composition of maps by composition of representatives, choosing representatives for which composition is defined. For this purpose we need the following lemma.
+
+\begin{lemma}
+    \begin{enumerate}
+    \item[(i)]  Let $f:E\lar{} F$ be a function, and $F'$ a cofinal subspectrum of $F$. Then there is a cofinal subspectrum $E'$ of $E$ such that $f$ maps $E'$ into $F'$.
+    \item[(ii)] If $E'$ is a cofinal subspectrum of $E$, and $E''$ is a cofinal subspectrum of $E'$, then $E''$ is a cofinal subspectrum of $E$.
+    \end{enumerate}
+\end{lemma}
+
+The proof is trivial.
+
+Restriction of maps is done by composition with the inclusion map, which is the class of the inclusion function.
+
+We can piece maps together in the usual way. Let $E$ be a CW-spectrum, and $U$, $V$ subspectra of $E$.
+
+\begin{lemma}
+Let $u: U\lar{} F$, $v: V\lar{} F$ be maps whose restrictions to $U\cap V$ are equal. Then there exists one and only one map $w: U\cap V \lar{} F$ whose restrictions to $U$ and $V$ are $u$ and $v$ respectively.
+\end{lemma}
+
+The proof is easy.
+
+A morphism\index{morphism (of spectra)} in our category will be a homotopy class of maps, and a ``homotopy'' will be a map of a cylinder, just as in ordinary topology. So we begin by defining cylinders. Let $I^+$ be the union of the unit interval and a disjoint base-point. If $E$ is a spectrum, we define the cylinder spectrum $\te{Cyl}(E)$ to have terms
+\[
+(\te{Cyl}(E))_n = I^+ \wedge E_n
+\]
+and maps
+\[
+(I^+ \wedge E_n)\wedge S^1
+\vra{1\wedge \varepsilon_n}
+I^+ \wedge E_{n+1}.
+\]
+The cylinder spectrum is a functor: a map $f: E\lar{} F$ induces a map $\te{Cyl}(f): \te{Cyl}(E) \lar{} \te{Cyl}(F)$ in the obvious way. We have obvious injection functions
+\[
+i_0,i_1: E \lar{} \te{Cyl}(E),
+\]
+corresponding to the two ends of the cylinder. These are natural for maps of $E$. The other properties of the cylinder are as usual, and they are too obvious to list.
+
+We say that two maps
+\[
+f_0,f_1: E\lar{} F
+\]
+are \emph{homotopic}\index{map (between spectra)!homotopic maps} if there is a map
+\[
+h: \te{Cyl}(E) \lar{} F
+\]
+such that $f_0=hi_0$, $f_1=hi_1$.
+
+Homotopy is an equivalence relation. If $E$, $F$ are spectra, with $E$ a CW-spectrum, we write $[E,F]_r$ for the set of homotopy classes of maps with degree $r$ from $E$ to $F$. Composition passes to homotopy classes, as in the usual case.
+
+The category in which we propose to work is as follows. The objects are the CW-spectra. The morphisms of degree $r$ are homotopy classes of maps of degree $r$.
+
+\begin{notes}
+    \begin{enumerate}
+    \item[(i)]  Let $X$ be a CW-spectrum consisting of $X_n$, $n\in \bbZ$. Define $X'$ by $
+    X_n' =
+    \begin{cases}
+    X_n          &(n\geq 0) \\
+    \mathrm{pt.} &(n<0)
+    \end{cases}
+    $. Then $X'$ is cofinal in $X$, and therefore equivalent to $X$ in our category. For this reason it doesn't really make any difference whether we consider spectra indexed with $n\in\bbZ$ or with $n\in\{0,1,2,\, \hdots\}$.
+    \item[(ii)] Since we have our objects and maps open to direct inspection, we have no trouble elaborating these definitions. For example, suppose given a CW-spectrum $X$ with a subspectrum $A$, and another spectrum $Y$ with a subspectrum $B$. Then I have no trouble in defining
+    \[
+    [X,A;Y,B].
+    \]
+    To define maps $f: X,A\lar{} Y,B$ we consider functions $f': X',A'\lar{} Y,B$ where $X'$ is cofinal in $X$, $A'\subset X'$ and $A'$ is cofinal in $A$. Two such, $f': X',A'\lar{} Y,B$ and $f'': X'',A''\lar{} Y,B$ are defined to be equivalent if there exist $X'''$, $A'''$ such that $\left. f'' \right\rvert X''',A'''=\left. f''\right\rvert X''',A'''$. A map $f: X,A\lar{} Y,B$ is an equivalence class of such functions. I can define homotopies
+    \[
+    \te{Cyl}(X),\, \te{Cyl}(A) \lar{} Y,B
+    \]
+    and the elements of $[X,A;Y,B]$ are homotopy classes of maps.
+    \end{enumerate}
+\end{notes}
+
+As long as we deal entirely with CW-spectra we can restrict attention to functions whose components $f_n:E_n\lar{} F_{n-r}$ are cellular maps. A construction in these terms leads to the same sets $[E,F]_r$. The proof is left as an exercise.
+
+In order to validate our category we give one small result. Let $K$ be a finite CW-complex, and let $E$ be its suspension spectrum, so that $E_n=\Sigma  ^nK$ for $n\geq 0$. Let $F$ be any spectrum.
+
+\begin{proposition}
+We have
+\[
+[E,F]_r = \lim_{n\to\infty} [\Sigma  ^{n+r}K,F_n].
+\]
+In particular,
+\[
+[S,F]_r = \pi_r(F).
+\]
+\end{proposition}
+\begin{proof}
+For any map $f: \Sigma  ^{n+r}K\lar{} F_n$ we can define a corresponding map between spectra by taking its component on $E_{n+r}$ to be $f: S^{n+r}K\lar{}F_n$; the higher components are then forced. In fact, they are
+\[
+\Sigma  ^{m+n+r}K
+\lar{\Sigma  ^mf}
+\Sigma  ^mf_n
+\lar{}
+F_{m+n}.
+\]
+Suppose two maps $f: S^{n+r}K\lar{}F_n$, $g:\Sigma  ^{m+r}K\lar{}F_n$ give the same element of the direct limit. Then for some $p$, the maps
+    \begin{gather*}
+    \Sigma  ^{p+r}K
+    \lar{\Sigma  ^{p-n}f}
+    \Sigma  ^{p-n}F_n
+    \lar{}
+    F_p
+    \\
+    \Sigma  ^{p+r}K
+    \lar{\Sigma  ^{p-m}g}
+    \Sigma  ^{p-m}F_m
+    \lar{}
+    F_p
+    \end{gather*}
+are homotopic. This homotopy yields a homotopy between the corresponding maps of spectra. This shows we have a function
+\[
+\lim_{n\to\infty} [\Sigma  ^{n+r}K,F_n]
+\lar{\theta}
+[E,F]_r.
+\]
+Now every map from $E$ to $F$ arises in the way we have mentioned: this shows $\theta$ is onto. Also every homotopy arises in the way we have mentioned: this shows that $\theta$ is a 1-1 correspondence.
+\end{proof}
+
+\end{document}

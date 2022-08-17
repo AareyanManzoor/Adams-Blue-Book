@@ -1,0 +1,368 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+%zin
+%I'm not on social media much; be sure to mention me so I can use the notification to find your message later!
+\chapter{Structure of $\pi_*(\te{bu}\wedge \te{bu})$}
+\label{sec:p3c17}
+Mahowald and others have been using methods which rely essentially on a calculation of $\pi_*(\te{bo}\wedge\te{bo}\wedge\cdots\wedge\te{bo})$, where we take $(n+1)$ factors $\te{bo}$. I would like to give an introduction to this calculation; it seems best if I do things for the most elementary case, which is the case of $\te{bu}$, but undertake to use only methods which extend to the case $\te{bo}$. For similar reasons I will mostly consider the case of the two factors $\te{bu}\wedge\te{bu}$; the case of $(n+1)$ factors is similar. Again, I will consider mostly the prime $2$, but try to make only statements which can also be made for the prime $p$.
+
+Some things can be said for a fairly general connective spectrum $X$.
+My standing hypotheses on $X$ will be as follows. First, assume that for each $r$, $H_r(X)$ is a finitely generated group. This may be unnecessary for some purposes, but it is convenient. Secondly, for each prime $p$, consider $(H\bZ_p)^*(X)$ as a module over $B = \bZ_p[\mathcal{Q}_0,\mathcal{Q}_1]$, and assume that its stable class is $\bigoplus_i\Sigma^{a(i,p)}I^{b(i,p)}$, where $b(i,p) \ge 0$ and $a(i,p) + b(i,p) \equiv 0 \mod 2$.
+
+\begin{examples}
+Let $X = \te{bu}\wedge\cdots\wedge\te{bu}$ ($n$ factors). We have checked the condition at the prime $2$ by \ref{prop:p3ch16.4}. We have not checked the condition at the prime $p>2$, but I believe it holds. In any case, the results at the
+prime $2$ follow from the assumptions at the prime $2$.
+\end{examples}
+
+Our assumptions on $X$ have obvious consequences for the homology
+of $X$ with integral coefficients.
+
+\begin{lemma} \label{lem:p3c17.1}
+    \begin{enumerate}[label=(\roman*)]
+    \item $H_*(X)$ is a direct sum of groups $\bZ_2$ and $\bZ_p$, and groups $\bZ$ in even degree.
+    \item The same holds for $H_*(\te{bu}\wedge X)$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}[label=(\roman*)]
+        \item The argument is essentially by the Bockstein spectral sequence, but we do not need to assume any knowledge of that. By assumption, $H_r(X)$ is finitely-generated abelian group; so it is a direct sum of groups $\bZ_{p^f}$ and $\bZ$. A group $\bZ_{p^f}$ with $f\ge2$ will introduce into $\Ker\beta_p / \te{Im}\beta_p$ two groups $\bZ_p$ in consecutive degrees, which is impossible; we have assumed $\Ker\beta_p / \te{Im}\beta_p$ has one summand $\bZ_p$ in each degree $a(i,p) + b(i,p)$, and that $a(i,p) + b(i,p)$ is always even. A group $\bZ$ in degree $r$ will introduce into $\Ker\beta_p / \te{Im}\beta_p$ a group $\bZ_p$ in degree $r$, which is possible only if $r$ is even.
+        \item The spectrum $\te{bu}\wedge X$ satisfies the assumptions made on $X$. Of course we propose to obtain essential information on $\pi_*(\te{bu}\wedge X)$ from the spectral sequence \ref{prop:p3ch16.1}. The two results which we obtain this way are as follows.
+    \end{enumerate}
+\end{proof}
+\begin{proposition} \label{prop:p3c17.2} Assume that $X$ is as above.
+    \begin{enumerate}[label=(\roman*)]
+        \item The Hurewicz homomorphism
+        \[
+        h : \pi_*(\te{bu}\wedge X) \lra{} H_*(\te{bu}\wedge X)
+        \]
+        is a monomorphism.
+        \item The Hurewicz homomorphism
+        \[
+        h : \pi_*(K\wedge X) \lra{} H_*(K\wedge X)
+        \]
+        is a monomorphism.
+        \item The homomorphism
+        \[
+        \pi_*(K\wedge X) \lra{} \pi_*(K\wedge X)\otimes\bQ
+        \]
+        is a monomorphism.
+    \end{enumerate}
+\end{proposition}
+%I'll ctrl+f replace the roman numberings later
+Part (ii) follows immediately from part (i), by passing to direct
+limits.
+
+Part (iii) follows from part (ii); we have $H_*(K)\cong H_*(K)\otimes\bQ$, and therefore $H_*(K\wedge X)\cong H_*(K\wedge X)\otimes\bQ$.
+
+Given this proposition, one obviously tries to get a hold on $\pi_*(K\wedge X)$ by describing its image in $\pi_*(K\wedge X)\otimes\bQ$. It is also very reasonable to try to get a hold on $\pi_*(\te{bu}\wedge X)$ by describing its image in $\pi_*(\te{bu}\wedge X)\otimes\bQ$; the
+kernel of
+\[
+\pi_*(\te{bu}\wedge X) \lra{} \pi_*(\te{bu}\wedge X)\otimes\bQ
+\]
+may contain elements of order $p$, but no elements of order $p^2$; this follows of course from \ref{lem:p3c17.1} and \ref{prop:p3c17.2}. The $p$-torsion subgroup of $\pi_*(\te{bu}\wedge X)$ maps monomorphically to $(H\bZ_p)_*(X)$.
+
+We shall also need another result. Consider the following diagram.
+
+\begin{tikzcd}
+\pi_*(\te{bu}\wedge X) \arrow[r] \arrow[d] & H_*(\te{bu}\wedge X) \arrow[d]                                      &                                   \\
+\pi_*(K\wedge X) \arrow[r]              & H_*(K\wedge X) \ar[-,double line with arrow={-,-}]{r} & \pi_*(K\wedge X)\otimes\mathbb{Q}
+\end{tikzcd}
+
+\begin{theorem} \label{thm:p3c17.3}
+Let $X$ be as above. Suppose an element $h\in H_*(K\wedge X)$ lies both in the image of $H_*(\te{bu}\wedge X)$ and in the image of $\pi_*(K\wedge X)$. Then it lies in the image of $\pi_*(\te{bu}\wedge X)$.
+\end{theorem}
+The usefulness of this result will appear later.
+
+I said it was reasonable to try to get a hold on $\pi_*(K\wedge X)$ by
+describing its image in $\pi_*(K\wedge X)\otimes\bQ$. In the case $X=\te{bu}$ we see that $\pi_*(\te{bu}\wedge\te{bu})\otimes\bQ$ is the polynomial algebra $\bQ[u,v]$, where $u\in\pi_2(\te{bu})$ and $v\in\pi_2(\te{bu})$ are the generators for the two factors. Similarly, we have
+\[
+\pi_*(K\wedge\te{bu})\otimes\bQ = \bQ[u,u^{-1},v]
+\]
+We wish to describe the images of the maps
+\[
+\pi_*(K\wedge\te{bu}) \lra{} \pi_*(K\wedge\te{bu})\otimes\bQ = \bQ[u,u^{-1},v]
+\]
+\[
+\pi_*(\te{bu}\wedge\te{bu}) \lra{} \pi_*(\te{bu}\wedge\te{bu})\otimes\bQ = \bQ[u,v]
+\]
+
+\begin{theorem} \label{thm:p3c17.4}
+In order that a finite Laurent series $f(u,v)\in\bQ[u,u^{-1},v]$ lie in the image of $\pi_*(K\wedge\te{bu})$, it is necessary and sufficient that it satisfy the following condition.
+
+Condition (1): for all $k\ne0$, $l\ne0$ in $\bZ$ we have
+\[
+f(kt,lt)\in\bZ[t,t^{-1},k^{-1},l^{-1}]
+\]
+\end{theorem}
+
+\begin{theorem} \label{thm:p3c17.5}
+In order that a polynomial $f(u,v)\in\bQ[u,v]$ lie in the image of $\pi_*(\te{bu}\wedge\te{bu})$, it is necessary and sufficient that it satisfy the following two conditions.
+
+Condition (1): as in \ref{thm:p3c17.4}
+
+Condition (2): it lies in the subgroup additively generated by
+the monomials
+\[
+\frac{u^i}{m(i)}\;\;\;\frac{v^j}{m(j)}
+\]
+\end{theorem}
+Here $m(r)=\prod_p p^{\left[\frac{r}{p-1}\right]}$, as in section \ref{sec:p3c16}. Of course, the subgroup specified is actually a subring.
+
+It is very easy to prove that the conditions given in \ref{thm:p3c17.4} and \ref{thm:p3c17.5} are necessary, so I will do that now.
+\begin{proof}[proof that Condition (1) is necessary]
+Consider the following commutative diagram.
+
+\begin{tikzcd}
+\pi_*(K\wedge\te{bu}) \arrow[r] \arrow[d, "\Psi^k\otimes\Psi^l"]           & \pi_*(K\wedge\te{bu})\otimes\mathbb{Q} \arrow[d, "\Psi^k\otimes\Psi^l"] \ar[-,double line with arrow={-,-}]{r} & {\mathbb{Q}[u,u^{-1},v]} \\
+{\pi_*(K\wedge\te{bu})\otimes\mathbb{Z}[k^{-1},l^{-1}]} \arrow[d, "\mu"]   & \pi_*(K\wedge\te{bu})\otimes\mathbb{Q} \arrow[d, "\mu"]                                    &                          \\
+{\pi_*(K)\otimes\mathbb{Z}[k^{-1},l^{-1}]} \arrow[r] \ar[-,double line with arrow={-,-}]{d} & \pi_*(K)\otimes\mathbb{Q} \ar[-,double line with arrow={-,-}]{d}                                            &                          \\
+{\mathbb{Z}[t,t^{-1},k^{-1},l^{-1}]}                                    & {\mathbb{Q}[t,t^{-1}]}                                                                  &                         
+\end{tikzcd}
+
+The right-hand vertical arrow carries $f(u,v)$ into $f(kt,lt)$. This proves that Condition (1) is necessary.
+\end{proof}
+\begin{proof}[proof that Condition (2) is necessary]
+Consider the following commutative diagram.
+
+\begin{tikzcd}
+\pi_*(\te{bu}\wedge\te{bu}) \arrow[d] \arrow[r] & \pi_*(\te{bu}\wedge\te{bu})\otimes\mathbb{Q} \ar[-,double line with arrow={-,-}]{d} \\
+H_*(\te{bu}\wedge\te{bu}) \arrow[r]             & H_*(\te{bu}\wedge\te{bu})\otimes\mathbb{Q}                     
+\end{tikzcd}
+
+Here $H_*(\te{bu}\wedge\te{bu})$ is described by the K\"unneth theorem, and the terms \newline $\Tor^\bZ_1(H_i(\te{bu}),H_j(\te{bu}))$ map to zero in $H_*(\te{bu}\wedge\te{bu})\otimes\bQ$, so the image of $H_*(\te{bu}\wedge\te{bu})$ in $H_*(\te{bu}\wedge\te{bu})\otimes\bQ$ is the same as the image of $H_*(\te{bu})\otimes H_*(\te{bu})$. By \ref{prop:p3ch16.5}, this is the subgroup additively generated by the monomials
+\[
+\frac{u^i}{m(i)}\;\;\;\frac{v^j}{m(j)}
+\]
+This proves that Condition (2) is necessary.
+\end{proof}
+\begin{proof}[Proof of \ref{thm:p3c17.5} from \ref{thm:p3c17.3} and \ref{thm:p3c17.4}]
+Suppose a polynomial $f(u,v)$ satisfies Conditions (1) and (2). Consider $f$ as an element of $\bQ[u,u^{-1},v] = \pi_*(K\wedge\te{bu})\otimes\bQ = H_*(K\wedge\te{bu})$. According to the proof we have just given, Condition (2) ensures that $f$ lies in the image of $H_*(\te{bu}\wedge\te{bu})$. By \ref{thm:p3c17.4}, Condition (1) ensures that $f$ lies in the image of $\pi_*(K\wedge\te{bu})$. Now \ref{thm:p3c17.3} shows that it lies in the image of $\pi_*(\te{bu}\wedge\te{bu})$. This proves \ref{thm:p3c17.5}.
+\end{proof}
+
+\begin{remark*}
+When we replace $\te{bu}$ by $\te{bo}$, we replace $\bQ[u,v]$ by $\bQ[u^2,v^2]$ and $\bQ[u,u^{-1},v]$ by $\bQ[u^2,u^{-2},v^2]$; that is, we only use functions which are even in both variables. We also replace the ring $\bZ[t,t^{-1},k^{-1},l^{-1}]$ by $\pi_*(\te{KO})\otimes\bZ[k^{-1},l^{-1}]$; since we only need the components of degree congruent to 0 mod 4, this is essentially
+$\bZ[2t^2,t^4,t^{-4},k^{-1},l^{-1}]$. Condition (2) is unchanged.
+
+In order to do calculations it is often desirable to know exactly what functions do satisfy the condition given. In such calculations it is usually convenient to separate the primes and consider the images of \[\pi_\ast(K \wedge \te{bu}) \otimes \bbZ_{(p)} \lar{} \pi_\ast(K \wedge \te{bu}) \otimes \bbQ\] \[\pi_\ast(\te{bu} \wedge \te{bu}) \otimes \bbQ \lar{} \pi_\ast(\te{bu} \wedge \te{bu}) \otimes \bbQ\]
+\end{remark*}
+
+Of course, I consider the prime $2$. The analogue of Condition (1) reads as follows.
+
+\begin{enumerate}
+    \item[(1')] For each pair of odd integers $k, \ell$, $f(kt, \ell t) \in \bbZ_{(2)}[t, t^{-1}]$.
+    The analogue of Condition (2) reads as follows.
+    \item[(2')] $f(u, v) \in \bbZ_{(2)}[u/2, v/2]$.
+\end{enumerate}
+
+\begin{proposition}
+\label{prop:p3c17.6} 
+
+\begin{enumerate}
+    \item[(i)] The subring of finite Laurent series which satisfy (1') is free over $\bbZ_{(2)}[u, u^{-1}]$ on generators \[1, \, \frac {v - u} {3 - 1}, \, \frac {(v - u)(v - 3u)} {(5 - 1)(5-3)}, \, \frac {(v - u)(v - 3u)(v - 5u)} {(7 - 1)(7 - 3)(7 - 5)} \ldots\]
+    \item[(ii)] The subring of polynomials which satisfy (1') and (2') is free over $\bbZ_{(2)}$ on the following generators. 
+    %u^2 -> u^3 on second displayed block, probably typo in original source.
+    \[u^4, \frac {u^4(v - u)} 2, \frac {u^4(v - u)(v - 3u)} {2^3}, \frac {u^4(v - u)\ldots(v - 5u)} {2^4}, \frac {u^4(v - u) \ldots (v - 7u)} {2^7} \ldots\] 
+    \[u^3, \frac {u^3(v - u)} 2, \frac {u^3(v - u)(v - 3u)} {2^3}, \frac {u^3(v - u)\ldots(v - 5u)} {2^4}, \frac {u^3(v - u) \ldots (v - 7u)} {2^7} \ldots\]
+    \[u^2, \frac {u^2(v - u)} 2, \frac {u^2(v - u)(v - 3u)} {2^3}, \frac {u^2(v - u)\ldots(v - 5u)} {2^4}, \frac {u^2(v - u) \ldots (v - 7u)} {2^6} \ldots\]
+    \[u, \frac {u(v - u)} 2, \frac {u(v - u)(v - 3u)} {2^3}, \frac {u(v - u)\ldots(v - 5u)} {2^4}, \frac {u(v - u) \ldots (v - 7u)} {2^5} \ldots\]
+    \[1, \frac {v - u} 2, \frac {(v - u)(v - 3u)} {2^2}, \frac {(v - u)(v - 3u)(v - 5u)} {2^3}, \frac {(v - u)(v - 3u)(v - 5u)(v - 7u)} {2^4}, \ldots\]
+\end{enumerate}
+\end{proposition}
+
+The principle in part (ii) is that one takes each product $(v - u)(v - 3u)\ldots(v - (2n + 1)u)$, multiplies it by $u^i$, and then divides by the greatest power of $2$ which will still leave it satisfying (1') and (2'). The greatest power of $2$ which leaves it satisfying (1') is read from (1), and is the 2-primary factor of $2^n(n!)$. The greatest power of $2$ which leaves it satisfying (2') is $2^{n + i}$. 
+
+\begin{remark*}
+%corrected typo in source
+For an odd prime $p$ we replace the arithmetic progression $1, 3, 5, 7\dots$ of \ref{prop:p3c17.6} by the sequence of positive integers prime to $p$. Alternatively, if one takes the precaution of splitting $\te{bu}\bbZ_{(p)}$ into $(p - 1)$ similar summands and taking one of them, one replaces $(v - u)(v - 3u)(v - 5u) \ldots$ by $(v^{p - 1} - u^{p - 1}) (v^{p - 1} - (p + 1)u^{p-1}) (v^{p - 1} - (2 p + 1)u^{p - 1}) \ldots$. When one replaces $\te{bu}$ by $\te{bo}$, one replaces $(v - u)(v - 3u)(v - 5u) \ldots$ by $(v^2 - 1^2 u^2)(v^2 - 3^2 u^2) (v^2 - 5^2 u^2)\ldots$. 
+\end{remark*}
+
+The proof of \ref{prop:p3c17.6} is straight algebra, and will be given later.
+
+We begin the proof of these results with a simple result on the homology of $X$, essentially comparable with \ref{lem:p3c17.1}. 
+
+\begin{lemma}
+\label{lem:p3c17.7}
+Let $X$ be as in \ref{lem:p3c17.1}--\ref{thm:p3c17.3}, and let $\{c_i\}$ be any $\bbZ_2$-base for the subquotient $\mathrm{Ker} \, \beta_2/\mathrm{Im} \, \beta_2$ of $(H\bbZ_2)_{2r}(X)$ (e.g. arising from our assumed decomposition $(H \bbZ_2)^\ast(X) \cong \bigoplus \Sigma^{a(i, 2)} I^{b(i, 2)}$.) Let $h_i \in H_{2r}(X)$ be any element whose image in $(H \bbZ_2)_{2r}(X)$ is $c_i$. Then the elements $h_i$ yields a $\bbZ_{(2)}$-base for the image of $(H \bbZ_{(2)})_{2r}(X)$ in $(H \bbQ)_{2r}(X)$.
+\end{lemma}
+
+\begin{proof}
+Let $k_j$ be a $\bbZ$-base for $H_{2r}(X)$ mod torsion; then in $H_{2r}(X)$ mod torsion we can write $\displaystyle h = \sum_j a_{ij} k_j$ where $a_{ij} \in \bbZ$. When we pass to $(H \bbZ_2)_{2r}(X)$, both the $h_i$ and the $k_j$ yields $\bbZ_2$-base for $\mathrm{Ker} \, \beta_2/\mathrm{Im} \, \beta_2$. So the $h_i$ and $k_j$ are equal in number, and $\det(a_{ij})$ is odd. The result follows.
+\end{proof}
+
+Next I recall some results of homological algebra over $K[x, y]$. Consider the following short exact sequences. \[0 \lar{} \Sigma^{|x|} \lar{x} \frac {K[x, y]} {y K[x, y]} \lar{} 1 \lar{} 0\] \[0 \lar{} \Sigma^{|y|} \lar{y} \frac {K[x, y]} {x K[x, y]} \lar{} 1 \lar{} 0\] They represent elements \[\xi \in \mathrm{Ext}_{K[x, y]}^{1, |x|} (K, K),\] \[\eta \in \mathrm{Ext}_{K[x, y]}^{1, |y|} (K, K).\]
+
+\begin{lemma}
+\label{lem:p3c17.8}
+$\mathrm{Ext}_{K[x, y]}^{\ast \ast}(K, K)$ is a polynomial algebra of $K[\xi, \eta]$.
+\end{lemma}
+
+This is a completely standard calculation.
+
+\begin{lemma}
+\label{lem:p3c17.9}
+We have an epimorphism \[\mathrm{Ext}_{K[x, y]}^{s, t} (I \oplus M, K) \lar{} \mathrm{Ext}_{K[x, y]}^{s + 1, t}(M, K)\] which is an isomorphism for $s > 0$. 
+\end{lemma}
+
+This is trivial, since we have an exact sequence \[0 \lar{} I \otimes M \lar{} A \otimes M \lar{} M \lar{} 0\] with $A \otimes M$ free.
+
+Now observe that as a matter of formal algebra, I can construct a free module over $K[\xi, \eta]$ on various generators, where I may assign bidegrees to the generators at will. In particular, given $M$ as a locally-finite sum $M \cong\displaystyle \bigoplus_i \Sigma^{a(i)} I^{b(i)}$ with $b(i) \ge 0$, I take $F$ to be a free module over $K$ with generators $a_i$ of bidegrees $s = -b(i)$, $t = a(i)$.
+
+\begin{lemma}
+\label{lem:p3c17.10}
+In degrees $s \ge 0$ we have an epimorphism \[\mathrm{Ext}_{K[x, y]}^{\ast \ast}(M, \bbZ_2) \lar{} F\] which is an isomorphism in degrees $s > 0$. 
+\end{lemma}
+
+The case of one factor $\Sigma^a I^b$ follows immediately from \ref{lem:p3c17.8} and \ref{lem:p3c17.9}; the factor $\Sigma^a$ causes a trivial shift in the $t$-grading. Then one passes to sums.
+
+Now I specialise to the case $p = 2$, $K[x, y] = B$, $a(i) = a(i, 2)$, $b(i) = b(i, 2)$. Then Lemma~\ref{lem:p3c17.10} computes for us the $E_2$-term of the spectral sequence \ref{prop:p3ch16.1}, which converges to $\pi_\ast(\te{bu} \wedge X)$ at the prime $2$. 
+
+\begin{lemma}
+\label{lem:p3c17.11}
+\begin{enumerate}
+    \item[(i)] There is a homomorphism $E_r^{s, t} \lar{} E_r^{s + t, t + 1}$ of the spectral sequence \ref{prop:p3ch16.1} which for $r = 2$ is multiplication by $\xi$ and for $r = \infty$ is obtained by passing to quotients from multiplication by $2$ in $\pi_\ast(\te{bu} \wedge X)$.
+    \item[(ii)] There is a homomorphism $E_r^{s, t} \lar{} E_r^{s + 1, t + 3}$ of the spectral sequence \ref{prop:p3ch16.1} which for $r = 2$ is multiplication by $\eta$ and for $r = \infty$ is obtained by passing to quotients from multiplication by the generator $t \in \pi_2(\te{bu})$ in $\pi_\ast(\te{bu} \wedge X)$.
+\end{enumerate}
+\end{lemma}
+
+For an odd prime we use $t^{p - 1}$ in part (ii). For $\te{bu}$ we use the generator $\pi_8(\te{bo})$, and replace $\eta$ by the generator in $\mathrm{Ext}_{K[x, y]}^{4, 12}(\bbZ_2, \bbZ_2)$. 
+
+Part (i) is absolutely standard. For part (ii), consider the morphism $S^2 \wedge \te{bu} \lar{} \te{bu}$ which corresponds to multiplication by the generator $\pi_8(\te{bu})$, consider its effect on the spectral sequence \ref{thm:p3ch15.1}, and chase that effect through the change-of-rings theorem.
+
+\begin{lemma}
+\label{lem:p3c17.12} 
+Let $X$ be as in \ref{lem:p3c17.1}--\ref{thm:p3c17.3}. Then the spectral sequence of \ref{prop:p3ch16.1} has all its differentials zero. 
+\end{lemma}
+
+\begin{proof}
+From \ref{lem:p3c17.10} and our assumption that $a(i) + b(i) \equiv 0 \mod 2$, it follows that $E_2^{s, t} = 0$ for $s > 0$ and $t - s \equiv 1 \mod 2$; therefore the same holds for $E_r^{s, t}$. So it is sufficient to consider $d_r(e)$, where $e \in E_r^{s, t}$ and $s = 0$, $t - s \equiv 1 \mod 2$. 
+
+We suppose, as an inductive hypothesis, that $d_m = 0$ for $m < r$ so that \[E_r^{s, t} \cong E_2^{s, t} \cong \mathrm{Ext}_B^{s, t} ((H \bbZ_2)_\ast(X), \bbZ_2).\]
+
+Argument (i). \[\xi d_r(e) = d_r(\xi e) = 0,\] but multiplication by $\xi$ is a monomorphism on $\mathrm{Ext}^s$ for $s > 0$, therefore on $E_r^{s, t}$, so $d_r(e) = 0$.
+
+Argument (ii). \[\eta d_r(e) = d_r(\eta e) = 0,\] but multiplication by $\eta$ is a monomorphism on $\mathrm{Ext}^s$ for $s > 0$, therefore on $E_r^{s, t}$, so $d_r(e) = 0$.
+
+This completes the induction, and proves \ref{lem:p3c17.12}. 
+\end{proof}
+
+\begin{remark*}
+Argument (ii) becomes better than argument (i) when we replace $\te{bu}$ by $\te{bo}$. 
+\end{remark*} 
+
+\begin{proof}[Proof of \ref{prop:p3c17.2} (i)]
+Let $\alpha \in \pi_\ast(\te{bu} \wedge X)$ be an element in the kernel of the Hurewicz homomorphism. Then certainly $\alpha$ maps to zero in $(H \bbZ_p)_\ast(\te{bu} \wedge X)$, i.e., $\alpha$ has filtration at least 1 in the spectral sequence \ref{prop:p3ch16.1}, and similarly for odd primes $p$. Also $\alpha$ maps to zero in $(H \bbQ)_\ast(\te{bu} \wedge X) \cong \pi_\ast(\te{bu} \wedge X) \otimes \bbQ$, so $\alpha$ is a torsion element. But by \ref{lem:p3c17.10}, \ref{lem:p3c17.1} and \ref{lem:p3c17.12} multiplication by 2 induces a monomorphism $E_\infty^{s, t} \lar{} E_\infty^{s + 1, t + 1}$ for $s > 0$, i.e., multiplication by 2 is a monomorphism on the subgroup of elements of filtration at least 1; and similarly for odd primes $p$. Therefore $\alpha = 0$. This proves \ref{prop:p3c17.2} (i).
+\end{proof}
+
+\begin{remark*}
+If we tried to compute $\te{bu}_\ast(X)$, by using the Atiyah-Hirzeburch spectral sequence \[H_\ast(X; \pi_\ast(\te{bu})) \xRightarrow{\phantom{.....}} \te{bu}_\ast(X)\] we would encounter non-trival extensions; it would not be obvious how multiplication by 2 acts in $\te{bu}_\ast(X)$. 
+\end{remark*} 
+
+In order to prove \ref{thm:p3c17.3}, we pursue the proof of \ref{prop:p3c17.2} a bit further. Let $Y$ be a connective spectrum; then we may filter $\pi_\ast(Y)$ by the filtration subgroups $F_s$ of \ref{thm:p3ch15.1} (with $E = H \bbZ_2$). Also we may filter $H_\ast(Y)$ by the groups $F_s' = 2^s H_\ast(Y)$.
+
+\begin{lemma}
+\label{lem:p3c17.13}
+\begin{enumerate}
+    \item[(i)] The Hurewicz homomorphism \[h : \pi_\ast(Y) \lar{} H_\ast(Y)\] maps $F_s$ into $F_s'$.
+    \item[(ii)] $h^{-1} F_1' = F_1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}[Proof of (i)]
+Let $Y_s$ be as in \S\ref{sec:p3c15}, $\alpha \in \pi_\ast(Y_s)$. Suppose as an inductive hypothesis that in $Y_{s - \tau}$ we have $h(\alpha) = 2^\sigma k_\sigma$ for some $k_\sigma \in \pi_\ast(Y_{s - \sigma})$. The map \[Y_{s - \sigma} \lar{} Y_{s - \sigma - 1}\] induces the zero homomorphism $(H \bbZ_2)_\ast(Y_{s - \sigma}) \lar{} (H \bbZ_2)_\ast(Y_{s - \sigma - 1})$, so $k_\sigma$ maps to zero in $(H \bbZ_2)_\ast(Y_{s - \sigma - 1})$, and in $H_\ast(Y_{s - \sigma - 1})$ we have $k_\sigma = 2 k_{\sigma + 1}$, $h(\alpha) = 2^{\sigma + 1} k_{\sigma + 1}$. This completes the induction and shows that in $H_\ast(Y) = H_\ast(Y_0)$ we have $h(\alpha) = 2^sk_s$.
+\end{proof}
+
+\begin{proof}[Proof of (ii)]
+Suppose $h(\alpha) \in F_1'$. Then $\alpha$ maps to zero in $(H\bbZ_2)_\ast(Y)$, so $\alpha \in F_1$. This proves \ref{lem:p3c17.13}. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:p3c17.14}
+Take $Y = \te{bu} \wedge X$, where $X$ is as above. Then 
+
+\begin{enumerate}
+    \item[(i)] $E_\infty^{s\ast} = F_s/F_{s + 1} \lar{h} F_s'/F'_{s + 1}$ is a monomorphism for all $s$.
+    \item[(ii)] $F_s = h^{-1} F'_s$; in other words, the filtration in $\pi_\ast(\te{bu} \wedge X)$ is obtained exactly by pulling back the filtration in $H_\ast(\te{bu} \wedge X)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+First we show that (ii) follows from (i). Suppose (i) true, and let $\alpha \in \pi_\ast(\te{bu} \wedge X)$, $h\alpha = F_s'$. Suppose, as an inductive hypothesis, that $\alpha \in F_\sigma$ for some $\sigma < s$. Consider $F_\sigma/F_{\sigma + 1} \lar{h} F_\sigma'/F_{\sigma + 1}'$. We are assuming that this homomorphism is a monomorphism; it maps $\alpha$ to zero, so $\alpha \in F_{\sigma + 1}$. This completes the induction, and shows that if $h \alpha \in F_s'$, then $\alpha \in F_s$. This proves part (ii).
+
+We note part (i) is true for $s = 0$, by \ref{lem:p3c17.13}(ii). It is therefore sufficient to prove it for $s \ge 1$. It will now do no harm to replace $F_s'$ by the image of $2^s(H\bbZ_{(2)})_\ast(\te{bu} \wedge X)$ in $(H\bbQ)_\ast(\mathrm \te{bu} \wedge X)$; for this does not alter $F_s'/F_{s + 1}'$ for $s \ge 1$, for \ref{lem:p3c17.1}.
+
+We now divide the proof into three parts. First we exhibit a base for $F_s/F_{s + 1}$; secondly, we exhibit a base for $F'_s/F'_{s + 1}$; thirdly we show that with respect to these bases $h$ is given by a non-singular triangular matrix.
+
+The base for $F_s/F_{s + 1}$ is easy; if $s \ge 1$, then $E_\infty^{s\ast}$ has a $\bbZ_2$-base consisting of the elements $\xi^{m_i} \eta^{n_i} g_i$ with $m_i + n_i = s + b(i)$, by \ref{lem:p3c17.10} and \ref{lem:p3c17.12}. We turn to the base for $F'_s/F'_{s + 1}$. 
+
+Take an element $\gamma_i \in \pi_\ast(\mathrm \te{bu} \wedge X)$ representing $\xi^{b_i} g_i$. We can consider its image in $H_\ast(\te{bu} \wedge X)$; we can see that there is an element $h_i \in H_\ast(X)$ such that the images of $\gamma_i$ in $(H \bbQ)_\ast(\te{bu} \wedge X)$ and $(H\bbZ_2)_\ast(\te{bu} \wedge X)$ both have the form \[h(\gamma_i) = 1 \otimes h_i \mod \text{ lower terms}\] where ``lower terms'' means terms \[b_j \otimes x_j\] with \[b_j \in (H \bbQ)_\ast(\te{bu}) \qquad \text {or} \qquad (H \bbZ_2)_\ast(\te{bu}), \, \deg b_j > 0,\] \[x_j \in (H \bbQ)_\ast(X) \qquad \text{or} \qquad (H \bbZ_2)_\ast(X), \, |x_j| < |h_i|.\]
+
+Now by construction, the image of $h_i$ in $(H\bbZ_2)_\ast(X)$ is the $i^{\mathrm{th}}$ basis element for $\mathrm{Ker} \, \beta_2/\mathrm{Im} \, \beta_2$. By \ref{lem:p3c17.7}, the elements $h_i$ form a $\bbZ_{(2)}$-base for the image of $(H \bbZ_{(2)})_\ast(X)$ in $(H\bbQ)_\ast(X)$. Let $t/2$ be the generator for $H_2(\te{bu})$, as above. Then $F'_s/F'_{s + 1}$ has a $\bbZ_2$-base consisting of the elements \[2^s(t/2)^\nu h_i \quad (\nu \ge 0).\] 
+
+I claim that if $m_i + n_i = s + b(i)$, then the image of $\xi^{m_i} \eta^{n_i} g_i$ in $F'_s/F'_{s + 1}$ is \[2^s (t/2)^{n_i} h_i \mod \text{lower terms}.\] Here ``lower terms'' means terms $2^s(t/2)^\nu h_j$ with $\nu > n_i$, $\deg h_j < \deg h_i$. By construction, $\gamma_i$ represents $\xi^{b(i)} g_i$, and its image in $(H\bbQ)_\ast(\te{bu} \wedge X)$ is $h_i$ mod lower terms of filtration $\ge 0$. So $2^{m_i} t^{b_i} \gamma_i$ represents $\xi^{b(i) + m_i} \nu^{n_i} g_i$, and its image in $(H \bbQ)_\ast(\te{bu} \wedge X)$ is $2^{m_i + n_i}(t/2)^{n_i} h_i$ mod lower terms of filtration $\ge n_i + m_I$. Now multiplication by $\xi$ or $2$ is a monomorphism on $F_s/F_{s + 1}$, and on $F'_s/F'_{s + 1}$. So the image of $\xi^{m_i} \eta^{n_i} g_i$ is $2^s(t/2)^{n_i} h_i$ mod lower terms of filtration $\ge s$. This proves \ref{lem:p3c17.14}. 
+\end{proof}
+
+\begin{corollary}
+\label{cor:p3c17.15}
+(of the proof): Suppose $\alpha \in \pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$ has filtration $\ge q$ and its image in $(H\bbQ)_\ast(\te{bu} \wedge X)$ lies in $\displaystyle \sum_{i \ge q} (H \bbQ)_{2i}(\te{bu}) \otimes (H \bbQ)_\ast(X)$. Then the class of $\alpha$ in $E_\infty^{\ast \ast}$ can be divided by $\eta^q$. 
+\end{corollary}
+\begin{proof}
+The result is empty for $q = 0$, so we may assume $q \ge !$. Then the class of $\alpha$ in $E_\infty^{s\ast}$ is a linear combination of the basis elements \[\xi^{m_i} \eta^{n_i} g_i.\] I claim that every element appearing with a non-zero coefficient has $n_i \ge q$. For let the highest term appearing be \[\sum \lambda_i \xi^{m_i} \eta^\nu g_i\] where not all the $\lambda_i$ are zero; then in $(H\bbQ)^\ast(\te{bu} \wedge X)$, $\alpha$ maps to \[\sum_i \lambda^i 2^s (t/2)^\nu h_i\] mod $2^{s + 1}(H \bbQ)_\ast(\te{bu} \wedge X)$ and lower terms, and hence $\nu \ge q$.
+
+Since $\alpha$ has a filtration $\ge q$, each term \[\xi^{m_i} \eta^{n_i} g_i\] which appears has $m_i + n_i \ge b(i) + q$, and there is an element of $E_\infty^{s - q\ast}$ mapping onto $\xi^{m_i} \eta^{n_i - q}g_i$. Therefore the class of $\alpha$ in $E^{s\ast}_\infty$ can be divided by $\nu^q$. This proves \ref{cor:p3c17.15}. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:p3c17.16}
+Let $\alpha \in \pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$, and suppose 
+
+\begin{enumerate}
+    \item[(i)] $\alpha$ has filtration $\ge q$, 
+    \item[(ii)] the image of $\alpha$ in $(H \bbQ)_\ast(\te{bu} \wedge X)$ lies in \[\sum_{i \ge q} (H \bbQ)_{2i}(\te{bu}) \otimes (H \bbQ)_\ast(X).\] Then $\alpha = t^q \beta$ for some $\beta \in \pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Conisder the subgroup of $\alpha$ which satisfy (ii), modulo the subgroup\newline $t^q \pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$. The quotient is evidently finite in each degree, for when we tensor with $\bbQ$ the result is zero. In particular, for each degree there is a filtration $s$ such that all elements of filtration $\ge s$ in $\pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$ which satisfy (ii) lie in $t^q \pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$. Now we argue by downward induction over the filtration of $\alpha$. Suppose the result is true for elements $\alpha'$ of filtration $> \sigma$, and $\alpha$ has filtration $\sigma \ge q$. Then by \ref{cor:p3c17.15} the class of $\alpha$ in $E_\infty^{\sigma\ast}$ can be divided by $\eta^q$; that is, $\alpha = \alpha' + t^q \beta''$, where $\alpha'$ has filtration $\ge \sigma + 1$ and $\beta'' \in \pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$. Here $\alpha'$ also satisfies (ii), so by the inductive hypothesis, $\alpha' = t^q \beta'$. Then $\alpha = t^q(\beta' + \beta'')$. This complets the induction and proves \ref{lem:p3c17.16}.
+\end{proof}
+
+\begin{proof}[Proof of \ref{thm:p3c17.3}]
+Suppose an element $h \in H_\ast(K \wedge X)$ lies both in the image of $H_\ast(\te{bu} \wedge X)$ and in the image of $\pi_\ast(K \wedge X)$. Then it comes from an element \[\alpha \in \pi_\ast(K(-2n, \ldots, \infty) \wedge X)\] for some sufficiently large value of $n$. The image of $\alpha$ in $H_\ast(K \wedge X)$ lies in the image of $H_\ast(\te{bu} \wedge X)$. Now $H_\ast(K(-2n, \ldots, \infty \wedge Z) \lar{} H_\ast(K \wedge X)$ is not a monomorphism, but the image of \[H_\ast(K(-2n, \ldots, \infty) \wedge X) \lar{} H_\ast(K(-2n-2, \ldots, \infty) \wedge X)\] does map monomorphically to $H_\ast(K \wedge X)$. So by replacing $2n$ with $2n + 2$ if necessary, we may assume that the image of $\alpha$ in $H_\ast(K(-2n, \ldots, \infty) \wedge X)$ lies in the image of $H_\ast(\te{bu} \wedge X)$.
+
+Now $K(-2n, \ldots, \infty) \simeq S^{-2n} \wedge \te{bu}$. By \ref{lem:p3c17.14}, the element \newline $\alpha \in \pi_\ast(K(-2n, \ldots, \infty) \wedge X)$ has filtration $\ge n$. Also its image in \newline $(H\bbQ)_\ast(K(-2n, \ldots, \infty) \wedge X)$ lies in the image of $H\bbQ_\ast(\te{bu} \wedge X)$. Now \ref{lem:p3c17.16} applies to show that $\alpha = t^n \beta$, that is, $\alpha$ lies in the image of $\pi_\ast(\te{bu} \wedge X) \otimes \bbZ_{(2)}$. We proceed similarly for the odd primes. Therefore $\alpha$ lies in the image of $\pi_\ast(\te{bu} \wedge X)$. This proves \ref{thm:p3c17.3}. 
+\end{proof}
+
+To prove \ref{thm:p3c17.4}, we give means independent of the Adams spectral sequence for constructing elements in $\pi_\ast(K \wedge \te{bu})$. Consider $\mathbb {CP}^\infty$. We have a canonical map from $\mathbb {CP}^\infty$ to $\te{bu}$, which we can consider as term 2 of the $\te{bu}$-spectrum. We get an element $x \in \te{bu}^2(\mathbb {CP}^\infty)$. Then the Atiyah-Hirzebruch spectral sequence shows that $\te{bu}_\ast(\mathbb {CP}^\infty)$ is free over $\pi_\ast(\te{bu})$ on generators $\beta_i \in \te{bu}_{2i}(\mathbb {CP}^\infty)$ such that \[\langle x^i, \beta_j\rangle = \delta_{ij}.\] Consider again the canonical map from $\mathbb {CP}^\infty$ to $\te{bu}$, considered as term 2 of the $\te{bu}$ spectrum. Applying this to $\beta_{i + 1}$ we obtain an element \[b_i \in \te{bu}_{2i}(\te{bu}).\] For more detail see \cite{quillen}.
+
+\begin{lemma}[Adams, Harris and Switzer]
+The image of $b_n$ in $\pi_{2n}(\te{bu} \wedge \te{bu}) \otimes \bbQ$ is \[\frac {(v - u)(v - 2u) \ldots (v - nu)} {(n + 1)!}\]
+\end{lemma}
+
+The proof is essentially that of \cite{quillen}, Lemma 13.6, except for changes of detail. 
+
+\begin{proof}[Proof of \ref{thm:p3c17.4}]
+Separating components, we can assume that $f$ is homogeneous, say of degree $d$. On multiplying $f(u, v)$ by a sufficiently high power of $u$, we can ensure that \[g(u,v) = u^N f(u, v)\] is a polynomial which has the following property: \[g(k, 1) \in \bbZ \qquad \text {for all} k \in \bbZ.\] The argument is essentially given in \cite{quillen}, p.102, but add one more power of $u$ to take care of the case $k = 0$. Then it is elementary that $g(u, v)$ can be written as $\bbZ$-linear combination of the polynomials \[\frac {u(u - v)(u - 2v) \ldots (u - nv)} {(n + 1)!} v^{d + N - n - 1}.\] 
+%this may be a typo, 17.5 is not a lemma...
+Take Lemma \ref{thm:p3c17.5} and apply $c : \te{bu} \wedge \te{bu} \lar{} \te{bu} \wedge \te{bu}$; we see that \[\frac {(u - v)(u - 2v) \ldots (u - nv)} {(n+1)!}\] lies in the image of $\pi_\ast(\te{bu} \wedge \te{bu})$. Clearly also $u$ and $v^{d + N - n - 1}$ lie in the image of $\pi_\ast(\te{bu} \wedge \te{bu})$. Therefore $g(u, v)$ lies in the image of $\pi_\ast(\te{bu} \wedge \te{bu})$. Dividing by $u^N$, we see that $f(u,v)$ lies in the image of $\pi_\ast(K \wedge \te{bu})$. This completes the proof of \ref{thm:p3c17.4}, which therefore completes the proof of \ref{thm:p3c17.5}. 
+\end{proof}
+
+\begin{proof}[Proof of \ref{prop:p3c17.6}(i)]
+First I claim the given polynomials do satisfy (1'). Consider the special case $\ell = 1$. Let $f$ be the given product of degree $n$; then
+
+\begin{align*}
+f((2k + 1)t, t) & = t^n \frac {(2k)(2k - 2)(2k - 4) \ldots (2k - 2n + 2)} {(2n)(2n-2)(2n-4)\ldots2} \\ & = t^n \frac {k(K - 1)(k - 2)\ldots (k - n + 1)} {1 \cdot 2 \cdot 3 \cdot \ldots \cdot n}
+\end{align*}
+
+which lie in $\bbZ[t]$. Now consider $f(kt, \ell t)$ with $k$ and $\ell$ odd. The denominator of $f$ contains only a finite number of powers of $2$, say $2^m$, so we may solve $\ell \lambda = 1 \mod 2^m$; then $\lambda^n(f(kt, \ell t)) = f(k \lambda t, \ell \lambda t) = f(k \lambda t) \mod \bbZ_{(2)}[t]$, so this lies in $\bbZ_{(2)}[t]$ by the special case $\lambda = 1$. Hence $f(kt, \ell t)$ lies in $\bbZ_{(2)}[t]$ and $f$ satisfies (1').
+
+It is now clear that $\bbZ_{(2)}[u, u^{-1}]$-linear combination of the given polynomials also satisfy (1').
+
+Conversely, let $f(u, v) \in \bbQ[u, u^{-1}, v]$ satisfy (1'). We wish to write it as a $\bbZ_{(2)}[u, u^{-1}]$-linear combination of the given polynomials. By separating homogeneous components, it is sufficient to consider the case in which $f(u, v)$ is homogeneous, say of degree $n$. Then we may write $f(u, v)$ as a $\bbQ$-linear combination \[f(U, v) = \lambda_0 u^n + \lambda_1 u^{n - 1} \frac {v - u} {3 - 1} + \lambda_2 u^{n - 2} \frac {(V - u)(v - 3u)} {(5 - 1)(5 - 3)} \ldots.\] Suppose as an inductive hypothesis that $\lambda_0$, $\lambda_1$, $\ldots$, $\lambda_{r - 1}$ lie in $\bbZ_{(2)}$. Then the sum of the remaining terms \[g(u,v) = \lambda_r u^{n - r} \frac {(v - u) \ldots (v - (2r - 1)u)} {((2r + 1) - 1) \ldots ((2r + 1) - (2r - 1))} + \ldots.\] satisfies (1'). We may find $\lambda_r$ by substituting $v = (2r + 1)t$, $u = t$; we see that \[g((2r + 1)t, t) = \lambda_r t^r.\] and $\lambda_r \in \bbZ_{(2)}$. This completes the induction and proves \ref{prop:p3c17.6}(i).
+\end{proof}
+
+\begin{proof}[Proof of \ref{prop:p3c17.6}(ii)]
+We first observe that the given polynomials do satisfy (1') and (2'), and so do $\bbZ_{(2)}$-linear combinations of them.
+
+Conversely, let $f(u, v) \in \bbQ[u, v]$ satisfy (1') and (2'), we wish to write it as a $\bbZ_{(2)}$-linear combination of the given polynomials. By separating homogeneous components, it is sufficient to consider the case in which $f(u, v)$ is homogeneous, say of degree $n$. Then we may write $f(U, v)$ as a $\bbQ$-linear combination \[f(U, v) = \frac {\lambda_0} {2^{q_0}} u^n + \frac {\lambda_1} {2^{q_1}} u^{n - 1}(v - u) + \frac {\lambda_2} {2^{Z_{(2)}}} u^{n - 2} (v - u) (v - 3u) + \ldots,\] where $\lambda_r \in \bbZ_{(2)}$. Here $2^{q_r}$ divides $r! 2r$ by part (i); we wish to prove it also divides $2^n$. Suppose, as an inductive hypothesis, that this is true for $r' > r$. Then the sum of the remaining terms \[g(u,v) = \frac {\lambda_0} {2^{q_0}} u^n + \ldots + \frac {\lambda_r} {2^{q_r}} u^{n - r}(v - u) \ldots (v - (2r - 1)u)\] also satisfies (1') and (2'). But now $\displaystyle \frac {\lambda_r} {2^{q_r}}$ is the coefficient of $u^{n - r} v^r$, so $q_r \le n$. This completes the induction, and proves \ref{prop:p3c17.6}(ii).
+\end{proof}
+\end{document}

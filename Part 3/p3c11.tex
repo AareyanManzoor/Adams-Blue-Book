@@ -1,0 +1,189 @@
+\documentclass[../main]{subfiles}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\begin{document}
+% Little Narwhal
+\chapter{Applications in K-Theory}
+\label{sec:p3c11}
+The material presented so far may have seemed rather theoretical. But topologists also like to do sums and see how things work out in concrete cases, so I ought to show you some examples. I choose to present some examples from complex K-theory.
+\par First we recall some facts we need about complex $K$-theory. This has a geometric interpretation; a complex vector-bundle $\xi$ over $X$ represents an element of $K^0(X)$. (See section \ref{sec:p3c06}.) Similarly, a formal linear combination of bundles, such as $\xi-\eta$, gives an element of $K^0(X)$. The Whitney sum of bundles gives addition in $K^0(X)$;  the tensor product of bundles gives multiplication in $K^0(X)$.
+\par We need to know the $K$-cohomology of a few simple spaces. Over $\te{BU}(1)=\mathbb{CP}^\infty$ we have the universal $\te{U}(1)$-bundle, which gives a linear bundle, i.e., a complex vector bundle with fibres of dimension $1$. Call this line bundle $\xi$. Define $x=\xi - 1 \in \tilde{K}^0(\mathbb{CP}^\infty)$. Use the same symbol $x$ for the restriction of this class to $\mathbb{CP}^n$.
+\begin{proposition}[Atiyah and Todd]\label{prop:p3ch11.1}
+$K^\ast (\mathbb{CP}^n)$ is free over $\pi_\ast (K)$ with a base consisting of $1,x,x^2,...,x^n (x^{n+1}=0)$. \\$K^\ast (\mathbb{CP}^\infty)=\pi_\ast (K)[[x]].$
+\end{proposition}
+\par We need a cohomology operation in $K$-theory.
+\begin{proposition}\label{prop:p3ch11.2}
+There exists a function $\psi^2:K^0(X)\longrightarrow K^0(X)$ such that \begin{enumerate}
+    \item $\Psi^2$ is natural,
+    \item $\Psi^2$ is a homomorphism of rings, and
+    \item if $\eta$ is a line bundle, then $\Psi^2(\eta)=\eta^2$
+\end{enumerate}
+\end{proposition}
+\par Now I have said something about orientations for particular vector-bundles. If we construct orientations for a whole class of vector-bundles, we would like them to have various properties. First, the orientations should be natural for maps of vector-bundles. Secondly, we would like good behaviour on Whitney sums. Suppose given two bundles $\xi',\xi''$ over $X$; form their Whitney sum $\xi=\xi'\oplus\xi''$. Let the total spaces be $E$, $E'$, $E''$ and the complements of the zero cross-sections $E_0, E_0', E_0''$ respectively. Then we have maps $p':E\longrightarrow E'$, $p'':E\longrightarrow E''$; over each $x\in X$ one projects the sum of two fibres onto either summand. Then \[E_0=((p')^{-1}E_0')\cup ((p'')^{-1}E_0'').\]
+Let $\omega\in F^\ast (E,E_0)$, $\omega'\in F^\ast (E',E_0')$, $\omega''\in F^\ast (E'',E_0'')$ be the three orientations. We would like them to satisfy
+\[\omega = ((p')^\ast \omega')\smile ((p'')^\ast \omega'').\]
+Thirdly, we have a normalisation axiom. Consider the canonical line bundle $\xi$ over $\te{BU}(1)$. I claim its Thom complex $\te{MU}(1)$ is equivalent to $\te{BU}(1)$. In fact, we have to consider the associated pair of bundles with fibres $D^2$ and $S^1$. But $S^1\cong \te{U}(1)$; the associated $S^1$-bundle is the universal $S^1$-bundle, so it is contractible. Thus, when we form a Thom complex by collapsing it to a point, we do not change anything. But $D^2$ is contractible and the associated $D^2$-bundle is equivalent to $\te{BU}(1)$. Hence, $\te{MU}(1)\cong \te{BU}(1)$.
+\begin{proposition}\label{prop:p3ch11.3}
+There is an orientation $\omega$ for each complex vector-bundle $\xi$ which satisfies the following axioms.
+\begin{enumerate}
+    \item Naturality.
+    \item The axiom on Whitney sums.
+    \item Normalization; for the universal bundle, $\omega \in \tilde{K}^0(\te{MU}(1))$ corresponds under the equivalence to $x\in \tilde{K}^0(\te{BU}(1))$. 
+\end{enumerate}
+\end{proposition}
+\par Now we can construct various characteristic classes. The easiest is the Euler class. Suppose we have an orientation $\omega$ in $F$-cohomology for some class of bundles; let $\zeta:X\longrightarrow E$ be the zero cross-section. We define the Euler class of $\xi$ by
+\[\chi_F(\xi)=\zeta^\ast \omega.\]
+Its formal properties are: naturality (if $\omega$ is natural):
+\[\chi_F(\xi'+\xi'')=\chi_F(\xi')\chi_F(\xi''),\]
+(if $\omega$ satisfies the axiom on Whitney sums); and normalisation (if $\omega$ satisfies the normalisation axiom). For example, in the case of complex $K$-theory we have \[K^{(\eta)}=\eta-1 \quad \text{ where } \eta \text{ is a line bundle.} \]
+\begin{proposition}\label{prop:p3ch11.4}
+Suppose the bundle in question is the tangent bundle $\tau$ of a compact smooth manifold $M^n$, orientable for ordinary homology. Then
+\[\chi_F(\tau)=f^\ast i^\ast \omega\]
+Here $i^\ast \omega$ is the restriction of the orientation $\omega$ to one fibre, so that it lies in 
+\[\tilde{F}^\ast (\mathbb{R}^n, \mathbb{R}^n-0)\cong \tilde{F}^\ast (S^n),\]
+and $f:M^n\longrightarrow S^n$ is a map of degree $\chi(M)$, this being the ordinary Euler characteristic for $M$.
+\end{proposition}
+\begin{proof}
+By a result going back to Hopf, we can construct on $M$ a field $\gamma$ of tangent vectors with non-degenerate singularities, so that the number of singularities, when counted with appropriate signs, is $\chi(M)$. But now the zero section $\zeta:M\longrightarrow E(\tau)$ is homotopic to a section $\lambda$, which crosses the zero-section transversely a total $\xi(M)$ times. So $\zeta^\ast \omega=\lambda^\ast \omega$. But here the contribution comes from many small discs, each of which constributes $\pm i^\ast \omega$.
+\end{proof}
+\par Given an orientation, we can also construct a Thom isomorphism. This allows us to copy Thom's treatment of the Stiefel-Whitney classes. We consider the following diagram.
+\[\begin{tikzcd}
+	K^0(E,E_0) &&& K^0(E,E_0) \\
+	\\
+	K^0(X) &&& K^0(X)
+	\arrow["\phi_K", from=3-1, to=1-1]
+	\arrow["\phi_K"', from=3-4, to=1-4]
+	\arrow["\Psi^2", from=1-1, to=1-4]
+\end{tikzcd}\]
+We define 
+\[\rho_2(\xi)=\phi_K^{-1}\Psi^2\phi_K(1)\]
+\begin{proposition}\label{prop:p3ch11.5}
+$\rho_2(\xi)\in K^0(X)$ is a characteristic class with the following properties.
+\begin{enumerate}
+    \item Naturality
+    \item $\rho_2(\xi\oplus\eta)=\rho_2(\xi)\rho_2(\eta)$
+    \item If $\eta$ is a line bundle,
+    \[2^{(\eta)}=1+\eta.\]
+\end{enumerate}
+\end{proposition}
+\begin{proposition}\label{prop:p3ch11.6}
+$\rho_2$ extends to a function
+\[\rho_2:K^0(X)\longrightarrow K^0\left(X;\mathbb{Z}\left[\frac{1}{2}\right]\right)\]
+We need the denominators because $\rho_2(1)=2$, so $\rho_2(-1)=\frac{1}{2}$.
+\end{proposition}
+\par Now we are ready to study the following problem. In terms of our knowledge of $K^\ast (\mathbb{CP}^n)$, what is the fundamental class in $K_\ast (\mathbb{CP}^n)$? If we look at our account of duality, it appears we should ask a prior question. Take $\mathbb{CP}^n\times\mathbb{CP}^n$ and embed $\mathbb{CP}^n$ in the diagonal $\Delta$. We have an orientation 
+\[\omega \in K^0(\mathbb{CP}^n\times\mathbb{CP}^n, \mathbb{CP}^n\times\mathbb{CP}^n -\Delta).\]
+What is its image in $K^0(\mathbb{CP}^n\times\mathbb{CP}^n)$? Of course we require our answer in terms of the base we know in $K^\ast (\mathbb{CP}^n\times\mathbb{CP}^n)$.
+\begin{proposition} \label{prop:p3ch11.7}
+$K^\ast (\mathbb{CP}^n\times\mathbb{CP}^n)$ is free over $\pi_\ast (K)$ with a base consisting of the products $x_1^ix_2^j$ for $0\leq i \leq n$, $0\leq j\leq n$, $(x_1^{n+1}=0, x_2^{n+1}=0)$. Here $x_1$ and $x_2$ are generators for the two factors -- see \ref{prop:p3ch11.1}.
+\end{proposition}
+\par The difficulty is that the construction of $\omega$ refers to a tubular neighbourhood of the diagonal, and it is not clear how to relate that to the whole of $M\times M$. 
+\begin{lemma} \label{prop:p3ch11.8}
+Consider \[j^\ast :K^\ast (\mathbb{CP}^n \times \mathbb{CP}^n, \mathbb{CP}\times \mathbb{CP}^n - \Delta) \longrightarrow K^\ast (\mathbb{CP}^n\times \mathbb{CP}^n).\]
+Of $k\in\operatorname{Im}j^\ast $, then $x_1 k = x_2 k$.
+\end{lemma}
+See the proof of \ref{prop:p3c10.14}.
+\begin{lemma} \label{lem:p3ch11.9}
+The subgroups of elements $k\in K^0(\mathbb{CP}^n\times \mathbb{CP}^n)$ such that $(x_1-x_2)k=0$ has a $\mathbb{Z}$-base $p_0,p_1,...,p_n,$ where
+\[p_r=\sum_{i+j=n+r}x_1^ix_2^j\]
+\end{lemma}
+\par The proof is a trivial calculation.
+\begin{lemma}\label{lem:p3ch11.10}
+We have \[j^\ast \omega=1\cdot p_0+a_1p_1+a_2p_2+...+a_np_n, \quad a_i\in \mathbb{Z}\]
+\end{lemma}
+\begin{proof}
+By Lemmas \ref{prop:p3ch11.8} and \ref{lem:p3ch11.9} we have 
+\[j^\ast \omega=\sum_ia_ip_i.\]
+Now consider the restriction of $j^\ast $ to the diagonal. $p_0$ restricts to $(n+1)x^n$; $p_i$ restricts to $0$ for $i>0$. But $j^\ast \omega$ restricts to the Euler class; $\chi(\mathbb{CP}^n)=(n+1)$, and the orientation was chosen so that $1^\ast i^\ast \omega = x^n$. So $a_0=1$.
+\end{proof}
+\begin{lemma}\label{lem:p3ch11.11}
+$j^\ast \omega$ satisfies
+\[\Psi^2(j^\ast \omega)=(\rho_2\tau)(j^\ast \omega)\]
+where $\rho_2(\tau)=\frac{1}{2}(2+x)^{n+1}$.
+\end{lemma}
+\begin{proof}
+The first equation is immediate from the definition of $\rho_2$. For the second 
+\begin{align}
+\tau + 1 &= (n+1)\xi, \nonumber \\
+\rho_2(\xi) &= 1+\xi = 2+x, \nonumber \\
+\rho_2(1)&=2 \nonumber;
+\end{align}
+so \[\rho_2(\tau)=\frac{1}{2}(2+x)^{n+1}.\]
+\end{proof}
+\begin{lemma} \label{lem:p3ch11.12}
+$j^\ast \omega$ is uniquely determined by \ref{lem:p3ch11.10} and \ref{lem:p3ch11.11}.
+\end{lemma}
+\begin{proof}
+Suppose as an inductive hypothesis that $a_1,...,a_{i-1}$ are determined. Then 
+\[\Psi^2(a_ip_i)=2^{n+i}a_ip_i+T_1,\] 
+where $T_1$ is a sum of terms in $p_{i+1},...,p_n$; so 
+\[\Psi^2(j^\ast \omega)=T_2+2^{n+i}a_ip_i+T_3,\]
+where $T_2$ is a sum of known terms and $T_3$ is a sum of terms in $P_{i+1},...,p_n.$ Similarly, $(\rho_2\tau)(j^\ast \omega)$ is the sum of known terms, terms in $p_{i+1},...,p_n$ and the term $2^na_ip_i$. So we can find $a_i$ by equating the coefficients of $p_i$.
+\end{proof}
+\begin{lemma}\label{lem:p3ch11.13}
+We have 
+\[2(1+x)\Psi^2(p_0)=(2+x)^{n+1}p_0.\]
+\end{lemma}
+\begin{proof}
+Calculating in $K^0(\mathbb{CP}^\infty\times\mathbb{CP}^\infty)$ we have 
+\[(x_1-x_2)p_0=x_1^{n+1}-x_2^{n+1},\]
+therefore 
+\[\Psi^2(x_1-x_2)\Psi^2p_0=\Psi^2x_1^{n+1}-\Psi^2x_2^{n+1},\]
+i.e.,
+\begin{align}
+    (2x_1+x_1^2-2x_2-x_2^2)\Psi^2p_0 &= (2x_j+x_1^2)^{n+1}-(2x_2+x_2^2)^{n+1} \nonumber \\
+    &=\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^i(x_1^{n+1+j}-x_2^{n+1+j}). \nonumber
+\end{align}
+Dividing by $x_1-x_2$, which is not a zero-divisor in $K^0(\mathbb{CP}^\infty\times\mathbb{CP}^\infty),$ we have 
+\[(2+x_1+x_2)\Psi^2p_0=\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^ip_j.\]
+Now restricting to $K^0(\mathbb{CP}^n\times\mathbb{CP}^\infty),$ we get
+\[2(1+x)\Psi^2p_0=\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^ix^jp_0=(2+x)^{n+1}p_0.\]
+This proves \ref{lem:p3ch11.13}
+\end{proof}
+\par It follows that 
+\[\Psi^2((1+x)p_0)=(1+x)^2\Psi^2p_0=\frac{1}{2}(2+x)^{n+1}(1+x)p_0.\]
+We conclude that the solution to our problem is:
+\begin{theorem}\label{thm:p3ch11.14}
+\[j^\ast \omega=(1+x)p_0=\sum_{i+j=n}x_1^ix_2^j + \sum_{i+j=n+1}x_1^ix_2^j.\]
+\end{theorem}
+As a corollary, we obtain the relation between the fundamental class $[\mathbb{CP}^n]_K$ in $K$-homology and our base $\{x^i\}$.
+\begin{theorem}\label{thm:p3ch11.15}
+$\left<x^i,[\mathbb{CP}^n]_K\right>=(-1)^{n-i}.$
+\end{theorem}
+\begin{proof}
+Suppose we choose a base $\{b_j\}$ in $K_0(\mathbb{CP}^n)$ such that $\left<x^i,b_j\right>=\delta_{ij}.$ Then 
+\[x_1^ix_2^j/b_k=x_1^i\langle x_2^j,b_k\rangle =x_1^i\delta_{jk}.\]
+Thus 
+\begin{align}
+    j^\ast \omega/b_n =& 1 + x_1, \nonumber \\
+    j^\ast \omega/b_{n-1} =& x_1 + x_1^2, \nonumber \\
+    \vdots& \nonumber\\
+    j^\ast \omega/b_1 =& x_1^{n-1}+x_1^n, \nonumber \\
+    j^\ast \omega/b_0 =& x_1^n. \nonumber
+\end{align}
+We require the class $[\mathbb{CP}^n]_K$ such that $j^\ast \omega/[\mathbb{CP}^n]_K=1$. Clearly the answer is
+\[[\mathbb{CP}^n]_K=b_n-b_{n-1}+b_{n-2}-b_{n-3}+...+(-1)^n b_0.\]
+This proves the result.
+\end{proof}
+\begin{theorem} \label{thm:p3ch11.16}
+If $M$ is a weakly almost complex manifold then
+\[\operatorname{Index}(M)=\left<\rho_2(\tau), [M]_K\right>.\]
+\end{theorem}
+\begin{proof}
+The index is a homomorphism of rings from the cobordism ring of weakly almost complex manifolds, that is, $\pi_\ast(\te{MU})$. It is therefore sufficient to prove the result for a set of generators of the $\mathbb{Q}$-algebra $\pi_\ast (\te{MU})\otimes \mathbb{Q}$. But the complex projective spaces $\mathbb{CP}^n$ are such generators. For $\mathbb{CP}^n$ we have 
+\[\rho_2(\tau)=\frac{1}{2}(2+x)^{n+1}.\]
+So 
+\begin{align*} 
+\bigg\langle\rho_2(\tau),[\mathbb{CP}^n]_K\bigg\langle &= \bigg\langle\frac{1}{2}(2+x)^{n+1},[\mathbb{CP}^n]_K\bigg\rangle \nonumber \\
+&= \frac{1}{2}\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^i\left<x^j,[\mathbb{CP}^n]_K\right> \nonumber \\
+&= \frac{1}{2}\bigg[\sum_{i+j=n+1}\left(\frac{(n+1)!}{i!j!}2^i(-1)^{n-j}\right) + 1\bigg] \nonumber \\
+&= \frac{1}{2}\left[(-1)^n(2-1)^{n+1}+1\right] \nonumber \\
+&= \frac{1}{2}\left[1+(-1)^n\right] \nonumber \\
+&= \begin{cases}
+  1  & (n\equiv 0 \quad (2)) \\
+  0 & (n\equiv 1 \quad (2))
+\end{cases} \nonumber \\
+&=\operatorname{Im}(\mathbb{CP}^n).
+\end{align*}
+\end{proof}
+\end{document}

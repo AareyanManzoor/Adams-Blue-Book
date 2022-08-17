@@ -1,0 +1,70 @@
+We're currently focusing on Part III:
+
+Sec. 1  - Alphyte % done, mod proofreading
+Sec. 2  - derivada.schwarziana % done (mod details)
+Sec. 3  - JohnDS % done modulo proofreading.
+Sec. 4  - walter % done from Lemma 4.7. Happy to do up to half if there's no takers. Have managed to knock out >= a page/10 minutes so not too much of a committment on my half. --George  %john taking over finishing the rest---done except for 3 diagrams, anyone else want to do the diagrams feel free too!
+Sec. 5  - Manan % done mod proofreading
+Sec. 6  - DarQ % done mod proofreading
+Sec. 7  - Manan % done mod proofreading
+Sec. 8  - Little Narwhal % done mod proofreading
+Sec. 9  - zxcvly % done mod proofreading
+Sec. 10 - Average enjoyer (diagrams by George) % done / proofreading
+Sec. 11 - Little Narwhal % done mod proofreading
+Sec. 12 - Slurp % done mod proofreading.
+Sec. 13 - Wew Lads Tbh!
+Sec. 14 - Yohan %done, need someone to proofread it.
+Sec. 15 - JohnDS and Little Narwhal %done mod proofreading
+Sec. 16 - Susilian %done mod comm.diagrams require some adjustments. Doing this from the bottom upwards and we can meet in the middle --George
+Sec. 17 - George - this is still left, if anyone wants to finish it. Done
+
+for part I, to be done after III has been registered(you can pick more than 1 or all of these, in total this is only 20 pages after all):
+
+Sec. 1-  % done? fixed two errors here --deri
+Sec. 2-  % Taken over by Yohan as of now, only waiting for proofreading
+Sec. 3-  % Taken over by Yohan as of now, only waiting for proofreading
+Sec. 4- % sorry for abandoning you but im not able to work on it good luck --daenorks %I've completed this locally, ping me if it's needed --George. Loaded from local on request
+Sec. 5- George --loaded from local
+Sec. 6- Average enjoyer % done / proofreading
+Sec. 7- Manan % done mod proofreading
+Sec. 8- Zach  - this is still left, if anyone wants to finish it (finished by Average enjoyer) % done / proofreading
+
+For part II, to be done after III has been registered (you can pick a few sections at once, as the average section here is quite small)
+
+Sec. 0-wordslinger%done
+Sec. 1-George%done
+Sec. 2-(unknown -- left blank) % done / proofreading. Done, forgot to claim here --George
+Sec. 3-Little Narwhal % done mod proof reading
+Sec. 4-Little Narwhal % done mod proof reading and renumbering equations
+Sec. 5- wordslinger% done, citations needed
+Sec. 6-Little Narwhal % done mod proof reading and renumbering equations
+Sec. 7-George %done bar minor things
+Sec. 8-George %done
+Sec. 9-George %done bar minor things
+Sec. 10-George %done bar minor things
+Sec. 11-George %done bar minor things
+Sec. 12-wordslinger%done
+Sec. 13-wordslinger%done mod proofread
+Sec. 14-wordslinger%done bar citations
+Sec. 15-Whoever %done mod references
+Sec. 16-George %not sure how to do alignment middle of page 111
+Sec. 17-derivada.schwarziana % done -- check the comment
+
+To do:
+Fix reference:
+We are at the endstage of the book, we can start fixing these. So add in the right reference for bib stuff in places, and restructure the labelings of theorem. We are going to uniformize it to format:
+\label{thm:pxchxx.x} , change thm out with lem, cor, sec, rmk etc. a lot of the reference of these are also broken, so fix those too. Anyone want to do this feel free too.
+
+Bibliography: We are leaning biblatex for this, if someone has a different opinion feel free to share. But you can start working on this as the other sections are taken up.
+
+%George: I've done most of this but I've erred on a few citations and have omitted others that are repeated from Part II to Part III.
+
+part 1 bib-
+part 2 bib-
+part 3 bib-
+
+Indexing: Someone with knowledge of the topic can look through the book and find things to put in the index. doing word \index{word/description} will put it in the index with page number and a link.
+
+Proofreading: Some of our sections are done, you can proofread these. Someone with knowledge on the topics might be useful here as a lot of errors might come from just not knowing the math (the topic is fairly advanced).
+
+

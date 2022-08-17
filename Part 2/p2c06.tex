@@ -1,0 +1,172 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c6}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\chapter{More calculations in $E$-Homology}
+The element $a_{ij}$ in $\pi_{2(i+j-1)}(\te{MU})$ can be represented by a weakly almost-complex manifold; we might well be asked to compute the (normal) characteristic numbers of this manifold. It is equivalent to ask for the image of $a_{ij}$ under the Hurewicz homomorphism
+\[\pi_\ast(\te{MU})\longrightarrow H_\ast(\te{MU}).\]
+It is the object of this section to this answer this question.
+
+To do so we introduce the Boardman homomorphism, which is slightly more general than the Hurewicz homomorphism. Let $E$ be a (commutative) ring-spectrum; then for any (space or spectrum) $Y$ we can consider the map 
+\[Y\simeq S^0\wedge Y\overset{i\wedge 1}{\longrightarrow} E\wedge Y;\]
+composition with this map induces a homomorphism 
+\[[X,Y]_\ast\overset{B}{\longrightarrow}[X,E\wedge Y]_\ast.\]
+We recover the Hurewicz homomorphism by setting $X=S^0$, $E=H$. 
+
+The Boardman homomorphism is more or less guaranteed to be useful when $E=H$, because of the following lemma.
+\begin{lemma}
+\label{lem:p2c06.1}
+$H\wedge Y$ is equivalent (though not canonically, in general) to a product of Eilenberg-maclane spectra, whose homotopy groups are the groups
+\[\pi_n(H\wedge Y)=H_n(Y).\]
+It follows that 
+\[[X,H\wedge Y]_r \cong \prod_n H^{n-r}(X;H_n(Y))\]
+(not canonically); so the groups $[X,E\wedge Y]_r$ are computable for $E=H$.
+\end{lemma}
+\begin{proof}
+For each $n$, we can construct a Moore spectrum $M(G_n,n)$ for the group $G_n=\pi_n(H\wedge Y)$ in dimension $n$, and construct a map 
+\[f_n:M(G_n,n)\longrightarrow H\wedge Y\]
+which induces an isomorphism
+\[(f_n)_\ast:\pi_n(M(G_n,n))\longrightarrow \pi_n(H\wedge Y).\]
+We can then construct the map
+\[H\wedge M(G_n,n)\vra{1\wedge f_n} H\wedge H\wedge Y \vra{\mu\wedge 1} H\wedge Y,\]
+where $H\wedge M(G_n,n)$ is an Eilenberg-Maclane spectrum for the group $G_n$ in dimension $n$. We can then form the map
+\[\bigvee_n H\wedge M(G_n,n)\longrightarrow H\wedge Y\]
+whose $n$-th component is the map $(\mu\wedge 1)(1\wedge f_n)$ just constructed; we observe that it is a homotopy equivalence by Whitehead's Theorem (in the category of spectra). Let $\prod_n H\wedge M(G_n,n)$ be the product in the categorical sense; then there is a map 
+\[\bigvee_n H\wedge M(G_n,n)\longrightarrow \prod_n H\wedge M(G_n,n),\]
+and this too is a homotopy equivalence by Whitehead's Theorem. This proves Lemma \ref{lem:p2c06.1}.
+\end{proof}
+
+Returning to the general case, since $E\wedge Y$ is at least a module-spectrum over the ring-spectrum $E$, we may hope to obtain information about $[X,E\wedge Y]_r=(E\wedge Y)^{-r}(X)$ from $E_\ast(X);$ for example, we may have available a universal coefficient theorem.
+
+\begin{lemma}
+\label{lem:p2c06.2}
+We have the following commutative diagram.
+\[\begin{tikzcd}
+\bigl[X,Y\bigr]_\ast && \bigl[X,E\wedge Y\bigr]_\ast \\
+\\
+&\operatorname{Hom}_{\pi_\ast(E)}(E_\ast(X),E_\ast(Y))
+\arrow["\alpha", from=1-1, to=3-2]
+\arrow["B", from=1-1, to=1-3]
+\arrow["p", from=1-3, to=3-2]
+\end{tikzcd}\]
+Here $\alpha$ is defined by 
+\[\alpha(f)=f_\ast:E_\ast(X)\longrightarrow E_\ast(Y),\]
+while $p$ is the homomorphism of the universal coefficient theorem, defined by 
+\[(p(h))(k)=\langle h,k\rangle\in \pi_\ast(E\wedge Y)\]
+In the last formula we have $h\in(E\wedge Y)^\ast(X)$, $k\in E_\ast(X)$, and the Kronecker product $<h,k>$ is defined using the obvious pairing of $E\wedge Y$ and $E$ to $E\wedge Y$.
+\end{lemma}
+
+The proof of the lemma from the definitions is easy diagram-chasing. The lemma is of course mainly useful when $p$ is an isomorphism; but since $E\wedge Y$ is a module-spectrum over $E$, Lemma \ref{lem:p2c04.2} shows that $p$ is an isomorphism when $E$ is as in \hyperref[sec:p2c2]{\S 2}, and $X=\mathbb{CP}^\infty, \te{BU}, \te{MU},$ etc.
+
+Let $E$ be a ring-spectrum which satisfies the assumptions made in \hyperref[sec:p2c2]{\S 2}. Then we can consider the following two maps.
+\[E\simeq E\wedge S^0\longrightarrow E\wedge \te{MU}\]
+\[\te{MU}\simeq S^0\wedge E\Longrightarrow E\wedge \te{MU}.\]
+Both are of course maps of ring-spectra. The generators $x^E$ and $x^{\te{MU}}$ will yield two generators in $(E\wedge \te{MU})^\ast(\mathbb{CP}^\infty)$, and these generators may well be different. In order to remember which is which, we call them $x^E$ and $x^{\te{MU}}$ also (abusing notation to avoid complicating it). Our next task is to compare $x^E$ and $x^{\te{MU}}$.
+\begin{lemma}
+\label{lem:p2c06.3}
+In $(E\wedge \te{MU})^\ast(\mathbb{CP}^\infty)$ we have 
+\[x^{\te{MU}}=\sum_{i\geq 0}\big(u^E\big)^{-1}b_i^E\big(x^E\big)^{i+1}.\]
+Note that the coefficients $\big(u^E\big)^{-1}b_i^E$ lie in $\pi_\ast(E\wedge \te{MU}).$
+\end{lemma}
+\begin{proof}
+Apply Lemma \ref{lem:p2c06.2} to the case $X=\mathbb{CP}^\infty$, $Y=\te{MU}$. Since $x^{\te{MU}}$ is a reduced class, so is $\te{B}x^{\te{MU}}.$ by definition, we have 
+\[\big(\alpha x^{\te{MU}}\big)\big(u^E\beta_{i+1}^E\big)=b_i^E.\]
+But we also have 
+\[\Big(p\big(x^E\big)^j\Big)\big(b_i^E\big)=\begin{cases}1 & (i=j) \\ 0 &(i\neq j)\end{cases}\]
+The result follows by comparing these formulae, since $p$ is an isomorphism. 
+\end{proof}
+
+
+In order to exploit this result, let $g\big(x^E\big)$ be the formal power-series
+\begin{equation}
+\label{eqn:p2c06.4}
+\tag{6.4}
+    g\big(x^E\big)=\sum_{i\geq 0}\big(u^E\big)^{-1}b_i^E\big(x^E\big)^{i+1},
+\end{equation}
+with coefficients in $\pi_\ast(E\wedge \te{MU}),$ and let $g^{-1}$ be the inverse power-series, so that
+\[x^E=g^{-1}x^{\te{MU}}.\]
+
+\begin{customcor}{6.5}
+\label{cor:p2c06.5}
+After applying the homomorphisms
+\[\pi_\ast(E)\longrightarrow \pi_\ast(E\wedge \te{MU})\]
+\[\pi_\ast(\te{MU})\longrightarrow \pi_\ast(E\wedge \te{MU})\]
+the formal products $\mu^E,\mu^{\te{MU}}$ are related by 
+\[\mu^{\te{MU}}\big(x_1^{\te{MU}},x_2^{\te{MU}}\big)=g\big(\mu^E\big(g^{-1}x_1^{\te{MU}},g^{-1}x_2^{\te{MU}}\big)\big).\]
+The proof is immediate from Lemma \ref{lem:p2c02.13}; or directly, the map \newline $m:\mathbb{CP}^\infty\times\mathbb{CP}^\infty\longrightarrow \mathbb{CP}^\infty$ yields an induced homomorphism $m^\ast$ which commutes with products and limits, so that 
+\[m^\ast g\big(x^E\big)=g\big(m^\ast x^E\big).\]
+one just rewrites this equation.
+\end{customcor}
+\begin{customcor}{6.6}
+\label{cor:p2c06.6}
+Take $E=H.$ Then after applying the homomorphism $\pi_\ast(\te{MU})\longrightarrow \pi_\ast(H\wedge \te{MU})$ we have 
+\[\mu^{\te{MU}}(x_1,x_2)=\exp^H\big(\log^Hx_1+\log^Hx_2\big),\]
+where 
+\[\exp^H(x)=\sum_{i\geq 0}b_ix^{i+1},\]
+$b_i\in H_{2i}(\te{MU})$ are the usual generators coming from $H_{2i+2}(\te{MU}(1))$, and $\log^H$ is the formal power-series inverse to $\exp^H$.
+\end{customcor}
+This is immediate from \eqref{cor:p2c06.5}, using (\hyperref[ex:p2c02.9]{2.9}).
+
+This corollary yields a method of calculating the image of $a_{ij}$ in $H_{2(i+j-1)}(\te{MU})$, in terms of the usual base in $H_\ast(\te{MU})$. For example we have 
+\begin{align*}
+    a_{11} &\longrightarrow 2b_1  \\
+    a_{12} &\longrightarrow 3b_2-2b_1^2  \\ 
+    a_{13} &\longrightarrow 4b_3-8b_1b_2+4b_1^3  \\
+    a_{22} &\longrightarrow 6b_3-6b_1b_2+2b_1^3 \quad \text{etc.} 
+\end{align*}
+\begin{customcor}{6.7}
+\label{cor:p2c06.7}
+Take $E=K$. The after applying the homomorphism $\pi_\ast(\te{MU})\longrightarrow \pi_\ast(K\wedge \te{MU}),$ we have
+\[\mu^{\te{MU}}(x_1,x_2)=g\big(g^{-1}x_1+g^{-1}x_2+\big(g^{-1}x_1\big)\big(g^{-1}x_2\big)\big),\]
+where 
+\[g(x)=\sum_{i\geq 0} u^{-1}b_ix^{i+1},\]
+$u\in \pi_2(K)$, $b_i\in K_0(\te{MU})$ are the generators defined above and $g^{-1}$ is the formal power-series inverse to $g$.
+\end{customcor}
+
+This is immediate from \eqref{cor:p2c06.5}, using (\hyperref[ex:p2c02.9]{2.9}).
+
+This corollary yields a method of calculating the image of $a_{ij}$ in $K_{2(i+j-1)}(\te{MU})$, in terms of the base in $K_\ast(\te{MU})$. For example, we have 
+\begin{align*}
+    a_{11} &\longrightarrow u(1+2b_1)  \\
+    a_{12} &\longrightarrow u^2(b_1+3b_2-2b_1^2)  \\ 
+    a_{13} &\longrightarrow u^3(2b_2-2b_1^1+4b_3-8b_1b_2+4b_1^3)  \\
+    a_{22} &\longrightarrow u^3(b_1+6b_2-3b_1^2+6b_3-6b_1b_2+2b_1^3) \quad \text{etc.} 
+\end{align*}
+
+We can also use the same method to calculate the Hurewicz homomorphism
+\[\pi_\ast(\te{MU})\longrightarrow \te{MU}_\ast(\te{MU}).\]
+For this purpose we need to distinguish between the two copies of $\te{MU}$.\\
+We borrow the notation of \cite{adams3}, and write
+\[\eta_L,\eta_R:\pi_\ast(\te{MU})\longrightarrow \te{MU}_\ast(\te{MU})\]
+for the homomorphisms induced by the maps
+\[\te{MU}\simeq \te{MU}\wedge S^0\overset{1\wedge i}{\longrightarrow} \te{MU}\wedge \te{MU}\]
+\[\te{MU}\simeq S^0\wedge \te{MU}\overset{i\wedge 1}{\longrightarrow} \te{MU}\wedge \te{MU}.\]
+The Hurewicz homomorphism is $\eta_R$. The usual action of $\pi_\ast(\te{MU})$ on $\te{MU}_\ast(X)$, which works for any $X$, is given for $X=\te{MU}$ by $\eta_L$.
+\begin{customcor}{6.8}
+\label{cor:p2c06.8}
+The value of $\eta_R$ on the generators $a_{ij}$ is given by 
+\[\mu^R(x_1,x_2)=g\mu^L\big(g^{-1}x_1,g^{-1}x_2\big)\]
+where 
+\[\mu^R(x_1,x_2)=\sum_{i,j}(\eta_Ra_{ij})x_1^ix_2^j,\]
+\[\mu^L(x_1,x_2)=\sum_{i,j}(\eta_La_{ij})x_1^ix_2^j,\]
+\[g(x)=\sum_{i\geq 0}b_i^{\te{MU}}x^{i+1},\]
+$b_i^{\te{MU}}\in \te{MU}_{2i}(\te{MU})$ is the generator described in \hyperref[sec:p2c4]{\S 4}, and $g^{-1}$ is the power-series inverse to $g$.
+\end{customcor}
+
+This corollary is strictly on the same footing as the preceding two.
+
+This yields a method of calculating $\eta_R(a_{ij})$. For example, we find
+\begin{align*}
+    \eta_R(a_{11})&=2b_1+a_{11} \\ 
+    \eta_R(a_{12})&=(2b_2-2b_1^2)+a_{11}b_1 + a_{12 } \\ 
+    \eta_R(a_{13})&=(4b_3-8b_1b_2+4b_1^3)+a_{11}(2b_2-2b_1^2) + a_{13} \\ 
+    \eta_R(a_{22})&=(6b_3-6b_1b_2+2b_1^3)+a_{11}(6b_2-3b_1^2) + (2a_{12}+a_{11}^2)b_1+a_{22}. 
+\end{align*}
+From these formulae for the images of the $a_{ij}$ under the Hurewicz homomorphism
+\[\pi_\ast(\te{MU})\longrightarrow \te{MU}_{\ast}(\te{MU})\]
+one can of course deduce the formulae for the images of the $a_{ij}$ under the Hurewicz homomorphisms
+\[\pi_\ast(\te{MU})\longrightarrow H_\ast(\te{MU})\]
+\[\pi_\ast(\te{MU})\longrightarrow K_\ast(\te{MU}).\]
+One just applies the maps $\te{MU}\longrightarrow H$, $\te{MU}\longrightarrow K$. In fact, the map $\te{MU}\longrightarrow H$ sends $b_i^{\te{MU}}$ to $b_i^H$, and sends $a_{ij}$ to $0$ for $i\geq 1$, $j\geq 1$. The map $\te{MU}\longrightarrow K$ sends $b_i^{\te{MU}}$ to $u^ib_i^K$, $a_{11}$ to $u$, and $a_{ij}$ to $0$ if $i>1$ or $j>1$.
+\end{document}

@@ -1,0 +1,256 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c7}
+
+\chapter{The Structure of Lazard's Universal Ring $L$}
+We propose to prove: 
+
+\begin{theorem}
+\label{thm:p2c07.1}
+The graded ring $L$ is a polynomial algebra over $\bbZ$ on generators of dimension $2, 4, 6, 8, \ldots$.
+\end{theorem}
+
+In order to prove this, we will use a faithful representation of $L$. Its construction is suggested by the results of the last section. As a matter of pure algebra, we define a (graded) commutative ring $R$ by \[R = \bbZ[b_1, b_2, \ldots, b_n, \ldots]\] where $b_i$ is assigned degree $2i$; $b_0$ is interpreted as $1$ if it arises. The generator $b_i$ is to be distinguished from the generator $\beta_i$ in \hyperref[sec:p2c3]{\S 3}.
+
+We define a formal power-series \[\exp(y) = R[[y]]\] by 
+\begin{equation}
+\tag{7.2} 
+\label{eqn:p2c07.2}
+\exp(y) = \sum_{i \ge 0} b_i y^{i + 1}.
+\end{equation}
+and we define $\log(x)$ to be the power-series inverse to $\exp$ so that
+\begin{equation}
+\tag{7.3}
+\label{eqn:p2c07.3}
+\begin{split}
+\exp \log(x) & = x \\
+\log \exp(y) & = y
+\end{split}
+\end{equation}
+
+For later use, we make the log series more explicit. Let its coefficients be \[m_i \in \bbZ [b_1, b_2, \ldots, b_n, \ldots],\] so that 
+\begin{equation}
+\tag{7.4}
+\label{eqn:p2c07.4}
+\log x = \sum_{i \ge 0} m_i x^{i + 1},
+\end{equation}
+
+If $S$ is an inhomogeneous sum, let us write $S_i$ for the component of $S$ of dimension $2i$. Then we have: 
+
+\begin{customprop}{7.5}
+\label{prop:p2c07.5}
+\begin{align*}m_n & = \frac 1 {n + 1} \bigg(\sum_{i = 0}^\infty b_i\bigg)_n^{-n-1}, \\ b_n & = \frac 1 {n + 1} \bigg(\sum_{i = 0}^\infty m_i\bigg)_n^{-n-1}.\end{align*}
+\end{customprop}
+
+\begin{examples}
+\begin{align*}
+m_1 & = -b_1, \\ m_2 & = 2 b_1^2 - b_2 \\ m_3 & = -5b_1^3 + 5b_1b_2 - b_3 \quad \text{etc.}
+\end{align*}
+\end{examples}
+
+\begin{proof}
+If \[\omega = \sum_{i \ge -N} c_i y^i \mathrm d y,\] define $\mathrm{res} \, \omega$ to be $c_{-1}$, the residue of $\omega$ at $y=0$. This definition of the residue is purely algebraic, and the property of the residue which we shall can be established purely algebraically. Set
+
+\begin{align*}
+x & = \sum_{i \ge 0} b_i y^{i + 1} \\ y & = \sum_{j \ge 0} m_i y^{j + 1}.
+\end{align*}
+
+Then $\displaystyle \bigg(\sum_{i \ge 0} b_i\bigg)_n^{-n - 1}$ is the coefficient of $y^n$ in $\displaystyle \bigg(\sum_{i \ge 0} b_i y^i\bigg)^{-n - 1}$, that is, the coefficient of $y^{-1}$ in $\displaystyle \bigg(\sum_{i \ge 0} b_i y^{i + 1}\bigg)^{-n - 1}$. So we have 
+
+\begin{align*}
+\bigg(\sum_{i \ge 0} b_i\bigg)_n^{-n - 1} & = \mathrm{res}(x^{-n - 1} \mathrm dy) \\ & = \mathrm{res} \bigg(x^{-n - 1} \frac {\mathrm dy} {\mathrm dx} \mathrm dx\bigg) \\ & = \mathrm{res} \bigg[x^{-n - 1} \bigg(\sum_{j \ge 0} m_j (j + 1) x^j\bigg) \mathrm dx\bigg] \\ & = (n + 1)m_n.
+\end{align*}
+\end{proof}
+
+Of course, the relation between the coefficients $b_i$ and $m_i$ of the two inverse series is symmetric.
+
+In the future, whenever symbols $b_i$ and $m_i$ appear in various contexts, they will be related as in (\ref{prop:p2c07.5}).
+
+\begin{customremark}{7.6}\label{rem:p2c07.6}
+Suppose that instead of $\bbZ$ we have in sight a ring $U$, that we replace $R$ by \[U[b_1, b_2, \ldots, b_n, \ldots],\] and that we replace our series $\exp$ by \[x = u^{-1} \sum_{I \ge 0} b_i y^{i + 1}\] where $u$ is invertible in $U$. (An application is given in \eqref{lem:p2c06.3}, \eqref{eqn:p2c06.4}.) Then we have \[y = \sum_{j \ge 0} m_j u^{j + 1} x^{j + 1},\] by substituting $u x$ for $x$ in our previous work.
+\end{customremark}
+
+
+Let us return to formal groups. We define a formal product over $R = \bbZ[b_1, b_2, \ldots, b_n, \ldots]$ by 
+\begin{equation}
+\tag{7.7}
+\label{eqn:p2c07.7}
+\mu^R(x_1, x_2) = \exp \big(\log x_1 + \log x_2\big).
+\end{equation}
+It is easy to check that this does define a formal product. We have simply taken the additive formal product, \eqref{eqn:p2c01.4}, and made a change of variables; but the change of variables is of a fairly general nature. The topologist who has read \hyperref[sec:p2c6]{\S 6} knows that this piece of pure algebra is read off $H_\ast(\mathrm{MU})$; the algebraist doesn't have to worry.
+
+According to \hyperref[sec:p2c5]{\S 5}, there is one and only one homomorphism \[\theta : L \lar{} R\] which carries the formal product $\mu^L$ into $\mu^R$. We propose to prove; 
+
+\begin{customthm}{7.8}
+\label{thm:p2c07.8}
+The map $\theta$ is monomorphic.
+\end{customthm}
+
+This theorem shows that we have made the ring $R$ big enough to provide a faithful representation of $L$. The proof will require various intermediate results. 
+
+We first recall that the augmentation ideal of a connected graded ring $A$ is defined by \[I = \sum_{n > 0} A_n.\] The elements of $I^2$ are often called ``decomposable elements''. The ``indecomposable quotient'' $Q_\ast(A)$ is defined by \[Q_\ast(A) = I/I^2.\] We can often use $Q_\ast(A)$ to get a hold on $A$.
+
+It is clear that $Q_m(L)$ and $Q_m(R)$ are both zero unless $m = 2n$, $n > 0$. In this case we have $Q_m(R) \cong \bbZ$, generated by the coset $[b_n]$. 
+
+\begin{customlemma}{7.9}
+\label{lem:p2c07.9}
+\begin{enumerate}
+    \item[(i)] $\displaystyle \log(x) = \sum_{i \ge 0} m_i x^{i + 1}$, where $m_0 = 1$ and $m_i \equiv -b_i \mod I^2$ for $i \ge 1$. 
+    \item[(ii)] $\theta(a_{ij}) \equiv \tfrac {(i + j)!} {i! j!} b_{i + j - 1} \mod I^2$ for $i \ge 1$, $j \ge 1$.
+    \item[(iii)] The image of $Q_{2n}(\theta) : Q_{2n}(L) \lar{} Q_{2n}(R)$ consists of the multiples of $d[b_n]$, where \[d = \begin{cases}p & \text {if } n + 1 = p^f, \, p \text { prime}, \, f \ge 1 \\ 1 & \text{otherwise.}\end{cases}\]
+\end{enumerate}
+\end{customlemma}
+
+\begin{proof}
+Part (i) is immediate. Part (iii) follows from \eqref{eqn:p2c07.7} by an easy calculation, ignoring coefficients in $I^2$. Since $L$ is generated as a ring by the $a_{ij}$, $Q_{2n}(L)$ is certainly generated as an abelian group by the $a_{ij}$ with $i + j = n + 1$, $i \ge 1$, $j \ge 1$. To prove part (iii) we need only show that the highest common factor of the binomial coefficients \[\frac {(i+j)!} {i! j!} \quad (i + j = n + 1, \, i \ge 1, \, j \ge 1)\] is the integer $d$ defined in the enunciation.
+
+It is well known and easy to see, that if $n + 1 = p^f$ all these binomial coefficients are divisible by $p$, and that if $n + 1 \ne p^f$ at least one of them is not divisible by $p$. One has only to add that if $n + 1 = p^f$, then the binomial coefficient with $i = \lambda p^{f - 1}$, $j = \mu p^{f - 1}$ is \[\frac {p!} {\lambda! u!} \mod p^2.\] and it is divisible by $p$ but not by $p^2$. 
+\end{proof}
+
+Topologists will note that this calculation is exactly the same one as one which Milnor made in the topological case. He was, of course, computing the image of \[Q_{2n}(\pi_\ast(\mathrm{MU})) \lar{} Q_{2n}(H_\ast(\mathrm{MU})).\] The ``Milnor genus'' may be regarded as the projection \[H_{2n}(\mathrm{MU}) \lar{} Q_{2n}(H_\ast(\mathrm{MU})),\] and the ``hypersurfaces of type $(1,1)$ in $\mathbb {CP}^i \times \mathbb {CP}^j$'' are related to the elements $a_{ij} \in \pi_\ast(\mathrm{MU})$ (see Corollary \ref{rmk:p3c10.9}). 
+
+In order to obtain the structure of $Q_\ast(L)$, we propose to consider formal groups defined over graded rings $S$ of a particular form. Given an abelian group $A$, and an integer $n > 0$, we can make $\bbZ \oplus A$ into a graded ring so that 
+
+\begin{align*}
+S_0 & = \mathbb Z \\ S_{2n} & = A \\ S_r & \ne 0 \text { for } r \ne 0, \, 2n.
+\end{align*}
+
+\begin{customlemma}{7.10}
+\label{lem:p2c07.10}
+Among formal groups defined over such rings $S$, the obvious formal group defined over $\bZ \oplus Q_{2n}(L)$ is universal.
+\end{customlemma}
+
+The proof is immediate; any homomorphism of rings \[L \lar{} \bZ \oplus A\] factors to give the following diagram.
+
+\begin{center}
+\begin{tikzcd}
+L \arrow[rr] \arrow[rd] &                                       & \mathbb Z \oplus A \\
+                        & \mathbb Z \oplus Q_{2n}(L) \arrow[ru] &           
+\end{tikzcd}
+\end{center}
+
+We can now reformulate the main lemma used by Lazard and by Frohlich. Let $T_n$ be the image of $Q_{2n}(\theta) : Q_{2n}(L) \lar{} Q_{2n}(R)$, described in (\ref{lem:p2c07.9}).
+
+\begin{customlemma}{7.11}[After Lazard and Fröhlich]
+\label{lem:p2c07.11}
+For any (commutative) formal group defined over a ring $\bbZ \oplus A$, the homomorphism \[\bZ \oplus Q_{2n}(L) \lar{} \bZ \oplus A\] factors through the quotient map \[\bZ \oplus Q_{2n}(L) \lar{} \bZ \oplus T_n.\]
+\end{customlemma}
+
+The main results of this section follows very easily from this lemma; but we will defer the proofs until we have proved Lemma~\ref{lem:p2c07.11}. 
+
+\begin{proof}
+We recall the reformulation of \hyperref[sec:p2c3]{\S 3}. A formal group defined over $\bZ \oplus A$ is a Hopf algebra structure on a certain coalgebra $F$; the coalgebra $F$ is free over $\bZ \oplus A$ on generators $\beta_0, \beta_1, \ldots, \beta_i, \ldots$, and the coaction is given by \[\psi \beta_k = \sum_{i + j = k} \beta_i \otimes \beta_j.\] Inspecting the formulae in \hyperref[sec:p2c3]{\S 3} again, we see that our rings are graded. $F$ can be graded so that $\beta_i$ has degree $2i$. 
+
+In our case, part of the product structure is determined by the coproduct structure; we must have
+\begin{equation}
+\tag{7.12}
+\label{eqn:p2c07.12}
+\beta_i \beta_j = \frac {(i + j)!} {i! j!} \beta_{i + j} + \sum_{k = i + j - n > 0} a_{ij}^k \beta_k.
+\end{equation}
+
+Here the coefficients $a_{ij}^k$ are coefficients in $A$, which have to be determined, and we are interested in their values for $k = 1$. More precisely, let $d$ be the highest common factor of the binomial coefficients $\tfrac {(i + j)!} {i! j!}$ over $i + j = n + 1$, $i \ge 1$, $j \ge 1$, as in (\ref{lem:p2c07.9}); we wish to show that 
+
+\begin{equation}
+\tag{7.13}
+\label{eqn:p2c07.13}
+a_{ij}^l = \frac 1 d \frac {(i + j)!} {i! j!} a
+\end{equation}
+
+for some fixed element $a \in A$; for the required map $\phi$ from $T_n$ to $A$ will be defined by $\phi(d[b_n]) = a$. 
+
+We emphasise that the product $\beta_i \beta_j$ is known, from \eqref{eqn:p2c07.12}, if $i + j < n + 1$. We now divide cases.
+
+Case (i). $A \cong \bZ$; let us write as if $A = \bZ$. We have \[(\beta_1)^{n + 1} = (n + 1)! \bigg(\beta_{n + 1} + \frac a d \beta_1\bigg)\] for some $a \in \bbQ$. When $i + j = n + 1$ we have 
+
+\begin{align*}
+(i! \beta_i) (j! \beta_j) & = (\beta_1)^i (\beta_1)^i = (\beta_1)^{n + 1} \\ & = (i + j)! \bigg(\beta_{i + j} + \frac a d \beta_1\bigg)
+\end{align*}
+
+Comparing this with (\ref{lem:p2c07.9}) we have \[a_{ij}^1 = \frac {(i + j)!} {i! j!} \frac a d.\] Here $a$ is a rational number such that $\displaystyle \frac {(i + j)!} {i! j!} \frac a d$ is an integer for $i + j = n + 1$, $i \ge 1$, $j \ge 1$. The highest common factor of the numbers $\displaystyle \frac {(i + j)!} {i! j!} \frac 1 d$ is $1$, so $a$ is an integer, and we have obtained the required result \eqref{eqn:p2c07.13} in this case.
+
+Case (ii). $A \cong \bZ_p$. Take $i, j$ such that $i + j = n + 1$, $i \ge 1$, $j \ge 1$ and write 
+
+\begin{align*}
+i & = \lambda_0 + \lambda_1 p + \lambda_2 p^2 + \ldots + \lambda_r p^r, \\ j & = \mu_0 + \mu_1 p + \mu_1 p^2 + \ldots + \mu_r p^r,
+\end{align*}
+
+where $0 \le \lambda_i < p$, $0 \le \mu_i < p$ for each $i$. Then \[\beta_1^{\lambda_0} \beta_p^{\lambda_1} \beta_{p^2}^{\lambda_2} \ldots \beta_{p^r}^{\lambda_r} = c'\beta_i\] \[\beta_1^{\mu_0} \beta_p^{\mu_1} \beta_{p^2}^{\mu_2} \ldots \beta_{p^r}^{\mu_r} = c''\beta_j\] where the coefficients $c'$ and $c''$ are non-zero mod p; in fact,
+
+\begin{align*}
+c' & = \lambda_0! \lambda_1! \lambda_2! \ldots \lambda_r! \mod p \\ c'' & = \mu_0! \mu_1! \mu_2! \cdots \mu_r! \mod p.
+\end{align*}
+
+Then we have 
+
+\[\frac {(i + j)!} {i! j!} \beta_{i + j} + a_{ij}^1 \beta_1 = \beta_i \beta_j = \frac 1 {c' c''} \beta_1^{\lambda_0 + \mu_0} \beta_p^{\lambda_1 + \mu_1} \ldots \beta_{p^r}^{\lambda_r + \mu_r}.\] 
+
+At this point we separate cases further.
+%NOTE: I have changed u_i to mu_i, I think this is an error in the source text.
+Case (a): Suppose that $n + 1 \ne p^f$ and $\lambda_i + \mu_i \ge p$ for some $i$. Then we have $p^{i + 1} \le n + 1$, and since $n + 1 \ne p^f$ we actually have $p^{i + 1} < n + 1$ so $\big(\beta_{p^i}\big)^p = 0$ by \eqref{eqn:p2c07.12} and $a_{ij}^1 = 0$. Since $\displaystyle \frac {(i + j)!} {i! j!}$ is also $0 \mod p$, the required formula \eqref{eqn:p2c07.13} will be true in the case whatever choice of $a$ we make later.
+
+Case (b). Suppose that $n + 1 = p^f$ and $\lambda_i + \mu_i \ge p$ for some $i \le f - 2$. Then the same argument applies, except that we have to remark that $\displaystyle \frac 1 p \frac {(i + j)!} {i! j!}$ is $0 \mod p$. (I am willing to assume the reader knows or can work out all the required results on binomial coefficients)
+
+Case (c). Suppose $n + 1 \ne p^f$ and $\lambda_i + \mu_i < p$ for all $i$. If we write \[n + 1 = \nu_0 + \nu_1 p + \nu_2 p^2 + \ldots + \nu_r p^r,\] with $0 \le \nu_i < p$ for each $i$, we must have \[\lambda_i + \mu_i = \nu_i.\] But we can set, once and for all, \[\beta_1^{\nu_0} \beta_p^{\nu_1} \beta_{p^2}^{\nu_2} \ldots \beta_{p^r}^{\nu_r} = c(\beta_{n + 1} + a \beta_1)\] where the coefficient $c$ is non-zero mod $p$; in fact, \[c = \nu_0! \nu_1! \ldots \nu_r! \mod p.\] Then
+
+\begin{align*}
+a_{ij}^1 & = \frac c {c' c''} a \\ & = \frac {(i + j)!} {i! j!} a.
+\end{align*}
+
+So the required formula \eqref{eqn:p2c07.13} holds if $n + 1 \ne p^f$. This completes case (ii). 
+
+Case (iii). $A \cong \bbZ_{p^f}$. We first remark that a homomorphism of graded rings $\bbZ \oplus A \lar{} \bbZ \oplus A'$ is equivalent to a homomorphism of abelian groups $A \lar{} A'$. We proceed by induction over $f$, and assume the result true for $f - 1$. Suppose given a homomorphism $Q_{2n}(L) \lar{\theta} \bbZ_{p^f};$ and the form the following diagram.
+
+\begin{center}
+\begin{tikzcd}
+Q_{2n}(L) \arrow[rr, "\theta"] \arrow[dd, "q"']                &  & {\mathbb Z}_{p^f} \arrow[dd, "q'"] \\
+                                                               &  &                                    \\
+T_n \arrow[rr, "\alpha", dashed] \arrow[rruu, "\beta", dashed] &  & \mathbb Z_p                       
+\end{tikzcd}
+\end{center}
+
+By case (ii) the homomorphism $q'\theta$ factors in the form $\alpha q$. Since $T_n$ is free, we can factor $\alpha$ in the form $q' \beta$. Then $q'(\theta - \beta q) = 0$, and so $\theta - \beta q$ maps into $\bZ_{p^f - 1}$. By the inductive hypothesis, $\theta - \beta q$ factors in the form $\gamma q$. Therefore $\theta = (\beta + \gamma)q$. This completes the induction, and finishes case (iii).
+
+Case (iv). $A$ is any finitely-generated abelian group. Then $A$ can be written as a direct sum of groups $\bbZ$ and $\bbZ_{p^f}$. The result follows from cases (i) and (iii).
+
+Case (v). $A$ is any abelian group. Let $\theta : Q_{2n}(L) \lar{} A$ be a homomorphism. Since $Q_{2n}(L)$ is finitely-generated, so is the image of $\theta$. The result follows from case (iv).
+\end{proof}
+
+This completes the proof of Lemma~\ref{lem:p2c07.11}.
+
+\begin{customcor}{7.14}
+\label{cor:p2c07.14}
+The quotient map \[Q_{2n}(\theta) : Q_{2n}(L) \lar{} T_n\] of $(\ref{lem:p2c07.9})$ and (\ref{lem:p2c07.11}) is an isomorphism. 
+\end{customcor}
+
+\begin{proof}
+Of course, the quotient map is an epimorphism. Consider the following diagram
+
+\begin{center}
+\begin{tikzcd}
+\mathbb Z\oplus Q_{2n}(L) \arrow[rr, "1"] \arrow[rd, "1 \oplus Q_{2n}(\theta)"'] &                                         & \mathbb Z\oplus Q_{2n}(L) \\
+                                                                                 & \mathbb Z \oplus T_n \arrow[ru, dashed] &                          
+\end{tikzcd}
+\end{center}
+
+By Lemma~\ref{lem:p2c07.11}, the identity map of $Q_{2n}(L)$ factors through $Q_{2n}(\theta)$. Therefore $Q_{2n}(\theta)$ is monomorphic.
+\end{proof}
+
+We now prove Theorem~\ref{thm:p2c07.1} and \ref{thm:p2c07.8}. Choose in $L_{2n}$ an element $t_n$ which projects to the generator of $T_n$. We immediately obtain a map \[\bbZ [t_1, t_2, \ldots, t_n, \ldots] \lar{\alpha} L\] By Corollary~\ref{cor:p2c07.14}, $Q_{2n}(\alpha)$ is an isomorphism for each $n$, and therefore $\alpha$ is an epimorphism. But it is obvious that the composite map \[\bbZ[t_1, t_2, \ldots, t_n, \ldots] \lar{\alpha} L \lar{\theta} R = \bbZ[b_1, b_2, \ldots, b_n, \ldots]\] is monomorphic, since $\theta \alpha t_n$ is a non-zero multiple of $b_n$, modulo decomposables. Therefore $\alpha$ is an isomorphism and $\theta$ is a monomorphism. This proves (\ref{thm:p2c07.1}) and (\ref{thm:p2c07.8}). 
+
+\begin{customcor}{7.15}
+\label{cor:p2c07.15}
+Let $\mu^S$ be any formal product defined over a ring $S$ containing the rational numbers $\bbQ$. Then the formal group with formal product $\mu^S$ is isomorphic to the additive formula group \eqref{eqn:p2c01.4}.
+\end{customcor}
+
+\begin{proof}
+We have a homomorphism $\theta : L \lar{} S$ carrying $\mu^L$ into $\mu$. Since $S \supset \bbQ$, $\theta$ extends to give a homomorphism $\theta : L \otimes \bbQ \lar{} S$. Let $R$ be as above; then we may identify $L \otimes \bbQ$ with $R \otimes \bbQ$. Then the power-series
+
+\begin{align*}
+\exp(y) & = \sum_{i \ge 0} (\theta b_i) y^{i + 1} \\ \log(x) & = \sum_{i \ge 0} (\theta m_i) x^{i + 1}
+\end{align*}
+
+give the required isomorphism.
+\end{proof}
+
+Of course, this result is much easier than the proof we have given of it; and it does not need the hypothesis that the formal product $\mu^L$ is commutative (as we are always assuming.) We have given the result to stress that in what follows, $\log$ and $\exp$ will always be as in the proof of (\ref{cor:p2c07.15}). 
+\end{document}

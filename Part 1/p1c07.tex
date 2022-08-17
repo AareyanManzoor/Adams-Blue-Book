@@ -1,0 +1,42 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p1c7}
+
+% Manan
+% The citations might need review
+
+\chapter{Scholium on Novikov's Exposition}
+
+In Moscow, Novikov made a careful distinction, which is maintained in his Doklady note, between $s_{\omega}\colon\Omega_U^{\ast}(P)\longrightarrow\Omega_U^{\ast}(P)$ and a certain homomorphism \newline $\sigma_{\omega}^{\ast}\colon\Omega_U^{\ast}(P)\longrightarrow\Omega_U^{\ast}(P)$. It is necessary to observe that they coincide, and for this purpose it is necessary to analyse Theorem 3 of Novikov's Doklady note \cite{novikov2}. %does this warrant a citation?
+
+First observe that in Novikov's Doklady note, $\te{M}_U$ and $\Omega_U$ are different names for the same thing, since both are defined to be $\Omega_U^{\ast}(P)$ (p. 33 line 4 of Section II; p. 35 line 8). Next recall that Novikov writes $A^U$ for the algebra of operations, and observe that the isomorphism 
+\begin{center}
+    \begin{tikzcd}
+    \te{Hom}_{A^U}(A^U,\te{M}_U)\arrow[r,"\cong"]&\Omega_U
+    \end{tikzcd}
+\end{center}
+which he has in mind is precisely the standard isomorphism $\theta$ given by
+\begin{equation*}
+    \theta(h)=h(1).
+\end{equation*}
+Next consider Novikov's map $d\colon A^U\longrightarrow A^U$. Since it is asserted to induce a map
+\begin{center}
+    \begin{tikzcd}
+    d^{\ast}\colon\te{Hom}_{A^U}(A^U,\te{M}_U)\arrow[r]&\te{Hom}_{A^U}(A^U,\te{M}_U),
+    \end{tikzcd}
+\end{center}
+it is implicit that $d$ must be a map of left $A$-modules. Since it is asserted to satisfy $d(1)=s_{\omega}$, it must be given by
+\begin{equation*}
+    d(a)=as_{\omega}.
+\end{equation*}
+
+Now consider the following diagram.
+\begin{center}
+    \begin{tikzcd}[row sep=large,column sep=large]
+    \te{Hom}_{A^U}(A^U,\te{M}_U)\arrow[d,"\theta"]\arrow[r,"d^{\ast}"]&\te{Hom}_{A^U}(A^U,\te{M}_U)\arrow[d,"\theta"]\\
+    \Omega_U\arrow[r,"x"]&\Omega_U
+    \end{tikzcd}
+\end{center}
+
+It is trivial to check that it is commutative if we define $x$ by $x(y)=s_{\omega}y$. But Novikov asserts that it is commutative if define $x$ to be $\sigma_{\omega}^{\ast}$. Therefore $\sigma_{\omega}^{\ast}(y)=s_{\omega}y$.
+\end{document}

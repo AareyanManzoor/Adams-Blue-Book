@@ -1,0 +1,855 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+
+% walter
+
+\chapter{Smash products}
+\label{sec:p3c04}
+    In this section we will construct smash products of spectra.
+More precisely, we will construct from any two CW-spectra $X$ and $Y$ a CW-spectrum $X \wedge Y$, so as to have the properties stated in the following theorem, among other properties.
+\begin{theorem}\label{thm:p3c04.1}
+    \begin{enumerate}[label=(\alph*)] 
+        \item $X \wedge Y$ is a functor of two variables, with arguments and values in the (graded) stable homotopy category.
+        \item The smash-product is associative, commutative, and has the sphere-spectrum $S$ as a unit, up to coherent natural equivalences.
+    \end{enumerate}
+\end{theorem}
+
+We explain that statement (a) is to be taken in the graded sense.
+That is, if
+\[
+    f \in [X, X']_r, \quad g \in [Y, Y']_s
+\]
+then
+\[
+    f \wedge g \in [X \wedge Y, X' \wedge Y']_{r + s},
+\]
+and besides $1 \wedge 1 = 1$, we have
+\[
+    (f \wedge g) (h \wedge k) = (-1)^{bc} (fh) \wedge (gk)
+\]
+if $f \in [X', X'']_{a}$, $h \in [X, X']_b$, $g \in [Y', Y'']_c$, $k \in [Y, Y']_d$.
+
+We explain statement (b).
+It claims that there are the following equivalences in our category.
+
+%% TODO
+% Write equivalences for category(to be fixed in editing)
+\[\begin{tikzcd}
+	{a=} & {a(X,Y,Z)} {:(X\wedge Y)\wedge Z} & {X\wedge(Y\wedge Z)} \\
+	{c=} & {C(X,Y)} {:X\wedge Y} & {Y\wedge X} \\
+	{l=} & {l(Y)} {:S\wedge Y} & Y \\
+	{r=} & {r(X)}  {:X\wedge S} & X
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=4-2, to=4-3]
+\end{tikzcd}\]
+
+They are all of degree 0.
+They are all natural as $X$, $Y$, and $Z$ vary over the stable category;
+in the case of $c$ this means that the diagram
+
+\[
+\begin{tikzcd}
+    X \wedge Y & X \wedge Y \\
+    X' \wedge Y' & Y' \wedge X' \\
+    \arrow[from=1-1, to=1-2, "c"]
+    \arrow[from=1-1, to=2-1, "f \wedge g"]
+    \arrow[from=1-2, to=2-2, "g \wedge f"]
+    \arrow[from=2-1, to=2-2, "c"] 
+\end{tikzcd}
+\]
+is commutative up to a sign $(-1)^{pq}$, if $f \in [X, X']_p$, $g \in [Y, Y']_q$.
+The other naturality conditions are the obvious ones and don't involve signs.
+The equivalences make the following diagrams commute in our category.
+(If one thinks in terms of representative maps, one says that these diagrams are homotopy-commutative.)
+%% TODO
+% Add labels to next eight diagrams
+\begin{enumerate}
+    \item[(i)]\[
+    \adjustbox{scale=0.8}{
+    \begin{tikzcd}[column sep=-2em, row sep=3em] 
+	&& {(W \wedge X) \wedge (Y \wedge Z)} \\
+	{((W \wedge X) \wedge Y) \wedge Z} &&&& {W \wedge (X \wedge (Y \wedge Z))} \\
+	& {(W \wedge (X \wedge Y)) \wedge Z} && {W \wedge ((X \wedge Y) \wedge Z)}
+	\arrow["{a_2}", from=1-3, to=2-5]
+	\arrow["{a_1}", from=2-1, to=1-3]
+	\arrow["{a_3 \wedge 1}"', from=2-1, to=3-2]
+	\arrow["{a_4}"', from=3-2, to=3-4]
+	\arrow["{1 \wedge a_5}"', from=3-4, to=2-5]
+    \end{tikzcd}
+    }
+    \]
+    Here
+    \begin{align*}
+        a_1 &= a(W \wedge X, Y, Z) & a_4 &= a(W, X \wedge Y, Z) \\
+        a_2 &= a(W, X, Y \wedge Z) & a_5 &= a(X, Y, Z) \\
+        a_3 &= a(W, X, Y).
+    \end{align*}
+    \item[(ii)]\[
+    \begin{tikzcd}[column sep=1.5em] 
+       & Y \wedge X \\
+        X \wedge Y && X \wedge Y
+        \arrow[from=2-1, to=1-2, "c_1"]
+        \arrow[from=2-1, to=2-3, "1"]
+        \arrow[from=1-2, to=2-3, "c_2"] 
+    \end{tikzcd}
+    \]
+    Here
+    \begin{align*}
+        c_1 &= c(X, Y) \\
+        c_2 &= c(Y, X).
+    \end{align*}
+    \item[(ii)]\[
+    \adjustbox{scale=1,center}{
+    \begin{tikzcd}
+    & (Y \wedge X) \wedge Z \ar[rd,"a"] & \\
+    (X \wedge Y) \wedge Z \ar[ru,"c\wedge 1"] \ar[d,"a"] & & Y \wedge (X \wedge Z)\ar[d,"1\wedge c"] \\ 
+    X \wedge (Y \wedge Z) \ar[rd,"c"] & & Y \wedge (Z \wedge X) \\ 
+    & (Y \wedge Z) \wedge X \ar[ru,"a"] &
+    \end{tikzcd}}\]
+    
+    Here the morphisms can be made more precise, as in $(i)$ and $(ii)$
+    \item[(iv)] \[\begin{tikzcd}
+	{(S\wedge Y)\wedge Z} && {S\wedge(Y\wedge Z)} \\
+	& {Y\wedge Z}
+	\arrow["a", from=1-1, to=1-3]
+	\arrow["l"', from=1-1, to=2-2]
+	\arrow["l\wedge 1", from=1-3, to=2-2]
+    \end{tikzcd}\]
+    \item[(v)]\[\begin{tikzcd}
+	{(X\wedge S)\wedge Z} && {X\wedge(S\wedge Z)} \\
+	& {X\wedge Z}
+	\arrow["a", from=1-1, to=1-3]
+	\arrow["1\wedge l"', from=1-1, to=2-2]
+	\arrow["r\wedge 1", from=1-3, to=2-2]
+    \end{tikzcd}\]
+    \item[(vi)]\[\begin{tikzcd}
+	{(X\wedge Y)\wedge S} && {X\wedge(Y\wedge S)} \\
+	& {X\wedge Y}
+	\arrow["a", from=1-1, to=1-3]
+	\arrow["1\wedge r"', from=1-1, to=2-2]
+	\arrow["r", from=1-3, to=2-2]
+    \end{tikzcd}\]
+    \item[(vii)]\[\begin{tikzcd}
+	{S\wedge Y} && {Y\wedge S} && {X\wedge S} && {S\wedge X} \\
+	& Y &&&& X
+	\arrow["c", from=1-1, to=1-3]
+	\arrow["l"', from=1-1, to=2-2]
+	\arrow["r", from=1-3, to=2-2]
+	\arrow["c", from=1-5, to=1-7]
+	\arrow["r"', from=1-5, to=2-6]
+	\arrow["l", from=1-7, to=2-6]
+    \end{tikzcd}\]
+    
+    (These are equivalent, in view of $(iii)$)
+    \item[(viii)] \[\begin{tikzcd}
+	{S\wedge S} && {S\wedge S}
+	\arrow["c", bend left=30, from=1-1, to=1-3]
+	\arrow["1"', bend right=30, from=1-1, to=1-3]
+    \end{tikzcd}\]
+\end{enumerate}
+
+
+
+It follows from these properties that every other diagram constructed from $a$, $c$, $\ell$, and $r$ which you might conceivably wish to prove commutative, is commutative; see MacLane \cite{maclane}.
+
+The properties stated in this theorem are not intended to be a complete list.
+We also want our smash-products to be compatible with those which we already have for CW-complexes.
+We can take it as a guiding idea that if $X$ is a CW-spectrum with terms $X_n$, and $Y$ is a CW-spectrum with terms $Y_m$, then we want $X \wedge Y$ to be the thing to which $X_n \wedge Y_m$ tends as $n$ and $m$ tend to infinity.
+It is therefore tempting to define a product spectrum $P$ so that
+\[
+    P_p = X_{n(p)} \wedge Y_{m(p)},
+\]
+where $n(p)$ and $m(p)$ are fixed functions such that $n(p) + m(p) = p$, while $n(p) \to \infty$ and $m(p) \to \infty$.
+This approach gives the ``handicrafted smash products'' (in later versions, ``naive smash products'') of Boardman.
+Of course, there are many different ways of choosing the function $n(p)$ and $m(p)$, and these give rise to different ``handicrafted smash products'';
+it is obviously desirable to prove that these different products are related by natural equivalences.
+For later work it is also desirable to have a notation more convenient than that of functions $n(p)$ and $m(p)$;
+it is for this purpose that we introduce the details which follow next.
+
+Let $A$ be an ordered set, isomorphic to the ordered set $\{0, 1, 2, 3, \ldots\}$.
+(The reason that we do not take $A$ to be the ordered set $\{0, 1, 2, 3, \ldots\}$ is that we will later want to take $A$ to be a subset of $\{0, 1, 2, 3, \ldots\}$.)
+Let $B$ be a subset of $A$;
+then we define a corresponding function
+\[
+    \beta: A \longrightarrow \{0, 1, 2, 3, \ldots\}
+\]
+as follows:
+$\beta(a)$ is the number of elements $b \in B$ such that $b < a$.
+Then $\beta$ is monotonic, and $\beta |_B$ is an order-preserving isomorphism between $B$ and some initial segment of $\{0, 1, 2, 3, \ldots\}$.
+The notation $\beta$ emphasizes the dependence of $\beta$ on $B$ rather than on $A$;
+this is legitimate, for if we have $B \subset A \subset A'$, then the function $\beta_A$ defined on $A$ is the restriction to $A$ of the function $\beta_{A'}$ defined in $A'$.
+
+Next suppose given a partition of $A$ into two subsets $B$ and $C$, so that $A = B \cup C$, $B \cap C = \emptyset$.
+A suitable illustration is obtained by taking
+    \begin{align*}
+        A &= \{0, 1, 2, 3, \ldots\} \\
+        B &= \{0, 2, 4, 6, \ldots \} \\
+        C &= \{1, 3, 5, 7, \ldots\}
+    \end{align*}
+but there are many other equally suitable choices.
+Then we define a smash-product functor which assigns to any two CW-spectra $X$ and $Y$ a CW-spectrum $X \wedge_{BC} Y$.
+It is convenient to display only $B$ and $C$ in the notation, but of course the product depends on the ordering of $B \cup C$.
+
+The terms of the product spectrum
+\[
+    P = X \wedge_{BC} Y
+\]
+are given by
+\[
+    P_{\alpha(a)} = X_{\beta(a)} \wedge Y_{\gamma(a)}.
+\]
+Note that $\alpha$ is an isomorphism from the ordered set $A = B \cup C$ to $\{0, 1, 2, 3, \ldots\}$ and $\beta$, $\gamma$ are monotonic functions from $A = B \cup C$ to the set $\{0, 1, 2, 3, \ldots\}$ such that $\beta(a) + \gamma(a) = \alpha(a)$.
+
+The maps of the product spectrum are defined as follows.
+We have
+\[
+    P_{\alpha(a)} \wedge S^{1} \longrightarrow X_{\beta(a)} \wedge Y_{\gamma(a)} \wedge S^{1}.
+\]
+Here it is convenient to regard $S^{1}$ as $\mathbb{R}^{1}$ compactified by adding a point at infinity, which becomes the base-point.
+This allows us to define a map of degree $-1$ from $S^{1}$ to $S^{1}$ by $t \mapsto -t$.
+
+If $a \in B$, then
+\[
+    P_{\alpha(a) + 1} = X_{\beta(a) + 1} \wedge Y_{\gamma(a)}
+\]
+and we define the map
+\[
+    \pi_{\alpha(a)} \colon SP_{\alpha(a)} \longrightarrow P_{\alpha(a) + 1}
+\]
+by 
+
+\[
+    \pi_{\alpha(a)}(x \wedge y \wedge t) = \xi_{\beta(a)} \big(x \wedge (-1)^{\gamma(a)}t\big) \wedge y
+\]
+If $a\in C$, then
+\[
+    P_{\alpha(a)+1}=X_{\beta(a)}\wedge Y_{\gamma(a)+1}
+\]
+and we define the map
+\[
+    \pi_{\alpha(a)}(x \wedge y \wedge t) = x \wedge \eta_{\gamma(a)} (y \wedge t).
+\]
+Here
+\[
+    x \in X_{\beta(a)}, \quad y \in Y_{\gamma(a)}, \quad t \in S^{1},
+\]
+and
+\[
+    \xi_{\beta(a)} \colon X_{\beta(a)} \wedge S^{1} \longrightarrow X_{\beta(a)}, \qquad \eta_{\gamma(a)} \colon Y_{\gamma(a)} \wedge S^{1} \longrightarrow Y_{\alpha(a) + 1}
+\]
+are the appropriate maps from the spectra $X$, $Y$.
+The sign $(-1)^{\gamma(a)}$ is introduced, of course, because we have moved $S^{1}$ across $Y_{\gamma(a)}$.
+
+It is clear that $P = X \wedge_{BC} Y$ is functorial for functions of $X$ and $Y$ of degree 0.
+Next we point out that we have no assumed that the sets $B$ and $C$ are infinite.
+In the obvious applications they are infinite, so that $\beta(a) \longrightarrow \infty$ and $\gamma(a) \longrightarrow \infty$;
+but it is convenient to allow $B$ and $C$ to be finite.
+For example, let $\underline{S}^{1}$ be the suspension spectrum of $S^{1}$;
+then $\underline{S}^{1} \wedge_{\emptyset, A} Y = \mathrm{Susp}(Y)$.
+If $B$ is infinite, and $X'$ is a cofinal subspectrum of $X$, then $X' \wedge_{BC} Y$ is a cofinal subspectrum $X \wedge_{BC} Y$.
+So in this case $X \wedge_{BC} Y$ is natural for maps of $Y$ of degree 0.
+Next we observe that $(\te{Cyl}(X)) \wedge_{BC} Y$ and $X \wedge_{BC} (\te{Cyl}(Y))$ can be identified with $\te{Cyl}(X \wedge_{BC} Y)$.
+It follows that the homotopy class of $f \wedge_{BC} g$ depends only on the homotopy class of $f$ (if $B$ is infinite) or $g$ (if $C$ is infinite).
+
+We propose to construct $X \wedge Y$ to have the properties stated in the following theorem.
+\begin{theorem}\label{thm:p3ch04.2}
+    For each choice of $B$, $C$ there is a morphism
+    \[
+        \mathrm{eq}_{BC} \colon X \wedge_{BC} Y \longrightarrow X \wedge Y \quad \text{(of degree 0)}
+    \]
+    with the following properties.
+    \begin{enumerate}[label=(\roman*)] 
+        \item If $B$ is infinite and $f \colon X \longrightarrow X'$ is a morphism of degree 0, then the following diagram is commutative.
+            \[
+            \begin{tikzcd}[column sep=5em] 
+                X \wedge_{BC} Y & X \wedge Y \\
+                X' \wedge_{BC} Y & X' \wedge Y
+                \arrow[from=1-1, to=1-2, "\mathrm{eq}_{BC}"]
+                \arrow[from=1-1, to=2-1, "f \wedge_{BC} 1"'] 
+                \arrow[from=1-2, to=2-2, "f \wedge 1"]
+                \arrow[from=2-1, to=2-2, "\mathrm{eq}_{BC}"] 
+            \end{tikzcd}
+            \]
+        \item If $C$ is infinite and $g: Y \longrightarrow Y'$ is a morphism of degree 0, then the following diagram is commutative.
+            \[
+            \begin{tikzcd}[column sep=5em] 
+                X \wedge_{BC} Y & X \wedge Y \\
+                X \wedge_{BC} Y' & X \wedge Y'
+                \arrow[from=1-1, to=1-2, "\mathrm{eq}_{BC}"]
+                \arrow[from=1-1, to=2-1, "1 \wedge_{BC} g"'] 
+                \arrow[from=1-2, to=2-2, "1 \wedge g"]
+                \arrow[from=2-1, to=2-2, "\mathrm{eq}_{BC}"] 
+            \end{tikzcd}
+            \]
+        \item The morphism $\mathrm{eq}_{BC} \colon: X \wedge_{BC} Y \longrightarrow X \wedge Y$ is an equivalence if any one of the following conditions is satisfied.
+            \begin{enumerate}[label=(\alph*)] 
+                \item $B$ and $C$ are infinite.
+                \item $B$ is finite, say with $d$ elements, and $\xi_r \colon \Sigma X_r \longrightarrow X_{r+1}$ is an isomorphism for $r \geq d$.
+                \item $C$ is finite, say with $d$ elements, and $\eta_r \colon \Sigma Y_r \longrightarrow Y_{r+1}$ is an isomorphism for $r \geq d$.
+            \end{enumerate}
+    \end{enumerate}
+\end{theorem}
+
+Let me show how Theorem \ref{thm:p3ch04.2} will help to prove Theorem \ref{thm:p3c04.1}(b).
+Consider first the associativity.
+The point is that the ``handicrafted smash products'' are actually associative if you pick the right product at each point.
+More precisely, take a set $A$ and partition it into three disjoint subsets $B$, $C$, and $D$, such that $B \cup C$ and $C \cup D$ are infinite.
+Let $X$, $Y$, and $Z$ be CW-spectra.
+Then we can form the spectra
+\[
+    (X \wedge_{BC} Y) \wedge_{B \cup C, D} Z \quad \text{and} \quad X \wedge_{B, C \cup D} (Y \wedge_{CD} Z).
+\]
+(Now one begins to see the purpose for which the notation was designed.)
+These two spectra are actually the same spectrum.
+For the terms of each are given by
+\[
+    P_{\alpha(a)} = X_{\beta(a)} \wedge Y_{\gamma(a)} \wedge Z_{\delta(a)}.
+\]
+The maps of each are described in the same way as before.
+We have
+\[
+    \Sigma P_{\alpha(a)} = X_{\beta(a)} \wedge Y_{\gamma(a)} \wedge Z_{\delta(a)} \wedge S^{1}.
+\]
+If $a\in B$, then 
+\[ P_{\alpha(a)+1} = Z_{\beta(a)+1} \wedge Y_{\gamma(a)} \wedge Z_{\delta(a)}\]
+and we have 
+\[ \pi_{\alpha(a)}(x \wedge y \wedge z\wedge t) = \xi_{\beta(a)} \big(x \wedge (-1)^{\gamma(a)+\delta(a)}t \big)\wedge y\wedge z\]
+If $a\in C$ then 
+\[P_{\alpha(a)+1} = X_{\beta(a)} \wedge Y_{\gamma(a)+1} \wedge Z_{\delta(a)}\]
+and we have 
+\[
+\pi_{\alpha(a)}(x\wedge y\wedge z\wedge t) = x \wedge \eta_{\gamma(a)}\big(y\wedge (-1)^{\delta(a)} t\big) \wedge z
+\]
+If $a\in D$ then
+\[
+P_{\alpha(a)+1} = X_{\beta(a)} \wedge Y_{\gamma(a)} \wedge Z_{\delta(a)+!}
+\]
+and we have 
+\[\pi_{\alpha(a)}(x \wedge y\wedge z \wedge t) = x \wedge y\wedge  \zeta_{\delta(a)} (z \wedge t)\]
+Here, of course, we have $x\in X_{\beta(a)}$, $y\in Y_{\gamma(a)}$, $z\in Z_{\delta(a)}$, $t\in S^1$ and $\xi_{\beta(a)},\eta_{\gamma(a)}, \zeta_{\delta(a)}$ are the appropriate maps of the spectra $X,Y,Z$.
+We will arroung our construction to thave the following property.
+\begin{theorem}\label{thm:p3c04.3}
+    The equivalence
+    \[a=a(X,Y,Z):(X\wedge Y)\wedge Z\lar{} X\wedge(Y\wedge Z)\]
+    makes the following diagram commutative for each choice of $B,C,D$
+    %big diagram here
+    \[
+    \adjustbox{scale = 0.8, center} {
+    \begin{tikzcd}[column sep=0.4cm, row sep = 0.8cm]
+     & {(X \wedge Y) \wedge Z} \arrow[rrr,"a"] & & & {X \wedge (Y \wedge Z)} \\
+    {(X \wedge Y) \wedge_{B \cup C, D}Z} \arrow[ur,"eq_{B\cup C,D}"] & & {(X \wedge_{BC}Y)\wedge Z} \arrow[ul,"eq_{BC}\wedge 1"] & {X \wedge(Y\wedge_{C,D}Z)} \arrow[ur,"1\wedge eq_{CD}"] & & {X \wedge_{B,C\cup D}(Y \wedge Z)} \arrow[ul, "eq_{B,C\cup D}"]\\
+     & {(X \wedge_{BC}Y)\wedge_{B\cup C, D}Z} \arrow[rrr,"1"] \arrow[ul,"eq_{B,C}^{B\cup C, D}1"] \arrow[ur,"eq_{B\cup C,D}"] & & & {X \wedge{B,C\cup D}(Y \wedge_{CD} Z)} \arrow[ul,"eq_{B,C\cup D}"] \arrow[ur,"1\wedge_{B,C\cup D}eq_{CD}"] \\
+    \end{tikzcd}
+    }\]
+\end{theorem}
+
+Note that the squares are commutative by the naturality of $\te{eq}$; we can apply \ref{thm:p3ch04.2}(i) and (ii) since $B\cup C$ and $C\cup D$ are infinite.
+
+Let us now show how to check the commutativity of diagram $(i)$ in Theorem \ref{thm:p3c04.1}(b) (the pentagon diagram). Then by Theorems \ref{thm:p3ch04.2} and \ref{thm:p3c04.3},all we have to do is check the following diagram is commutative.
+\[
+\adjustbox{scale=0.8, center}{
+\begin{tikzcd}
+    & {(W\wedge_{BC}X)\wedge_{B\cup C,D\cup E}(Y\wedge_{DE}Z)} \\
+    \\
+    {((W\wedge_{BC}X)\wedge_{B\cup C,D}Y)\wedge_{B\cup C\cup D,E}Z} && {W\wedge_{B,C\cup D\cup E}(X\wedge_{C,D\cup E}(Y\wedge_{DE}Z))} \\
+    \\
+    {(W\wedge_{B,C\cup D}(X\wedge_{CD}Y))\wedge_{B\cup C\cup D,E}Z} && {W\wedge_{B,C\cup D\cup E}((X\wedge_{CD}Y)\wedge_{C\cup D,E}Z)}
+    \arrow["1", from=3-1, to=1-2]
+    \arrow["1", from=1-2, to=3-3]
+    \arrow["1"', from=3-1, to=5-1]
+    \arrow["1"', from=5-1, to=5-3]
+    \arrow["1"', from=5-3, to=3-3]
+\end{tikzcd}}\]
+This diagram is commutative as a diagram of functions before we pass to homotopy classes.
+
+Similarly, the ``handicrafted smash products'' are commutative if
+you pick the right product at each point. It is tempting to partition $A$ as $B\cup C$, and consider $X\wedge_{BC}Y$ and $Y\wedge_{CB}X$. Corresponding terms
+of these spectra are isomorphic; it is tempting to define 
+\[c_{\alpha(a)} :X_{\beta(a)}\wedge Y_{\gamma(a)}\lar{} Y_{\gamma(a)}\wedge X_{\beta(a)}\]
+by \[c_{\alpha(a)} (x\wedge y)=y\wedge x\]
+However, these components do not give a function between spectra, because the relevant diagrams do not commute. We should have inserted a sign  $(-1)^{\beta(a)\gamma(a)}$, and we do not have a spare suspension coordinate to
+reverse. The answer is easy; we need only consider partitions $A=B\cup C$ such that $ \beta(a)\gamma(a)$ is always even.This amounts to the
+following condition, Elements number $0$ and $1$ in $A$ must be either two
+ elements of $B$, or else two elements of $C$. Similarly for elements
+number $2$ and $3$, and similarly for elements number $2r$ and $2r+1$ for
+each $r$.
+
+Now that we realize we can restrict the choice of partition in this way,
+we see that it is easy and useful to go further. In fact, we now introduce
+the following restriction on the partition $A = B\cup C$.
+\begin{condition}\label{con:p3ch04.4}
+Elements number $0,1,2$, and $3$ in $A$ are either
+four elements of $B$, or else four elements of $C$; similarly for elements
+number $4,5,6$ and $7$ in $A$, and similarly for elements number $4r$,
+$4e+1, 4r+2$ and $4r+3$ for each $r$. 
+\end{condition}
+With this restriction, we define an isomorphism 
+\[ c=c_{BC}:X\wedge_{BC}Y \lar{} Y\wedge_{CB}X\]
+in the manner suggested:
+\[c_n(x\wedge y)= y\wedge x\]
+This is clearly natural for functions of $X$ and $Y$. it is also natural for maps of $X$ if $B$ is infinite; similarly for $Y$ if $C$ is infinite.
+
+We will arrange our constructions to have the following property.
+\begin{theorem}\label{thm:p3ch04.5}
+The equivalence $c=c(X,Y):X\wedge Y\lar{}Y\wedge X$ makes the following diagram commutative for each choice of $B,C$ satisfying \ref{con:p3ch04.4}
+\[\begin{tikzcd}
+X\wedge Y \arrow[rr,"c"]&& Y\wedge X\\ X\wedge_{BC} Y\arrow[u,"\te{eq}_{BC}"]\arrow[rr,"c_{BC}"]&&Y\wedge_{CB}X\arrow[u,"\te{eq}_{CB}"]
+\end{tikzcd}\]
+    
+\end{theorem}
+
+Let us now show how to check the commutativity of diagram $(iii)$ in Theorem \ref{thm:p3c04.1}(b) (the hexagon diagram). Take a set $A$ and partition it into three infinite subsets $B,C$ and $D$ satisfying the obvious analogue of condition \ref{con:p3ch04.4}. Then by Theorems \ref{thm:p3ch04.2}\ref{thm:p3c04.3}\ref{thm:p3ch04.5}, all we have to do is to check that the following diagram is commutative.
+\[
+\adjustbox{scale=1, center}{
+\begin{tikzcd}
+    & {(Y\wedge_{C,B}X)\wedge_{C\cup B,D}Z} \\
+    {(X\wedge_{BC}Y)\wedge_{B\cup C,D}Z} && {Y\wedge_{C,B\cup D}(X\wedge_{B,D}Z)} \\
+    {X\wedge_{B,C\cup D}(Y\wedge_{C,D}Z)} && {Y\wedge_{C,D\cup B}(Z\wedge_{D,B}X)} \\
+    & {(Y\wedge_{C,D}Z)\wedge_{C\cup D,B}Z}
+    \arrow["c", from=3-1, to=4-2]
+    \arrow["1", from=4-2, to=3-3]
+    \arrow["{1\wedge_{C,D\cup B}c}"', from=2-3, to=3-3]
+    \arrow["1"', from=1-2, to=2-3]
+    \arrow["1", from=2-1, to=3-1]
+    \arrow["{c\wedge_{B\cup C,D}1}"', from=2-1, to=1-2]
+\end{tikzcd}}\]
+This diagram is commutative as a diagram of functions.
+
+Similarly, suppose we wish to check the commutativity of diagram $(ii)$ in Theorem \ref{thm:p3c04.1}(b). By theorems \ref{thm:p3ch04.2} and \ref{thm:p3ch04.5}, all we have to do is check that the following diagram is commutative.
+
+\[\begin{tikzcd}
+& Y\wedge_{CB} X\arrow[rd,"c_{BC}"] & \\
+X\wedge_{BC} Y \arrow[ru,"C_{BC}"] \arrow[rr, "1"] && X\wedge_{BC}Y
+\end{tikzcd}\]
+This diagram, too, is commutative as a diagram of functions.
+
+Similarly, the “handicrafted smash products" have $S$ as a unit if
+you pick the right product at each point. More precisely, suppose we
+partition $A$ as $\emptyset\cup A$.This is a legitimate partition satisfying the
+condition \ref{con:p3ch04.4}; this was the reason that we allowed the set $B$ to be finite.We can form the spectrum $S\wedge_{\emptyset A}Y$ and it is isomorphic to $Y$; the obvious isomorphism has as its components the isomorphisms $S^0\wedge Y_n \cong Y_n$. This isomorphism is natural for morphisms of degree $0$. We can now define \[ l:S\wedge Y\lar{}Y\]
+to be the composite \[\begin{tikzcd}
+S\wedge Y &&S\wedge_{\emptyset A}Y\cong Y\arrow[ll,"\te{eq}_{\emptyset,A}"]
+\end{tikzcd}\]
+Here $\te{eq}_{\emptyset A}$ is an equivalence by \ref{thm:p3ch04.2}(iii)(b). Similarly, we can form the spectrum $X\wedge_{A\emptyset} S$, and it is isomorphic to $X$; the obvious isomoprhism has as its components the isomorphisms $X_n\wedge S^0 \cong X_n$. As before, this isomorphism is natural for morphisms of degree $0$. We now define \[ r:X\wedge S\lar{}X\]
+to be the composite \[\begin{tikzcd}
+X\wedge S &&X\wedge_{A\emptyset }S\cong X\arrow[ll,"\te{eq}_{A,\emptyset}"]
+\end{tikzcd} \]
+Here $\te{eq}_{A\emptyset}$ is an equivalence by \ref{thm:p3ch04.2}(iii)(c).
+
+To check the commutativity of diagrams (iv), (v), (vi) and (vii) in
+Theorem \ref{thm:p3c04.1}(b), we have only to check that the following diagrams are
+commutative.
+%diagrams
+\[\begin{tikzcd}
+    {(S\wedge_{\emptyset B}Y)\wedge_{BC}Z} && {S\wedge_{\emptyset,B\cup C}(Y\wedge_{BC}Z)} \\
+    & {Y\wedge_{BC}Z}
+    \arrow["\cong", from=1-3, to=2-2]
+    \arrow["1", from=1-1, to=1-3]
+    \arrow["{\cong\wedge_{BC}1}"', from=1-1, to=2-2]
+\end{tikzcd}\]
+\[\begin{tikzcd}
+    {(X\wedge_{B\emptyset}S)\wedge_{BC}Z} && {X\wedge_{BC}(S\wedge_{\emptyset C}Z)} \\
+    & {X\wedge_{BC}Z}
+    \arrow["{1\wedge_{BC}\cong}", from=1-3, to=2-2]
+    \arrow["1", from=1-1, to=1-3]
+    \arrow["{\cong\wedge_{BC}1}"', from=1-1, to=2-2]
+\end{tikzcd}\]
+\[\begin{tikzcd}
+    {(X\wedge_{BC}Y)\wedge_{B\cup C,\emptyset}S} && {X\wedge_{BC}(Y\wedge_{C\emptyset}S)} \\
+    & {X\wedge_{BC}Y}
+    \arrow["{1\wedge_{BC}\cong}", from=1-3, to=2-2]
+    \arrow["\cong"', from=1-1, to=2-2]
+    \arrow[from=1-1, to=1-3]
+\end{tikzcd}\]
+\[\begin{tikzcd}
+    {S\wedge_{\emptyset A}Y} && {Y\wedge_{A\emptyset}S} \\
+    & Y
+    \arrow["\cong", from=1-3, to=2-2]
+    \arrow["\cong"', from=1-1, to=2-2]
+    \arrow["c", from=1-1, to=1-3]
+\end{tikzcd}\]
+\[\begin{tikzcd}
+    {X\wedge_{A\emptyset}S} && {S\wedge_{\emptyset A}X} \\
+    & X
+    \arrow["\cong", from=1-3, to=2-2]
+    \arrow["\cong"', from=1-1, to=2-2]
+    \arrow["c", from=1-1, to=1-3]
+\end{tikzcd}\]
+These diagrams are all commutative as diagrams of functions. 
+
+Finally, we comment on part (viii) of Theorem \ref{thm:p3c04.1}(b). If you believe any of these results you must believe that $S\wedge S$ is equivalent to $S$. So $[S\wedge S,S\wedge S]_0 \cong [S,S]_0 = \bbZ$. So all we have to do is check that $c\colon S\wedge S \lra S\wedge S$ has degree 1; but we shall make our constructions to have the obvious effect on orientations.
+
+We now turn to the constructions necessary to prove Theorems \ref{thm:p3c04.1},
+\ref{thm:p3ch04.2}, \ref{thm:p3c04.3} and \ref{thm:p3ch04.5}. First we give a simple construction which is used in
+proving Theorem \ref{thm:p3ch04.2}; this is the telescope functor. If $f_n:X_n\lar{}Y_n$
+is a sequence of maps of CW-complexes, we can form the iterated
+mapping cylinder, or telescope. If the are taken to be cellular, the
+telescope is a CW-complex. We apply this construction to the terms of
+a Spectrum of certain form, Let $X$ be a spectrum consisting of CW-complexes $X_n$ with base-point and cellular maps $\xi_n:X_n\wedge S^1\lar{}X_{n+1} ;$
+ we need not even assume that $\xi_n$ is an isomorphism from $X_n\wedge S^1$ to a
+subcomplex of $X_{n+1}$; the telescope functor $\te{Tel}$ \index{Telescope functor} will convert a spectrum
+$X$ which does not have this property into one which does. 
+
+We take the half-line $i\geq 0$ and divide it into $0$-cells $[i]$ and $1$-cells $[i,i+1]$ for $i=0,1,2,\dots$. We define the n$\nth$ term of $\te{Tel}(X)$ as a quotient space of the following wedge-sum
+\[\bigg(\bigvee_{i=0}^{n-1} [i,i+1]^+\wedge X_i\wedge S^{n-i} \bigg)\vee \bigg(\bigvee_{i=0}^n [i]^+\wedge X_i\wedge S^{n-i}\bigg) \]
+Here it is convenient to regard $S^m$ as $\bR^m$ compactified by adding point at infinity, which becomes the base-point. In this way the isomorphism $\bR^m\times \bR^n \lar{} \bR^{m+n}$ gives an isomorphism $S^m\wedge S^n \lar{} S^{m+n}$ which is convenient for later use. The following identifications are to
+be made. Identify the point 
+\[i\wedge x\wedge t\in [i,i+1]^+ \wedge X_i \wedge S^{n-i} \]
+with the point \[i\wedge x\wedge t \in [i]^+\wedge X_i\wedge S^{n-i} \]
+Identify the point \[(i+1)\wedge x\wedge t\wedge u\in [i]^+\wedge X_i\wedge S^{n-i-1}\]
+with
+\[(i+1)\wedge \xi_i(x\wedge t)\wedge u\in [i]^+\wedge X_i\wedge S^{n-i-1}\]
+We give $\te{Tel}(X)_n$ the obvious structure as a CW-complex.
+
+The n$\nth$ map of the spectrum $\te{Tel}(X)$ is obtained by passing to quotients from the obvious isomorphism of \[\bigg\{\bigg(\bigvee_{i=0}^n [i]^+\wedge X_i\wedge S^{n-i}\bigg)\vee \bigg(\bigvee_{i=0}^{n-1} [i,i+1]^+\wedge X_i\wedge S^{n-i} \bigg) \bigg\}\wedge S^1 \]
+with 
+\[\bigg(\bigvee_{i=0}^n [i]^+\wedge X_i\wedge S^{n-i+1}\bigg)\vee \bigg(\bigvee_{i=0}^{n-1} [i,i+1]^+\wedge X_i\wedge S^{n-i+1} \bigg).\]
+
+There is an obvious homotopy equivalence $r_n:\te{Tel}(X)_n\lar{}X_n$ (collapse the telescope to its right-hand end $[n]^+\wedge X_n\wedge S^0$). These equivalences give the components of a function $r:\te{Tel}(X)\lar{}X$. This function is a weak equivalence, by \ref{lem:p3ch03.4}.
+
+We pause to observe that this construction is functorial. It is clear
+that a function $f:X\lar{}Y$ induces $\te{Tel}(f):\te{Tel}(X)\lar{}\te{Tel}(Y)$. If $X'$ is a subspectrum of $X$,then $\te{Tel}(X')$ is a subspectrum of $\te{Tel}(X)$. Unfortunately, if $X$ is a CW-spectrum and $X'$ is cofinal in $X$, it does not follow that $\te{Tel}(X')$ is cofinal in $\te{Tel}(X)$. So we avoid saying that a map of $X$ induces a map of $\te{Tel}(X)$. However, the injection $\te{Tel}(X')\lar{} \te{Tel}(X) $ is a homotopy equivalence, as we see using Theorem \ref{cor:p3ch03.5}. Morever, we can identify $\te{Tel}(\te{Cyl}(X))$ with $\te{Cyl}(\te{Tel}(X))$. It follows that a homotopy class of maps of $X$ induces a homotopy class of
+maps of $\te{Tel}(X)$. We can now remark that $r$ is a natural transformation,
+These facts are, of course, fairly trivial, but we need to cite this
+passage later; it is for this reason that I have avoided a short~cut--one
+could define $\te{Tel}$ on morphisms by requiring that $r$ be natural. 
+
+We propose to arrange for Theorem \ref{thm:p3ch04.2} to be true by constructing $X\wedge Y$ so that it contains a copy of $\te{Tel}(X\wedge_{BC}Y)$ for each choice of $B$ and $C$. The morphism \[eq_{BC}:X\wedge_{BC}Y\lar{}X\wedge Y\]
+Will be defined as the following composite:
+\[X\wedge_{BC}Y\lal{r}\te{Tel}(X\wedge_{BC}Y)\lar{}X\wedge Y\]
+
+The construction of $X\wedge Y$ (call it $P$) is as a "double telescope": That is, just as the parts of $\te{Tel}(X)$ corresponded to the cells of a cell-decomposition of the half-line $i\geq 0$, so here we make a similar use of the quarter-plane $i\geq 0,j\geq 0$. We divide the half-line $i\geq 0$ with $0$-cells $[i]$ and $1$-cells $[i,i+1]$, $i=0,1,2,\dots$. We divide the half-line $j\geq 0$ similarly, and we divide the quarter plane $i\geq 0,j\geq 0$ into the products of these cells. Thus we have four cells $e_{ij}$ with bottom left-hand corner at $(i,j)$:
+\begin{align*}
+    \text{the 0-cell } & [i]\times [j]\\
+    \text{the 1-cells }&[i,i+1]\times [j]\text{ and }[i]\times [j,j+1]\\
+    \text{the 2-cell }&[i,i+1]\times [j,j+1] 
+\end{align*}
+
+To construct $P_n$ we use those cells $e_{ij}$ which lie entirely in the part of the quarter-plane given by $x+y\leq n$. The condition for this is
+\[i+j+\dim(e_{ij})\leq n\]
+Let us start from
+\[\bigvee_{i+j\leq n}([i]\times [j])^+ \wedge X_i \wedge Y_j \wedge S^{n-i-j}\]
+and attach
+\[\bigvee e_{ij}^+ \wedge X_i\wedge Y_j\wedge S^1 \wedge S^{n-i-j}\]
+where $e_{ij}$ runs over the $1$-cells $[i,i+1]\times [j]$ and $[i]\times [j,j+1]$ such that $i+j+1\leq n$. The identifications are obvious. The point
+\[(i,j)\wedge x\wedge y\wedge s\wedge t \text{  in  }e_{ij}^+\wedge X_i \wedge Y_j \wedge S^1 \wedge S^{n-i-j-1} \]
+is to be identified with
+\[(i,j)\wedge x\wedge y\wedge (s\wedge t) \text{  in  }([i]\times [j])^+\wedge X_i \wedge Y_j \wedge S^{n-i-j} \]
+The point
+\[(i+1,j)\wedge x\wedge y\wedge s\wedge t \text{  in  }([i+1]\times [j])^+\wedge X_{i} \wedge Y_j\wedge S^1 \wedge S^{n-i-j-1} \]
+is to be identified with
+\[(i+1,j)\wedge \xi_i\big( x\wedge (-1)^j s\big)\wedge y\wedge t \text{  in  }([i+1]\times [j])^+\wedge X_{i+1} \wedge Y_j \wedge S^{n-i-j-1} \]
+The point
+\[(i,j+1)\wedge x\wedge y\wedge s\wedge t \text{  in  }([i]\times [j,j+1])^+\wedge X_{i} \wedge Y_j\wedge S^1 \wedge S^{n-i-j-1} \]
+is to be identified with
+\[(i,j+1)\wedge x\wedge \eta_j(y\wedge s)\wedge t \text{  in  }([i]\times [j+1])^+\wedge X_{i} \wedge Y_{j+1} \wedge S^{n-i-j-1} \]
+
+Consider now a cell $e=[i,i+1]\times [j,j+1]$ such that $i+j+2\leq n$. We have just described the subcomplex of $P_n$ corresponding to $\partial e$. Morever, it contains a family of subspaces $X_i\wedge Y_j \wedge S^2 \wedge S^{n-i-j-2}$, parametrized by the points of $\partial e$. Unfortunately, this family is not a proudct family, at least, not in a completely trivial way. Lets start from the point
+\[(i,j)\wedge x\wedge y\wedge s\wedge t\wedge u \text{  in  }([i]\times[j])^+\wedge X_i \wedge Y_j \wedge S^1 \wedge S^1\wedge S^{n-i-j-1} \]
+if we first increase $i$ and then increase $j$, we get first to \newline $(i+1,j)\wedge \xi_i\big(x\wedge (-1)^j s\big) \wedge y\wedge t\wedge u $ and then to $(i+1,j+1)\wedge \xi_i(x\wedge (-1)^j s) \wedge \eta_j(y\wedge t)\wedge u $. If we first increase $j$ and then increase $i$, we get first to $(i,j+1)\wedge x\wedge   \eta_j(y\wedge s)\wedge t\wedge u $ and then to $(i+1,j+1)\wedge \xi_i\big(x\wedge (-1)^{j+1} t\big) \wedge \eta_j(y\wedge s)\wedge u $. If I wanted to turn the first formula into the second I would have to substitute $s$ for $t$, $-t$ for $s$.
+
+We conclude, then, that the family of subspaces we have considered is best described as 
+\[X_i\wedge Y_j\wedge M(\tau) \wedge S^{n-i-j-2} \]
+Here $M(\tau)$ is the Thom complex of a certain $2$-plane bundle $\tau$ over $\partial e$; more precisely, $\tau$ is obtained from $I\times \bR^2$ by identifying the two ends under the homeomoprhism $\begin{pmatrix}0&-1\\ 1&0 \end{pmatrix}$, So $\tau$ is an $\te{SO}(2)$-bundle over $\partial e=S^1$; it can be extended to a bundle over $e$. Of course there are different ways of extending $\tau$ to a bundle over $e$, since $\pi_1(\te{SO}(2))=\bZ$. But $\tau$ is essentially independent of $n$,$i$,$j$,$X$ and $Y$;
+this follows from the description given above; or else one can use
+coordinates to write down explicit isomorphisms which increase i by 1
+ or j by 1. (The isomorphisms start from the identity map of $\bR^2$ over $[i]\times [j]$, and each suspension coordinate is either preserved or reversed
+according to the demands of the signs.) All that is essential is that we
+choose an extension of $\tau$ that is similarly independent of $n,i,j,X$ and $Y$. For example, with the description of $\tau$ given above, we can trivialize $\tau$ by using a geodesic path of Lent $\pi/2$ of $SO(2)$.
+
+We take the part of $P_n$ corresponding of $e=e_{ij}$ to be \[X_i\wedge Y_j \wedge M(\tau) \wedge S^{n-i-j-2}\]
+where $\tau$ now refers to the bundle as extended over $e_{ij}$. The identification with the part of $P_n$ already constructed is automatic. 
+
+This completes the construction of $P_n=(X\wedge Y)_n$. The structure maps are obvious.
+
+To summarize, we have constructed $(X\wedge Y)_n$ as a quotient space of \[\bigvee X_i\wedge Y_j \wedge M(\tau_d)\wedge S^{n-i-j-d}\]
+Here the sum runs over cells $e_{ij}$ such that $i+j+\dim(e_{ij})\leq n$, and $d=\dim(e_{ij})$, and $\tau_d$ is a suitable$d$-plane bundle over $e_{ij}$. (For $d=0$ and $d=1,\tau_d$ was introduced as an explicitly trivialized bundle.) The identifications are obvious: we regard $X_i\wedge S^1$ as embedded in $X_{i+1}$,
+\[X_i\wedge S^1 \wedge Y_j \wedge M(\tau) \wedge S^{n-i-j-d} \]
+as
+\[X_i\wedge Y_j\wedge M(1\oplus \tau) \wedge S^{n-i-j-d} \]
+
+The discussion of the functoriality of $X\wedge Y$ goes exactly as for the telescope functor. More precisely, suppose $X'$ is cofinal in $X$, and we are given a function $f:X'\lar{}Z$ Then $X'\wedge Y$ is not cofinal in $X\wedge Y$, but we have the following functions.
+
+\[\begin{tikzcd}
+X\wedge Y && Z\wedge Y\\ X'\wedge Y \arrow[u,"i\wedge 1"] \arrow[urr, "f\wedge 1"]
+\end{tikzcd}\]
+When we pass to morphisms, $i'\wedge 1$ is an equivalence, by \ref{cor:p3ch03.5}, so we obtain a morphism from $X\wedge Y$ to $Z\wedge Y$. Since cylinders work right, we
+conclude that this morphism depends only on the homotopy class of $f$. It is clear how one embeds $\te{Tel}(X\wedge_{BC} Y$ in $X\wedge Y$. The functions $\beta \alpha^{-1},\gamma \alpha^{-1}$ give a function \[\{0,1,2,3\dots\} \lar{}\{0,1,2,3\dots\}\times \{0,1,2,3\dots\} \]
+In other words, they give the corners of a stepwise path in the quarter-plane $i\geq 0,j\geq 0$. We extend it to a function $\theta:\{k\geq 0\} \lar{} \{i\geq 0\}\times \{j\geq 0\}$ so that if $a\in B$,
+\[\theta[\alpha(a),\alpha(a)+1]\subset [\beta(a),\beta(a)+1]\times [\gamma(a)] \]
+and if $a\in C$,
+\[ \theta[\alpha(a),\alpha(a)+1]\subset [\beta(a)]\times [\gamma(a),\gamma(a)] \]
+The choice of $\theta$ is immaterial; two choices are homotopic through maps $\theta$ satisfying the same restrictions.
+
+A typical part of $\te{Tel}(X\wedge_{BC} Y)$ is 
+\[[k,k+1]^+ \wedge X_i\wedge Y_j \wedge S^1 \wedge S^{n-k-1}\]
+where $i=\beta \alpha^{-1} k, j=\gamma \alpha^{-1} k$. We take the point \[t\wedge x\wedge y\wedge u\wedge v\]
+and map it to 
+\[\theta(t)\wedge x\wedge y\wedge u\wedge v\ \text{ in } \  e_{ij}^+\wedge X_i \wedge Y_j \wedge S^1 \wedge S^{n-i-j-1}\]
+where $e_{ij}$ is the appropriate $1$-cell. Similarly for $[k]^+ \wedge X_i \wedge Y_j \wedge S^{n-k}$.
+
+It is clear that changing the choice of $\theta$ only changes the resulting function \[\te{Tel}(X\wedge_{BC} Y) \lar{} X\wedge Y \]
+by a homotopy. For any choice of $\theta$, the function $\te{Tel}(X\wedge_{BC}Y)\lar{}X\wedge Y$ is natural for functions of $X$ and $Y$ of degree $0$. From this, one has no difficulty in obtaining the naturality properties of $\te{eq}_{BC}$ in Theorem \ref{thm:p3ch04.2}.
+
+We now prove Theorem \ref{thm:p3ch04.2}(iii). First we consider case $(a)$. So we suppose that $B$ and $C$ are infinite. We define a subspectrum $Q$ of $P$ as follows. Let $Q_{\alpha(a)}$ be the subcomplexes of $P_{\alpha(a)}$ corresponding to the cells $e_{ij}$ in the part of the quarter-plane given by $i'\leq \beta(a),j'\le \gamma(a)$. $Q_{\alpha(a)}$ admits a deformation retraction on $X_{\beta(a)}\wedge Y_{\gamma(a)}$, and $\te{Tel}(X\wedge_{BC} Y)_{\alpha(a)}$ admits a deformation retraction on $X_{\beta(a)}\wedge Y_{\gamma(a)}$. Hence, in the diagram
+\[\begin{tikzcd}
+& \te{Tel}(X\wedge_{BC}Y)\arrow[dr]&\\ X_{\beta(a)}\wedge Y_{\gamma(a)} \arrow[ur,"\cong"] \arrow[rr,"\cong"] && Q_{\alpha(a)}
+\end{tikzcd}\]
+the two inclusions marked induce isomorphisms of homotopy groups, so
+the third one does also; passing to direct limits and applying \ref{cor:p3ch03.5}, the inclusion \[\te{Tel}(X\wedge_{BC}Y)\lar{}Q\]
+is an equivalence.
+
+It remains to consider cases $(b)$ and $(c)$, which are similar. Let us consider case $(b)$, so that $B$ is finite with $d$ members, and 
+\[\xi_r:\Sigma X_r\lar{}X_{r+1}\] is an isomorphism for $r\geq d$. We now make a small change in the definition of $Q_{\alpha(a)}$ for "$a$" such that $\beta(a)\geq d$. For such $a$, we define $Q_{\alpha(a)}$ to be the subcomplex of $P_{\alpha(a)}$ corresponding to the cells $e_{ij}$ in the part of the quarter-plane given by $i'+j'\leq \alpha(a),j'\leq  \gamma(a)$. Then $Q_{\alpha(a)}$ still admits a deformation retraction onto $X_{\beta(a)}\wedge Y_{\gamma(a)}$, since the relevant map
+\[X_d\wedge Y_j \wedge S^{n-d} \lar{} X_{d+e} \wedge Y_j \wedge S^{n-d-e}\quad (e\geq 0)\]
+is an isomorphism. Also $Q$ is cofinal in $P$, so the proof carries over. We now turn to the proof of Theorem \ref{thm:p3ch04.5}.
+\begin{lemma}\label{lem:p3ch04.6}
+There is a spectrum $Q$ with homotopy equivalences $i_0:X\wedge Y\lar{} Q,i_1:Y\wedge X\lar{} Q$ so that the following diagram is commutative for each choice of $B$ and $C$ satisfying condition \ref{con:p3ch04.4}
+
+\[\begin{tikzcd}
+    & Q \\
+    {X\wedge Y} && {Y\wedge X} \\
+    {\text{Tel}(X\wedge_{BC}Y)} && {\text{Tel}(Y\wedge_{CB}X)} \\
+    {X\wedge_{BC}Y} && {Y\wedge_{CB}X}
+    \arrow["{c_{BC}}", from=4-1, to=4-3]
+    \arrow[from=3-1, to=4-1]
+    \arrow[from=3-1, to=2-1]
+    \arrow[from=3-3, to=2-3]
+    \arrow[from=3-3, to=4-3]
+    \arrow["{i_0}", from=2-1, to=1-2]
+    \arrow["{i_1}"', from=2-3, to=1-2]
+\end{tikzcd}\]
+\end{lemma}
+
+This will certainly prove Theorem \ref{thm:p3ch04.5}; we have only to define $c$ to be $i_1^{-1}i_0$. Note that we do not have to discuss the naturality of $i_1^{-1} i_0$; it follows from that of the other morphisms in \ref{lem:p3ch04.6}.
+
+To construct $Q$, we begin by taking a copy of $X\wedge Y$ and a copy of $Y\wedge X$. The remainder of the construction will be indexed ever the product
+of the quarter-plane $i\geq 0,j\geq 0$ and the interval $I$. The endpoint $0$ of $I$ will correspond to $X\wedge Y$ and the endpoint $1$ of $I$ will correspond to $Y\wedge X$.
+
+First we observe that we can make the following cells:
+\begin{align*}
+    ([i]\times[j]\times I)^+=([i]\times [j])^+\wedge I^+ && (\text{i or j even})\\
+    ([i,i+1]\times [j]\times I)^+ && (\text{j even})\\
+    ([i]\times [j,j+1]\times I)^+ && (\text{i even})
+\end{align*}
+
+The $n\nth$ term of the construction consists in taking the appropriate part of $(X\wedge Y)_n \wedge I^+$, identifying the end $0$ of the cylinder with the appropriate part of $(X\wedge Y)_n$, attaching the end $1$ of the cylinder to the appropriate part of $(Y\wedge X)$, by the following map: the point
+
+\[(t,s)\wedge x\wedge y\wedge u\wedge v\text{  in  }e_{ij}^+ \wedge X_i\wedge Y_j \wedge S^d \wedge S^{n-i-j-d}\]
+is to be identified with 
+\[(s,t)\wedge x\wedge y\wedge u\wedge v\text{  in  }e_{ji}^+ \wedge Y_j\wedge X_i \wedge S^d \wedge S^{n-i-j-d}\]
+These identifications are consistent.
+
+Consider now a cell $e=[2i,2i+2]\times [2j,2j+2]\times I$. We have just described the part of $Q_n$ corresponding to the boundary $\partial e$ of $e$. Moreover, it contains a subcomplex of the following form:
+\[X_{2i}\wedge Y_{2j}\wedge M(\tau') \wedge S^{n-2i-2j-4}.\]
+Here $\tau'$ is a certain $4$-plane bundle over $\partial e$. This $4$-plane bundle depends only on the permutations and signs in our construction and on the extension $\tau$ chosen in the construction of $X\wedge Y$; it does not depend on the $n,i,j,X$ or $Y$. It is classified by an element \[\alpha\in \pi_1(\te{SO}) = \bZ_2\]
+
+Suppose now that we consider the four cells, like the cell $e$ just considered, which make up the cell \[e'=[4i,4i+4]\times [4j+4j]\times I \]
+Call them $e_1,e_2,e_3$ and $e_4$. The part of $Q$ so far constructed, corresponding to these cells, has a subcomplex of the form 
+\[S^{n-4i-4j-8}\wedge M(\tau'')\wedge X_{4i}\wedge X_{4j} .\]
+Here $M(\tau'')$ is the Thom complex of a certain $8$-plane bundle over \newline $\partial e_1\smile \partial e_2\smile \partial e_3\smile \partial e_4$. Over each $\partial e_i$ it restricts to the whitney sum of the previous bundle $\tau'$ and a trivial $4$-plane bundle. Therefore the restriction of $\tau''$ to $\partial e'$ is classified by $4\alpha=0$. Therefore $\tau''=0$ can be extended over $e'$.
+
+From the previous construction, we now retain only $X\wedge Y, Y\wedge X,$ and the parts of the cylinder $(X\wedge Y)_n \wedge I^+$ with $i$ divisible by $4$ or $j$ divisible by $4$. We now add $X_{4i}\wedge Y_{4j} \wedge M(\tau'') \wedge S^{n-4i-4j-8}$ for each $i,j$, and $n$ such that $n\geq 4i+4j+8$. This completes the construction of $Q$.
+
+The injections of $X\wedge Y$ and $Y\wedge X$ into $Q$ are clearly homotopy equivalences, by \ref{cor:p3ch03.5}. It is also clear that the diagram of Lemma \ref{lem:p3ch04.6} is commutative, because the relevant part of the cylinder $\te{Cyl}(X\wedge Y)$ was put in for that purpose.
+
+This completes the proof of Lemma \ref{lem:p3ch04.6} and, therefore, of Theorem $\ref{thm:p3ch04.5}$.
+
+
+We now turn to the proof of Theorem \ref{thm:p3c04.3}. The constructions $(X \wedge Y) \wedge Z$ and $X \wedge (Y \wedge Z)$ are ``quadruple telescopes'', indexed by a cell-decomposition of the positive cone in 4-space. We arrange to replace $(X \wedge Y) \wedge Z$ by an equivalent construction $P'$ and $X \wedge (Y \wedge Z)$ by an equivalent construction $P''$, so that both $P'$ and $P''$ are ``triple telescopes'', indexed by a cell-decomposition of the positive cone in 3-space. It will then be apparent that $P'$ and $P''$ are equivalent. More formally, we have the following lemma.
+
+\begin{lemma}
+\label{lem:p3c04.7}
+There is a spectrum $P'$ and a homotopy equivalence $i' : P' \lar{} (X \wedge Y) \wedge Z$ (both independent of $B$, $C$ and $D$) such that the following diagram is commutative for each choice of $B$, $C$ and $D$. 
+\[
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+(X \wedge_{BC} Y) \wedge Z                                                                                                  &  & (\mathrm{Tel}(X \wedge_{BC} Y)) \wedge Z \arrow[r, "i \wedge 1"] \arrow[ll, "r \wedge 1"'] & (X \wedge Y) \wedge Z \\
+{\mathrm{Tel}((X \wedge_{BC} Y) \wedge_{B \cup C, D} Z)} \arrow[d, "r"] \arrow[u, "i"] \arrow[rrr, "k'"] \arrow[rru, "j'"'] &  &                                                                                                     & P' \arrow[u, "i'"']   \\
+{(X \wedge_{BC} Y) \wedge_{B \cup C, D} Z}                                                                                  &  &                                                                                                     &                      
+\end{tikzcd}
+}\]
+
+Similarly for $X \wedge (Y \wedge Z)$ with $i'$, $j'$, $k'$ and $P'$ replaced by $i''$, $j''$, $k''$ and $P''$. Moreover, there is a homotopy equivalence $P' \lar{e} P''$ such that the following diagram is commutative. 
+
+\begin{center}
+\begin{tikzcd}
+P' \arrow[rr, "e"]                                                                                                &  & P''                                                                                 \\
+{\mathrm{Tel}((X \wedge_{BC} Y) \wedge_{B \cup C, D} Z)} \arrow[u, "k'"] \arrow[rr, equals] &  & {\mathrm{Tel}(X \wedge_{B, C \cup D} (Y \wedge_{\mathrm{CD}} Z))} \arrow[u, "k''"']
+\end{tikzcd}
+\end{center}
+\end{lemma}
+
+\begin{proof}
+By definition, the $n^{\mathrm{th}}$ term of $(X \wedge Y) \wedge Z$ is a union \[\bigcup_{hk} (X \wedge Y)_h \wedge Z_k \wedge M(\tau_\delta) \wedge S^{n - h - k - \delta}\] where the union extends over cells $e_{hk}$ such that \[h + k + \dim e_{hk} \le n,\] $\delta = \dim e_{hk}$ and $\tau_\delta$ is a $\delta$-plane bundle. That is, it is a union \[\bigcup_{e_{ij}, e_{hk}} X_i \wedge Y_j \wedge M(\tau_d) \wedge S^{h - i - j - d} \wedge Z_k \wedge M(\tau_\delta) \wedge S^{n - h - k - \delta}\] where $e_{ij}$ runs over cells with \[i + j + \dim e_{ij} \le h,\] $d = \dim(e_{ij})$ and $\tau_d$ is a $d$-plane bundle. We arrange this as \[\bigcup_{e_{ik}, e_{hk}} X_i \wedge Y_j \wedge Z_k \wedge M(\tau_d \oplus \tau_\delta) \wedge S^{h - i - j - d} \wedge S^{n - h - k - \delta}.\] Thus the construction is indexed over a cell-decomposition of the positive cone $i \ge 0$, $j \ge 0$, $h \ge 0$, $k \ge 0$ in $4$-space. Call this cone $C^4$. Let $C^3$ be the positive cone $i \ge 0$, $j \ge 0$, $k \ge 0$ in $3$-space, and divide $C^3$ into cells in the obvious way, so that the cells are $r$-cubes of side $1$ for $r = 0, 1, 2, 3$. 
+
+We construct $P'$ by giving a suitable cellular map $\theta$ from $C^3$ to $C^4$ by ``pulling back'' the bundles and complexes we have associated with the parts of $C^4$. Actually we construct $\theta$ to preserve the $k$-coordinate, so it is only necessary to construct a map $\varphi$ from the positive cone $i \ge 0$, $j \ge 0$ to the positive cone $i \ge 0$, $j \ge 0$, $h \ge 0$.
+
+Our idea in defining $\theta$ and $\varphi$ is to only use the cells $e_{ij} \times e_{hk}$ such that \[i + j + \dim e_{ij} = h;\] firstly because the other parts of $(X \wedge Y) \wedge Z$ are redundant, and secondly because by keeping $S^{h - i - j - d} = S^0$ we avoid suspension coordinates in the wrong place.
+
+ We first indicate into which subcomplexes the cells are to be mapped 
+
+\begin{align*}
+\varphi([i] \times [j]) & = [i] \times [j] \times [i + j] \\ \phi([i, i + 1] \times [j]) & \subset ([i] \times [j] \times [i + j, i + j + 1]) \\ & \cup ([i, i + 1] \times [j] \times [i + j + 1]) \\ \phi([i] \times [j, j + 1]) & \subset ([i] \times [j] \times [i + j + 1]) \\ & \cup ([i] \times [j, j + 1] \times [i + j + 1]) \\ \phi([i, i + 1] \times [j, j + 1]) & \subset ([i] \times [j] \times [i + j, i + j + 1]) \\ & \cup ([i, i + 1] \cup [j] \times [i + j + 1, i + j + 2]) \\ & \cup ([i] \times [j, j + 1] \times [i +j + 1, i + j + 2]) \\ & \cup ([i, i + 1] \times [j, j + 1] \times [i + j + 2]).
+\end{align*}
+
+In each case the proposed subcomplex is contractible, so the construction of $\phi$ is possible and unique up to homotopy. In each case, the image of $\phi$ must be the whole subcomplex given, so we can refer to the subcomplex as $\phi(e_{ij})$. Similarly for $\theta(e_{ijk})$.
+
+We next note that for each cell $e_{ijk}$ such that $i + j + k + \dim(e_{ijk}) \le n$, the part of $((X \wedge Y) \wedge Z)_n$ associated with $\theta(e_{ijk})$ contains a subcomplex of the form \[X_i \wedge Y_j \wedge Z_k \wedge M(\tau_d) \wedge S^{n - i - j - k - d},\] where $d = \dim(e_{ijk})$ and $\tau_d$ is a $d$-plane bundle over $\theta(e_{ijk})$. We decompose the corresponding part of $P'$ to be \[X_i \wedge Y_j \wedge Z_k \wedge M(\theta^\ast \tau_d) \wedge S^{n - i - j - k - d},\] where $\theta^\ast \tau_d$ is the induced bundle over $e_{ijk}$. The map $i'$ on this part of $P'$ is induced by the map of bundles $\theta^\ast \tau_d \lar{} \tau_d$ over the map $\theta$ of spaces. The identifications to be made assembling $P'$ are automatic; one just pulls back the identification of $(X \wedge Y) \wedge Z$. 
+
+We make the structure of $P'$ more explicit. Corresponding to the 0-cells $e_{ijk}$ we have \[\bigvee_{i + j + k \le n} X_i \wedge Y_j \wedge Z_k \wedge ([i] \times [j] \times [k])^+ \wedge S^{n - i - j - k}.\] Corresponding to 1-cells we have \[\bigvee_{i + j + k + 1 \le n} e_{ijk}^+ \wedge X_i \wedge Y_j \wedge Z_k \wedge S^1 \wedge S^{n - i - j - k - 1}.\] Here the attaching maps are the obvious ones, involving the obvious signs. 
+
+For each 2-cell $e = e_{ijk}$, the bundle $\theta^\ast \tau$ over $e$ is exactly as described in the construction of $X \wedge Y$.
+
+For each 3-cell $e = e_{ijk}$, there is only one bundle over $e$ extending the given bundle $\theta^\ast \tau$ over $\partial e$, since $\pi_3(\mathrm{BSO}(3)) = \pi_2(\mathrm{SO}(3)) = 0$. So we need not worry which bundle arises. 
+
+On the other hand, the description of $P''$ is exactly the same as the description we have just given for $P'$. This provides the map $e : P' \lar{} P''$. 
+
+The map \[k' : \mathrm{Tel}((X \wedge_{BC} Y) \wedge_{B \cup C, D} Z) \lar{} P'\] is basically obvious. The functions $\beta \alpha^{-1}$, $\gamma \alpha^{-1}$ and $\delta \alpha^{-1}$ give a function $\theta' : \{0, 1, 2, 3, \ldots\} \to \{0, 1, 2, 3, \ldots\}^3$. We extend it to a function $\theta''$ mapping each cell of $C^1$ (the positive half-line with our usual cell structure) into the obvious cell of $C^3$. Now we construct the map $k'$ as we constructed the map $\mathrm{Tel}(X \wedge_{BC} Y) \lar{} X \wedge Y$.
+%CORRECTION: fixed missing parentheses from source text after "this defines the function..."
+
+We now observe that the function \[i'k' : \mathrm{Tel}((X \wedge_{BC} Y) \wedge_{B \cup C, D} Z) \lar{} (X \times Y) \wedge Z\] actually maps into $\left\{\mathrm{Tel}(X \wedge_{BC} Y)\right\} \wedge Z$; this defines the function \[j' : (\mathrm{Tel}(X \wedge_{BC} Y)) \wedge_{B \cup C, D} Z \lar{} (\mathrm{Tel}(X \wedge_{BC} Y)) \wedge Z.\] The function $(r \wedge 1) j'$ satisfies the definition for $i$. (Some of the cylinders spend some of their time stationary and the rest hurrying to make up for it, but this is allowed) 
+
+This completes the proof of Lemma~\ref{lem:p3c04.7}, which completes the proof of \ref{thm:p3c04.3}, which completes the proof of Theorem~\ref{thm:p3c04.1} so far as it refers to maps of degree $0$. 
+\end{proof}
+
+We now propose to go back and recover the properties of our constructions with respect to maps of non-zero degree.
+
+First we introduce the sphere-spectra of different stable dimensions. Let us define the spectrum $\underline S^i$ by \[(\underline S^i)_n = \begin{cases}S^{n + 1} & n + i \ge 0 \\ \mathrm{pt.} & n + i < 0.\end{cases}\]
+
+\begin{proposition}
+We have an equivalence $\underline S^i \wedge \underline S^j \lar{e} \underline{S}^{i + j}$ such that the following diagrams are commutative.
+
+\begin{center}
+\begin{tikzcd}
+(\underline S^i \wedge \underline S^j) \wedge \underline S^k \arrow[rr, "a"] \arrow[d, "e \wedge 1"] &                          & \underline S^i \wedge (\underline S^j \wedge \underline S^k) \arrow[d, "1 \wedge e"] \\
+\underline S^{i + j} \wedge \underline S^k \arrow[rd, "e"']                                          &                          & \underline S^i \wedge \underline S^{j + k} \arrow[ld, "e"]                           \\
+                                                                                                     & \underline S^{i + j + k} &                                                                                     
+\end{tikzcd}
+\end{center}
+
+\begin{center}
+\begin{tikzcd}
+\underline S^i \wedge \underline S^j \arrow[d, "e"'] \arrow[rr, "c"] &  & \underline S^j \wedge \underline S^i \arrow[d, "e"] \\
+\underline S^{i + j} \arrow[rr, "(-1)^{ij}"]                         &  & \underline S^{j + i}                               
+\end{tikzcd}
+\end{center}
+%TODO: not quite nailed these two
+\[
+\begin{tikzcd}[every arrow/.append style={shift left}]
+ \underline S^0 \wedge \underline S^j \arrow[bend left]{r}{e} \arrow[bend right]{r}{\ell} & \underline S^j
+\end{tikzcd}
+\]
+
+\[
+\begin{tikzcd}[every arrow/.append style={shift left}]
+ \underline S^i \wedge \underline S^0 \arrow[bend left]{r}{e} \arrow[bend right]{r}{r} & \underline S^i
+\end{tikzcd}
+\]
+
+\end{proposition}
+
+\begin{proof}
+\begin{enumerate}
+    \item[(i)] Any handicrafted smash-product of $\underline S^i$ and $\underline S^j$ gives a spectrum that has the same terms as $\underline S^{i + j}$ from some point onwards. We just take care to pick an equivalence that is orientation-preserving.
+    \item[(ii)] $[\underline S^i, \underline S^j] = \lim_{n \to \infty} [S^{n + i}, S^{n + i}] = \mathbb Z$; so to check the commutativity of any such diagram, we have only to check the degree of a map. We have been careful to make all our constructions so as to do the right thing on orientations.
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}
+\label{prop:p3c04.9}
+We have the equivalences \[\gamma_r : X \lar{} \underline S^r \wedge X \qquad \text {(of degree } r\text{)}\] with the following properties. 
+
+\begin{enumerate}
+    \item[(i)] $\gamma_r$ is natural for maps of $X$ of degree $0$. (This is all we can ask, because we have not yet made $\underline S^r \wedge X$ functorial for maps of non-zero degree.),
+    \item[(ii)] $\gamma_0 = \ell^{-1}$,
+    \item[(iii)] The following diagram is commutative for each $r$ and $s$.
+    \begin{center}
+    \begin{tikzcd}
+\underline S^{r + s} \wedge X                          &  & (\underline S^r \wedge \underline S^s) \wedge X \arrow[d, "a"] \arrow[ll, "e \wedge 1"'] \\
+                                                       &  & \underline S^r \wedge (\underline S^s \wedge X)                                          \\
+X \arrow[uu, "\gamma_{r + s}"'] \arrow[rr, "\gamma_s"] &  & \underline S^s \wedge X \arrow[u, "\gamma_r"']                                          
+\end{tikzcd}
+    \end{center}
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Clearly if we take $\gamma_0 = \ell^{-1}$, it is natural for maps of $X$ of degree $0$. Consider now \[\underline S^0 \wedge_{1, \{2, 3, \ldots\}} X \quad \text { and} \quad \underline S^1 \wedge_{\emptyset, \{1, 2, 3, \ldots\}} X.\] On the left, the $n^{\mathrm{th}}$ term is $S^1 \wedge X_{n - 1}$; on the right, the $(n - 1)$-st term is $S^1 \wedge X_{n - 1}$. The structure maps are the same in both cases. So the identity maps $S^1 \wedge X_{n - 1} \lar{} S^1 \wedge X_{n - 1}$ give the components of an equivalence of degree $+1$ \[\underline S^0 \wedge X \lar{} \underline S^1 \wedge X.\] It is clearly natural for maps of $X$ of degree $0$. Composing with $\ell^{-1}$, we obtain an equivalence $\gamma_1$. 
+
+Note that at this point I have essentially picked up the Puppe Desuspension Theorem, without the restrictive hypotheses.
+
+Now I define $\gamma_s$ for all other values of $s$ by induction upwards and downwards over $s$, making the following diagram commutative. 
+
+\begin{center}
+\begin{tikzcd}
+\underline S^{1 + s} \wedge X                          &  & (\underline S^1 \wedge \underline S^s) \wedge X \arrow[d, "a"] \arrow[ll, "e \wedge 1"'] \\
+                                                       &  & \underline S^1 \wedge (\underline S^s \wedge X)                                          \\
+X \arrow[uu, "\gamma_{1 + s}"'] \arrow[rr, "\gamma_s"] &  & \underline S^s \wedge X \arrow[u, "\gamma_1"']                                          
+\end{tikzcd}
+\end{center}
+
+One has to check that this is consistent for $s = 0$. Note also that $\gamma_{1 + s}$ or $\gamma_s$, whichever is being defined, is natural for maps of $X$ of degree $0$, because all the ingredients of its definition are so. 
+
+We now prove the commutativity of the diagram
+
+\begin{center}
+\begin{tikzcd}
+S^{r + s} \wedge X                                     &  & (\underline S^r \wedge \underline S^s) \wedge X \arrow[ll, "e \wedge 1"'] \arrow[d, "a"] \\
+                                                       &  & \underline S^r \wedge (\underline S^s \wedge X)                                          \\
+X \arrow[rr, "\gamma_s"] \arrow[uu, "\gamma_{r + s}"'] &  & \underline S^s \wedge X \arrow[u, "\gamma_r"']                                          
+\end{tikzcd}
+\end{center}
+
+by induction upwards and downwards over $r$. Here we start from the cases $r = 0$ (which is a trivial verification) and $r = 1$ (which holds by the construction of $\gamma_s$). The inductive step is diagram-chasing.
+
+We are now ready to replace our original graded category by one which appears slightly different. In the new category, the objects are CW-spectra just as before; but the morphisms of degree $r$ are given by \[[\underline S^r \wedge X, Y]_0\] in the old category. Composition is done as follows. Suppose given \[\underline S^r \wedge X \lar{f} Y, \quad \underline S^s \wedge Y \lar{f} Z\] of degree 0; take their composite to be \[S^{s + r} \wedge X \xleftarrow{e \wedge 1} (\underline S^s \wedge \underline S^r) \wedge X \lar{a} \underline S^s \wedge (\underline S^r \wedge X) \vra{1 \wedge f} \underline S^s \wedge Y \lar{g} Z.\] One has to check that composition is associative, and that $\ell : \underline S^0 \wedge X \lar{} X$ is an identity map. This is easy.
+\end{proof}
+
+\begin{proposition}\label{prop:p3ch04.10}
+The new graded category is isomorphic to the old, under the isomorphism sending \[\underline S^r \wedge X \lar{f} Y \quad \text {(in the new category)}\] to \[X \lar{\gamma_r} \underline S^r \wedge X \lar{f} Y \quad \text{(in the old category).}\]
+\end{proposition}
+
+\begin{proof}
+Since $\gamma_r$ is an equivalence in the old category, it is clear that this gives a 1-1 correspondence between $[\underline S^r \wedge X, Y]_0$ (that is, the set of morphisms of degree $r$ in the old category). It remains only to check that this one-to-one correspondence preserves composition and identity maps. But this is immediate from the properties of $\gamma_r$ in Proposition~\ref{prop:p3c04.9}.
+\end{proof}
+
+If you want to see what you are doing with maps of degree $r$, I really recommend considering them as maps $\underline S^r \wedge X \lar{} Y$ of degree $0$. In particular, it is easy to see how to make $X \wedge Y$ functorial on the new category. More precisely, suppose given morphisms in the new category \[S^r \wedge X \lar{f} X', \qquad \underline S^s \wedge Y \lar{g} Y'.\] Then we define their smash-product to be \[\underline S^{r + s} \wedge X \wedge Y \xleftarrow{e \wedge 1 \wedge 1} \underline S^r \wedge S^s \wedge X \wedge Y \lar{1 \wedge c \wedge 1} \underline S^r \wedge X \wedge \underline S^s \wedge Y \lar{f \wedge g} X' \wedge Y'.\]
+
+To prove that this has all the properties mentioned in Theorem~\ref{thm:p3c04.1} is now a routine exercise of diagram-chasing. At the same time, we check that we have not altered the definition of $f \wedge g$ if $f$ and $g$ happen to be of degree $0$. 
+
+
+This completes the proof of Theorem~\ref{thm:p3c04.1}.
+
+\begin{exercise}
+Show that the naturality of $\gamma_r$ with respect to maps of degree $s$ is as follows: the diagram 
+
+\begin{center}
+\begin{tikzcd}
+X \arrow[rr, "\gamma_r"] \arrow[dd, "f"'] &           & \underline S^r \wedge X \arrow[dd, "1 \wedge f"] \\
+                                          & (-1)^{rs} &                                                  \\
+Y \arrow[rr, "\gamma_r"]                  &           & \underline S^r \wedge Y                         
+\end{tikzcd}
+\end{center}
+
+is commutative up to a sign of $(-1)^{rs}$ if $f \in [X, Y]_s$.
+\end{exercise}
+
+\begin{proposition}\label{prop:p3ch04.11}
+The smash-product is distributive over the wedge-sum. Let $X = \bigvee_\alpha X_\alpha$; let $i_\alpha : X_\alpha \lar{} X$ be a typical inclusion. Then the morphism \[\bigvee_\alpha (X_\alpha \wedge Y) \vra{\{i_\alpha \wedge 1\}} \bigg(\bigvee_\alpha X_\alpha\bigg) \wedge Y\] is an equivalence. 
+\end{proposition}
+
+\begin{proof}
+Use a suitable handicrafted smash-product. 
+\end{proof}
+
+\begin{proposition}\label{prop:p3ch04.12}
+Let $X \lar{f} Y \lar{i} Z$ be a cofibering (it is sufficient to consider morphisms of degree zero). Then \[W \wedge X \vra{1 \wedge f} W \times Y \vra{1 \wedge i} W \wedge Z\] is also a cofibering.
+\end{proposition}
+
+\begin{proof}
+It suffices to check for the case in which $f : X \lar{} Y$ is the inclusion of a closed subspectrum, $i : Y \lar{} Z$ is the projection $Y \lar {} Y/X$ and $\bigwedge = \bigwedge_{BC}$.
+\end{proof}
+\end{document}

@@ -1,0 +1,70 @@
+\documentclass[../main]{subfiles}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\begin{document}
+% Little Narwhal
+\label{sec:p3c08}
+\chapter{The Inverse Limit and its Derived Functors}
+
+Let $I$ be a partially ordered set of indices $\alpha$. We assume $I$ is directed, that is, for any $\alpha,\beta$ there is a $\gamma$ with $\alpha < \gamma$ and $\beta<\gamma$. An inverse system $\underline{G}$ of abelian groups indexed over $I$ consists of abelian groups $G_\alpha$ (one for each $\alpha \in I$) and homomorphisms $g_{\alpha\beta}:G_\alpha \longleftarrow G_\beta$ (one for each pair of indices $\alpha<\beta$ in $I$). Such inverse systems form the objects of a category; a morphism $\underline{\theta}:\underline{G}\longrightarrow\underline{H}$ in this category is a list $\{\theta_\alpha\}$ of homomorphisms $\theta_\alpha:G_\alpha \to H_\alpha$ such that $\theta_\alpha g_{\alpha\beta} = h_{\alpha\beta}\theta_\alpha$ whenever $\alpha < \beta$. We define $\varprojlim\underline{G}$ to be the subgroup of $\prod_\alpha G_\alpha$ consisting of lists $\{x_\alpha\}$, $x_\alpha\in G_\alpha$, which satisfy $x_\alpha = g_{\alpha\beta}x_\beta$ for all $\alpha<\beta$. The functor $\varprojlim$ is representable in this category; for let $\mathbb{Z}$ be the integers, and let $\underline{\mathbb{Z}}$ be the inverse system in which $\mathbb{Z}_\alpha = \mathbb{Z}$ and $z_{\alpha\beta}=1$; then $\operatorname{Hom}(\underline{\mathbb{Z}},\underline{G})\cong \varprojlim\underline{G}$. Moreover, this category has enough injectives. In fact, let $I$ be an injective abelian group; let $\underline{I}_\gamma$ be the inverse system in which
+\[G_\alpha=\begin{cases}
+  I  & \text{if } \gamma\leq\alpha \\
+  0 & \text{otherwise}
+\end{cases}, \quad 
+g_{\alpha\beta}=\begin{cases} 1 & \text{if } \gamma\leq\alpha \\ 0 & \text{otherwise} \end{cases}\] 
+Then $\underline{I}_\gamma$ is injective, and we get enough injectives by taking products of objects like $\underline{I}_\gamma$. We can therefore do homological algebra; in particular, we have the functors \index{$\lim1$}
+\[{\varprojlim}^i\underline{G}=\operatorname{Ext}^i(\underline{\mathbb{Z}},\underline{G})\]
+We have $\varprojlim^0\underline{G}=\varprojlim\underline{G}$. \\
+Frequently we have $I=\{1,2,3,...\}$. In this case we have an alternative construction of ${\varprojlim}^i$. Given $\underline{G}$, define a cochain complex $C$ by 
+\[C_0=C_1=\prod_i^\infty G_n,\quad C_r=0 \text{ for } r>1 \] 
+\[\delta\{x_n\}=\{x_n-g_{n,n+1}x_{n+1}\} \text{ for } \{x_n\}\in C_0\]
+Let $H^i$ be the $i^\text{th}$ cohomology group of $C$. Then it is immediate that $H^0=\varprojlim\underline{G}$. To show that $H^i\cong{\varprojlim}^i\underline{G}$, it is sufficient to make the following remarks.
+\begin{enumerate}[wide=\parindent]
+    \item Let \[0\longrightarrow \underline{G}'\overset{i}{\longrightarrow}\underline{G}\overset{j}{\longrightarrow}\underline{G}''\longrightarrow 0\] be an exact sequence in the category of inverse systems, that is \\ \[0\longrightarrow G_\alpha'\overset{i_\alpha}{\longrightarrow}G_\alpha\overset{j_\alpha}{\longrightarrow}G_\alpha''\longrightarrow 0\] is exact for each $\alpha$. Then we obtain an exact sequence of chain complexes
+    \[0\longrightarrow C'\longrightarrow C\longrightarrow C'' \longrightarrow 0,\]
+    and hence an exact cohomology sequence
+    \[0\longrightarrow {H'}^0\longrightarrow H^0\longrightarrow {H''}^0 \longrightarrow {H'}^1 \longrightarrow H^1 \longrightarrow {H''}^1 \longrightarrow 0.\]
+    \item We have constructed enough injectives with the property that all their maps $g_{\alpha\beta}$ are epi. If all the maps $g_{\alpha\beta}$ are epi, it follows that $H^1$ is zero. So $H^1$ vanishes on enough injectives.
+\end{enumerate}
+\par It follows that ${\varprojlim}^i \underline{G}\cong H^i$, and in particular ${\varprojlim}^i\underline{G}=0$ for $i\geq 2$, assuming $I=\{1,2,3,...\}$. For a general $I$ we would not have this.
+\begin{exercise} \label{ex:p3ch08.i}
+Let $I=\{1,2,3,...\}$, and let $\underline{G}$ be an inverse system in which the maps $g_{n.m}$ are mono; thus we may regard $G_1$ as a topological group, topologized by giving the decreasing sequence of subgroups $\operatorname{Im}g_{1n}$. Then ${\varprojlim}^0\underline{G}=0$ if and only if $G_1$ is Hausdorff; ${\varprojlim}^1\underline{G}=0$ if and only if $G_1$ is complete. (Here we use words so that "complete" does not imply "Hausdorff"; it means that each Cauchy sequence has a limit, perhaps not unique.)
+\end{exercise}
+\begin{exercise} \label{ex:p3ch08.ii}
+Let $I=\{1,2,3,...\}$. We say that $\underline{G}$ satisfies the Mittag-Leffler condition if for each $n$, there exists $m$ such that $\operatorname{Im}g_{np}=\operatorname{Im}g_{nm}$ for $p\geq m$; that is, $\operatorname{Im}g_{np}$ converges. Show that if $\underline{G}$ satisfies the Mittag-Leffler condition then ${\varprojlim}^1\underline{G}=0$.\footnote{It was believed at the time (because of a false proof) that in any abelian category, $\lim\!^1$ dissapears on Mittag-Leffler sequences. However in \cite{Neeman} a counterexample was found.}
+\end{exercise} 
+\par The cochain complex used above is due to Milnor \cite{Milnor3}. He made the following use of it. Let $E^*$ be a generalized cohomology theory satisfying the wedge axiom; this axiom says that the canonical map 
+\[\tilde{E}^*\bigg(\bigvee_\alpha X_\alpha\bigg)\longrightarrow \prod_\alpha \tilde{E}^*(X_\alpha)\]
+is an isomorphism. (One can use $E^*$ instead of $\tilde{E}^*$ if one uses the disjoint union instead of the wedge.) Suppose given an increasing sequence of CW-pairs $(X_n,A_n)$ and set
+\[X=\bigcup_n X_n, \quad A=\bigcup_n A_n\].
+\begin{proposition}[Milnor] \label{prop:p3ch08.1}
+    There is an exact sequence
+    \[0\longrightarrow {\varprojlim_n}^1E^{q-1}(X_n,A_n)\longrightarrow E^q(X,A)\longrightarrow {\varprojlim_n}^0E^q(X_n,A_n)\longrightarrow 0\]
+\end{proposition}
+\begin{proof}[Proof sketch]
+First consider the absolute case. Replace $X$ by the telescope\newline $\bigcup_n[n,n+1]\times X_n$. Set $U=\bigcup_n[2n,2n+1]\times X_{2n}$, $V=\bigcup_n[2n+1,2n+2]\times X_{2n+1}$, so that $U$ consists of the even-numbered cylinders, $V$ of the odd-numbered cylinders. Using the wedge axiom, show that the part 
+\[E^q(U)\oplus E^q(V)\longrightarrow E^q(U\cap V)\]
+of the Mayer-Vietoris sequence coincides, up to isomorphism, with the cochain complex
+\[\prod_1^\infty E^q(X_n) \longrightarrow \prod_1^\infty E^q(X_n)\]
+considered above. When you have a sound proof for the absolute case, relativize it.
+\end{proof}
+Proposition \ref{prop:p3ch08.1} is evidently valid for spectra as well as spaces.
+\par \emph{Sketch of applications.} It may happen that we wish to construct a morphism $f:X\longrightarrow E$, and can construct morphisms $f_n:X_n\longrightarrow E$ where $\{X_n\}$ is an increasing sequence of subspectra whose union is $X$. Suppose that $f_n|_{X_{n-1}} = f_{n-1}$. Then \ref{prop:p3ch08.1} assures us that there is a morphism $f:X\longrightarrow E$ whose restriction to each $X_n$ is $f_n$. (In fact, so much is easy to prove directly by using the homotopy extension property.) However, it is difficult to check that morphisms constructed in this way have any good properties, unless one has a uniqueness statement; one needs to know that $f$ is determined by giving $f|_{X_n}$ for all $n$. By \ref{prop:p3ch08.1}, it is sufficient to prove that ${\varprojlim}^1[X_n,E]_1=0$.
+\par For some applications it is important to know how inverse limits work in spectral sequences. Suppose, for example, that we take a generalized cohomology theory $E^*$ satisfying the wedge axiom and a CW-complex $X$ containing an increasing sequence of subcomplexes
+\[\emptyset = X_{-1}\subset X_0\subset X_1\subset ... \subset X_n\subset ... \subset X.\]
+Suppose also that ${\varprojlim}^0E^*(X,X_n)$,  ${\varprojlim}^1E^*(X,X_n)=0$. (For example, we might have $X=\bigcup_nX_n$). Applying $E^*$, we obtain a half-plane spectral sequence whose term $E^{p,q}$ is $E^{p+q}(X_p, X_{p-1})$. In what sense does this spectral sequence converge? We may be interested in three conditions.
+\begin{enumerate}[wide=\parindent]
+    \item Observe that $E_{r+1}^{p,q}\longrightarrow E_r^{p,q}$ is mono for $r>p$. So we can ask that the map $E_\infty^{p,q}\longrightarrow \underset{r}{\varprojlim} E_r^{p,q}$ should be iso.
+    \item Similarly, we can ask that $\underset{r}{\varprojlim}^1E_r^{p,q}=0$.
+    \item Let $F^{p,q}$ be the filtration quotients of $E^{p+q}(X)$, so that we have exact sequences
+    \[0\longrightarrow E_{\infty}^{p,q}\longrightarrow F^{p,q} \longrightarrow F^{p-1,q+1} \longrightarrow 0\]
+    and $F^{-1,q}=0$. We can ask that the map $E^n(X)\longrightarrow {\varprojlim}^0F^{p,n-p}$ should be iso.
+\end{enumerate}
+\begin{theorem}\label{prop:p3ch08.2}
+Condition (ii) is equivalent to (i) plus (iii). 
+\end{theorem}
+In practice we verify condition (ii) (see exercise \ref{ex:p3ch08.i}). We then use \ref{prop:p3ch08.2} to deduce that conditions (i) and (iii) hold.
+\par We can also generalize \ref{prop:p3ch08.1}. For convenience I consider the absolute case. Let $X$ be any CW-complex which is the union of a directed set of subcomplexes $X_\alpha$. Then we have a spectral sequence
+\[{\varprojlim_\alpha}^pE^q(X_\alpha) \underset{p}{\Longrightarrow} E^{p+q}(X)\]
+This spectral sequence is convergent in the sense that \ref{prop:p3ch08.2} holds.
+\end{document}

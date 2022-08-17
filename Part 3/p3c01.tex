@@ -1,0 +1,98 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+
+\chapter{Introduction}%alphyte
+\label{sec:p3c01}
+These notes, prepared by R. Ming, are based on a course I gave at the University of Chicago in the spring of 1971. I propose to construct a stable homotopy category equivalent to Boardman's, but whose construction will be accessible to those without a specialized knowledge of category theory. I will then formulate a number of classical topics in this framework, and finally present some new applications. 
+
+First I will have to explain the meaning of the word stable in algebraic topology. We say that some phenomenon is \emph{stable}\index{stable phenomenon}, if it can occur in any dimension, or in any sufficiently large dimension, and if it occurs in essentially the same way independent of dimension, provided perhaps that the dimension is sufficiently large.
+
+\begin{example_different}
+    We consider the homotopy groups of spheres, $\pi_{n + r}(S^n)$. We have the suspension homomorphism.
+    \[ E \colon \pi_{n + r}(S^n) \lra \pi_{n + r + 1}(S^{n + 1}). \]
+    The Freudenthal suspension theorem says that this homomorphism is an isomorphism for $n > r + 1$. For example, $\pi_{n + 1}(S^n)$ is isomorphic to $\mathbb Z_2$ for $n > 2$. The groups $\pi_{n + r}(S^n)$ ($n > r + 1$) are called the stable homotopy groups of spheres.
+\end{example_different}
+
+More generally, let $X$ and $Y$ be two CW-complexes with base-point. When we mention a CW-complex with base-point, we will always assume that the base-point is a $0$-cell. By $[X, Y]$ we will mean the set of homotopy classes of maps from $X$ to $Y$; here maps and homotopies are required to preserve the base-point. The product $W \times X$ of two CW-complexes will always be taken with the CW-topology. The smash-product $W \wedge X$ of two CW-complexes with base-point is defined, as usual, by 
+\[ W \wedge X = W \times X/W \vee X .\]
+The suspension $\Sigma X$ of a CW-complex with base-point is to be the reduced suspension, either $S^1 \wedge X$ or $X \wedge S^1$, whichever suits our sign conventions better when we come to use it. Of course the two are homeomorphic. If $f \colon X \to Y$ is a map between CW-complexes with base-point, its suspension $\Sigma f$ is to be $1 \wedge f \colon S^1 \wedge X \to S^1 \wedge Y$ (or $f \wedge 1 \colon X \wedge S^1 \to Y \wedge S^1$). Suspension defines a function 
+\[ S \colon [X, Y] \lra [\Sigma X, \Sigma Y] .\]
+
+\begin{theorem}
+    Suppose that $Y$ is $(n-1)$-connected. Then $S$ is onto if $\dim X \le 2n - 1$ and is a 1-1 correspondence if $\dim X < 2n - 1$. (\cite[p.~458]{spanier}).
+\end{theorem}
+
+Under these circumstances we call an element of $[X, Y]$ a stable homotopy class of maps.
+
+\begin{example_different}
+    We consider the notion of a cohomology operation. Such an operation is a natural transformation \[ \varphi \colon H^n(X, Y; \pi) \lra H^m(X, Y; G). \] Here $n, m, \pi$ and $G$ are fixed. In other words, $\varphi$ is a function defined on $H^n(X, Y; \pi)$ and taking values in $H^m(X, Y; G)$, subject to one axiom only: if $f \colon X, Y \to X', Y'$, and $h \in H^n(X', Y'; \pi)$ then $\varphi(f^*h) = f^*(\varphi h)$.
+\end{example_different}
+
+By contrast, a stable cohomology operation is a collection of cohomology operations, say \[\varphi_n \colon H^n(X, Y; \pi) \lra H^{n + d}(X, Y; G).\] Here $n$ runs over $\mathbb{Z}$, while $d, \pi$ and $G$ are fixed. Each $\varphi_n$ is required to be a natural, as above. But also we require that the following diagram be commutative for each $n$.
+\[ 
+\begin{tikzcd}
+    H^n(Y, Z; \pi) \arrow[r, "\delta"] \arrow[d, "\varphi_n"'] & H^{n + 1}(X, Y; \pi) \arrow[d, "\varphi_{n + 1}"]\\ 
+    H^{n + d}(Y, Z; G) \arrow[r, "\delta"] & H^{n + d + 1}(X, Y; G)
+\end{tikzcd} 
+\]
+That is, we require $\varphi$ to commute with $\delta$ as well as $f^*$.
+
+For an example, take $\pi = G = \mathbb Z_2$, and let $\varphi_n$ be the Steenrod square $\mathrm{Sq}^d$.
+
+So a stable cohomology operation is something which can be applied in any dimension. Given a cohomology operation \[\varphi \colon H^n(X, Y; \pi) \lra H^m(X, Y; G) \] it need not appear as the $n$-th term of any stable cohomology operation.
+
+(For more on cohomology operations, see for example \cite{moshertangora},\cite{steenrodepstein} and \cite[p. 429-403]{spanier})
+
+To do algebraic topology, it is rather important to be able to distinguish between unstable problems, which arise in some definite dimension, and stable problems, which arise in any sufficiently large dimension. We have actually come quite a long way since Eilenberg said, ``We can distinguish between two cases -- the stable case and the interesting case.'' Sometimes we solve an unstable problem first and use the result to solve a stable problem. For example, one might begin by proving $\pi_3(S^2) \cong \mathbb{Z}$ (unstable) and then go on to deduce that $\pi_{n + 1}(S^n) \cong \mathbb{Z}_2$ for $n > 2$ (stable). More usually, however, we face some geometrical problem which looks like an unstable problem, but we reduce it to a stable problem and solve the stable problem.
+
+For example, we might consider the problem, ``Is $S^{n - 1}$ an $H$-space?'' Examples: for $n = 4$, $S^3$ is an $H$-space; for $n = 6$, $S^5$ is not. This problem is unstable. However, one way to solve this problem is to reduce it to the following one. ``Assuming $m \ge n$, is there a complex $X = S^m \cup e^{m + n}$ in which 
+\[ \mathrm{Sq}^n \colon H^m(X; \mathbb{Z}_2) \lra H^{m + n}(X; \mathbb Z_2) \] is nonzero?'' The problem is stable; for a given $n$ the answer is independent of $m$, provided $m \ge n$. But this problem is equivalent to the former one.
+Another case arises in cobordism theory. Here, for example, one might take compact oriented smooth manifolds, of dimension $n$, without boundary, and classify them under a certain equivalence relation to get a group $\Omega_n$. The problem would be to find the structure of $\Omega_n$. The problem as stated is not yet in the form of a homotopy problem, but it appears to be unstable -- there is one problem for each $n$. However, Ren\'e Thom reduced the problem to a homotopy problem, and found it was a problem of stable homotopy theory. More precisely, he introduced the Thom complex $\mathrm{MSO}(n)$, and he gave an important construction which yields an isomorphism \[ \Omega_r \cong \pi_{n + r}(\mathrm{MSO}(n)) \quad (n > r + 1)\]
+The computation of $\pi_{n + r}(\mathrm{MSO}(n))$ is a stable problem, which was begun by Thom, continued by Milnor and completed by Wall. A suitable reference on cobordism is Stong \cite{stong2}. 
+
+Now of course to solve stable problems, or to compute groups such as $[X, Y]$ or $\pi_{n + r}(\mathrm{MSO}(n))$, we need computable invariants. In the first instance this means homology and cohomology, but we could certainly agree to go as far as generalized homology and cohomology theories. I will suppose it is known that a generalized homology or cohomology theory is a functor $K_*$ or $K^*$ that satisfies the first six axioms of \cite{eilenbergsteenrod}, but not necessarily the seventh, the dimension axiom. I will suppose it is known that the material of Eilenberg-Steenrod Chapter 1 carries over to this situation. For example, if $X$ is a space with base-point one can define reduced groups $\tilde K_*(X)$, $\tilde K^*(X)$; and one can define a suspension isomorphism
+\begin{align*}
+    \tilde K_n(X) &\cong \tilde K_{n + 1}(\Sigma X)\\
+    \tilde K^n(X) &\cong \tilde K^{n + 1}(\Sigma X).
+\end{align*}
+This already tells us that the study of generalized homology and cohomology is part of stable homotopy theory. At least, what I said is true if you consider $\tilde K_*(X)$ or $\tilde K^*(X)$ as an additive group; if you started to use products, or unstable cohomology operations, you would get outside the realm of stable homotopy theory.
+
+To go on with Eilenberg-Steenrod Chapter 1, we have the Mayer-Vietoris sequences
+\[ 
+    \begin{tikzcd}[column sep=small, row sep=small]
+        \cdots \arrow[r] & K_*(U \cap V) \arrow[r] & K_*(U) \oplus K_*(V) \arrow[r] & K_*(U \cup V) \arrow[r] & \cdots\\
+        \cdots \arrow[r] & K^*(U \cup V) \arrow[r] & K^*(U) \oplus K^*(V) \arrow[r] & K^*(U \cap V) \arrow[r] & \cdots
+    \end{tikzcd}.
+\] 
+Also, we have the Atiyah-Hirzebruch spectral sequence, which was really invented by G.W. Whitehead but not published by him:
+\begin{align*}
+    H_*(X; K_*(\mathrm{pt.})) &\Longrightarrow K_*(X) \\
+    H^*(X; K^*(\mathrm{pt.})) &\Longrightarrow K^*(X).
+\end{align*}
+This spectral sequence replaces the Eilenberg-Steenrod uniqueness theorem when we go from the ordinary to the generalized case. The Atiyah-Hirzebruch spectral sequence emphasizes that before computing, we need to know the coefficient groups $K_*(\mathrm{pt.})$ and $K^*(\mathrm{pt.})$.
+
+At this point I should give some motivation for the topics to be considered. One of these we will treat in some detail is that of products; they may not be part of stable homotopy theory, but they have numerous applications. For example, suppose we wanted to take the classical results on duality in manifolds, and carry them over to the generalized case. We would proceed like this.
+
+``Let $X$ be a topological manifold; I don't care whether it is compact or not, but let us assume it has no boundary.'' (If it starts with a boundary I add an open collar, which doesn't change the homology and gives a non-compact manifold without boundary.) ``Suppose that $X$ is orientable with respect to $E$, where $E$ is a ring-spectrum. Let $K$, $L$ be a compact pair in $X$, and assume that $F$ is a module-spectrum over $E$. Then a certain homomorphism (which has to be described) is an isomorphism
+\[ F_r(\mathcal C L, \mathcal C K) \lra \Breve{F}^{n - r}(K, L), \]
+where $n$ is the dimension of the orientation class.'' (The homology on the left is the singular homology associated with $F$, the cohomology on the right is of the \u Cech type.)
+
+Theorems of this sort were introduced by G.W. Whitehead in his well-known paper on generalized homology theories \cite{whitehead2}, but unfortunately he did not go as far as the result I have stated. To prove this result follows a simple recipe: take the treatment in Spanier and do it all over again, with ordinary homology replaced by generalized homology.
+
+For this purpose, of course, one needs products, as in the ordinary case. Indeed, the duality map is defined by a product. There are four basic external products: an external product in homology, an external product in cohomology, and two slant products. From this one gets two internal products, the cup product and cap product. There is also the Kronecker product, which can be obtained as a special case of either slant product or the cap product.
+
+Of course one needs to know the formal properties of the products, For example, the four external products satisfy eight associativity formulae. I do not know of a good source in print where they are collected and numbered $1$ to $8$. Again, when you prove the duality theorem for manifolds, you need to know that the duality homomorphism commutes (up to sign) with boundary maps. So you need to know the properties of the products with respect to the boundary maps. Again I know of no good source in print; Eilenberg-Steenrod volume II is not out yet.
+
+Once you have all the material about duality in manifolds, you can have a certain amount of fun. For example, there is a formula for computing the index of a compact oriented manifold. It says that you take a certain characteristic class of the tangent bundle $\mathcal{T}$ and evaluate it on the fundamental homology class. Now, you may think I mean Hirzebruch's formula in ordinary homology, but I don't; I mean the analogue in complex $K$-theory. If $M$ is an almost-complex manifold, it has a fundamental class $[M]_K$ in $K$-homology, and it's tangent bundle $\mathcal T$ has a characteristic class $\rho_2(\mathcal T)$ in $K$-cohomology, and we can form their Kronecker product $\langle \rho_2(\mathcal T), [M]_K \rangle$.  Then we have
+\[ \mathrm{Index}(X) = \langle \rho_2(\mathcal T), [M]_K \rangle. \]
+
+In ordinary cohomology, one uses not only products, but also cohomology operations. For example, suppose $X$ and $Y$ are finite complexes, and that we want to study the stable groups 
+\[ \lim_{n \to \infty} [\Sigma^{n + r}X, \Sigma^nY]. \]
+There is a recipe that goes as follows. Form $\tilde H^*(X; \mathbb Z_p)$ and $\tilde H^*(Y; \mathbb Z_p)$ and consider them as modules over the $\mathrm{mod}\ p$ Steenrod algebra $A$, that is, the algebra of stable operations on $\mathrm{mod}\ p$ cohomology. Form 
+\[ \mathrm{Ext}_A^{**}\big(\tilde H^*(Y; \mathbb Z_p), \tilde H^*(X; \mathbb Z_p)\big). \]
+Then there is a spectral sequence with this $E_2$-term and converging to the stable group above, at least if one ignores $q$-torsion for $q$ prime to $p$. People seem to call this the Adams spectral sequence, so I suppose I had better do so too. This was the way Milnor computed $\pi_*(\mathrm{MU})$.
+
+At one time I used to make that the point that one ought to take this spectral sequence and replace $\mathrm{mod}\ p$ cohomology by a generalized cohomology theory; but the first person to do so successfully was Novikokv, who took complex cobordism, $\mathrm{MU}^*$. In these notes I have developed the spectral sequeence in sufficient generality so as to include spectral sequences constructed from a number of commonly used theories, using homology instead of cohomology for reasons which will become apparent in \S 16.
+
+Recently Anderson has been considering the Adams spectral sequence (for computing stable homotopy groups of spheres) based on $\mathrm{bu}$, the connective $\mathrm{BU}$-spectrum, and Mahowald has proved various results, including one on the image of the $J$-homomorphism, by considering a similar construction based on $\mathrm{bo}$, the connective $\mathrm{BO}$-spectrum. I have reproved some of their results. The calculations to be given here give a sample application of the Adams spectral sequence, as well as giving some of the information needed to use these spectral sequences based on $\mathrm{bu}$ and $\mathrm{bo}$.
+\end{document}

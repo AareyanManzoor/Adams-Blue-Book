@@ -1,0 +1,414 @@
+\documentclass[../main]{subfiles}
+
+% Added this too
+\renewcommand{\labelenumi}{(\roman{enumi})}
+%%%%
+
+\begin{document}
+
+\chapter{The Adams spectral sequence}
+\label{sec:p3c15}
+Suppose given a ring-spectrum $E$ and two spectra $X,Y$ such that $E_\ast(X)$ is projective over $\pi_\ast(E)$. Our object in this section is to prove the following theorem. 
+
+% Little Narwhal- I started writing here
+\begin{theorem}\label{thm:p3ch15.1}
+Assume that $X$, $Y$ and $E$ satisfy the assumptions listed below. Then
+\begin{enumerate}[label=(\roman*)]
+    \item there exists a spectral sequence with the properties which follow
+    \item its $E_2$ term is given by 
+    \[E_2^{p,\ast}=\operatorname{Ext}_{E_\ast(E)}^{p\ast}(E_\ast(X),E_\ast(Y)), \quad \text{and}\]
+    \item the spectral sequence converges to $[X,Y]_\ast^E$ in the sense that a suitable analogue of Theorem $\ref{prop:p3ch08.2}$ holds. More precisely, it may be obtained by applying the functor $[X,-]_\ast^E$ to a decreasing filtration
+    \[Y\simeq Y_0\supset Y_1\supset Y_2\supset Y_3 \supset \hdots \supset Y_p\supset \hdots\]
+    such that 
+    \[{\varprojlim_p}^0[X,Y_p]_\ast^E=U\]
+    \[{\varprojlim_p}^1[X,Y_p]_\ast^E=U\]
+\end{enumerate}
+\end{theorem}
+\begin{notes}
+In (ii), $\operatorname{Ext}$ means $\operatorname{Ext}$ of comodules over the coalgebra $E_\ast(E)$. The rules for its calculation will be explained in due course.
+\end{notes}
+\par \emph{List of assumptions.} For part (i), none; no extra data is needed to construct the spectral sequence.
+
+For part (ii), two assumptions
+\begin{enumerate}
+    \item[(a)] Either $X=S$, or $E$ satisfies \ref{cond:p3ch13.3}.
+    \item[(b)] $E_\ast(E)$ is flat as a right module over $\pi_\ast(E)$.
+\end{enumerate}
+Both are satisfied for $E=S, H\bZ_p, \te{MO, MU, MSp, K, KO}$.
+
+Of course the spectral sequence may be usable even if (ii) does not apply, if we can calculate the $E_1$ or $E_2$ term some other way.
+
+For part (iii), three assumptions.
+\begin{enumerate}
+    \item[(a)] $Y$ is connective; that is, there exists $n_0\in \mathbb{Z}$ such that $\pi_r(Y)=0$ for $r<n_0$.
+    \item[(b)] $\pi_r(E)=0$ for $r<0$, and
+    \[\mu_\ast:\pi_0(E)\otimes_\mathbb{Z}\pi_0(E)\longrightarrow\pi_0(E)\]
+    is an isomorphism. (Examples: $\pi_0(E)=\mathbb{Z}_m$; $\pi_0(E)$ is a subring of the rationals)
+\end{enumerate}
+
+Before proceeding, we observe that $H_\ast(E)$ is a ring, so $H_r(E)$ is a module over $H_0(E)=\pi_0(E)$. Let the subring $R$ of the rationals $\mathbb{Q}$ be as in $\ref{prop:p3ch14.17}$, so that we have a homomorphism $\theta:R\longrightarrow\pi_0(E)$; thus $H_r(E)$ becomes an $R$-module.
+\begin{enumerate}
+    \item[(c)] $H_r(E)$ is finitely-generated over $R$ for all $r$. 
+\end{enumerate}
+
+\begin{examples}
+$E=S, H, H\bZ_p,\te{ MO, MU, MSp, bu, bo}$ satisfy (b) and (c); indeed $H_r(E)$ is finitely generated over $\mathbb{Z}$. However, we might also wish to introduce suitable coefficients. For example, we might prefer some account of the Brown-Peterson spectrum in which $\pi_0(E)$ is $\mathbb{Z}_{(p)}$, the integers localised at $p$. Then $R=\mathbb{Z}_{(p)}$, and the groups $H_r(E)$ are finitely-generated over $R$ but not over $\mathbb{Z}$.
+\end{examples}
+
+\par The basic construction is very easy. We start with $Y_0=Y$. Suppose $Y_p$ has been constructed. Let $W_p=E\wedge Y_p$. Then we can form the morphism
+\[Y_p\simeq S\wedge Y_p\vra{i\wedge 1} E\wedge Y_p=W_p\]
+Construct a cofibering
+\[Y_{p+1}\longrightarrow Y_p\longrightarrow W_p\longrightarrow Y_{p+1}\]
+where $W_p\longrightarrow Y_{p+1}$ has degree $-1$. This completes the induction and constructs the following diagram:
+\[\adjustbox{scale=0.9,center}{
+\begin{tikzcd}
+	Y=Y_0 && Y_1 && Y_2 && Y_3 && Y_4\hdots \\
+	& W_0 && W_1 && W_2 && W_3
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=2-2, to=1-3]
+	\arrow[from=1-3, to=1-1]
+	\arrow[from=1-3, to=2-4]
+	\arrow[from=2-4, to=1-5]
+	\arrow[from=1-5, to=1-3]
+	\arrow[from=1-5, to=2-6]
+	\arrow[from=2-6, to=1-7]
+	\arrow[from=1-7, to=1-5]
+	\arrow[from=1-7, to=2-8]
+	\arrow[from=2-8, to=1-9]
+	\arrow[from=1-9, to=1-7]
+\end{tikzcd}}\]
+~\\~\\
+If we wish we may use a telescope construction to replace $Y_0$ by an equivalent spectrum so that the morphisms actually become inclusons 
+\[Y_0\supset Y_1 \supset Y_2 \supset Y_3\supset \hdots;\]
+but this is not necessary.
+
+\par Suppose we now apply the functor $[X,-]_\ast^E$. Using $\ref{lem:p3ch14.9}$ we get a spectral sequence, and this is the spectral sequence required.
+
+We can also write the specra $Y_p, W_p$ slightly differently. Let us form the cofibering
+\[\bar{E}\longrightarrow S \vra{i}E\longrightarrow\bar{E}\hdots\]
+where $E\longrightarrow\bar{E}$ has degree $-1$. Let
+\[\bar{E}^p=\bar{E}\wedge\bar{E}\wedge\hdots\wedge\bar{E} \quad \text{(p factors).}\]
+Smashing with $\bar{E}^p\wedge Y$, we obtain a cofibering
+\[\bar{E}^{p+1}\wedge Y\longrightarrow \bar{E}^p\wedge Y \longrightarrow E\wedge \bar{E}^p\wedge Y \longrightarrow \bar{E}^{p+1}\wedge Y\]
+where again the last morphism shown has degree $-1$. So we may take 
+\[Y_p=\bar{E}^p\wedge Y, \quad W_p=E\wedge\bar{E}^p\wedge Y.\]
+
+This makes it trivial that a morphism $f:Y\longrightarrow Y'$ induces morphisms of the whole construction, and induces a homomorphism from the spectral sequence for $Y$ to that for $Y'$.
+
+Suppose now that $f:Y\longrightarrow Y'$ is an $E$-equivalence. Then all the induced morphisms $Y_p\longrightarrow Y_p',\quad W_p\longrightarrow W_p'$ are also $E$-equivalences (by $\ref{lem:p3ch14.16}$) and induce isomorphisms of $[X,-]_\ast^E$. Thus an $E$-equivalence $f:Y\longrightarrow Y'$ induces an isomorphism of the whole spectral sequence.
+
+It follows that we may suppose without loss of generality that $Y$ is $E$-complete; for if not, replace it by its $E$-completion $Y^E$.
+
+If $Y$ is $E$-complete, then we easily see by induction over $p$ that $Y_p$ is $E$-complete; for $W_p$ is $E$-complete since it is an $E$-module spectrum, and we use $\ref{lem:p3ch14.15}$. So in this case everything in the construction is $E$-complete, and we could have used $[X,-]_\ast$ instead of $[X,-]_\ast^E$.
+
+\par Now I had better proceed to part (ii) of the theorem, the calculation of the $E_2$ term. I ought to begin by recalling some facts from algebra, or perhaps from "coalgebra".
+
+\par Let A be an algebra with multiplication $\mu$ over a ground-ring $R$, and let $N$ be an $R$-module. Then we can construct $A\otimes_R N$, and it is an $A$-module with action map 
+\[A\otimes_R(A\otimes_R N)\vra{\mu\otimes 1} A\otimes_R N.\]
+The most usual case is that in which $N$ is $R$-free; then $A\otimes_R N$ is $A$-free. In general $A\otimes_R N$ is called an \emph{extended} \index{extended module}module, and it possesses the following important property, which generalises the characteristic property of a free module. Let $M$ be an $A$-module with action map $\gamma$. Then we have an isomorphism
+\[\operatorname{Hom}_A(A\otimes_R N, M)\vra{\theta}\operatorname{Hom}_R(N,M).\]
+It is given as follows. Suppose given
+\[A\otimes_R N\vra{f} M;\]
+then $\theta f$ is
+\[N\cong R\otimes_R N\vra{\eta\otimes 1} A\otimes_R N\vra{f}M\]
+where $\eta$ is the unit map $R\longrightarrow A$. Suppose given $N\vra{g} M;$ then $\theta^{-1}g$ is
+\[A\otimes_R N\vra{1\otimes g} A\otimes_R M\vra{\gamma} M\]
+
+In particular, if $N$ is projective over $R$, then $A\otimes_R N$ is projective over $A$.
+
+\par We also have the dual situation. Let $C$ be a coalgebra with diagonal $\psi$ over a ground-ring $R$. I emphasize that $R$ is allowed to act differently on the two sides of $C$. Let $N$ be an $R$-module. Then we can construct $C\otimes_R N$, and it is a $C$-comodule with coaction map
+\[C\otimes_R N \vra{\psi\otimes 1} C\otimes_R (C\otimes_R N).\]
+It is called an extended comodule. It has the following property. Let $M$ be a $C$-comodule with coaction map $\gamma$. Then we have an isomorphism
+\[\operatorname{Hom}_C(M,C\otimes_R N)\vra{\theta} \operatorname{Hom}_R(M,N).\]
+It is given as follows. Suppose given
+\[M\vra{f}C\otimes_R N;\]
+then $\theta f$ is
+\[M\vra{f}C\otimes_R N\vra{\varepsilon \otimes 1} R\otimes_R N\cong N,\]
+where $\varepsilon$ is the augmentation $C\longrightarrow R$. Suppose given $M\vra{g} N$; then $\theta^{-1}g$ is 
+\[N\vra{\gamma} C\otimes_R N \vra{1\otimes g} C\otimes_R N.\]
+In particular, if $N$ is injective over $R$, then $C\otimes_R N$ is injective over $C$.
+
+\par There is a prescription of homological algebra for computing $\operatorname{Ext}_C^{\ast\ast}(L,M)$ where $L$ and $M$ are comodules over the coalgebra $C$. However, it does not demand that we resolve $M$ by absolute injectives. So long as $L$ is projective over $R$ it will be sufficient if we resolve $M$ by relative injectives. More precisely, if $L$ is projective over $R$ we have to make a resolution 
+\[0\longrightarrow M \longrightarrow M_0 \longrightarrow M_1 \longrightarrow M_2 \hdots\]
+where each $M_i$ is an extended comodule. Then we form 
+\[\operatorname{Hom}_C(L,M_0)\longrightarrow \operatorname{Hom}_C(L,M_1)\longrightarrow\operatorname{Hom}_C(L,M_2)\longrightarrow \hdots \]
+and the cohomology groups of this cochain complex are 
+\[\operatorname{Ext}_C^{\ast\ast}(L,M).\]
+
+\par With this in mind, let us return to consider our geometrical situation. We have 
+\[W_p=E\wedge Y_p.\]
+So of course we have 
+\[E_\ast(W_p)=E_\ast(E\wedge Y_p)\cong E_\ast(E)\otimes_{\pi_\ast(E)}E_\ast(Y_p);\]
+this is by Lemma \ref{lem:p3ch12.5}. It is rather trivial to check that this isomorphism throws the coaction map $\psi_{W_p}$ onto $\psi_E\otimes 1$; so $E_\ast(E\wedge Y_p)$ is an extended comodule.
+
+Again, consider our cofibering
+\[Y_p\longrightarrow E\wedge Y_p\longrightarrow Y_{p+1}\]
+where $E\wedge Y_p\longrightarrow Y_{p+1}$ has degree $-1$. When we smash with $E$ we have 
+\[E\wedge Y_p \overset{\mu\wedge 1}{\underset{1\wedge i}{\rightrightarrows}} E\wedge E\wedge Y_p \longrightarrow E\wedge Y_{p+1}\longrightarrow \hdots.\]
+But $\mu\wedge 1$ is a left inverse for $1\wedge i$, so we have the following short exact sequence, split as a sequence of modules over $\pi_\ast(E)$
+\begin{align} 0\longrightarrow E_\ast(Y_p) \longrightarrow E_\ast(E&\wedge Y_p)\longrightarrow E_\ast(Y_{p+1}) \longrightarrow 0 \nonumber \\ 
+&\| \nonumber\\
+E_\ast(&W_p) \nonumber
+\end{align}
+Hence the sequence
+\[0\longrightarrow E_\ast(Y)\longrightarrow E_\ast(W_0) \longrightarrow E_\ast(W_1) \longrightarrow E_\ast(W_2) \longrightarrow \hdots\]
+is indeed a resolution of $E_\ast(Y)$ by extended comodules over $E_\ast(E)$.
+
+Now I recall that the $E_1$ term of our spectral sequence is given by 
+\begin{align}
+    E_1^{p\ast} &= [X,W_p]_\ast^E \nonumber \\
+    &= [X, E\wedge Y_p]_\ast^E \nonumber \\
+    &=[X,E\wedge Y_p]_\ast \quad \text{(since } E\wedge Y_p \text{ is } E\text{-complete).} \nonumber
+\end{align}
+
+The boundary $d_1$ is induced by the morphism
+\[W_p\longrightarrow Y_{p+1}\longrightarrow W_{p+1}\]
+where $W_p\longrightarrow Y_{p+1}$ has degree $-1$. We have the following commutative diagram.
+\[
+\begin{tikzcd}
+{[X,E\wedge Y_p]} &&& {\operatorname{Hom}_{E_\ast(E)}^\ast (E_\ast(X), E_\ast(E\wedge Y_p))}\arrow[swap]{dd}{\theta}[swap]{\cong} \\
+\\
+&&& {\operatorname{Hom}_{\pi_\ast(E)}^\ast(E_\ast(X),E_\ast(Y_p))}
+\arrow["\alpha", from=1-1, to=1-4]
+\arrow["\beta", from=1-1, to=3-4]
+\end{tikzcd}
+\]
+Here $\alpha(f)=f_\ast$. The isomorphism $\theta$ comes because $E_\ast(E\wedge Y_p)$ is an extended comodule. The spectrum $E\wedge Y_p$ is a module-spectrum over $E$, and $\beta$ is precisely the map which is asserted to be an isomorphism by \ref{prop:p3ch13.5}, if we have the data for that, or trivially $X=S$. We conclude that $\alpha$ is an isomorphism.
+
+Now we have the following commutative diagram, in which the horizontal maps are induced by the morphisms $W_p\longrightarrow W_{p+1}$ (of degree $-1$), and $\operatorname{Hom}$ is $\operatorname{Hom}_{E_\ast(E)}$.
+
+\[
+\adjustbox{scale=0.9, center}{
+\begin{tikzcd}
+    {[X,W_{p-1}]_\ast} && {[X,W_p]_\ast} && {[X,W_{p+1}]_\ast}\\
+    \\
+    {\operatorname{Hom}(E_\ast(X),E_\ast(W_{p-1}))} && {\operatorname{Hom}(E_\ast(X),E_\ast(W_{p}))} && {\operatorname{Hom}(E_\ast(X),E_\ast(W_{p+1}))}
+    \arrow["d_1", from=1-1, to=1-3]
+    \arrow["d_1", from=1-3, to=1-5]
+    \arrow[from=3-1, to=3-3]
+    \arrow[from=3-3, to=3-5]
+    \arrow["\cong", from=1-1, to=3-1]
+    \arrow["\cong", from=1-3, to=3-3]
+    \arrow["\cong", from=1-5, to=3-5]
+\end{tikzcd}}\]
+
+The cohomology goups of the top row are $E_2^{p_\ast}$ and those of the bottom row are
+\[\operatorname{Ext}_{E_\ast(E)}^{p_\ast}(E_\ast(X), E_\ast(Y)).\]
+This proves part (ii) of \ref{thm:p3ch15.1}.
+
+\par We now start work on part (iii). I recall we have assumed that 
+\[\pi_0(E)\otimes_\mathbb{Z} \pi_0(E)\vra{\mu_\ast}\pi_0(E)\] is an isomorphism. I claim it follows that for any module $M$ over $\pi_0(E)$,
+\[\pi_0(E)\otimes_\mathbb{Z} M \vra{\nu} M\]
+is an isomorphism. In fact, this follows from the following commutative diagram.
+%Johns part
+
+\[\begin{tikzcd}
+	{\pi_0(E)\otimes_\mathbb{Z}\pi_0(E)\otimes_{\pi_0(E)}M} \arrow[swap]{rr}{\cong}[swap]{1\otimes \nu} \arrow[swap]{d}{u\otimes 1}[swap]{\cong}&& {\pi_0(E)\otimes_\mathbb{Z}M} \\
+	{\pi_0(E)\otimes_{\pi_0(E)}M}\arrow[swap]{rr}{\nu}[swap]{\cong} && M
+	\arrow["\nu", from=1-3, to=2-3]
+\end{tikzcd}\]
+
+Now I undertake to prove by induction over $p$ that $\pi_r(E\wedge \bar{E}^p) = 0$ for $r<0$. This is surely true for $p=0$, by assumption. Suppose it is true for $p$, and consider the following cofibering
+
+\[\begin{tikzcd}
+	{E\wedge S\wedge \bar{E}^p} && {E\wedge E\wedge\bar{E}^p} && {E\wedge\bar{E}^{p+1}}
+	\arrow["{1\wedge i\wedge 1}", from=1-1, to=1-3]
+	\arrow[from=1-3, to=1-5]
+\end{tikzcd}\]
+
+Here $E\wedge E\wedge\bar{E}^p\lar{}{E\wedge\bar{E}^{p+1}} $ has degree $-1$. As we have already remarked, we have a left inverse for $1\wedge i\wedge 1$, given by $\mu \wedge 1:E\wedge E\wedge \bar{E}^p\lar{}E\wedge\bar{E}^p  $. So the exact homotopy sequence of this cofibering is split short exact. By the inductive hypothesis and the K\"unneth
+theorem, the first non-zero homotopy group of $E\wedge E\wedge\bar{E}^p$ is \[\pi_0(E\wedge E\wedge\bar{E}^p) = \pi_0(E) \otimes_\bZ \pi_0(E\wedge \bar{E}^p).\]
+Therefore $\pi_r(E\wedge \bar{E}^{p+1})=0$ for $r<-1$ and $\pi_{-1}(E\wedge \bar{E}^{p+1})$ is isomorphic to the kernel of \[\pi_0(E) \otimes_\bZ \pi_0(E\wedge \bar{E}^p) \lar{}\pi_0(E\wedge \bar{E}^p)\] 
+But this map is an isomorphism by the remarks above, so its kernel is
+zero, and $\pi_{r}(E\wedge \bar{E}^{p+1})=0$ for $r<0$. This completes the induction.
+
+We have also assumed $\pi_r(Y)=0$ for $r<n_0$. Since we may take $W_p=E\wedge \bar{E}^p\wedge Y$, we have $\pi_r(W_p)=0$ for $r<n_0$.
+
+Now I undertake to prove by induction over $p$ that $\pi_r(Y_p)=0$ for $r<n_0-1$.This is immediate, from the following exact sequence. \[\dots \lar{}\pi_{r+1}(W_p)\lar{} \pi_r(Y_{p+1}) \lar{} \pi_r(Y_p)\lar{} \dots \]
+So at this stage we have established a uniform bound $n_0-1$ such that $\pi_r(Y_p)=0$ for $r<n_0-1$.
+
+Next we need to construct a spectrum $Y_\infty$, the $E$-homotopy inverse 
+limit of the $Y_p$. The construction is easy. First we observe that we
+can assume without loss of generality that $Y$ is $E$-complete, and therefore that all the $Y_p$ are $E$-complete. This requires a word of
+justification; we have to see that when we replace $Y$ by $Y^E$, we do not
+sacrifice the property that $Y$ is connective. Recall that by the proof of \ref{prop:p3ch14.5}, we can find a uniform bound $\nu$ and a cofinal set of
+$E$-equivalences $e: Y\lar{} Y'$ such that $\pi_r (Y')=0$ for $r<\nu$. This
+shows that $[S,Y]^E_r=0$ for $r<\nu$ and $\pi_r(Y')=0$ for $r<\nu$.
+
+Assume then that all $Y_p$ are $E$-complete.Then we can form the categorical product $\displaystyle \prod_{i=0}^\infty Y_i $ in $C$, and it is $E$-complete; for if $E_\ast(W)=0$, and $\displaystyle f:W\lar{} \prod_{i=0}^\infty Y_i$ is a map, then all the components $p_i f:W\lar{}Y_i$ are zero, and so $f$ is zero. It follows that $\displaystyle\prod_{i=0}^\infty Y_i$ is the categorical product not only in $C$, but also in the category of fractions $F$.
+
+Now we construct a map $\displaystyle f:\prod_{i=0}^\infty Y_i\lar{}\prod_{i=0}^\infty Y_i$; the $i\nth$ component of $f$ is to be the difference of two maps, that is \[\bigg( \prod_{i=0}^\infty Y_i\bigg)\lar{p_i} Y_i\]
+minus 
+\[
+\begin{tikzcd}
+\displaystyle\bigg(\prod_{i=0}^\infty Y_i\bigg)\arrow[r,"p_{i+1}"] &Y_{i+1} \arrow[r] &Y_i
+\end{tikzcd}
+\]
+We define $Y_\infty$ so that we have the following cofibre sequence.
+\[Y_\infty\lar{}\bigg(\prod_{i=0}^\infty Y_i\bigg)\lar{f} \bigg(\prod_{i=0}^\infty Y_i\bigg)\lar{} Y_\infty  \]
+It follows from \ref{lem:p3ch14.15} that $Y_\infty$ is $E$-complete. Apllying $[X,-]^E_\ast$, we see that for any $X$ we have the following short exact sequence.
+\[0\lar{} \varprojlim_i\!^1[X,Y_i]^E_r\lar{}[X,Y_\infty]^E_r\lar{}\varprojlim_i  \!^0[X,Y_i]^E_r \lar{} 0 \]
+
+\begin{customthm}{15.2}\label{thm:p3ch15.2}
+let $R$ be a subring of the rationals $\bQ$. Suppose $Y_\alpha,E$ are spectra such that 
+\begin{enumerate}
+    \item[(i)] $\pi_r(Y_\alpha)=0$ for $r<n_1$, for some $n_1$ independent of $\alpha$.
+    \item[(ii)] $\pi_r(Y_\alpha)=0$ is an $R$-module for all $r,\alpha$.
+    \item[(iii)] $\pi_r(E)=0$ for $r<n_2$, for some $n_2\in \bZ$, and
+    \item[(iv)] $H_r(E)$ is a finitely generated $R$-module for all $r$
+\end{enumerate}
+Then the canonical morphism
+\[E\wedge\bigg(\prod_\alpha Y_\alpha \bigg)\lar{}\prod_\alpha (E\wedge Y_\alpha) \]
+Is an equivalence.
+\end{customthm}
+The canonical morphism is of course the one with components 
+\[
+\begin{tikzcd}
+E\wedge\bigg(\displaystyle\prod_\alpha Y_\alpha \bigg)\arrow[r,"1\wedge p_\alpha"]& E\wedge Y_\alpha\end{tikzcd} 
+\]
+It can be shown by examples that the behaviour of $\wedge$  with respect to $\displaystyle \prod$ is in general very bad; one cannot hope for a much stronger theorem.
+
+Now \ref{prop:p3ch14.17} shows that $\pi_r(Y_i)$ is an $R$ module, where $R$ is as in \ref{prop:p3ch14.17}. So \ref{thm:p3ch15.2} applies and shows that 
+
+\[E\wedge\bigg(\prod_{i=0}^\infty Y_i \bigg)\lar{}\prod_{i=0}^\infty (E\wedge Y_i) \]
+is an equivalence. This shows that \[E_\ast\bigg(\prod_{i=0}^\infty Y_i \bigg)= \pi_\ast\bigg(E\wedge \bigg(\prod_{i=0}^\infty Y_i \bigg)\bigg) \cong \pi_\ast\bigg(\prod_{i=0}^\infty (E\wedge Y_i) \bigg)\cong \prod_{i=0}^\infty E_\ast(Y_i)\]
+under the obvious homomoprhism. It follows that we have the following short exact sequence.
+\[0\lar{} \varprojlim_i\!^1E_\ast(Y_i) \lar{} E_\ast(Y_\infty)\lar{}\varprojlim_i\!^0 E_\ast(Y_i)\lar{} 0\]
+But by the construction the maps $E_\ast(Y_{i+1})\lar{} E_\ast (Y_i)$ are zero. it follows immediately that $\varprojlim_i\!^0 E_\ast(Y_i)=0$ (see section 8, exercise \ref{ex:p3ch08.ii}.) Therefore $E_\ast(Y_\infty)=0$. It follows that $[X,Y_\infty]_\ast^E=0$. Using the exact sequence above, we have \[\varprojlim_i\!^0E_\ast(Y_i) =0\] \[\varprojlim_i\!^1E_\ast(Y_i)=0 \]
+This is proved in \ref{thm:p3ch15.1} (iii). It remains to prove Theorem \ref{thm:p3ch15.2}
+
+\begin{customlemma}{15.3} \label{lem:p3ch15.3}
+Suppose that $R$ is a subring of the rationals, the
+$G_\alpha$ are $R$-modules and $F$ is a finitely-generated $R$-module. Then 
+\[F\otimes_R \bigg(\prod_\alpha G_\alpha\bigg)\lar{} \prod_\alpha (F\otimes_R G_\alpha)\]
+and
+\[\Tor_1^R\bigg(F,\prod_\alpha G_\alpha\bigg) \lar{} \prod_\alpha \Tor_1^R(F,G_\alpha) \] %to be fixed later
+Are isomorphisms
+\end{customlemma}
+\begin{proof}
+$R$ is a principal ideal ring. Take a resolution of $F$ of the form
+\[0\lar{} \sum_1^n R \lar{d} \sum_1^m R\lar{} F\lar{}0\]
+Form the following diagram
+\[
+\adjustbox{scale=0.75,center}{
+\begin{tikzcd}
+	0 & {\Tor_1^R\bigg(F,\displaystyle \prod_\alpha G_\alpha\bigg) } & {\bigg(\displaystyle\sum_1^n R \bigg)\otimes \displaystyle\prod_\alpha G_\alpha} && {\bigg(\displaystyle\sum_1^m R \bigg)\otimes \displaystyle\prod_\alpha G_\alpha} & {F\otimes \displaystyle\prod_\alpha G_\alpha} & 0 \\
+	&& {\displaystyle\prod_1^n\prod_\alpha G_\alpha} && {\displaystyle\prod_1^m\prod_\alpha G_\alpha} \\
+	&& {\displaystyle\prod_\alpha\prod_1^n G_\alpha} && {\displaystyle\prod_\alpha\prod_1^m G_\alpha} \\
+	0 & {\displaystyle \prod_\alpha\Tor_1^R\big(F, G_\alpha\big) } & {\displaystyle \prod_\alpha \bigg(\bigg(\sum_1^n R\bigg)\otimes G_\alpha\bigg)} && {\displaystyle \prod_\alpha \bigg(\bigg(\sum_1^m R\bigg)\otimes G_\alpha\bigg)} & {\displaystyle \prod_\alpha(F\otimes G_\alpha)} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow["d\otimes1", from=1-3, to=1-5]
+	\arrow[from=1-5, to=1-6]
+	\arrow[from=1-6, to=1-7]
+	\arrow[equal,from=2-3, to=3-3]
+	\arrow[equal,from=1-3, to=2-3]
+	\arrow[equal,from=3-3, to=4-3]
+	\arrow[from=4-1, to=4-2]
+	\arrow[from=4-2, to=4-3]
+	\arrow["{\prod_\alpha(d\otimes 1)}"', from=4-3, to=4-5]
+	\arrow[equal,from=3-5, to=4-5]
+	\arrow[equal,from=2-5, to=3-5]
+	\arrow[equal,from=1-5, to=2-5]
+	\arrow[from=4-5, to=4-6]
+	\arrow[from=4-6, to=4-7]
+	\arrow[from=1-2, to=4-2]
+	\arrow[from=1-6, to=4-6]
+\end{tikzcd}
+}\]
+The result follows.
+\end{proof}
+\begin{customlemma}{15.4}\label{lem:p3ch15.4}
+Suppose that $R$ is a subring of the rationals, $E$ is such that $H_r(E)$ is a finitely-generated $R$-module for all $R$, and the $G_\alpha$ are $R$-modules. Then \[H_n\bigg(E;\prod_\alpha G_\alpha\bigg)\lar{} \prod_\alpha H_n(E;G_\alpha)\]
+is an isomorphism
+\end{customlemma}
+\begin{proof}
+First observe that since $R$ is torsion-free, the ordinary universal coefficient theorem gives $H_r(E;R)\cong H_r(E)\otimes_\bZ R$; sand since $R\otimes_\bZ R\lar{R}$ is isomorphism, and $H_r(E)$ is an $R$-module, the arguement given in \ref{thm:p3ch15.1} (iii) (applied to $R$ rather than $\pi_0(E)$) shows that $H_r(E)\otimes_\bZ R\lar{}H_r(E)$ is an isomorphism. So $H_r(E;R)$ is finitely-generated over $R$. Now consider the following diagram:
+\[
+\adjustbox{scale=0.85,center}{
+\begin{tikzcd}
+	0 & {H_n(E;R)\otimes_R\displaystyle\prod_\alpha G_\alpha} & {H_n\Big(E;\displaystyle\prod_\alpha G_\alpha\Big)} & {\Tor_1^R\Big(H_{n-1}(E;R);\displaystyle\prod_\alpha G_\alpha\Big)} & 0 \\
+	0 & {\displaystyle\prod_\alpha H_n(E;R)\otimes_R G_\alpha} & {\displaystyle\prod_\alpha H_n(E;G_\alpha)} & {\displaystyle\prod_\alpha \Tor_1^R\big(H_{n-1}(E;R);\displaystyle G_\alpha\big)} & 0
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow["\cong"', from=1-2, to=2-2]
+	\arrow[from=1-3, to=2-3]
+	\arrow["\cong", from=1-4, to=2-4]
+	\arrow[from=2-4, to=2-5]
+\end{tikzcd}
+}\]
+The two vertical arrows marked are isomorphisms by \ref{lem:p3ch15.3}. The rows are exact by the ordinary universal coefficient theorem. THe result follows by the short five lemma.
+\end{proof}
+\begin{customcor}{15.5}\label{cor:p3ch15.5} 
+(of Lemma \ref{lem:p3ch15.4}). Theorem \ref{thm:p3ch15.2} is true in the special case  in which the $Y_\alpha$ are all Eilenberg-MacLance spectra with homotopy groups in the same dimension $q$.
+\end{customcor}
+\begin{proof}
+Let $G_\alpha$ be the $R$ module $\pi_q(Y_\alpha)$. Then $\displaystyle\prod_\alpha Y_\alpha$ is an Eilenberg-MacLance spectrum with homotopy group $\displaystyle \prod_\alpha G_\alpha $ in dimension $q$. We have the following commutative diagram:
+\[\begin{tikzcd}
+    \pi_r\bigg(E\wedge\displaystyle \prod_\alpha Y_\alpha\bigg) \arrow[rr]\arrow[d,"\cong"] & & \pi_r\bigg(\displaystyle\prod_\alpha E\wedge Y_\alpha\bigg)\arrow[d,"\cong"]\\ H_{r-q}\bigg(E;\displaystyle \prod_\alpha G_\alpha\bigg) \arrow[rr] & & \displaystyle \prod_\alpha H_{r-q}(E;G_\alpha)
+\end{tikzcd}\]
+By \ref{lem:p3ch15.4} the lower horizontal arrow is an isomorphism. The result follows immediately from the theorem of J.H.C. Whitehead.
+\end{proof}
+\begin{customlemma}{15.6}\label{lem:p3ch15.6}
+Suppose $A_\alpha\lar{}B_\alpha\lar{}C_\alpha\lar{}A_\alpha\lar{}B_\alpha$ is is a cofibering for each $\alpha$, where $C_\alpha\lar{}A_\alpha$ has degree $-1$. Then
+\[\displaystyle\prod_\alpha A_\alpha\lar{}\displaystyle\prod_\alpha B_\alpha\lar{}\displaystyle\prod_\alpha C_\alpha\lar{}\displaystyle\prod_\alpha A_\alpha\lar{} \displaystyle\prod_\alpha B_\alpha\]
+is a cofibering.
+\end{customlemma}
+\begin{proof}
+Construct a cofibering 
+\[\displaystyle\prod_\alpha A_\alpha\lar{}\displaystyle\prod_\alpha B_\alpha\lar{}D\lar{}\displaystyle\prod_\alpha A_\alpha\lar{} \displaystyle\prod_\alpha B_\alpha\]
+
+So we can construct the following diagram:
+\[
+\begin{tikzcd}
+    \displaystyle\prod_\alpha A_\alpha \arrow[r]\arrow[d,"p_\alpha"]   &\displaystyle\prod_\alpha B_\alpha \arrow[r]\arrow[d,"p_\alpha"] & D\arrow[r]\arrow[d] & \displaystyle\prod_\alpha A_\alpha\arrow[r]\arrow[d,"p_\alpha"] & \displaystyle\prod_\alpha B_\alpha \arrow[d,"p_\alpha"]\\
+ A_\alpha\arrow[r] & B_\alpha\arrow[r] &  C_\alpha\arrow[r] &  A_\alpha\arrow[r] &  B_\alpha
+\end{tikzcd}
+\]
+So we can construct the following diagrams:
+\[
+\begin{tikzcd}
+    \displaystyle\prod_\alpha A_\alpha \arrow[r]\arrow[d,"1"]   &\displaystyle\prod_\alpha B_\alpha \arrow[r]\arrow[d,"1"] & D\arrow[r]\arrow[d] & \displaystyle\prod_\alpha A_\alpha\arrow[r]\arrow[d,"1"] & \displaystyle\prod_\alpha B_\alpha \arrow[d,"1"]\\
+\displaystyle\prod_\alpha A_\alpha\arrow[r] & \displaystyle\prod_\alpha B_\alpha\arrow[r] & \displaystyle\prod_\alpha C_\alpha\arrow[r] & \displaystyle\prod_\alpha A_\alpha\arrow[r] & \displaystyle\prod_\alpha B_\alpha
+\end{tikzcd}
+\]
+Now the five lemma shows that the map $D\lar{}\displaystyle\prod_\alpha C_\alpha$ induces an isomorphism of homotopy, and the theorem of J,H.C. Whitehead shows
+that it is an equivalence. Since the upper line of the diagram is a cofibering, it follows that the lower line is a cofibering. This proves \ref{lem:p3ch15.6}
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:p3ch15.2}]
+We wish to show that \[\pi_r\bigg(E\wedge \displaystyle\prod_\alpha Y_\alpha\bigg)\lar{} \pi_r\bigg(\displaystyle \prod_\alpha E\wedge Y_\alpha\bigg)\]
+is an isomorphism.and we do this by induction over $r-n_1-n_2$. The result is trivial if $r-n_1-n_2<0$. Supppose as an inductive hypothesis that the result is true for smaller values of $r-n_1-n_2$. We can construct a cofibering \[K_\alpha\lar{} W_\alpha \lar{} Y_\alpha \lar{}K_\alpha \lar{} W_\alpha\]
+In which $K_\alpha\lar{}W_\alpha$ has degree $-1$, $\pi_r(W_\alpha)=0$ for $r<n_1+1$ and $K_\alpha$ is an Eilenberg-Maclane spectrum for the $R$-module $\pi_{n_1}(Y_\alpha)$ in dimension $n_1$. Using (\ref{lem:p3ch15.6}), we see that 
+\[E\wedge \displaystyle \prod_\alpha K_\alpha\lar{}E\wedge \displaystyle \prod_\alpha W_\alpha \lar{} E\wedge \displaystyle \prod_\alpha Y_\alpha \lar{}E\wedge \displaystyle \prod_\alpha K_\alpha \lar{}E\wedge \displaystyle \prod_\alpha W_\alpha\]
+and \[ \displaystyle\prod_\alpha(E\wedge K_\alpha)\lar{}\displaystyle\prod_\alpha(E\wedge  W_\alpha) \lar{} \displaystyle\prod_\alpha(E\wedge Y_\alpha )\lar{}\displaystyle\prod_\alpha(E\wedge K_\alpha )\lar{} \displaystyle\prod_\alpha(E\wedge W_\alpha)\]
+are also cofiberings. Now consider the following diagram:
+
+\[\begin{tikzcd}
+	{\pi_{r+1}\bigg(E\wedge \displaystyle\prod_\alpha K_\alpha \bigg)} && {\pi_{r+1}\bigg(\displaystyle\prod_\alpha\bigg(E\wedge  K_\alpha \bigg)\bigg)} \\
+	{\pi_r\bigg(E\wedge \displaystyle\prod_\alpha W_\alpha \bigg)} && {\pi_{r}\bigg(\displaystyle\prod_\alpha\bigg(E\wedge  W_\alpha \bigg)\bigg)} \\
+	{\pi_{r}\bigg(E\wedge \displaystyle\prod_\alpha Y_\alpha \bigg)} && {\pi_{r}\bigg(\displaystyle\prod_\alpha\bigg(E\wedge  Y_\alpha \bigg)\bigg)} \\
+	{\pi_{r}\bigg(E\wedge \displaystyle\prod_\alpha K_\alpha \bigg)} && {\pi_{r}\bigg(\displaystyle\prod_\alpha\bigg(E\wedge  K_\alpha \bigg)\bigg)} \\
+	{\pi_{r-1}\bigg(E\wedge \displaystyle\prod_\alpha W_\alpha \bigg)} && {\pi_{r-1}\bigg(\displaystyle\prod_\alpha\bigg(E\wedge  W_\alpha \bigg)\bigg)}
+	\arrow["1", from=1-1, to=1-3]
+	\arrow["2", from=2-1, to=2-3]
+	\arrow["3", from=3-1, to=3-3]
+	\arrow["4", from=4-1, to=4-3]
+	\arrow["5", from=5-1, to=5-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=3-1, to=4-1]
+	\arrow[from=4-1, to=5-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=3-3, to=4-3]
+	\arrow[from=4-3, to=5-3]
+\end{tikzcd}\]
+Maps $1$ and $4$ are isomorphisms by (\ref{cor:p3ch15.5}); maps $2$ and $5$ are isomorphisms by the inductive hypothesis. So map $3$ is an isomorphism by the five lemma. This completes the induction and proves Theorem \ref{thm:p3ch15.2}
+\end{proof}
+\end{document}

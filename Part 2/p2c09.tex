@@ -1,0 +1,75 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c9}
+\chapter{Corollaries}
+In this section we will record various results which follow from the results in \hyperref[sec:p2c8]{\S 8}, or supplement them, and are needed later.
+
+Recall that the complex manifold $\mathbb {CP}^n$ defines an element $[\mathbb {CP}^n] \in \pi_{2n} (\mathrm {MU})$.
+
+\begin{lemma}
+\label{lem:p2c09.1}
+With the notation of \hyperref[sec:p2c7]{\S 7}, the image of $[\mathbb {CP}^n]$ in $H_{2n}(\mathrm {MU})$ is $(n + 1)m_n$.
+\end{lemma}
+
+\begin{proof}
+Algebraic topologists will instantly recognise the formula \[\bigg(\sum_{i = 0}^\infty b_i\bigg)_n^{-n - 1}\] of \eqref{prop:p2c07.5} as giving the normal Chern numbers of $\mathbb {CP}^n$.
+\end{proof}
+We know from \hyperref[sec:p2c8]{\S 8} that the map \[\pi_\ast(\mathrm{MU}) \lar{} \pi_\ast(\mathrm {MU}) \otimes \bbQ\] is an injection, and we may identify $\pi_\ast(\mathrm{MU}) \otimes \bbQ$ and $H_\ast(\mathrm{MU}) \otimes \bbQ$. It is often convenient to work in $\pi_\ast(\mathrm{MU}) \otimes \bbQ$, and we now know that we lose nothing in doing so. In what follows, then, we will regard $m_n = m_n^H \in H_{2n}(\mathrm{MU})$ as the element $\tfrac {[\mathbb {CP}^n]} {n + 1}$ of $\pi_\ast(\mathrm {MU}) \otimes \bbQ$. If we do so, we have the following result. 
+
+\begin{corollary}[Miščenko appendix 1 in \cite{novikov} ]
+\label{cor:p2c09.2}
+The logarithmic series for the formal product $\mu^{\mathrm{MU}}$ may be written \[\log^{H} x^{\mathrm{MU}} = \sum_{n \ge 0} \frac {[\mathbb {CP}^n]} {n + 1} \big(x^{\mathrm {MU}}\big)^{n + 1}.\]
+\end{corollary}
+
+\begin{lemma}
+\label{lem:p2c09.3}
+Suppose that $R \subset S$ are subrings of the rationals. Then a map \[f : \te{MU}R \lar{} \te{MU}S\] is determined up to homotopy by \[f_\ast : \pi_\ast(\te{MU}R) \lar{} \pi_\ast(\te{MU}S).\]
+\end{lemma}
+
+\begin{proof}
+There are many variants possible; we argue as follows. Applying \eqref{lem:p2c04.1} as in the proof of \eqref{thm:p2c08.1}, we see that $f$ is determined up to homotopy by \[f_\ast : \te{MU}R_\ast(\te{MU}R) \lar{} \te{MU}R_\ast(\mathrm {MUS}_\ast).\] Since $\pi_\ast(\mathrm{MU})$ is torsion-free by \ref{thm:p2c08.1}, we see that the vertical arrows of the following commutative diagram are monomorphisms.
+
+%TODO: bottom two arrows to the left and the right need a rotated \simeq
+\begin{center}
+\begin{tikzcd}
+\te{MU}R_\ast(\te{MU}R) \arrow[rr, "f_\ast"] \arrow[d]                      &  & \te{MU}R_\ast(\te{MU}S) \arrow[d]                   \\
+\te{MU}R_\ast(\te{MU}R) \otimes \bbQ \arrow[rr] \arrow[d,"\cong"]           &  & \te{MU}R_\ast(\te{MU}S) \otimes \bbQ \arrow[d,"\cong"] \\
+\pi_\ast(\mathrm {MUQ}) \otimes \pi_\ast(\mathrm {MUR}) \arrow[rr, "1 \otimes f_\ast"] &  & \pi_\ast(\mathrm {MUQ}) \otimes \pi_\ast(\te{MU}S)        
+\end{tikzcd}
+\end{center}
+\end{proof}
+
+Next we go back to the work of \eqref{cor:p2c06.8}. We now know that the Hurewicz homomorphism \[\eta_R : \pi_\ast (\mathrm{MU}) \lar{} \mathrm {MU}_\ast (\mathrm {MU})\] is adequately described by giving \[\eta_R \otimes 1 : \pi_\ast(\mathrm {MU}) \otimes \bbQ \lar{} \mathrm{MU}_\ast(\mathrm {MU}) \otimes \bbQ,\] and this can be done by giving its effect on the generators $m_i = m_i^H \in \pi_{2i} (\mathrm{MU}) \otimes \bbQ$. For this purpose we propose the following formula. We write $M_j$ for the generator $m_j^{\mathrm{MU}} \in \mathrm{MU}_{2j} (\mathrm {MU})$, to distinguish it from $m_j = m_j^H$.
+
+\begin{proposition}
+\label{prop:p2c09.4}
+\[\sum_{i \ge 0} (\eta_R m_i)x^{i + 1} = \sum_{i \ge 0} m_i \bigg(\sum_{j \ge 0} M_j x^{j + 1}\bigg)^{i + 1}\]
+\end{proposition}
+
+\begin{proof}
+Consider again the two maps \[\eta_L : \mathrm{MU} \simeq \mathrm{MU} \wedge S^0 \lar{1 \wedge i} \mathrm{MU} \wedge \mathrm{MU}\] 
+\[\eta_L : \mathrm{MU} \simeq S^0 \wedge \mathrm{MU} \lar{i \wedge 1} \mathrm{MU} \wedge \mathrm{MU}\] 
+of \eqref{cor:p2c06.8}. Applying them to $x^{\mathrm{MU}}$, we obtain the two generators in $(\mathrm{MU} \wedge \mathrm {MU})^2 (\mathbb {CP}^\infty)$; we call these generators $x^L$ and $x^R$. (We no longer need $L$ for the Lazard ring) Applying Lemma \ref{lem:p2c06.3}, we find
+
+\begin{equation}
+\label{eqn:p2c09.5}
+\tag{9.5}
+x^R = \sum_{i \ge 0} b_i^{\mathrm{MU}} (x^L)^{i + 1}.
+\end{equation}
+
+Passing to the inverse power-series, we find
+
+\begin{equation}
+\label{eqn:p2c09.6}
+\tag{9.6}
+x^L = \sum_{i \ge 0} m_i^{\mathrm{MU}} (x^R)^{i + 1} = \sum_{j \ge 0} M_j (x^R)^{j + 1}
+\end{equation}
+
+Now our log series are
+\[x^H = \log^L x^L = \sum_{i \ge 0} (\eta_L m_i) (x^L)^{i + 1}\]
+\[x^H = \log^R x^R = \sum_{i \ge 0} (\eta_R m_i) (x^R)^{i + 1}\]
+
+So we obtain \[\sum_{i \ge 0} (\eta_R m_i) \big(x^R\big)^{i + 1} = \sum_{i \ge 0} (\eta_L m_i) \bigg(\sum_{j \ge 0} M_j (x^R)^{j + 1}\bigg)^{i + 1}.\]
+This proves the proposition.
+\end{proof}
+\end{document}

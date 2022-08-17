@@ -1,0 +1,120 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c17}
+
+\chapter{$\te{KO}_\ast(\mathrm{KO})$ (Added May 1970)} %derivada.schwarziana
+
+The results of \hyperref[sec:p2c13]{\S13} carry over to real K-theory. The material which follows represents joint work with R. M. Switzer.
+
+We write $\mathrm{KO}$ for the BO-spectrum. The groups $\mathrm{KO}_{4n}(\mathrm{KO})$ are torsion-free, so the map
+\[
+\mathrm{KO}_{4n}(\mathrm{KO})
+\lar{}
+\mathrm{KO}_{4n}(\mathrm{KO}) \otimes \bbQ %I'm guessing this is the rationals.
+\]
+is a monomorphism. By means of the complexification map
+\[
+\mathrm{KO}\lar{} \mathrm K
+\]
+we can identify $\sum_n \mathrm{KO}_{4n}(\mathrm{KO}) \otimes \bbQ$ with a subalgebra of $\mathrm K_\star(\mathrm K) \otimes \bbQ$, namely (with the notation of \hyperref[sec:p2c13]{\S 13}) $\bbQ[u^2,u^{-2},v^2,v^{-2}]$.
+
+\begin{theorem} \label{thm:p2c17.1}
+The map
+\[
+\sum_n \mathrm{KO}_{4n}(\mathrm{KO})
+\lar{}
+\mathrm K_\star(\mathrm K) \otimes \bbQ
+\]
+gives an isomorphism between $\sum_n \mathrm{KO}_{4n}(\mathrm{KO})$ and the set of finite Laurent series $f(u,v)$ which satisfy the following conditions.
+    \begin{enumerate}[label=(\thechapter.\arabic*), start=2]
+        \item \label{part 2 condition 17.2}
+        $f(-u,v)=f(u,v)$, $f(u,-v)=f(u,v)$.
+        \item \label{part 2 condition 17.3}
+        For any pair of non-zero integers $h,k$ we have
+        \[
+        f(ht,kt)\in \bbZ[t^4,t^{-4},2t^2, \tfrac{1}{hk}].
+        \]
+    \end{enumerate}
+\end{theorem}
+
+\begin{notes}
+    \begin{enumerate}[label=(\thechapter.\arabic*), start=4]
+        \item \label{part 2 note 17.4}
+        It is clear from the above that any $f$ in the image of $\sum_n \mathrm{KO}_{4n}(\mathrm{KO})$ satisfies \ref{part 2 condition 17.2}.
+        \item \label{part 2 note 17.5}
+        By using the operation $\Psi^k$, as in \hyperref[sec:p2c13]{\S 13}, one easily proves that such an $f$ satisfies \ref{part 2 condition 17.3}.
+        \item \label{part 2 note 17.6}
+        Condition \ref{part 2 condition 17.3} has been written with two integers $h,k$ in order to emphasize that it is invariant under the switch map $\tau: \mathrm{KO}\wedge \mathrm{KO} \lar{} \mathrm{KO} \wedge \mathrm{KO}$, which interchanges $u$ and $v$. It would actually be sufficient to use the special case of \ref{part 2 condition 17.3} in which $h=1$. Similarly, in \hyperref[sec:p2c13]{\S 13} we could replace \eqref{eqn:p2c13.3} by
+        \[
+        f(ht,kt) \in \bbZ[t,t^{-1}, \tfrac{1}{hk}].
+        \]
+    \end{enumerate}
+\end{notes}
+
+The proof of Theorem~\ref{thm:p2c17.1} is similar to that in \hyperref[sec:p2c13]{\S 13}.
+
+Since $\te{KO}_\ast(X)$ is a left module over $\pi_\ast(\mathrm{KO})$, we have a product map
+\[
+\pi_m(\mathrm{KO}) \otimes_\bbZ \mathrm{KO}_0(\mathrm{KO})
+\lar{}
+\mathrm{KO}_m(\mathrm{KO}).
+\]
+
+\setcounter{theorem}{6} % following the book's numbering
+\begin{theorem}
+\label{thm:p2c17.7}
+This map 
+\[
+\pi_m(\mathrm{KO}) \otimes_\bbZ \mathrm{KO}_0(\mathrm{KO})
+\lar{}
+\mathrm{KO}_m(\mathrm{KO}).
+\]
+is an isomorphism.
+\end{theorem}
+
+Thus we have
+\[
+\mathrm{KO}_m(\mathrm{KO})
+\cong
+\begin{cases}
+\bbZ_2 \otimes_\bbZ \mathrm{KO}_0(\mathrm{KO}) &(m\equiv 1,2 \ \text{mod 8})     \\
+0                                              &(m\equiv 3,5,6,7 \ \text{mod 8})
+\end{cases}
+\]
+
+At the risk of laboring the obvious, we make the following result explicit.
+\begin{proposition}
+\label{prop:p2c17.8}
+An element of $\mathrm{KO}_0(\mathrm{KO})$ lies in the kernel of
+\[
+\mathrm{KO}_0(\mathrm{KO})
+\lar{}
+\bbZ_2 \otimes_\bbZ \mathrm{KO}_0(\mathrm{KO})
+\]
+if and only if the corresponding Laurent series $f(u,v)$ satisties the following condition.
+    \begin{enumerate}[label=(\thechapter.\arabic*), start=9]
+        \item \label{part 2 condition 17.9}
+        For any pair of odd integers $h,k$ we have
+        \[
+        f(h,k) \in 2\bbZ[\tfrac{1}{hk}].
+        \]
+    \end{enumerate}
+\end{proposition}
+
+By (\ref{thm:p2c17.1}), this is the condition for $\frac 12 f$ to lie in the image of $\mathrm{KO}_0(\mathrm{KO})$.
+
+
+\setcounter{theorem}{9} %again following book numbering
+\begin{proposition}
+\label{prop:p2ch17.10}
+The generator $g\in \pi_1(\mathrm{KO})$ satisfies
+\[
+\eta_{\mathrm L}(g) = \eta_{\mathrm R}(g).
+\]
+\end{proposition}
+
+This is immediate, since $g$ lies in the image of
+\[
+i_\ast: \pi_1(S^0) \lar{} \pi_1(\mathrm{KO}).
+\]
+\end{document}

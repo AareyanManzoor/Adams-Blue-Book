@@ -1,0 +1,99 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p1c8}
+
+% to number Formula 8.2
+\numberwithin{equation}{chapter}
+\newtheorem{thm}[equation]{Theorem}
+% (I didn't want to redefine the main theorem environment to number with equation, as this might affect other sections)
+
+\chapter{Complex Manifolds} % Zach, CHapter 8, Page 23
+% Finished by Average enjoyer
+
+Next it is necessary to recall that a stable almost-complex manifold $M^n$ defines an element $[M^n]$ of $\Omega^{-n}_U(P)$. If we are given such a stable almost-complex manifold $M^n$, it is natural to ask for the value of $s_\alpha [M^n]$. It is especially reasonable to ask this for manifolds $\mathbb{CP}^n$, since these manifolds are familiar and are known to provide a set of generators for the polynomial ring $\Omega_U^*(P) \otimes \mathbb{Q}$ (where $\mathbb{Q}$ is the ring of rational numbers).
+\begin{thm}\label{thm:p1c08.1}
+$s_\alpha[\mathbb{CP}^n] = (c_\alpha,b^{-n-1})[\mathbb{CP}^{n-|\alpha|}]$ where $b = \displaystyle \sum_{i=0}^\infty b_i$.
+\end{thm}
+\begin{explanation}
+Since the element $b$ is a formal series with first term 1, it is invertible. The integer $(c_\alpha, b^{-n-1})$ is the Kronecker product of an element in $H^{2|\alpha|}(BU)$ and an element in $\prod_q H_q(BU)$. This time we have used the algebra in \S\ref{sec:p1c3} to write down a coefficient which isn't necessarily 0 or 1.
+\end{explanation}
+
+Theorem \ref{thm:p1c08.1} is due to Novikov, except that he does not give the explicit formula for the coefficient of $[\mathbb{CP}^{n-|\alpha|}]$.
+\begin{proof}[Sketch proof]
+To preserve the character of the arguments, we will show how to deduce this from Theorem \ref{thm:p1c05.2} by pure algebra.
+
+The letter $\chi$ will always mean the canonical anti-automorphism of the relevant Hopf algebra. In $\mathbb{CP}^n$, the tangent bundle $\tau$ satisfies $\tau \oplus 1 = (n+1)\xi$, and so for the normal bundle $\nu$ we have
+\begin{align*}
+    c_\alpha (\nu) &= (\chi c_\alpha)\tau \\
+    &= (\chi c_\alpha)((n+1)\xi) \\
+    &= \sum_{i_1,i_2,\dots,i_{n+1}} (\chi c_\alpha , b_{i_1} b_{i_2} \dots b_{i_{n+1}})x^{i_1 + i_2 + \dots + i_{n+1}} \\
+    &= \sum_{i_1,i_2,\dots,i_{n+1}} (c_\alpha , \chi(b_{i_1} b_{i_2} \dots b_{i_{n+1}}))x^{i_1 + i_2 + \dots + i_{n+1}}.
+\end{align*}
+The terms with $i_1 + i_2 + \dots + i_{n+1} = n$ give the normal characteristic numbers of $\mathbb{CP}^n$. Therefore the class of $[\mathbb{CP}^n]$ in $H_{2n}(\te{MU})$ is 
+\begin{align*}
+    \phi \sum_{i_1 + i_2 + \dots + i_{n+1} = n}  \chi(b_{i_1} b_{i_2} \dots b_{i_{n+1}}) = \varphi \chi(b^{n+1})_n,
+\end{align*}
+where the subscript $n$ means the $2n$-dimensional component. But since $\Delta b = b \otimes b$, we have $\chi b = b^{-1}$ and $\chi(b^{n+1}) = b^{-n-1}$. We conclude that the class of $[\mathbb{CP}^n]$ in $H_{2n}(\te{MU})$ is 
+\[((b')^{-n-1})_n.\]
+
+Now by \ref{thm:p1c05.2} (ii) we have the formula
+\[s_\alpha(b') = \sum_{i \geq 0}(c_\alpha,b_i)(b')^{i+1}.\]
+From this we will deduce
+\begin{equation}
+    \label{eqn:p1c08.2} s_\alpha (b')^{-1} = \sum_{j \geq 0} (c_\alpha, \chi b_j)(b')^{j-1}.
+\end{equation}
+It is easily to see that this checks; for it yields
+\begin{align*}
+    s_\alpha(b' \cdot (b')^{-1}) &= \sum_{\substack{\beta + \gamma = \alpha \\ i \geq 0, j \geq 0}} (c_\beta,b_i)(c_\gamma,\chi b_j)(b')^{i+j} \\
+    &= \sum_{i \geq 0, j \geq 0} (c_\alpha, b_i \cdot \chi b_j)(b')^{i+j} \\
+    &= (c_\alpha, b_0)1,
+\end{align*}
+as it should. But this manipulation allows one to prove the formula for $s_\alpha((b'')^{-1})_d$ by double induction over $|\alpha|$ and $d$, starting from the trivial cases $|\alpha| = 0$ and $d = 0$.
+
+From (\ref{eqn:p1c08.2}) we deduce that
+\[s_\alpha((b')^{-n-1})_n = \sum_{i_1 + i_2 + \dots + i_{n+1} = |\alpha|} (c_\alpha , \chi(b_{i_1} b_{i_2} \dots b_{i_{n+1}}))((b')^{|\alpha| - n - 1})){n-|\alpha|}.\]
+This is the class of $[\mathbb{CP}^{n-|\alpha|}]$ in $H^{2n-2|\alpha|}(\te{MU})$, up to a factor $(c_\alpha, b^{-n-1})$. Now the result follows from the fact that the Hurewicz homomorphism
+\[\pi_*(\te{MU}) \lra H_*(\te{MU})\]
+is monomorphic.
+\end{proof}
+
+From a geometrical point of view the proof just given is uncouth and perverse; Theorem \ref{thm:p1c08.1} should be deduced from an elegant formula of Novikov. Before starting this, we will recall some material from ordinary cohomology.
+
+Let $M,N$ be oriented manifolds of dimension $m,n$, and let $f \colon M \lra N$ be a continuous map. The ``Umkehrunghomomorphismus'' or ``forward homomorphism''
+\[f_! \colon H^q(M) \lra H^{n-m+q}(N)\]
+is defined to be the following composite.
+\[\begin{tikzcd}
+H^q(M) \arrow[dd, "d"']    &  &  & H^{n-m+q}(N) \arrow[dd, "d"'] \\
+                           &  &  &                               \\
+H_{m-q} \arrow[rrr, "f_*"] &  &  & H_{m-q}(N)                   
+\end{tikzcd}\]
+Here $d$ is the Poincar\'e duality isomorphism.
+
+A similar construction may be given in which $H^*$ is replaced by $\Omega_U^*$, provided that $M$ and $N$ are stably almost-complex manifolds and replace $d$ by the Atiyah duality isomorphism
+\[D \colon \Omega_U^q(M) \lra \Omega_{m-q}^U(M).\]
+Here $\Omega_{m-q}^U$ means complex bordism; see \cite{atiyah}, for real bordism and the corresponding duality theorem.
+
+We shall in fact only have to apply the homomorphism $f_!$ i the case when $N$ is a point $P$ and $f$ is the constant map $c \colon M \lra P$. It will make both the proof and the exposition easier if we give an alternative definition of $c_!$, which does not require the introduction of bordism.
+
+Suppose that we embed the manifold $M$ in a high-dimensional sphere $S^{m+2p}$, with unitary normal bundle $\nu$. Define $c_!$ to be the following composite.
+\[
+\begin{tikzcd}
+\Omega_U^q(M) \arrow[dd, "\varphi"']                                            &  &  &  & \Omega_U^{q-m}(P) \arrow[dddd, "\cong"] \\
+                                                                                &  &  &  &                                         \\
+{\Omega_U^{q+2p}(E,E_0)}                                                        &  &  &  &                                         \\
+                                                                                &  &  &  &                                         \\
+{\Omega_U^{q+qp}(S^{m+2p}, C \hspace{0.1cm} \Int E)} \arrow[uu, "\varphi"] \arrow[rrrr, "j^*"] &  &  &  & {\Omega_U^{q+qp}(S^{m+2p}, D^{m+2p})} 
+\end{tikzcd}
+\]
+Here $\varphi$ is the Thom isomorphism; $E$ and $E_0$ refer to the normal bundle $\nu$ of $M$; and $C \hspace{0.1cm} \Int E$ is the complement of the interior of $E$. (If one wished one could replace $\Omega_U^{q+qp}(S^{m+2p}, C \hspace{0.1cm} \Int E)$ by $\Omega_U^{q+2p}(S^{m+2p}, CM)$; ths would make it clearer that this group is standing in for a bordism group of $M$, via Alexander duality or $S$-duality.) Further, $D^{m+2p}$ is a small disc contained in $C \hspace{0.1cm} \Int E$, and the right-hand vertical arrow is the usual iterated suspension; this may be viewed as the analogue of the left-hand column, with $M$ replaced by $P$.
+
+We will accept this composite as our definition of $c_!$. If any reader who is familiar with bordism prefers a different definition, we may leave it to them to reconcile their definition with this one.
+
+Now we come to Novikov's formula. Take a stably almost complex manifold $M^m$, representing an element $[M^m] \in \Omega_U^{-m}(P)$. Let $\nu$ be its stable normal bundle; thus $cf_\alpha(\nu) \in \Omega_U^{2|\alpha|}(M^m)$ and $c_! cf_\alpha(\nu) \in \Omega^{2|\alpha|-m}(P)$.
+
+\begin{thm}[Novikov]\label{thm:p1c08.3}
+$s_\alpha[M^m] = c_!cf_\alpha(\nu)$.
+\end{thm}
+This result follows easily from the definition of $s_\alpha$ in \S\ref{sec:p1c5}.
+
+\end{document}

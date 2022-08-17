@@ -1,0 +1,239 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c4}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\chapter{Calculations in $E$-Homology and Cohomology}
+%\chaptermark{\protect\parbox{0.9\linewidth}{Calculations in $E$-Homology and Cohomology}}
+
+
+In this section we continue the programme of taking results which are familiar for ordinary homology and cohomology, and carrying them over to $E$. First we compute the $E$-homology of the spaces $\te{BU}(n)$ and $\te{BU}$. The space $\te{BU}$ is an $H$-space; its product corresponds to addition in $K$-cohomology; in particular, we have the following homotopy-commutative diagram, in which the upper arrow is the Whitney sum map.
+~\\~\\
+\adjustbox{scale=1.1,center}{
+\begin{tikzcd}
+\te{BU}(n)\times \te{BU}(m) &&& \te{BU}(n+m) \\
+\\
+\te{BU}\times \te{BU} &&& \te{BU}
+\arrow[from=1-1, to=1-4]
+\arrow[from=1-1,to=3-1]
+\arrow[from=3-1, to=3-4]
+\arrow[from=1-4, to=3-4]
+\end{tikzcd}
+}
+~\\~\\
+This diagram gives rise to the following diagram of products.
+~\\~\\
+\adjustbox{scale=0.95,center}{
+\begin{tikzcd}
+E_\ast(\te{BU}(n))\otimes_{\pi_\ast(E)} E_\ast(\te{BU}(m)) &&& E_\ast(\te{BU}(n+m)) \\
+\\
+E_\ast(\te{BU})\otimes_{\pi_\ast(E)} E_\ast(\te{BU}) &&& E_\ast(\te{BU})
+\arrow[from=1-1, to=1-4]
+\arrow[from=1-1,to=3-1]
+\arrow[from=3-1, to=3-4]
+\arrow[from=1-4, to=3-4]
+\end{tikzcd}
+}
+~\\~\\
+By using the injection $\te{BU}(1)\longrightarrow \te{BU}$, the classes $\beta_i\in E_\ast(\mathbb{CP}^\infty)$ give classes in $E_\ast(\te{BU})$; we write $\beta_i$ for these classes also. The element $\beta_0$ acts as a unit for the products.
+\begin{lemma}
+\label{lem:p2c04.1}
+\begin{enumerate}
+    \item The spectral sequences
+    \[H_\ast(\te{BU}(n);\pi_\ast(E))\implies E_\ast(\te{BU}(n))\]
+    \[H_\ast(\te{BU};\pi_\ast(E))\implies E_\ast(\te{BU})\]
+    are trivial.
+    \item $E_\ast(\te{BU}(n))$ is free over $\pi_\ast(E)$, with a base consisting of the monomials
+    \[\beta_{i_1}\beta_{i_2}...\beta_{i_r}\]
+    such that $i_1>0, i_2>0, ..., i_r>0$, $0\leq r \leq n$. (The monomial with $r=0$ is interpreted as $1$).
+    
+    $E_\ast(\te{BU})$ is a polynomial algebra
+    \[\pi_\ast(E)[\beta_1,\beta_2,...,\beta_i, ...].\]
+    \item The coproduct in $E_\ast(\te{BU}(n))$ and $E_\ast(\te{BU})$ is given by 
+    \[\psi\beta_k=\sum_{i+j=k}\beta_i\otimes\beta_j,\]
+    where $\beta_0=1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The proof of parts (i) and (ii) is easy, because the monomials
+\[\beta_{i_1}\beta_{i_2}...\beta_{i_r}\]
+give a $\pi_\ast(E)$-base for the $E^2$-term on which all differentials $d_r$ vanish. Since the differentials are linear over $\pi_\ast(E)$, they vanish on everything. Part (iii) comes from \eqref{cor:p2c02.18}.
+\end{proof}
+
+We now introduce a general lemma.
+\begin{lemma}
+\label{lem:p2c04.2}
+Let $X$ be a space (or a spectrum provided that $\pi_r(X)=0$ for $r<-N$, some $N$). Suppose that $H_\ast(X;\pi_\ast(E))$ is free over $\pi_\ast(E)$ and that the spectral sequence $H_\ast(X;\pi_\ast(E))\Longrightarrow E_\ast(X)$ is trivial. Let $F$ be a module-spectrum over the ring-spectrum $E$. Then the spectral sequences
+\[H_\ast(X;\pi_\ast(F))\Longrightarrow F_\ast(X)\]
+\[H^\ast(X;\pi_\ast(F))\Longrightarrow F^\ast(X)\]
+are trivial, and the maps
+\[E_\ast(X)\otimes_{\pi_\ast(E)}\pi_\ast(F)\longrightarrow F_\ast(X)\]
+\[F^\ast(X)\longrightarrow \operatorname{Hom}_{\pi_\ast(E)}(E_\ast(X),\pi_\ast(F))\]
+are isomorphisms.
+\end{lemma}
+
+\begin{proof}
+The proof is a routine exercise on pairings and spectral sequences (compare \cite[p.~20, Proposition 17]{adams3}).
+\end{proof}
+
+In particular, if $E$ is as in \hyperref[sec:p2c2]{\S 2}, the lemma applies to $X=\mathbb{CP}^\infty$, $\te{BU}(n)$ and $\te{BU}$. We will also see that it applies to $X=\te{MU}$ -- see \eqref{lem:p2c04.5}.
+
+Although it is quite unnecessary for our main purposes, we pause to observe that Chern classes behave as expected in $E$-cohomology.
+
+\begin{lemma}
+\label{lem:p2c04.3}
+\begin{enumerate}
+    \item $E^\ast(\te{BU})$ contains a unique element $c_i$ such that 
+    \[\big<c_i,(\beta_1)^i\big>=1\]
+    and 
+    \[\big<c_i,m\big>=0\]
+    where $m$ is any monomial $\beta_1^{i_1}\beta_2^{i_2}...\beta_r^{i_r}$ distinct from $(\beta_1)^i$. We have $c_0=1$.
+    \item The restriction of $c_1$ to $\te{BU}(1)$ is $x^E$, the generator given in \hyperref[sec:p2c2]{\S 2}.
+    \item The restriction of $c_i$ to $\te{BU}(n)$ is zero for $i>n$. (Otherwise, the image of $c_i$ in $E^\ast(\te{BU}(n))$ will also be written $c_i$.)
+    \item $E^\ast(\te{BU}(n))$ is the ring of formal power-series
+    \[\pi_\ast(E)[[c_1,c_2,...,c_n]];\]
+    and $E^\ast(\te{BU})$ is the ring of formal power-series
+    \[\pi_\ast(E)[[c_1,c_2,...,c_i,...]].\]
+    \item We have
+    \[\psi c_k=\sum_{i+j=k}c_i\otimes c_j.\]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+The definition of $c_i$ in (i) is legitimate by \eqref{lem:p2c04.2} applied to $X=\te{BU}$, $F=E$. We easily check that the unit $1\in E_\ast(\te{BU})$ plays the role laid down for $c_0$. Part (ii) is trivial; part (iii) follows easily from \eqref{lem:p2c04.1}(ii) plus \eqref{lem:p2c04.2} applied to $X=\te{BU}(n)$. We turn to part (iv).
+
+Let $m$ be a monomial
+\[m=\beta_1^{i_1}\beta_2^{i_2}...\beta_r^{i_r} \text{ in } E_\ast(\te{BU});\]
+let the image of $m$ under the iterated diagonal, which is determined by \eqref{lem:p2c04.1}(iii), be 
+\[\sum_\alpha m_{1\alpha}\otimes m_{2\alpha} \otimes ... \otimes m_{s\alpha}.\]
+Then 
+\[\big<c_{j_1}c_{j_2}...c_{j_s},m\big> = \sum_\alpha\big<c_{j_1},m_{1\alpha}\big>\big<c_{j_2},m_{2\alpha}\big>...\big<c_{j_s},m_{s\alpha}\big>;\]
+and this is a well-determined integer independent of the spectrum $E$. In particular this integer is the same as in the case $E=H$. We conclude that in the spectral sequence
+\[H^\ast(\te{BU}(n);\pi_\ast(E))\Longrightarrow E^\ast(\te{BU}(n)), \text{ or}\]
+\[H^\ast(\te{BU};\pi_\ast(E))\Longrightarrow E^\ast(\te{BU})\]
+the $E_2$ term has a $\pi_\ast(E)$-base consisting of the appropriate monomials 
+\[c_{j_1}c_{j_2}...c_{j_s}.\]
+This leads to part (iv). Part (v) follows by duality from the definition in part (i).
+\end{proof}
+
+The classes $c_i$ are of course the generalized Chern classes in $E$-cohomology. If required they may be constructed as characteristic classes for $U(n)$-bundles over appropriate spaces by the method of Grothendieck, and then pulled back to $\te{BU}(n)$ and $\te{BU}$ by limiting arguments. (Compare \cite[pp.~8-9]{adams2}). In the case $E=\te{MU}$ we get the Conner-Floyd Chern classes.
+
+If we have more than one spectrum in sight we write $\beta_i^E,c_i^E$. If we are given a map $f:E\longrightarrow F$ of ring-spectra, and choose $x^F=f_\ast x^E$, as in \hyperref[sec:p2c2]{\S 2}, then we have 
+\[c_i^F=f_\ast c_i^E.\]
+The reader may carry over \eqref{lem:p2c02.15} to cohomology, but it is not necessary for our purposes.
+
+For the next lemma, we note that $E_\ast(\te{MU})$ is a ring, and that the "inclusion" of $\te{MU}(1)$ in $\te{MU}$ induces a homomorphism
+\[\tilde{E}_p(\te{MU}(1))\longrightarrow E_{p-2}(\te{MU}).\]
+Following the analogy of ordinary homology, we take the element
+\[u^E\beta_{i+1}^E\in \tilde{E}_\ast(\te{MU}(1)) \quad (i\geq 0)\]
+and write $b_i^E$ for its image in $E_\ast(\te{MU})$. The factor $u^E$ (see \hyperref[sec:p2c2]{\S 2}) is introduced in order to ensure that $b_0^E=1$ in $E_0(\te{MU})$.
+
+Suppose given a map $f:E\longrightarrow F$ of ring-spectra. Then it is clear that Lemma~\ref{lem:p2c02.15} carries over; with the notation \eqref{lem:p2c02.15}, we have the following result.
+\begin{equation}
+\label{eqn:p2c04.4}
+\tag{4.4}
+    f_\ast b_i^E=c_1\sum_jd_{i+1}^{j+1}b_j^F.
+\end{equation}
+In particular, as soon as we obtain the canonical map $f:\te{MU}\longrightarrow H$, it will send $b_i^{\te{MU}}$ to $b_i^H$; as soon as we obtain the canonical map $g:\te{MU}\longrightarrow K$, it will send $b_i^{\te{MU}}$ to $u^ib_i^K$, where $u=u^K\in \pi_2(K)$.
+
+With an eye to later applications (\hyperref[sec:p2c15]{\S 15}) we include a little spare generality in the next two lemmas. Let $R$ be a subring of the rational numbers $\mathbb{Q}$; the reader interested only in the immediate applications may take $R=\mathbb{Z}$. We recall from \hyperref[sec:p2c2]{\S 2} that $\te{MU}R$ is the representing spectrum for complex bordism and cobordism with coefficients in $R$.
+
+We assume that for each integer $d$ invertible in $R$, the groups $\pi_\ast(E)$ have no $d$-torsion. This assumption is certainly vacuous if $R=\mathbb{Z}$.
+
+\begin{customlemma}{4.5}
+\label{lem:p2c04.5}
+\begin{enumerate}
+    \item The spectral sequences
+    \[H_\ast(\te{MU}R;\pi_\ast(E))\Longrightarrow E_\ast(\te{MU}R)\]
+    \[H_\ast(\te{MU}R\wedge \te{MU}R; \pi_\ast(E))\Longrightarrow E_\ast(\te{MU}R\wedge \te{MU}R)\]
+    are trivial, so that Lemma \ref{lem:p2c04.2} applies.
+    \item $E_\ast(\te{MU}R)$ is the polynomial ring 
+    \[(\pi_\ast(E)\otimes R)[b_1,b_2,...,b_n,...].\]
+\end{enumerate}
+\end{customlemma}
+\begin{proof}
+For (i), in the case of $\te{MU}R$ we note that the monomials in the $b_i$ form a $\pi_\ast(E)\otimes R$-base for the $E_2$-term on which all differentials $d_r$ vanish. The differentials $d_r$ are linear over $\pi_\ast(E)$, and by using the assumption on $\pi_\ast(E)$ we see they are linear over $R$. So the differentials $d_r$ vanish on everything. Similarly for $\te{MU}R\wedge \te{MU}R$, using exterior products of such monomials. This proves (i) and (ii).
+\end{proof}
+
+For the next lemma, let $R$ be again a subring of the rational numbers $\mathbb{Q}$, and let $E$ be a ring-spectrum, with $x^E$ as in \hyperref[sec:p2c2]{\S 2}, such that 
+\[\pi_\ast(E)\longrightarrow\pi_\ast(E)\otimes R\]
+is iso. (For example we might have $E=FR$)
+
+\begin{customlemma}{4.6}
+\label{lem:p2c04.6}
+Suppose given a formal power-series
+\[f\big(x^E\big)=\sum_{i\geq 0}d_i\big(x^E\big)^{i+1}\in\tilde{E}^2(\mathbb{CP}^\infty)\]
+with $u^Ed_0=1$. Then there is one and (up to homotopy) only one map of ring-spectra
+\[g:\te{MU}R\longrightarrow E\]
+such that $g_\ast x^{\te{MU}}=f(x^E)$.
+\end{customlemma}
+\begin{notes}
+~
+\begin{enumerate}
+    \item By abuse of language, we have written $x^\te{MU}$ also for the image of $x^\te{MU}\in\widetilde{\te{MU}}^2(\mathbb{CP}^\infty)$ in $\widetilde{\te{MU}R}^2(\mathbb{CP}^\infty)$
+    \item The necessity of the condition $u^Ed_0=1$ is shown by \ref{eqn:p2c02.12}.
+\end{enumerate}
+\end{notes}
+\begin{proof}
+We check that the conditions of Lemma \ref{lem:p2c04.2} apply to $X=\te{MU}R$, $F=E$. We certainly have
+\[H_\ast(\te{MU}R;\pi_\ast(E))\cong H_\ast(\te{MU};\pi_\ast(E)\otimes R)\cong H_\ast(\te{MU};\pi_\ast(E))\]
+(by the assumption on $E$), so $H_\ast(\te{MU}R;\pi_\ast(E))$ is free over $\pi_\ast(E)$. 
+
+Similarly
+\[E_\ast(\te{MU}R)=(\pi_\ast(E)\otimes R)[b_1,b_2,...,b_n,...]=\pi_\ast(E)[b_1,b_2,...,b_n,...].\]
+If $\pi_\ast(E)\longrightarrow \pi_\ast(E)\otimes R$ is iso, then $\pi_\ast(E)$ has no $d$-torsion for any integer $d$ invertible in $R$, and Lemma \ref{lem:p2c04.5} shows that the spectral sequence
+\[H_\ast(\te{MU}R;\pi_\ast(E))\Longrightarrow E_\ast(\te{MU}R)\]
+is trivial. So Lemma \ref{lem:p2c04.2} shows that there is a $1$-$1$ correspondence between homotopy classes of maps
+\[g:\te{MU}R\longrightarrow E\]
+and maps
+\[\theta:E_\ast(\te{MU}R)\longrightarrow \pi_\ast(E)\]
+which are linear over $\pi_\ast(E)$, and of degree zero. Similarly for maps
+\[h:\te{MU}R\wedge \te{MU}R \longrightarrow E;\]
+and this allows us to check whether a map $g:\te{MU}R\longrightarrow E$ makes the following diagram homotopy-commutative.
+~\\
+\[\begin{tikzcd}
+\te{MU}R\wedge \te{MU}R &&& E\wedge E \\
+\\
+\te{MU}R &&& E
+\arrow["g\wedge g", from=1-1, to=1-4]
+\arrow[from=1-1, to=3-1]
+\arrow["g", from=3-1, to=3-4]
+\arrow[from=1-4, to=3-4]
+\end{tikzcd}\]
+~\\
+We find by diagram-chasing that for this, it is necessary and sufficient that the map $\theta$ corresponding to $g$ should be a map of algebras over $\pi_\ast(E)$. Now the condition
+\[g_\ast x^{\te{MU}}=\sum_{i\geq 0} d_i\big(x^E\big)^{i+1}\]
+is equivalent to
+\[\theta(b_i)=u^Ed_i\quad (i\geq 0).\]
+Provided that $u^Ed_0=1$, there is one and only one map $\theta$ of $\pi_\ast(E)$-algebras which satisfies this condition. This proves Lemma \ref{lem:p2c04.6}.
+\end{proof}
+\begin{customexample}{4.7}
+There is one and only one map $f:\te{MU}\longrightarrow H$ of ring-spectra such that \[f_\ast x^\te{MU}=x^H.\] This is of course a trivial example.
+\end{customexample}
+
+\begin{customexample}{4.8}
+There is one and only one map $g:\te{MU}\longrightarrow K$ of ring-spectra such that \[g_\ast x^{\te{MU}}=\big(u^K\big)^{-1}x^K.\] This map is, of course, the usual one, which provides a $K$-orientation for complex bundles.
+\end{customexample}
+
+We can also use Lemma \ref{lem:p2c04.6} to construct multiplicative cohomology operations from $\te{MU}^\ast$ to $\te{MU}^\ast$, following Novikov \cite{novikov}.
+
+We can also use Lemma \ref{lem:p2c04.6} to obtain Hirzebruch's theory of ``multiplicative sequences of polynomials'' in the (ordinary) Chern classes. If we think for a moment about the gradings in Hirzebruch's formulae, we see that for this purpose we need to take $E$ to be a product of Eilenberg-MacLane spectra, having homotopy groups
+\[\pi_r(E)=\begin{cases}\mathbb{Q} & \text{for } r \text{ even} \\ 0 & \text{for } r \text{ odd}\end{cases}\]
+A suitable candidate is the spectrum $H\wedge K$, which has the required properties.
+
+Some readers may perhaps be used to thinking of ``multiplicative sequences of polynomials'' as elements of the cohomology of the space $\te{BU}$ (elements of $(H\wedge K)^\ast(\te{BU})$, in fact); and they may perhaps be surprised to see them treated as maps of $\te{MU}$. On this point several comments are in order.
+\begin{enumerate}
+    \item[(a)] Lemma \ref{lem:p2c04.6} provides us with all the Thom classes we need, so we have a Thom isomorphism
+    \[(H\wedge K)^\ast(\te{BU})\cong(H\wedge K)^\ast(\te{MU}).\]
+    \item[(b)] ``Multiplicative sequences of polynomials'' carry the Whitney sum in $\te{BU}$ into the product in cohomology. The Whitney sum in $\te{BU}$ corresponds to the product in $\te{MU}$, so it is more convenient to describe the behavior on products by saying that we have a map of ring-spectra defined in the spectrum $\te{MU}$.
+    \item[(c)] ``Multiplicative sequences of polynomials'' are intended for use on manifolds, so that we actually require their values on elements of $\pi_\ast(\te{MU}).$ For this reason, their definition in terms of $\te{MU}$ may be more transparent than their expression in terms of ordinary Chern classes in $\te{BU}$. For example, consider the map of ring-spectra
+    \[\te{MU}\overset{g}{\longrightarrow} K\cong S^0\wedge K \longrightarrow H\wedge K,\]
+    where the map $g:\te{MU}\longrightarrow K$ is that mentioned above.
+\end{enumerate}
+
+\begin{exercise}
+Follow up these hints.
+\end{exercise}
+
+Lemma \ref{lem:p2c04.6} shows that if we consider pairs $(E,x^E),$ as above, and such that $u^E=1$, then among them the pair $(\te{MU},x^{\te{MU}})$ has a universal property; for any other pair $(E,x^E)$, there is a map $g:\te{MU}\longrightarrow E$ such that $g_\ast x^{\te{MU}}=x^E$. In particular, for any such $(E,x^E)$ we have a homomorphism of rings $g_\ast:\pi_\ast(\te{MU})\longrightarrow \pi_\ast(E)$ such that $g_\ast\mu^{\te{MU}}=\mu^E$ (see \hyperref[sec:p2c2]{\S 2}); that is, $g_\ast$ carries the one formal product into the other. We will see in the next section that there is a ring $L$, with a formal product defined over it, which enjoys a similar universal property in a purely algebraic setting. It is known that $\pi_\ast(\te{MU})$ is a polynomial algebra, over $\mathbb{Z}$, on generators of dimension $2,4,6,8,...$. The ring $L$ can be made into a graded ring, and it is known that it is then a polynomial algebra, over $\mathbb{Z}$, on generators of dimension $2,4,6,8,...$. Following Quillen, we regard these as plausibility arguments, to introduce the theorem that the canonical map from $L$ to $\pi_\ast(\te{MU})$ is an isomorphism.
+\end{document}

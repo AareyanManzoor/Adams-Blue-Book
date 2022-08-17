@@ -1,0 +1,145 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c12}
+%wordslinger
+
+\chapter{Behaviour of the Bott map}
+We recall that in the spectrum $K$, every even term is the space $\mathrm{BU}$, and the maps between them are all the same; each is the map \[B:S^2\wedge \mathrm{BU} \lra  \mathrm{BU}\] adjoint to the Bott equivalence \[B':\mathrm{BU}\simeq\:\Omega^2_0\,\mathrm{BU}.\]%
+(Here $\Omega^2_0$ means the complement of the base-point in the double loop space $\Omega^2$.)
+
+In order to compute $E_\ast(\mathrm{BU})$, it is therefore desirable to compute \[B_\ast:\widetilde{E}_n(\mathrm{BU}) \lra \widetilde{E}_{n+2}( \mathrm{BU})\]
+This will be done in \eqref{prop:p2c12.5}, \eqref{prop:p2c12.6}.
+
+We first describe the primitive elements in $E_\ast(\mathrm{BU})$.
+
+We have seen that \[E_\ast(\mathrm{BU}) = \pi_\ast(E)[\beta_1, \beta_2, \dots, \beta_n, \dots,]\] with coproduct
+\[\psi\beta_k = \sum_{i+j=k}\beta_i\otimes\beta_j\]
+As usual, we define the Newton polynomial $Q_n^k$ so that \[x_1^k + x_2^k + \dots + x_n^k = Q^k_n(\sigma_1, \sigma_2, \dots, \sigma_k)\] where $\sigma_i$ is the $i$-th elementary symmetric function of $x_1, x_2, \dots, x_n$. $Q_n^k$ is independent of $n$ for $n\ge k$, and then we write $Q^k$ for $Q_n^k$.
+
+We define elements $s_k \in E_\ast(\mathrm{BU})$ for $k\ge 1$ by \[s_k = Q^k(\beta_1, \beta_2, \dots, \beta_k).\]
+
+\emph{Examples.}
+\begin{align*}
+s_1 &= \beta_1\\
+s_2 &= \beta_1^2 - 2\beta_2\\
+s_3 &= \beta_1^3 - 3\beta_1\beta_2 + 3\beta_3
+\end{align*}
+
+\begin{customprop}{12.1}
+\label{prop:p2c12.1}
+The primitive elements in $E_\ast( \mathrm{BU})$ form a free module over $\pi_\ast(E)$, with a base consisting of the elements $s_1, s_2, s_3, \dots$.
+
+The proof goes precisely as in ordinary homology. 
+
+We need two formulas about the $s_i$.
+\begin{equation}
+\label{eqn:p2c12.2}
+\tag{12.2}
+s_n - \beta_1 s_{n-1} + \beta_2 s_{n-2} + \dots + (-1)^{n-1}\beta_{n-1} s_1 + (-1)^n n\beta_n = 0.
+\end{equation}
+This is well-known.
+\begin{equation}
+\label{eqn:p2c12.3}
+\tag{12.3}
+\bigg(\sum^\infty_{n=1} (-1)^{n-1}s_n\bigg) = \bigg(\sum^\infty_{s=1}s\beta_s\bigg)\bigg(\sum^\infty_{t=0}\beta_t\bigg)^{-1}.
+\end{equation}
+\end{customprop}
+
+\begin{proof}
+Write \eqref{eqn:p2c12.2} in the form \[(-1)^{n-1}s_n + b_1(-1)^{n-2}s_{n-1} + \dots + b_{n-1} s_1 = nb_n\]
+and add over $n\ge 1$; we find \[\bigg(\sum^\infty_{n=1}(-1)^{n-1} s_n \bigg)\bigg(\sum^\infty_{t=0}\beta_t\bigg) = \sum^\infty_{s=1}s\beta_s\]
+This yields \eqref{eqn:p2c12.3}.
+\end{proof}
+We next consider the tensor product map. We recall that the map \[ \mathrm{BU}(n)\times \mathrm{BU}(m)\vra{} \mathrm{BU}(nm)\]
+which classifies the ordinary tensor product of bundles does not behave well under the inclusion of $ \mathrm{BU}(n)$ in $\mathrm{BU}(n+1)$; it is necessary to consider the product on reduced $K$-theory defined by the ``tensor product of virtual bundles of virtual dimension zero''; this is represented by a map \[t: \mathrm{BU}\wedge \mathrm{BU}\vra{} \mathrm{BU}.\]
+We calculate \[t_\ast : \widetilde{E}_\ast(\mathrm{BU})\otimes\widetilde{E}_\ast(\mathrm{BU})\lra\widetilde{E}_\ast(\mathrm{BU})\] at least on the elements $\beta_i\otimes\beta_j$.
+\begin{customprop}{12.4}
+\label{prop:p2c12.4}
+If $i>0$, $j>0$ we have \begin{equation*}
+t_\ast(\beta_i\otimes\beta_j)=\sum_{\substack{p\le i\\ q\le j\\ k\le p+q}} a^k_{pq}\beta_k \bigg(\sum^\infty_{l=0}\beta_l\bigg)^{-1}_{i-p}\bigg(\sum^\infty_{l=0}\beta_l\bigg)^{-1}_{j-q}
+\end{equation*}
+\end{customprop}
+\begin{proof}
+The restriction of $t$ to $\mathrm{BU}(1)\wedge\mathrm{BU}(1)$ corresponds to the element \[(\zeta_1-1)(\zeta_2-1)=\zeta_1\zeta_2-\zeta_1-\zeta_2+1\]
+in $\mathrm{BU}^0(\mathrm{BU}(1)\times\mathrm{BU}(1))$. We therefore introduce the following maps.
+\begin{align*}
+\mathrm{BU}(1) \times \mathrm{BU}(1)\lar{m} \mathrm{BU}(1)\lra\mathrm{BU} &\text{, corresponding to } \zeta_1\zeta_2\\
+\mathrm{BU}(1)\times\mathrm{BU}(1)\lar{\pi_1}\mathrm{BU}(1)\lra\mathrm{BU}&\text{, corresponding to } \zeta_1\\
+\mathrm{BU}(1)\times\mathrm{BU}(1)\lar{\pi_2}\mathrm{BU}(1)\lra\mathrm{BU}&\text{, corresponding to } \zeta_2\\
+\mathrm{BU}(1)\times\mathrm{BU}(1)\lar{c}\mathrm{BU}(1)\lra\mathrm{BU}&\text{, corresponding to } 1
+\end{align*}
+Here, $\pi_1$ is projection onto the first factor, $\pi_2$ is projection onto the second factor, and $c$ is the constant map. The required element of $\mathrm{BU}^0(\mathrm{BU}(1)\times\mathrm{BU}(1))$ can be represented in the following form.
+\begin{center}
+    \begin{tikzcd}
+	{(\mathrm{BU}(1)\times\mathrm{BU}(1))} && {(\mathrm{BU}(1)\times\mathrm{BU}(1))^4} \\
+	&& {\mathrm{BU}^4} \\
+	&& {\mathrm{BU}^4} & {\mathrm{BU}}
+	\arrow["\Delta", from=1-1, to=1-3]
+	\arrow["f", from=1-3, to=2-3]
+	\arrow["g", from=2-3, to=3-3]
+	\arrow["\mu", from=3-3, to=3-4]
+\end{tikzcd}
+\end{center}
+Here $\Delta$ is the iterated diagonal map; $f$ is the map whose four components are the four maps given above; $g$ is a map whose four components represent 1, -1, -1 and 1; and $\mu$ is the iterated product map.
+
+We have
+\begin{align*}
+\Delta_\ast(\beta_i\otimes\beta_j) = &\sum_{\substack{i_1+i_2+i_3+i_4=i\\ j_1+j_2+j_3+j_4=j}} \beta_{i_1}\otimes\beta_{j_1}\otimes\beta_{i_2}\otimes\beta_{j_2}\otimes\beta_{i_3}\otimes\beta_{j_3}\otimes\beta_{i_4}\otimes\beta_{j_4}\\
+m_\ast(\beta_{i_1}\otimes\beta_{j_1})&= \sum_{k\le i_1+j_1}a^k_{{i_1}{j_1}}\beta_k\\
+(\pi_1)_\ast(\beta_{i_2}\otimes\beta_{j_2}) &= \begin{cases}\beta_{i_2}&(j_2=0)\\0&(j_2>0)\end{cases}\\
+(\pi_2)_\ast(\beta_{i_3}\otimes\beta_{j_3}) &= \begin{cases}\beta_{j_3}&(i_3=0)\\0&(i_3>0)\end{cases}\\
+c_\ast(\beta_{i_4}\otimes\beta_{j_4}) &= \begin{cases}1 & (i_4=j_4=0)\\0&(\text{otherwise})\end{cases}\\
+\intertext{and}
+(-1)_\ast\bigg(\sum^\infty_{l=0} \beta_l\bigg) &= \bigg(\sum^\infty_{l=0} \beta_l\bigg)^{-1}
+\end{align*}
+So we obtain
+\begin{align*}
+t_\ast(\beta_{i}\otimes\beta_{j}) = \sum_{\substack{i_1+i_2=i\\ j_1+j_3=j\\k\le i_1+j_1}} a^k_{{i_1}{j_1}} b_k \bigg(\sum^\infty_{l=0}\beta_l\bigg)_{i_2}^{-1} \bigg(\sum^\infty_{l=0} \beta_l\bigg)^{-1}_{j_3}
+\end{align*}
+This proves \eqref{prop:p2c12.4}.
+\end{proof}
+\begin{customprop}{12.5}
+\label{prop:p2c12.5}
+The map \[B_\ast:\widetilde{E}_n(\mathrm{BU}) \mapsto \widetilde{E}_{n+2}(\mathrm{BU})\] annihilates decomposable elements. 
+\end{customprop}
+\begin{proof}
+We have the following commutative diagram.
+\begin{center}
+\begin{tikzcd}
+	{\widetilde{E}_n(\mathrm{BU})} & \simeq & {\widetilde{E}_{n+2}(S^2\wedge\mathrm{BU})} \\
+	\\
+	{\widetilde{E}_n(\Omega_0^2\mathrm{BU})} && {\widetilde{E}_{n+2}(\mathrm{BU})}
+	\arrow["{B'_{\ast}}"', from=1-1, to=3-1]
+	\arrow["{\sigma^2}", from=3-1, to=3-3]
+	\arrow["{B_\ast}", from=1-3, to=3-3]
+\end{tikzcd}
+\end{center}
+Here the bottom horizontal map $\sigma^2$ is the appropriate double suspension, and it is well-known that it annihilates products, providing the products in $\widetilde{E}_{n+2}(S^2\wedge\mathrm{BU})$ are those induced by the loop-space product; the proof for ordinary homology goes over. But $\mathrm{BU}$ is an $H$-space, so the loop-space product $\mu_\Omega$ on $\Omega_0^2(\mathrm{BU})$ is homotopic to the product $\mu_H$ induced from the $H$-space product in $\mathrm{BU}$. Now the periodicity isomorphism \[\widetilde{\mathrm{BU}}^0(X)\cong \widetilde{\mathrm{BU}}(S^2\wedge X)\] is an isomorphism of additive groups; this says that under $B':\mathrm{BU}\lra\Omega^2_0\mathrm{BU}$ the $H$-space product in $\mathrm{BU}$ corresponds to the product $\mu_H$ in $\Omega_0^2\mathrm{BU}$. So $\sigma^2\beta'_\ast$ annihilates elements which are decomposable in the usual sense.
+\end{proof}
+\begin{customprop}{12.6}
+\label{prop:p2c12.6}
+If $j>0$ we have
+\begin{align*}
+B_\ast(\beta_j) &= \sum_{\substack{r+t=j+1\\t>0}} u^{E_{a_{1r}}} (-1)^{t-1_{s_t}}\\
+&\equiv \sum_{\substack{r+t=j+1\\t>0}} u^{E_{a_{1r}}} t\beta_t \mod{\text{decomposables}}.
+\end{align*}
+\end{customprop}
+\begin{proof}
+The second line follows from the first by \eqref{eqn:p2c12.2}, so we need only prove the first. 
+
+Recall that $\beta_1$ is not the canonical generator in $\widetilde{E}_\ast(S^2)$; the latter is given by $u^E\beta_1\in\widetilde{E}_2(S^2)$. Since the Bott map $B$ is the restriction of $t$ to $S^2\wedge\mathrm{BU}$, we have \[B_\ast(\beta_j) = t_\ast(u^E\beta_1\otimes\beta_j)\textbf{ for } j>0.\] 
+We apply \eqref{prop:p2c12.4}, and find that the sum in \eqref{prop:p2c12.4} can be divided into two parts, one with $p=1$ and one with $p=0$. In the latter, we use the fact that 
+\[a^k_{0q} = \begin{cases}1 &\text{ if }k=q\\ 0&\text{ if } k\neq q\end{cases}\]
+We find
+\begin{equation*}
+B_\ast(\beta_j) = u^E \sum_{\substack{q+s=j\\ k}} a^k_{1q} \beta_k \bigg(\sum^\infty_{l=0}\beta_l\bigg)^{-1}_s + u^E \sum_{q+s=j} \beta_{q}(-\beta_1)\bigg(\sum^\infty_{l=0} \beta_l\bigg)^{-1}_s.
+\end{equation*}
+The second sum is zero unless $j=0$, so we can forget it. In the first sum, we have 
+\[a^k_{1q} = ka_{1\; q+1-k}\]
+by \eqref{eqn:p2c03.6}. Writing $r$ for $q+1-k$, we find
+\[B_\ast(\beta_j) = u^E \sum_{r+s+k=j+1} a_{1r} (k\beta_k)\bigg(\sum^\infty_{l=0} \beta_l\bigg)^{-1}_s\]
+Using \eqref{eqn:p2c12.3}, we find
+\[B_\ast(\beta_j) = u^E \sum_{\substack{r+t=j+1\\t>0}} a_{1r} (-1)^{t-1} s_t\]
+This proves \eqref{prop:p2c12.6}.
+\end{proof}
+\end{document}

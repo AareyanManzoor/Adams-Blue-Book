@@ -1,0 +1,99 @@
+\documentclass[../main]{subfiles}
+
+% Added this too
+\renewcommand{\labelenumi}{(\roman{enumi})}
+%%%%
+
+\begin{document}
+\label{sec:p2c15}
+\chapter{Quillen's Idempotent Cohomology Operations}
+%\chaptermark{\protect\parbox{0.9\linewidth}{Quillen's Idempotent Cohomology Operations}}
+
+Suppose given a spectrum $E$ and an abelian group $G$. It may happen that when we form the spectrum $EG$, as in \hyperref[sec:p2c2]{\S 2}, it splits as a sum or product. Examples are given in \cite[Lecture 4]{adams3}. In such cases, it is highly desirable to have a splitting which is canonical and doesn't depend on any choices, I have developed this point in \cite[Lecture 4]{adams3}. In particular, I have made the rather obvious point that one should look for canonical idempotent cohomology operations, that is, idempotent maps
+$\varepsilon:EG\longrightarrow EG$.
+
+An important special case is that in which $E = \mathrm{MU}$ and $G=\mathbb{Z}_{(p)}$, the integers localized at $p$ (that is, the ring of rational numbers $n/m$ with $m$ prime to $p$.) In this case the possibility of splitting $\mathrm{MU}\mathbb{Z}_{(p)}$ was proved by Brown and Peterson \cite{brownpeterson}, and again by Novikov \cite{novikov}; but both methods involved choice.
+
+Quillien has succeeded in giving canonical idempotents $\varepsilon:\mathrm{MU}\mathbb{Z}_{(p)}\longrightarrow \mathrm{MU}\mathbb{Z}_{(p)}$ (one for each $p$). This is profitable in two ways. Firstly, it means that we no longer have to construct the Brown-Peterson spectrum by synthesis, building it up from its homotopy groups and $k$-invariants; we can construct it by taking $\mathrm{MU}\mathbb{Z}_{(p)}$ and splitting off the piece we want. Secondly, we obtain a very precise hold on the Brown-Peterson spectrum, and can obtain information about it by passing to the quotient from $\mathrm{MU}\mathbb{Z}_{(p)}$. This process yields good, explicit formulae.
+
+\begin{theorem}
+\label{thm:p2c15.1}
+Let $d>1$ be an integer, and let $R\subset\mathbb{Q}$ be a subring of the rationals containing $d^{-1}$. Then there is a unique map of ring-spectra \[e=e_d:\mathrm{MU}R\to \mathrm{MU}R\] satisfying the following conditions.
+\begin{enumerate}
+    \item $e$ is idempotent: $e^2=e$.
+    \item $e$ has the following effect on $\pi_\ast(\mathrm{MU}R)$. 
+    \[e[\mathbb{CP}^n]=
+        \begin{cases}
+            0 & n\equiv-1\pmod{d}\\
+            [\mathbb{CP}^n] & n\not\equiv-1\pmod{d}
+        \end{cases}\]
+\end{enumerate}
+Two such idempotents $e_d,e_d$ commute
+\end{theorem}
+
+\begin{theorem}[BD, Quillen \cite{quillen}]
+\label{thm:p2c15.2}
+Let $p$ be a prime. Then there is a unique map of ring-spectra \[\varepsilon=\varepsilon_p:\mathrm{MU}\mathbb{Z}_{(p)}\to\mathrm{MU}\mathbb{Z}_{(p)}\] satisfying the following conditions.
+\begin{enumerate}
+    \item $\varepsilon$ is idempotent: $\varepsilon^2=\varepsilon$.
+    \item $\varepsilon$ has the following effect on $\pi_\ast(\mathrm{MU}\mathbb{Z}_{(p)})$. 
+    \[\varepsilon[\mathbb{CP}^n]=
+        \begin{cases}
+            0 & n=p^f-1\text{ for some }f\\
+            [\mathbb{CP}^n] & \mathrm{else}
+        \end{cases}\]
+\end{enumerate}
+\end{theorem}  
+
+\begin{proof}[Proof of \eqref{thm:p2c15.2} from \eqref{thm:p2c15.1}]
+Take \[\varepsilon=\prod_qe_q\] where the product ranges over all primes $q\neq p$, observing that the product is convergent in the filtration topology on $\mathrm{MU}\mathbb{Z}_{(p)}^\ast(\mathrm{MU}\mathbb{Z}_{(p)})$, which is complete and Hausdorff.
+\end{proof}
+
+We turn to consider the proof of \eqref{thm:p2c15.1}. We know from Lemma \eqref{thm:p2c15.2} that so long as $\pi_\ast(E)\longrightarrow\pi_\ast(E)\otimes R$ is iso (which is certainly true
+for $E = \mathrm{MU}R$), maps of ring-spectra $g:\mathrm{MU}R\longrightarrow E$ are in $(l-1)$ correspondence with power-series \[g_\ast\big(x^{\mathrm{MU}}\big)=f\big(e^\mathrm{E}\big)=\sum_{i\geq 0}d_i\big(x^{\mathrm{E}}\big)^{i+1}\] with $u^{\mathrm{E}}d_0=1$, $d_i\in\pi_\ast(E)$. Assume for simplicity that $u^{\mathrm{E}} = 1$, which is the case in the applications. All we have to do is pick the right power-series. Let us consider how the choice of $f$ will affect \[g_\ast:\pi_\ast(\mathrm{MU}R)\longrightarrow\pi_\ast(E).\]
+
+Let us take the primitive elements
+\[\log^{\mathrm{MU}}x^{\mathrm{MU}}=\sum_{i\geq0}m_i\big(x^{\mathrm{MU}}\big)^{i+1}, m_i=\dfrac{[\mathbb{CP}^i]}{i+1}\in\pi_\ast(\mathrm{MU})\otimes\mathbb{Q}\]
+\[\log^{\mathrm{E}}x^{\mathrm{E}}=\sum_{i\geq0}n_i\big(x^{\mathrm{E}}\big)^{i+1},\text{ say }n_i\in\pi_\ast(E)\otimes\mathbb{Q},n_0=1.\]
+
+Let us define the $\log^{\mathrm{MU}}$ series by \[\mathrm{mog}\, x^{\mathrm{MU}}=\sum_{i\geq0}(g_\ast m_i)\big(x^{\mathrm{MU}}\big)^{i+1},\] so that it serves to store the coefficients $g_\ast m_i$. Let $\exp^{\mathrm{E}}$ be the series inverse to $\log^{\mathrm{E}}$
+
+\begin{proposition}
+\label{thm:p2c15.3}
+The elements $g_\ast m_i\in\pi_\ast(E)\otimes\mathbb{Q}$ are given by \[\mathrm{mog}(f x^{\mathrm E}) = \log^{\mathrm E} (x^{\mathrm E})\] or equivalently \[\mathrm{mog}\, z=\log^{\mathrm{E}}(f^{-1}z).\]
+\end{proposition}
+For our applications we need to know how to construct $f$ given the coefficients $g_\ast m_i$, and the appropriate formula is as follows.
+\begin{corollary}
+\label{cor:p2c15.4}
+$f^{-1}z=\exp^{\mathrm{E}}\mathrm{mog}z.$
+\end{corollary} 
+\begin{proof}[Proof of (\ref{thm:p2c15.3}), (\ref{cor:p2c15.4})]
+The element \[\log^{\mathrm{MU}}x^{\mathrm{MU}}=\sum_{i\geq0}m_i\big(x^{\mathrm{MU}}\big)^{i+1}\] is primitive. Therefore \[g_\ast \log^{\mathrm{MU}}x^{\mathrm{MU}}=\sum_{i\geq0}(g_\ast m_i)\big(fx^P\mathrm{E}\big)^{i+1}=\mathrm{mog}\big(fx^{\mathrm{E}}\big)\] is primitive. But the primitive elements in $\tilde{\mathrm{E}\mathbb{Q}}^\ast(\mathbb{CP}^\infty)$ form a free module over $\pi_\ast(\mathrm{E}\mathbb{Q})$, with one generator $\log^{\mathrm{E}}x^{\mathrm{E}}$; and we check that $\mathrm{mog}(fx^{\mathrm{E}})$ has first term $x^{\mathrm{E}}$; so \[\mathrm{mog}(fx^{\mathrm{E}})=\log^{\mathrm{E}} x^{\mathrm{E}}.\] This proves \eqref{thm:p2c15.3} and \eqref{cor:p2c15.4}.
+\end{proof}
+
+Next suppose given a formal product $\mu$, over a ring $R$, and consider formal power-series, with zero constant term, over $R$. We can make these formal power-series into an abelian group by defining \[\sigma+_\mu\tau=\mu(\sigma,\tau).\] Subtraction in this abelian group will be written $-_\mu$. If our ring $R$ also contains $d^{-1}$, we can divide by $d$ in this abelian group; we write \[\sigma=\Big(\dfrac1d\Big)_\mu\tau\] for the solution of \[\tau=\sigma+_\mu\sigma+_\mu+\cdots+_\mu\sigma\:\text{ ($d$ summands)}\]
+
+If our ring $R$ contains $\mathbb{Q}$, we can write \[\sigma+_\mu\tau=\exp(\log\sigma+\log\tau)\] where $\exp$ and $\log$ are as in \hyperref[sec:p2c7]{\S 7}.
+
+\begin{proof}[Proof of \eqref{thm:p2c15.1}]
+Our proposal is to take
+\begin{equation}
+\label{eqn:p2c15.5}
+\tag{15.5}
+\mathrm{mog}z=\log z -\dfrac1d(\log\zeta_1z+\log\zeta_2z+\cdots+\log\zeta_dz).
+\end{equation}
+Here $\zeta_1,\zeta_2,\dots,\zeta_d$ are the complex $d$-th roots of 1, and \[\log z=\sum_{i\geq0}m_iz^{i+1},m_i=\dfrac{[\mathbb{CP}^i]}{i+1}\] as it should be for $\mathrm{MU}$ or $\mathrm{MU}R$. It is easy to see that this power-series \eqref{eqn:p2c15.5} has the coefficients $g_\ast(m_i)$ given in \eqref{thm:p2c15.1}(ii). A priori the coefficients of $\mathrm{mog}z$ lie in $\pi_\ast(\mathrm{MU})\otimes\mathbb{Q}[\exp2\pi i/d]$.
+
+Applying $\exp$ to \eqref{eqn:p2c15.5}, we get 
+\begin{equation}
+\label{eqn:p2c15.6}
+\tag{15.6}
+f^{-1}z=z_\mu\Big(\dfrac1d\Big)_\mu(\zeta_1z+_\mu\zeta_2z+_\mu+\cdots+_\mu\zeta_dz).
+\end{equation}
+For any $\zeta_1,\zeta_2,\dots,\zeta_d$ we can consider \[\zeta_1z+_\mu\zeta_2z+_\mu+\cdots+_\mu\zeta_dz\] as a formal power-series with coefficients in \[\pi_\ast(\mathrm{MU})\times\mathbb{Z}[\zeta_1,\zeta_2,\dots,\zeta_d].\] The coefficients are clearly polynomials symmetric in $\zeta_1, \zeta_2,\dots,\zeta_d$ so we can write them in terms of the elementary symmetric functions $\sigma_1,\sigma_2,\dots,\sigma_d$. When we substitute for \[\zeta_1,\zeta_2,\dots,\zeta_d\] the complex $d$-th roots of 1, we have \[\sigma_1=0,\dots,\sigma_{d-1}=0,\sigma_d=(-1)^{d-1}.\] We obtain a power-series with coefficients in $\pi_\ast(\mathrm{MU})$.
+
+So \eqref{eqn:p2c15.6} shows that $f^{-1}z$, and hence $fz$, has coefficients in $\pi_\ast(\mathrm{MU})\otimes\mathbb{Z}\Big[\dfrac1d\Big]$. This proves the existence of a map $e:\mathrm{MU}R\longrightarrow\mathrm{MU}R$ of ring-spectra satisfying \eqref{thm:p2c15.1}(ii).
+
+The fact that $e_d$ is idempotent follows from the fact that its effect on $\pi_\ast(\mathrm{MU}R)$ is obviously idempotent, by Lemma \ref{lem:p2c09.3}. The fact that two such idempotents $e_d,d_\delta$ commute is proved in the same way. 
+\end{proof}
+\end{document}

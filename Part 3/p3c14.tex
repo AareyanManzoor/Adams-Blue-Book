@@ -1,0 +1,961 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+
+%Yohan
+
+\chapter{A Category of Fractions}
+\label{sec:p3c14}
+We recall that our general object in these sections is to answer the following question. Suppose given  $E_{\ast}(X)$ and $E_{\ast}(Y)$. What can we say about $\left[ X,Y \right]_{\ast}$?
+
+Now it is clear that we cannot say everything. For example, suppose $E = H\bZ_{2}$; given $(H\bZ_{2})_{\ast}(X)$ and $(H\bZ_{2})_{\ast}(Y)$ there is no hope of finding out anything about the odd torsion in $\left[ X,Y \right]_{\ast}$. 
+
+More generally, we will say that a morphism $f\colon X \lar{} X' $ is an $E$-equivalent if the induced homomorphism 
+\[
+  f\colon E_{\ast}(X) \lar{} E_{\ast}(X') 
+\]
+is an isomorphism. This can happen without $f$ being an equivalence; for example, take $E = H\bZ_{2}$, $X = H\bZ_3$, $X'= \te{pt}.$ Then it is clear that methods based on $E$-cohomology cannot tell $X$ and $X'$ apart.
+
+It therefore seems best to introduce a new category in which one does not attempt to tell $X$ and $X'$ apart. In technical terms I have to start from the stable category and define a category of fractions.
+
+(Added later.) I owe to A.K. Bousfield the remark that the procedure below involves very serious set-theoretical difficulties. Therefore it will be best to interpret this section not as a set of theorems, but as a programme, that is, as a guide to what one might wish to prove.
+
+Let $C$ be the stable category already constructed.
+\begin{theorem} \label{thm:p3ch14.1}
+There exists a category $F$, called the category of fractions, and a functor
+\[
+  T\colon C \lar{} F 
+\] with the following properties.
+
+\begin{enumerate}[label=(\roman*)]
+  \item if $e\colon X \lar{} Y $ is an $E$-equivalence in $C$, then  $T (e)$ is an actual equivalence in $F$, i.e., it has an inverse  $T (e)^{-1}$.
+  \item  $T$ is an universal with respect this property; given a category $C$ and a functor $U\colon C \lar{} G$ such that $e$ an $E$-equivalence implies  $U(e)$ is an equivalence in $G$, then there exists one and only functor  $V\colon F \lar{} G  $ such that $U = VT$. 
+\[\begin{tikzcd}
+	C &&&& G \\
+	\\
+	\\
+	\\
+	&&&& F
+	\arrow["T", from=1-1, to=1-5]
+	\arrow["U"', from=1-1, to=5-5]
+	\arrow["V", dashed, from=1-5, to=5-5]
+\end{tikzcd}\]
+\item The objects of $F$ are the same as the objects of $C$, and  $T$ is the identity on objects.
+\item Every morphism in $F$ from $X$ to  $Y$ can be written  $T (e)^{-1}T (f)$, where $f\colon X \lar{} Y'  $ and $e\colon Y \lar{} Y'  $ are in $C$ and  $e$ is an $E$-equivalence. \\
+  \[\begin{tikzcd}
+	&&&& {Y'} \\
+	\\
+	\\
+	X &&&& Y
+	\arrow["f", from=4-1, to=1-5]
+	\arrow["e"', from=4-5, to=1-5]
+\end{tikzcd}\]
+We have $T (e_1)^{-1}\te{T }(f_1)=T (e_2)^{-1}T (f_2)$ in $F$ if and only if there exists a diagram of the following form in $C$. 
+
+\[\begin{tikzcd}
+	&&&&& {Y_1} \\
+	X &&&& Y && {Y'} \\
+	&&&&& {Y_2}
+	\arrow["{f_1}", from=2-1, to=1-6]
+	\arrow["{f_2}"', from=2-1, to=3-6]
+	\arrow["{e_1}"', from=2-5, to=1-6]
+	\arrow["{e'_1}"', from=1-6, to=2-7]
+	\arrow["{e'_2}", from=3-6, to=2-7]
+	\arrow["{e_2}", from=2-5, to=3-6]
+\end{tikzcd}\]
+\item [(v)] Every morphism in $F$ from $X$ to $Y$ can be written  $T (f)T (e)^{-1}$, where $f\colon X' \lar{} Y  $ and $e\colon X' \lar{} X  $ are in $C$ and  $e$ is an $E$-equivalence.
+\[\begin{tikzcd}
+	&& X \\
+	&&&& Y \\
+	{X'}
+	\arrow["e", from=3-1, to=1-3]
+	\arrow["f"', from=3-1, to=2-5]
+\end{tikzcd}\]
+We have $T (f_1)T (e_1)^{-1} =T (f_2)T (e_2)^{-1}$ in $F$ if and only if there exists a diagram of the following form in $C$. 
+\[\begin{tikzcd}
+	&& {X_1} \\
+	{X'} &&&& X &&& Y \\
+	&& {X_2}
+	\arrow["{e'_1}"', from=2-1, to=1-3]
+	\arrow["{e'_2}"', from=2-1, to=3-3]
+	\arrow["{e_1}"', from=1-3, to=2-5]
+	\arrow["{e_2}", from=3-3, to=2-5]
+	\arrow["{f_1}", from=1-3, to=2-8]
+	\arrow["{f_2}", from=3-3, to=2-8]
+\end{tikzcd}\]
+\end{enumerate}
+\end{theorem}
+
+
+If one takes only parts (i), (ii), and (iii) the theorem is almost empty; such a category of fractions exists under negligible assumptions. (Added later: unfortunately there is no reason why the result should be a small category.) Our object, of course, is construct $F$ in such a way that we obtain a good hold on it. Parts (iv) and (v) essentially describe two ways of constructing $F$. We shall write  $\left[ X,Y \right] _{\ast}^E$ to mean the morphisms from $X$ to $Y$ in category $F$. Beside constructing  $F$, we must also give results calculating  $\left[ X,Y \right] _{\ast}^E$ in various cases which arise in the applications. When we construct the Adams spectral sequence, based on the homology theory $E_{\ast}$ we will try to prove that it converges to  $\left[ X,Y \right] _{\ast}^E$.
+
+Before proving \ref{thm:p3ch14.1}, I will finish stating some results which help to show what $F$ is. 
+
+We propose to get a hold on $\left[ X,Y \right]^E$ by showing that if we keep $Y$ fixed and vary $X$, then we get a functor of $X$ which is representable in  $C$. Then we give means for recognizing the representing object, and finally we construct the representing object in an elementary way in special cases.
+\begin{proposition} \label{prop:p3ch14.2}
+The following conditions on $Y$ are equivalent. 
+ \begin{enumerate}
+   \item [(i)] $f\colon \left[ X,Y \right] _{\ast} \lar{} \left[ X,Y \right]^E_{\ast} $ is an isomorphism for all $X$. 
+   \item [(ii)] if $E_{\ast}(X)=0$, then $\left[ X,Y \right] _{\ast}$ = 0. 
+\end{enumerate} 
+if these equivalent conditions hold, we say that $Y$ is $E$-complete. This term can be justified by inspecting the special case $E=H\bZ_{P}$, which will be considered later. 
+\end{proposition}
+    As an example, we give:
+    \begin{corollary} \label{cor:p3ch14.3}
+    If $Y$ is an $E$-module spectrum, then $Y$ is $E$-complete and 
+    \[
+    T\colon \left[ X,Y \right] _{\ast} \lar{} \left[ X,Y \right]^E _{\ast} \text{ is an isomorphism.}
+    \] 
+    \begin{proof} 
+        (From 14.2). Condition (ii) of \ref{prop:p3ch14.2} holds by \ref{lem:p3ch13.1}.
+    \end{proof}  
+    \end{corollary}
+   \begin{theorem} \label{thm:p3ch14.4}
+     \begin{enumerate} 
+       \item [(i)] For any spectrum $Y$ there is an $E$-equivalence  $e\colon Y \lar{} Z$ such that $Z$ is $E$-complete. 
+       \item [(ii)] Such an $E$-equivalence is universal. That is, given any other $E$-equivalence $e'\colon Y \lar{} Z'$, there exists a unique $f\colon Z' \lar{} Z$ such that $fe'=e$.
+\[\begin{tikzcd}
+	&& {Z'} \\
+	Y \\
+	&& Z
+	\arrow["{e'}", from=2-1, to=1-3]
+	\arrow["e"', from=2-1, to=3-3]
+	\arrow["f"', dashed, from=1-3, to=3-3]
+\end{tikzcd}\]
+\item [(iii)] Therefore, $Z$ is unique up to canonical equivalence.
+\item [(iv)] For such a $Z$ we have an isomorphism
+  \[
+  \left[ X, Z  \right]_{\ast} \lar{} [X,Y]^E_{\ast}. 
+  \] 
+  given by $f \mapsto T (e)^{-1}T(f).$
+     \end{enumerate}
+     \textbf{Notes.} (iii) follows immediately from (ii). Since $Z$ is defined up to canonical equivalence by $Y$, we may write it as a function of $Y$; we choose the notation  $Z = Y^E$, so that
+     \[
+     \left[ X,Y^E\right]_{\ast} = \left[ X,Y \right] ^E_{\ast}.
+     \] 
+We will call $Y^E$ the $E$-completion of $Y$. Again, the term can be justified by considering the special case  $E=H\bZ_{p}$. Note that $(Y^E)^E=Y^E$, so that the term ``completion'' is justified.\\
+We say that $X$ is \textit{connective} \index{connective} if there exists $n_{0} \in \mathbb{Z}$ such that $ \pi_{r}(X)=0$ for $r<n_{0}$. 
+   \end{theorem}
+   
+   \begin{proposition} \label{prop:p3ch14.5}
+     Suppose that $E$ is a commutative ring-spectrum and $ \pi_{r}(E)=0$ for $r<0$; suppose also that $Y$ is connective. Then  $\left[ X,Y \right] ^E_{\ast}$ depends only on the ring $ \pi_{0}(E)$.
+     \end{proposition}
+     
+     For example,  $\left[ X,Y \right] ^E_{\ast}$ is the same whether $E=\te{MU}\bQ_{p}$ or $E=\te{bu}\bQ_{p}$. The idea is that under these hypotheses, the difference between $\left[ X,Y \right] ^E_{\ast}$ and $\left[ X,Y \right] _{\ast}$ is essentially arithmetical. 
+     
+For the next result, we assume that $E$ is a commutative ring-spectrum, that  $ \pi_{r}(E)=0$ for $r<0$, and  $Y$ is connective.\\
+
+ \begin{theorem} \label{thm:p3ch14.6}
+\begin{enumerate} 
+  \item [(i)] Suppose $ \pi_{0}(E)$ is a subring $R$ of the rationals. Then  \[
+    Y^E = YR.
+  \] 
+\item [(ii)] Suppose $ \pi_{0}(E)=\bZ_{m}$ and  $\pi_{r}(Y)$ is finitely generated for all $r$. Then, 
+  \[
+    Y^E = YI_{m},
+  \] 
+  where $I_{m}$ is the ring of m-adic integers, $\displaystyle{\varprojlim_r}$ $\mathbb{Z}_{m^r}$. 
+\item [(iii)] Suppose $ \pi_{0}(E)=\mathbb{Z}_{m}$ and the identity morphism $1\colon Y \lar{} Y$ satisfies $m^e\cdot 1=0$. Then 
+  \[
+    Y^E = Y.
+  \] 
+\end{enumerate}
+\end{theorem}
+   
+  
+\begin{examples}
+
+
+\begin{enumerate} 
+  \item [(ia)] Suppose $\pi_{0}(E)=\bZ$, then $Y^E=Y$ and $T\colon \left[X,Y\right]^{}_{\ast} \lar{} \left[X,Y\right]^{E}_{\ast}$ is an isomorphism. 
+  \item [(ib)] Suppose $ \pi_{0}(E)$ is a subring $R$ of the rationals and $X$ is a finite spectrum. Then 
+    \[
+      \left[X,Y\right]^{E}_{\ast} = \left[X,YI_{m}\right]^{}_{\ast} = \left[X,Y\right]^{}_{\ast} \otimes R \text{  by \ref{prop:p3c06.7}}
+    \] 
+  \item [(iia)] Suppose $ \pi_{0}(E)=\bZ_{m}$, $ \pi_{r}(Y)$ is finitely generated for all $r$ and $X$ is a finite spectrum. Then
+    \[
+      \left[X,Y\right]^{E}_{\ast} = \left[X,YI_{m}\right]^{}_{\ast} = \left[X,Y\right]^{}_{\ast} \otimes I_{m} \text{  by \ref{prop:p3c06.7}}
+    \] 
+  \item [(iib)] Take $m$ to be a prime $p$, and take $X = Y = S$. Then
+    \[
+    \left[S,S\right]^{E}_{r} = 
+      \begin{cases} 
+        0 & (r<0)\\
+        1_{p} & (r=0)\\
+        \text{the p-component of of $\left[S,S\right]^{}_{r}$ if $r>0$}.  
+      \end{cases}
+    \] 
+\end{enumerate}
+\end{examples}
+It is very plausible that the classical Adams spectral sequence should converge to these groups.
+\begin{warning}
+\begin{enumerate} 
+  \item [(i)] We have assumed that $\pi_{r}(E)=0$ for $r<0$. If we do not have this, the relationship between $\left[X,Y\right]_{\ast}$ and $\left[X,Y\right]^E _{\ast}$ may be much more distant. For example, take $E=K$; it can be shown that $\left[S,S\right]^K_{r} \neq 0$ for infinitely many negative values of r.
+
+    \item [(ii)] Consider parts (ii) and (iii) of the theorem, in which $\pi_{0}(E)=\mathbb{Z}_{m}$. Results of the form given do require some assumption on $Y$ beyond the fact it is connective. For example, take $Y = S(\bQ/\bZ)$ It can be shown that 
+      \[
+        \left[S,Y\right]_{1} = 0 \text{  and so } \left[S,Y\right]_{1} \otimes I_{m} = 0, \text{  but } \left[S,Y\right]^E _{I} = I_{m}.
+      \] 
+  If one takes $m$ to be a prime $p$ and checks the behavior of the classical Adams spectral sequence based on $E=H\bZ_{p}$, one sees that it converges to $ \left[S,Y\right]^E _{1}$, as indeed it must do by the theorem so be proved in the next section. So something which was previously a counterexample can now be used as evidence to support the theory.
+\end{enumerate}
+\end{warning}
+
+The proof of Theorem \ref{thm:p3ch14.1} requires two lemmas.
+\begin{lemma} \label{lem:p3ch14.7}
+\begin{enumerate} 
+ \item [(i)] Suppose given a diagram
+
+   \adjustbox{scale=1,center}{%
+      \begin{tikzcd}
+   	X &&& {X'} \\
+   	\\
+   	\\
+   	Y
+   	\arrow["f", from=1-1, to=1-4]
+   	\arrow["e"', from=1-1, to=4-1]
+     \end{tikzcd}
+   } 
+in which $e$ is an $E$-equivalence. Then we can complete it to a commutative diagram 
+
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	X &&&& {X'} \\
+	\\
+	\\
+	Y &&&& {Y'}
+	\arrow["e", from=1-1, to=4-1]
+	\arrow["f"', from=1-1, to=1-5]
+	\arrow["{e'}"', from=1-5, to=4-5]
+	\arrow["g"', from=4-5, to=4-1]
+\end{tikzcd} 
+} 
+in which $e'$ is an $E$-equivalence. If f is also an $E$-equivalence, so is $g$.
+\item [(ii)] Suppose given a diagram 
+
+      \adjustbox{scale=1, center}{%
+      \begin{tikzcd}
+      	&&& {X'} \\
+      	\\
+      	\\
+      	Y &&& {Y'}
+      	\arrow["g", from=4-1, to=4-4]
+      	\arrow["{e'}"', from=1-4, to=4-4]
+      \end{tikzcd}
+      } 
+      in which $e'$ is an $E$-equivalence. Then we can complete it to a commutative diagram 
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	X &&&& {X'} \\
+	\\
+	\\
+	Y &&&& {Y'}
+	\arrow["e", from=1-1, to=4-1]
+	\arrow["f"', from=1-1, to=1-5]
+	\arrow["{e'}"', from=1-5, to=4-5]
+	\arrow["g"', from=4-5, to=4-1]
+\end{tikzcd} 
+} ~\\~\\
+in which $e$ is an $E$-equivalence. If $g$ is also an $E$-equivalence, so is f.
+  \end{enumerate}
+\begin{proof} 
+  \begin{enumerate} 
+    \item [(i)] Let $W$ be the fibre of $X \lar{} X'$, and let $Y'$ be the cofibre of $W \lar{}  Y$. The morphism $e'$ is an $E$-equivalence by the five lemma.
+      \item [(ii)]  Part (ii) is similar. 
+  \end{enumerate}   
+\end{proof}
+  \end{lemma}
+\begin{lemma} \label{lem:p3ch14.8}
+\begin{enumerate} 
+\item [(i)] Suppose given 
+  \[
+  X' \lar{e}X \overunderset{f}{g}{\rightrightarrows} Y
+  \] 
+  Where $e'$ is an $E$-equivalence and fe=ge. Then we can construct 
+  \[
+  X \overunderset{f}{g}{\rightrightarrows} Y \vra{e'} Y'
+  \] 
+  with $e'$ an $E$-equivalence and  $e'f=e'g$.
+  \item [(ii)] Suppose given 
+    \[
+  X \overunderset{f}{g}{\rightrightarrows} Y \lar{e'} Y'
+    \] 
+      Where $e'$ is an $E$-equivalence and e'f=e'g. Then we can construct
+  \[
+  X' \lar{e} X \overunderset{f}{g}{\rightrightarrows} Y
+  \] 
+with $e$ an $E$-equivalence and $fe=ge$.
+\end{enumerate}
+\begin{proof} 
+  The proof is a manipulation with cofibering using Veridier's axiom \ref{lem:p3c06.8} and is left as an exercise.
+  
+  Now, to contrusct F, let the object of F be the same as the objects of C. To define morphism in F, say $ \left[X,Y\right]^E $, one makes a preliminary construction. Fix Y, and consider the category in which the objects are $E$-equivalences. $Y \vra{e'} Y'$ and morphisms are diagrams of the following form.
+  \[
+  \adjustbox{scale=1, center}{%
+  \begin{tikzcd}
+  	&&& {Y'} \\
+  	Y \\
+  	&&& {Y''}
+  	\arrow["{e'}", from=2-1, to=1-4]
+  	\arrow["{e''}"', from=2-1, to=3-4]
+  	\arrow[from=1-4, to=3-4]
+  \end{tikzcd}
+  } \]
+  Then \ref{lem:p3ch14.7} and \ref{lem:p3ch14.8} say that we get a directed category in the sense of Grothendieck. That is, given two objects A and B, there exists 
+  \[
+  \adjustbox{scale=1, center}{%
+  \begin{tikzcd}
+  	A \\
+  	&&& {C;} \\
+  	B
+  	\arrow[from=1-1, to=2-4]
+  	\arrow[from=3-1, to=2-4]
+  \end{tikzcd}
+  } \]
+  given two morphisms $ A \overunderset{f}{g}{\rightrightarrows} B  $, there exists $  A \overunderset{f}{g}{\rightrightarrows} B \vra{h} C$ where $hf = hg$.
+\end{proof}
+\end{lemma}
+
+We define $\left[X,Y\right]^E_{\ast} = \displaystyle{\lim_{ \lar{} }} \left[X,Y'\right]_\ast$, where the direct limit takes place over this desired category. An element of $\displaystyle{\lim_{ \lar{} } \left[X,Y'\right]}$ is an equivalence class of diagrams  \\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+        &&& {Y'} \\
+        \\
+        X &&& Y
+        \arrow["{f'}", from=3-1, to=1-4]
+        \arrow["{e'}"', from=3-4, to=1-4]
+\end{tikzcd}
+} ~\\~\\
+in which $e'$ is an $E$-equivalence. Two such diagrams are equivalent if and only if there exists a diagram of the following form.
+
+\[\begin{tikzcd}
+	&&&&& {Y_1} \\
+	X &&&& Y && {Y'} \\
+	&&&&& {Y_2}
+	\arrow["{f_1}", from=2-1, to=1-6]
+	\arrow["{f_2}"', from=2-1, to=3-6]
+	\arrow["{e_1}"', from=2-5, to=1-6]
+	\arrow["{e'_1}"', from=1-6, to=2-7]
+	\arrow["{e'_2}", from=3-6, to=2-7]
+	\arrow["{e_2}", from=2-5, to=3-6]
+\end{tikzcd}\]
+This is essentially the construction presented in (iv). To check that this is an equivalence relation one uses \ref{lem:p3ch14.7} (i).
+
+To define composition in the category, suppose given the two diagrams shown below with undotted arrows.
+\[
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&&&&& {Z''} \\
+	\\
+	&&& {Y'} && {Y'} \\
+	\\
+	X && Y && Z
+	\arrow["{f_1}", from=5-1, to=3-4]
+	\arrow["{e_1}"', from=5-3, to=3-4]
+	\arrow["{f_2}", from=5-3, to=3-6]
+	\arrow["{e_2}"', from=5-5, to=3-6]
+	\arrow[dashed, from=3-4, to=1-7]
+	\arrow[dashed, from=3-6, to=1-7]
+\end{tikzcd}
+} \]
+~\\~\\Add the dotted arrows by \ref{lem:p3ch14.7} {i}. We get a diagram representing a morphism from $X$ to $Z$ in the new category. We check that the equivalence class of this diagram depends only on the equivalence classes of the factors, not on the choice of parallelogram (use \ref{lem:p3ch14.7} (i), \ref{lem:p3ch14.8} (i)).
+
+We check the associativity law and the existence of identity morphisms. We now have a category $F$. We define $T\colon C \lar{} F$ as follows: if $f\colon X \lar{} Y$, let $T(f)$ be the class of the following diagram.
+\[
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&& Y \\
+	\\
+	X &&& Y
+	\arrow["f", from=3-1, to=1-4]
+	\arrow["1"', from=3-4, to=1-4]
+\end{tikzcd}
+} \]
+One checks that this is a functor, It is now almost trivial to verify properties (i)-(iv)) of the theorem.
+
+On the other hand, precisely the dual construction works using \ref{lem:p3ch14.7} (ii) and \ref{lem:p3ch14.8} (ii) to show that one can construct $F$ so as to have properties (i)-(iii) and (v). But of course F is characterized by (i)-(iii), so it must have both properties (iv) and (v). 
+
+Now we turn to Proposition \ref{prop:p3ch14.2}. First, suppose $E_{\ast}(X)=0$. Then it is clear that the morphism $\te{pt}. \lar{} X$ is cofinal among $E$-equivalences. $e'\colon X' \lar{} X$. So we have $ \left[X,Y\right]_{\ast} = 0$. If we assume that $T\colon \left[X,Y\right]_{\ast} \lar{} \left[X,Y\right]^E_{\ast}=0$ is an isomorphism, then clearly we deduce that $ \left[X,Y\right]_{\ast}=0$. So condition (i) of \ref{prop:p3ch14.2} implies condition (ii). The proof that(ii) implies (i) will be given together with the proof of part of Theorem \ref{thm:p3ch14.4} to be considered below. This requires three lemmas, numbered \ref{lem:p3ch14.9}, \ref{lem:p3ch14.10}, and \ref{lem:p3ch14.11}. 
+\begin{lemma} \label{lem:p3ch14.9}
+Let $A \lar{} B \lar{} C$ be a cofibering. Then
+\[
+  \left[A,Y\right]^E_{\ast} \longleftarrow \left[B,Y\right]^E_{\ast} \longleftarrow \left[C,Y\right]^E_{\ast}
+\] 
+and
+\[
+  \left[X,A\right]^E_{\ast} \lar{} \left[X,B\right]^E_{\ast} \lar{}  \left[X,C\right]^E_{\ast}
+\] 
+are exact.
+\begin{proof} 
+   For any $Y'$, the sequence 
+   \[
+     \left[A,Y'\right] \longleftarrow \left[B,Y'\right]_{\ast} \longleftarrow \left[C,Y'\right]_{\ast}
+   \] 
+   is exact. The given sequence is obtained from such sequences by passing to a direct limit. But direct limits over a directed category preserve exactness. The same form of argument holds for the second sequence, using the fact that we can also define $ \left[X,Y\right]^E_{\ast}$ by taking a direct limit of $ \left[X',Y\right]_{\ast}$ as we vary $X'$.
+\end{proof}
+\end{lemma}
+\begin{lemma} \label{lem:p3ch14.10}
+The canonical map 
+\[
+  \bigg[\bigvee_{\alpha}X_{\alpha},Y\bigg]^E_{\ast} \lar{} \prod_{a} [X_{\alpha},Y]^E_{\ast}
+\] 
+is an isomorphism.
+\begin{proof}
+  \begin{enumerate} 
+    \item [(i)] Suppose given an element in $\prod_{a}\left[X_{a},Y\right]^E;$ each of its components is represented by a diagram\\~\\
+      \adjustbox{scale=1, center}{%
+      \begin{tikzcd}
+      	& {X_{\alpha}} &&& Y \\
+      	\\
+      	{X'_{\alpha}}
+      	\arrow["{e_{\alpha}}", from=3-1, to=1-2]
+      	\arrow["{f_{\alpha}}"', from=3-1, to=1-5]
+      \end{tikzcd}
+      } 
+      Then we can form the diagram 
+      ~\\~\\
+      \adjustbox{scale=1, center}{%
+      \begin{tikzcd}
+      	&& {\bigvee_{\alpha}X_{\alpha}} &&& Y \\
+      	\\
+      	{\bigvee_{\alpha}X'_{\alpha}}
+      	\arrow["{\bigvee_{\alpha}e_{\alpha}}", from=3-1, to=1-3]
+      	\arrow["{\{f_\alpha\} }"', from=3-1, to=1-6]
+      \end{tikzcd}
+      }  
+      ~\\~\\
+      This gives an element of $ \left[\bigvee_{\alpha} X_{\alpha} , Y \right]^E_{\ast}$ which maps the required way.
+      \item [(ii)] Suppose given an element of $\left[\bigvee_{\alpha} X_{\alpha}, Y \right]^E_{\ast}$, say represented by 
+        ~\\~\\
+        \adjustbox{scale=1, center}{%
+        \begin{tikzcd}
+        	&& {\bigvee_{\alpha}X_\alpha} &&& Y \\
+        	\\
+        	{W'}
+        	\arrow["e", from=3-1, to=1-3]
+        	\arrow["f"', from=3-1, to=1-6]
+        \end{tikzcd}
+        }  
+        ~\\~\\
+       Suppose it restricts to zero in each  $ \left[X_{\alpha},Y\right]^E_{\ast}$. This says that for each $\alpha$ we have a commutative diagram of the following form;
+       ~\\~\\
+       \adjustbox{scale=1, center}{%
+       \begin{tikzcd}
+       	{X_\alpha} &&& {\bigvee_{\alpha}X_\alpha} &&& Y \\
+       	\\
+       	{X_\alpha} &&& {W'} \\
+       	\\
+       	{X'_\alpha}
+       	\arrow["1", from=3-1, to=1-1]
+       	\arrow["{e_\alpha}", from=5-1, to=3-1]
+       	\arrow["{i_\alpha}", from=3-1, to=1-4]
+       	\arrow["{j_\alpha}"', from=5-1, to=3-4]
+       	\arrow["f"', from=3-4, to=1-7]
+       	\arrow["e"', from=3-4, to=1-4]
+       \end{tikzcd}
+       }  
+       ~\\~\\
+       and moreover, $fj_{\alpha}=0$. Then consider the following diagram.
+       ~\\~\\
+       \adjustbox{scale=1, center}{%
+       \begin{tikzcd}
+       	&&& {\bigvee_{\alpha}X_\alpha} &&& Y \\
+       	\\
+       	&&& {W'} \\
+       	\\
+       	{\bigvee_{\alpha}X'_\alpha}
+       	\arrow["{\bigvee_{\alpha}e_\alpha}", from=5-1, to=1-4]
+       	\arrow["e"', from=3-4, to=1-4]
+       	\arrow["{\{j_\alpha\}}"', from=5-1, to=3-4]
+       	\arrow["f"', from=3-4, to=1-7]
+       \end{tikzcd}
+       }  
+       ~\\~\\
+       This shows that the diagram
+       ~\\~\\
+       \adjustbox{scale=1, center}{%
+       \begin{tikzcd}
+       	&& {\bigvee_{\alpha}X_\alpha} &&& Y \\
+       	\\
+       	{W'}
+       	\arrow["e"', from=3-1, to=1-3]
+       	\arrow["f"', from=3-1, to=1-6]
+       \end{tikzcd}
+       }  
+       ~\\~\\
+       gives the zero element of $ \left[\bigvee_{\alpha} X_{\alpha},Y\right]^E_{\ast}$. 
+  \end{enumerate}
+\end{proof}
+\end{lemma}
+Now we start the proof of \ref{thm:p3ch14.4}. Consider $ \left[X,Y\right]^E_{\ast}$. Hold $Y$ fixed and vary $X$. By \ref{lem:p3ch14.9} and \ref{lem:p3ch14.10}, we have the data for E. H. Brown's Theorem, and we deduce that  $ \left[X,Y\right]^E_{\ast}$ is a representable functor of $X$. That is, there is a spectrum Z and a natural transformation
+\[
+U\colon  \left[X,Y\right]_{\ast} \vra{\cong}  \left[X,Y\right]^E_{\ast}
+\] 
+Here $Z$ satisfies condition (ii) of \ref{prop:p3ch14.2}. For suppose $E_{\ast}(X)=0$; then $ \left[X,Y\right]^E_{\ast}=0$, as we have remarked; so $ \left[X,Y\right]_{\ast}=0$, since $U$ is an isomorphism.
+
+Now consider $1 \in \left[ Z,Z \right] $ and $U(1) \in \left[Z,Y\right]^E  $. the latter is represented by this diagram
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&& {Y'} \\
+	&& {} \\
+	\\
+	Z && Y
+	\arrow["u", from=4-1, to=1-4]
+	\arrow["{e'}"', from=4-3, to=1-4]
+\end{tikzcd}
+}  
+~\\~\\
+Extend this to a cofibre sequence 
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&&&&& {Y'} \\
+	\\
+	&& Z &&& Y \\
+	\\
+	X
+	\arrow["f", from=5-1, to=3-3]
+	\arrow["u", from=3-3, to=1-7]
+	\arrow["{e'}"', from=3-6, to=1-7]
+\end{tikzcd}
+}  
+~\\~\\
+Then by naturality $U(f)=f^\ast U(1)=0$. Since $U$ is a monomorphism, $f=0$. Therefore the morphism $Z\vra{u} Y'  $ is equivalent to the injection $Z  \lar{} Z \vee \te{Susp}(X);$ we can replace the representative for U(1) by the following diagram.
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&&& {Z \vee \mathrm{Susp}(X)} \\
+	\\
+	\\
+	Z &&& Y
+	\arrow["i", from=4-1, to=1-5]
+	\arrow["{e''}", from=4-4, to=1-5]
+\end{tikzcd}
+}  
+~\\~\\
+
+Now consider $1 \in \left[Y,Y\right]^E_{\ast}$; there exists $\epsilon\colon Y  \lar{} Z $ such that $U(\epsilon) = 1 \in \left[Y,Y\right]^E $. That is, we have the following commutative diagram.
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&& {Z \vee \mathrm{Susp}(X)} \\
+	& Z \\
+	\\
+	Y && Y && {Y''} \\
+	\\
+	&&& Y
+	\arrow["1", from=4-1, to=6-4]
+	\arrow["1"', from=4-3, to=6-4]
+	\arrow["{e_2}"', from=6-4, to=4-5]
+	\arrow["\epsilon"', from=4-1, to=2-2]
+	\arrow["i"', from=2-2, to=1-4]
+	\arrow["{e''}", from=4-3, to=1-4]
+	\arrow["{e_1}", from=4-5, to=1-4]
+\end{tikzcd}
+}  
+~\\~\\
+We conclude that $i_{\ast}: E_{\ast}(Z) \lar{} E_{\ast}(Z \vee \te{Susp}(X))$ is an epimorphism.
+Therefore $E_{\ast}(Z \vee \te{Susp}(X))=0$. Hence, $i_{\ast}: E_{\ast}(Z) \lar{} E_{\ast}(Z \vee \te{Susp}(X))$ and $ \epsilon_{\ast}: E_{\ast}(Y) \lar{} E_{\ast}(Z)$ are isomorphisms.
+
+Since we now know that $\epsilon\colon Y  \lar{} Z $ is an $E$-equivalence, we allow ourselves to change its name to $e\colon  Y \lar{}  Z $. We have proved that any spectrum $Y$ admits an $E$-equivalence $e\colon  Y \lar{}  Z $, where $E_{\ast}(X)=0$ implies $ \left[X,Y\right]_{\ast}=0$. 
+
+We will now forget everything about $Z$ except these two properties.
+\begin{lemma} \label{lem:p3ch14.11}
+Suppose $e\colon  Y \lar{}  Z $ is an $E$-equivalence, and  $E_{\ast}(X)=0$ implies $ \left[X,Y\right]_{\ast}=0$. Then \ref{thm:p3ch14.4} (ii) and (iv) hold. 
+
+This will complete the proof of Proposition \ref{prop:p3ch14.2}; for we take $e\colon  Y \lar{}  Z $ to be  $1\colon  Y \lar{}  Y $, and deduce that 
+\[
+  T\colon  \left[X,Y\right]_{\ast} \lar{} \left[X,Y\right]^E_{\ast}  
+\] 
+is an isomorphism. Moreover, it will obviously complete the proof of \ref{thm:p3ch14.4}. 
+\begin{proof} 
+    We have to show that $e\colon  Y \lar{}  Z $ is universal. Suppose given an $E$-equivalence $e'\colon  Y \lar{}  Z' $. Then up to equivalence we have $Z'= Y \displaystyle{\cup_{g}} CA $ for some $g\colon  A \lar{}  Y $; and here $E_{\ast}(A)=0$, by the exact sequence of the cofibering $A \lar{} Y \vra{e'} Z'$.
+    ~\\~\\
+    \adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&&&&& A \\
+	\\
+	&&&& {Z'} \\
+	\\
+	&& Y &&&& Z && {\text{(j has degree -1).}} \\
+	\\
+	A
+	\arrow["g", from=7-1, to=5-3]
+	\arrow["{e'}", from=5-3, to=3-5]
+	\arrow["j", from=3-5, to=1-7]
+	\arrow["e", from=5-3, to=5-7]
+	\arrow[dashed, from=3-5, to=5-7]
+\end{tikzcd}
+    }  
+    ~\\~\\
+ Then $eg = 0$ by the assumed property of $Z$, so e extends over $Y \displaystyle{\cup_{g}}  CA$ and there is a map $f\colon  Z' \lar{}  Z $ with $fe'=e$. Also $f$ is unique, because two choices differ by an element of $j^\ast\left[A,Z\right]_{\ast}$, and $ \left[A,Z\right]_{\ast}=0$ by the assumed property of $Z$.   
+
+This shows that $e\colon  Y \lar{}  Z $ is universal. Then clearly the single object $Y\vra{e} Z$ is cofinal in the directed category used to construct $ \left[X,Y\right]^E_{\ast}$ so we have an isomorphism
+\[
+  \left[X,Y\right]_\ast \lar{} \left[X,Y\right]^E_{\ast} 
+\] 
+given by assigning to a morphism $f\colon  X \lar{}  Z $ the class of the diagram
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	&&&& Z \\
+	\\
+	\\
+	X &&& Y
+	\arrow["f", from=4-1, to=1-5]
+	\arrow["e"', from=4-4, to=1-5]
+\end{tikzcd}
+}  
+~\\~\\
+i.e., the element $T(e)^{-1}T(f) \in \left[X,Y\right]^E_{\ast}$. This completes the proof of \ref{prop:p3ch14.2}, \ref{cor:p3ch14.3}, and \ref{thm:p3ch14.4}.
+\end{proof}
+\end{lemma}
+Now we start working toward the proof of \ref{prop:p3ch14.5}.
+
+\begin{lemma} \label{lem:p3ch14.12}
+Suppose $ \pi_{r}(E)=0$ for $r<0$. Suppose a morphism $f\colon  X \lar{}  Y $ induces an isomorphism $E_{\ast}(X) \lar{} E_{\ast}(Y)$. Then it induces an isomorphism $H_{\ast}(X'; \pi_{0}(E)) \lar{} H_{\ast}(Y;\pi_{0}(E))$. 
+\begin{proof} 
+    First a remark. Let $E$ be any spectrum, not necessarily a ring-spectrum, and not necessarily connective; then I claim
+    \[
+      H \wedge E \simeq \bigvee_{i} S^i \wedge HG_i, 
+    \] 
+    Where $G_{i} = H_{i}(E)$. In fact, for each $i$ we can construct a Moore spectrum $S^iG_{i};$ then we can construct a morphism
+    \[
+      S^iG_{i} \vra{a_{i}} H \wedge E 
+    \] 
+    inducing the identity map
+    \[
+      G_{i} = \pi_{i}(S^iG_{i}) \lar{} \pi_{i}(H \wedge E)= G_{i}.
+    \] 
+    Now we can form 
+    \[
+      H \wedge (S^iG_i) \vra{1 \wedge a_{i}} H \wedge H \wedge E \vra{\mu \wedge 1} H \wedge E.  
+    \] 
+    Finally we form 
+    \[
+      \bigvee_{i} H \wedge (S^iG_{i}) \vra{\{(\mu \wedge 1) (1 \wedge a_{i})\} } H \wedge E.
+    \] 
+    This induces an isomorphism of homotopy groups, so it is an equivalence by the theorem of J. H. C. Whitehead.
+
+    Now we return to the lemma. From the cofibering $X\vra{f} Y \lar{} Z$. Then we have $E_{\ast}(Z)=0$ and it is sufficient to deduce that $H_{\ast}(Z;\pi_{0}(E))=0$. Since $ \pi_{\ast}(E \wedge Z)=0, E \wedge Z$ is contractible. Therefore $H \wedge E \wedge Z$ is contractible. Now $ \pi_{r}(E)=0$ for $r<0$, so by the Hurewicz theorem $ G_0 = H_0(E) = \pi_{0}(E)$. We have just shown that $HG_0$ is a direct summand in $H \wedge E$, so $(HG_0) \wedge Z$ is contractible; that is $H_{\ast}(Z; \pi_{0}(E))=0$. This proves the lemma.
+\end{proof}
+
+\end{lemma}
+
+\begin{lemma} \label{lem:p3ch14.13}
+Suppose $E$ is a commutative ring-spectrum and $ \pi_{r}(E)=0$ for $r<0$. Suppose $X$ and $Y$ are connective and $f\colon  X \lar{}  Y $ induces an isomorphism $H_{\ast}(X;\pi_{0}(E)) \lar{} H_{\ast}(Y, \pi_{0}(E))$. Then it induces an isomorphism $E_{\ast}(X) \lar{} E_{\ast}(Y)$.
+
+\begin{proof} 
+  As before, we form the cofibering $X \vra{f} Y \lar{} Z$. Then Z is connective; we have $H_{\ast}(Z;\pi_{0}(E))$, and it is sufficient to prove $E_{\ast}(Z)=0$.
+
+  Since $ \pi_{0}(E)$ is a commutative ring and $ \pi_{r}(E)$ is a module over $ \pi_{0}(E)$, we have the universal coefficient theorem in the form of the spectral sequence
+  \[
+  \te{Tor}_{p_{\ast}}^{\pi_{0}(E)} \left( H_{\ast}(Z;\pi_{0}(E)), \pi_{r}(E)\right) \underset{p}{\implies} H_{\ast}(Z;\pi_{r}(E)). 
+  \] 
+  This is a quarter-plan spectral sequence convergent in the naive sense. We see that $H_{\ast}(Z;\pi_{0}(E))=0$. We now consider the Atiyah-Hirzebruch spectral sequence
+  \[
+    H_{p}(Z;\pi_{q}(E)) \underset{p}{\implies} E_{p+q} (Z). 
+  \] 
+  This is a quarter-plane spectral sequence convergent in the naive sense. We conclude that $E_{\ast}(Z)=0$.
+\end{proof}
+\begin{warning}
+This condition that $X$ and $Y$ are connective cannot be omitted (take $E = \te{bu}, X=\te{pt.}, Y=\te{BU}\bZ_p$ or vice versa).
+\end{warning} 
+\end{lemma}
+
+\begin{proof}[Proof of \ref{prop:p3ch14.5}] 
+  recall that we wish to show that if $E$ is a commutative ring spectrum and $\pi_{r}(E)=0$ for $r<0$, then for any connective spectrum Y, $\left[X,Y\right]^E_{\ast}$ depends only on  $\pi_{0}(E)$. More precisely, we show that $\left[X,Y\right]^E_{\ast}=\left[X,Y\right]^{E'}_{\ast}$, where $E= H \pi_{0}(E)$.
+  \begin{enumerate} 
+    \item [(i)] By \ref{lem:p3ch14.12}, we have that any morphism $f\colon  Y \lar{}  Y' $ which induces an isomorphism in $E$-homology also induces an isomorphism in $E'$-homology.
+    \item [(ii)] Consider the directed category used in the construction of $\left[X,Y\right]^{E'}_{\ast}$. I claim that morphism $f\colon  Y \lar{}  Y' $ which induce an isomorphism in $E$-homology are cofinal in those which induce an isomorphism in $E'$-homology. Once this is proved, \ref{prop:p3ch14.5} follows. We need a lemma.
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma} \label{lem:p3ch14.14}
+Let $Y$ be a connective spectrum. $X$ any spectrum. Then any morphism $f\colon  X \lar{}  Y $ factors as 
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	X && Y \\
+	\\
+	& {X'}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-2]
+	\arrow[from=3-2, to=1-3]
+\end{tikzcd}
+}  
+~\\~\\
+Where $X'$ is connective and $H_{r}(X') \begin{cases}\simeq H_{r}(X) & (r \ge N)\\ =0 & (r < N)\end{cases}$ for some $N \in Z$ depending only on $Y$. 
+\begin{proof} 
+  Let $N$ be such that $\pi_{r}(Y)=0$ for $r < N + 1$. Then we can factor $f$ through  $X/ X^{N-1}$; this spectrum is connective. However, it need not have the desired properties in homology. We have
+  \begin{align*}
+    H_{r}(X / X^{N-1}) &\cong H_{r}(X) &&(r > N) \\[0.5em]
+    H_{r}(X / X^{N-1}) &= 0   &&(r < N)
+  \end{align*}
+  and in dimension N we have an exact sequence 
+  \[
+    0 \lar{} H_{N}(X) \lar{} H_{N} (X / X^{N-1}) \lar{} F \lar{} 0,
+  \] 
+  where F is free since it is a subgroup of $H_{N-1}(X^{N-1})$. By the Hurewicz theorem, we have 
+  \[
+    \pi_{N}(X / X^{N-1})\cong H_{N} (X / X^{N-1}). 
+  \] 
+  Choose a set of elements
+  \[
+    \theta_{\alpha} \in \pi_{N}(X / X^{N-1})
+  \] 
+  which project to a base of F, and form
+  \[
+    X' = X / X^{N-1} \cup_{\theta_{\alpha}} CS^N. 
+  \] 
+  $X'$ is connective, and $X / X^{N-1} \lar{} Y$ factors through $x'$. We have
+  \[
+  H_{r}(X')
+    \begin{cases} 
+      \cong H_{r}(X) & (r \ge N)\\
+      =0 & (r < N).
+    \end{cases}
+  \] 
+  Returning to (ii) above, suppose $f\colon  Y \lar{}  Y' $ induces an isomorphism in $E'$-homology. Form a cofibre sequence 
+  \[
+    A \lar{} Y \vra{f} Y' \lar{} \ldots
+  \] 
+  Here  $H_{r}(A;\pi_{0}(E))=0$, and so by the ordinary universal coefficient theorem.
+  \[
+  H_{r}(A)\otimes_{Z} \pi_{0}(E)=0, \qquad \te{Tor}^\bZ_{1} (H_{r}(A), \pi_{0}(E))=0.
+  \] 
+  By \ref{lem:p3ch14.14}, we can factor $A\lar{} Y$ in the form
+  ~\\~\\
+  \adjustbox{scale=1, center}{%
+  \begin{tikzcd}
+  	A && {Y,} \\
+  	\\
+  	& B
+  	\arrow[from=1-1, to=3-2]
+  	\arrow[from=1-1, to=1-3]
+  	\arrow[from=3-2, to=1-3]
+  \end{tikzcd}
+  }  
+  ~\\~\\
+ Where $B$ is connective and 
+ \begin{align*}
+   &H_{r}(A) \vra{\cong} H_{r}(B)  &&\text{for $r\ge N$}\\[0.5em]
+   &H_{r}(B) =  0    &&\text{for $r < N$}.
+ \end{align*} 
+ Then 
+ \[
+ H_{r}(B) \otimes_{Z} \pi_{0}(E)=0, \te{Tor}^\bZ_{1} (H_{r}(A), \pi_{0}(E))=0 
+ \] 
+ and so 
+ \[
+   H_{r}(B; \pi_{0}(E))=0 
+ \] 
+ for all $r$. Now we can form the following diagram of cofiberings.
+ ~\\~\\
+ \adjustbox{scale=1, center}{%
+ \begin{tikzcd}
+ 	A && Y && {Y'} && \ldots \\
+ 	\\
+ 	B && Y && {Y''} && \ldots
+ 	\arrow[from=1-1, to=3-1]
+ 	\arrow[from=1-1, to=1-3]
+ 	\arrow[from=3-1, to=3-3]
+ 	\arrow["1"', from=1-3, to=3-3]
+ 	\arrow["f"', from=1-3, to=1-5]
+ 	\arrow[from=3-3, to=3-5]
+ 	\arrow[from=1-5, to=3-5]
+ 	\arrow[from=1-5, to=1-7]
+ 	\arrow[from=3-5, to=3-7]
+ \end{tikzcd}
+ }  
+ ~\\~\\
+ Here $Y^{\prime\prime}$ is connective, and $Y \lar{} Y^{\prime\prime}$ is an $E'$-equivalence, so it is an $E$-equivalence by \ref{lem:p3ch14.13} proof of (iii) above, and so completes the proof of  \ref{prop:p3ch14.5}
+\end{proof}
+\end{lemma}
+
+Now we turn to Theorem \ref{thm:p3ch14.6}. We have to take $YR$, or  $YI_{m}$, or $Y$, according to the case, and show it satisfies the conditions in \ref{thm:p3ch14.4}. We have already shown that it will be sufficient to check \ref{thm:p3ch14.4} (i), that is to say that these spectra are $E$-equivalent to $Y$, under the hypotheses given for each case, and $E$-complete. 
+
+Consider the first condition. In case (i), suppose $\pi_{0}(E)$ is a subring $R$ of the rationals $\bQ$. Consider the product 
+ \[
+  \Sigma R \wedge \Sigma(R/\bZ).
+\] 
+By the K\"unneth theorem we have 
+\[
+  H_{\ast}(\Sigma R \wedge \Sigma(R /\bZ)) =0; 
+\] 
+for $R \otimes_{\bZ} (R/ \bZ)=0, \te{  Tor}^\bZ_{1}(R, R / \bZ)=0$, The spectrum is connective, so $\Sigma R \wedge \Sigma(R / \bZ)$ is contractible by the theorem of J. H. C. Whitehead. 
+
+Now we have a cofibering 
+\[
+  Y \lar{} YR \lar{} Y \wedge \Sigma ( R /\bZ).
+\] 
+Here we have 
+\[
+  HR_{\ast}(Y \wedge \Sigma (R /\bZ)) = \pi_{\ast}(H \wedge \Sigma R \wedge Y \wedge \Sigma(R /\bZ))=0, 
+\] 
+for $H \wedge \Sigma R \wedge Y \wedge \Sigma(R /\bZ)$ is contractible. So
+\[
+(HR)_{\ast}(Y) \lar{} (HR)_{\ast}(YR)
+\] 
+is an isomorphism. 
+
+We proceed similiarly for case (ii), starting from the fact that $\Sigma \bZ_{m} \wedge \Sigma ( I_{m} / \bZ)$ is contractible. 
+
+In case (iii) it is trivial that $Y \vra{1} Y $ is an $E$-equivalence.
+
+Now we have to check the other condition of \ref{thm:p3ch14.4}, namely that $E_{\ast}(X)=0$ implies $\left[X,YR\right]_{\ast}=0,$ or $\left[X,YI_{m}\right]_{\ast}=0$, or $\left[X,Y\right]_{\ast}=0$ according to the case.
+
+First suppose that we are in case (i), so that $\pi_{0}(E)=R$. Suppose that $f\colon  X \lar{}  YR $ is a map, and suppose I have already deformed it until all the stable $n$-cells map to the base-point. (The induction starts, because $YR$ is connective.) I wish to keep it is fixed on the $(n-1)$-cells and deform it until the $n$-cells and $(n+1)$-cells map to the base point.
+
+There is an obstruction, and it lies in $H^{n+1}(X;\pi_{n+1}(YR))$. But $R$ is a principal ideal ring, and $\pi_{n+1}(YR)$ is a module over $R$, so the ordinary universal coefficient theorem applies; we know $H_{\ast}(X;R)=0$, so we can deduce 
+\[
+H^{n+1}(X;\pi_{n+1}(YR))=0
+\] 
+So I can deform $f$ as required. I continue by induction and conclude that $f=0.$ This shows that  $\left[X,YR\right]_{\ast}=0$.
+
+Evidently the obstruction-theory argument will work just as well in case (ii), provided we prove that 
+\[
+H^{n+1}(X;\pi_{n+1}(YI_{m}))=0
+.\]
+Here we have $\pi_{n+1}(YI_{m})=\pi_{n+1}(Y)\otimes I_{m}$ by \ref{prop:p3c06.7}, and $\pi_{n+1}(Y)$ is a finitely-generated group. And in this case we start by knowing that 
+\[
+  H^\ast(X;\bZ_{m})=0.
+\] 
+The exact sequence $0 \lar{} \bZ \vra{m} \bZ \lar{} \bZ_{m} \lar{} 0 $ induces a long exact sequence in homology; it follows that $H_{\ast}(X) \vra{m} H_{\ast}(X) $ is an isomorphism, hence $H_{\ast}(X) \vra{m^t}  H_{\ast}(X)$ is an isomorphism. Now consider 
+\[
+\te{Hom}_{\bZ} (H_{r}(X), \bZ_{m^t}), \quad \te{Ext}^1_{\bZ}(H_{r}(X),\bZ_{m^t}).
+\] 
+On the one hand multiplication by $m^t$ is an isomorphism; on the other hand it is zero. Hence the group must be zero. So by the ordinary universal coefficient theorem, 
+ \[
+  H^r(X;\bZ_{m^t}) = 0.
+\] 
+Now we have an exact sequence 
+\[
+  0 \lar{} \varprojlim\!^1 (H^\ast(X;\bZ_{m^t})) \lar{} H^\ast(X;I_{m}) \lar{} \varprojlim\!^0(H^\ast(X;\bZ_{m^t})) \lar{} 0
+\] 
+Hence we have $H^\ast(X;I_{m})=0$. Finally, let $G$ be any finitely-generated abelian group. We have a resolution
+\[
+  0 \lar{} F_1 \lar{} F_0 \lar{} G \lar{} 0
+\] 
+with $F_0$ and $F_1$ finitely-generated free. Therefore we have an exact sequence 
+\[
+  0 \lar{} \prod_{1}^{r} I_{m} \lar{} \prod_{1}^{s} I_{m} \lar{} I_{m} \otimes G \lar{} 0.  
+\] 
+This yields an exact cohomology sequence, from which we conclude that 
+\[
+  H^\ast(X;I_{m} \otimes G)=0.
+\] 
+We conclude that 
+\[
+H^{n+1}(X;\pi_{n+1}(YI_{m}))=0.
+\] 
+the obstruction-theory argument works, and 
+\[
+  \left[X,YI_{m}\right]_{\ast}=0.
+\] 
+Finally we consider case (iii). Let $f\colon  X \lar{}  Y $ be a morphism. By Lemma \ref{lem:p3ch14.14}, we can factor $f$ as 
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	X && Y \\
+	\\
+	& {X'}
+	\arrow["f", from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-2]
+	\arrow[from=1-3, to=3-2]
+\end{tikzcd}
+}  
+~\\~\\
+where $X'$ is connective; $H_{r}(X') \cong H_{r}(X), r \ge N, $ and $H_{r}(X') =0$ for $r < N$, for some  $N \in \bZ$.
+
+As above, 
+\[
+  m\colon  H_{\ast}(X)  \lar{}  H_{\ast}(X)  
+\] 
+is an isomorphism; clearly the same is true for $X'$. Since $X'$ is connective, the theorem of J. H. C. Whitehead shows that $m\colon  X' \lar{}  X' $ is an equivalence; so it has an inverse $m^{-1}$. Consider the following diagram 
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	{X'} && {X'} && Y \\
+	\\
+	&& {X'} && Y
+	\arrow["1", from=1-1, to=1-3]
+	\arrow["{(m^{-1})^e}"', from=1-1, to=3-3]
+	\arrow["{m^e}"', from=3-3, to=1-3]
+	\arrow["{f'}"', from=1-3, to=1-5]
+	\arrow["{m^e}", from=3-5, to=1-5]
+	\arrow["{f'}", from=3-3, to=3-5]
+\end{tikzcd}
+}  
+~\\~\\
+Since $m^{e}\cdot 1_{Y}\colon Y \lar{} Y$ is the zero morphism, we conclude $f'=0.$ Thus $\left[X',Y\right]_{\ast}=0$. This completes the proof of \ref{thm:p3ch14.6}.
+
+Now we have some short lemmas, which will be needed in the next section
+\begin{lemma} \label{lem:p3ch14.15}
+Suppose
+~\\~\\
+\adjustbox{scale=1, center}{%
+\begin{tikzcd}
+	A && B \\
+	\\
+	& C
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-3, to=3-2]
+	\arrow[from=3-2, to=1-1]
+\end{tikzcd}
+}  
+~\\~\\
+is a cofibre triangle and two of $A,B,C$ are $E$-complete.; then so is the third.
+
+ \begin{proof} 
+    Suppose $E_{\ast}(X)\simeq 0.$ We have an exact sequence
+    \[
+      \left[X,A\right]_{\ast} \lar{} \left[X,B\right]_{\ast} \lar{} \left[X,C\right]_{\ast} \lar{} \left[X,A\right]_{\ast} \lar{} \ldots
+    \] 
+    Two out of ever three groups are zero, so the third must be zero also.
+\end{proof}
+\end{lemma}
+\begin{lemma} \label{lem:p3ch14.16}
+If $f\colon  X \lar{}  X' $ and $g\colon  Y \lar{}  Y' $ are $E$-equivalences, so is 
+\[
+  f \wedge g \colon X \wedge Y \lar{} X' \wedge Y' .
+\] 
+This lemma says that smash products pass to the category of fractions.
+\begin{proof} 
+    We are given that $E \wedge X \vra{1 \wedge f} E \wedge X' $ and $E \wedge Y \vra{1 \wedge g} E \wedge Y'$ are equivalences. Then
+    \[
+      E \wedge X \wedge Y' \vra{1\wedge f \wedge 1} E \wedge X' \wedge Y' 
+    \] 
+    and 
+    \[
+      E \wedge X \wedge Y \vra{1\wedge 1 \wedge g} E \wedge X \wedge Y' 
+    \] 
+    are equivalences; hence so is their composite; that is,
+    \[
+    X \wedge Y \vra{f \wedge g} X' \wedge Y'
+    \] 
+    is an $E$-equivalence.
+
+    Now we introduce some arithmetical considerations. Let $E$ be a commutative ring-spectrum such that $\pi_{r}(E)=0$ for $r < 0$, and let  $\theta\colon  \bZ \lar{}  \pi_{0}(E) $ be the unique homomorphism of rings. Let $S \subset \bZ$ be the set of $n$ such that $\theta(n)$ is invertible in $\pi_{0}(E)$. Then $S$ is multiplicatively closed. Let $R \subset Q$ be the localization of $\bZ$ at $S$, i.e., the set of fractions $n/ m$ with $m \in  S$. Then there exists a unique extension of $\theta$ to
+    \[
+      \theta\colon  R \lar{}  \pi_{0}(E) .
+    \] 
+\end{proof}
+\end{lemma}
+\begin{proposition} \label{prop:p3ch14.17}
+If $Y$ is $E$-complete, then $\pi_{r}(Y)$ is an $R$-module. More generally, $\left[X,Y\right]_{r}$ is an $R$-module for any $X$.
+
+\begin{proof} 
+    Let $m \in  S$; then $m$ gives a morphism $Y \lar{} Y$, which must be an $E$-equivalence, since the induced map $E_{\ast}(Y) \lar{} E_{\ast}(Y)$ is multiplication by $m$, which is an invertible element of $\pi_{0}(E)$. So in $\left[Y,Y\right]^E_{0}$ the morphism $m$ has an inverse. Therefore the canonical map
+     \[
+      \phi\colon  \bZ \lar{}  \left[Y,Y\right]^E_{0} 
+    \] 
+    extends to give 
+    \[
+      \phi\colon  R \lar{}  \left[Y,Y\right]^E_{0} .
+    \] 
+So $R$ acts on $\left[X,Y\right]^E_{\ast}$ for any $X$. If $Y$ is $E$-complete, we have $\left[X,Y\right]^E_{\ast}=\left[X,Y\right]_{\ast}$.
+\end{proof}
+\end{proposition}
+
+\end{document}

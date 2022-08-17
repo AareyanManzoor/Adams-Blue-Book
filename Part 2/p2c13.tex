@@ -1,0 +1,126 @@
+\documentclass[../main]{subfiles}
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\begin{document}
+\label{sec:p2c13} % using this
+%wordslinger
+
+\chapter{K$_\ast$(K)}
+
+In this section we compute the Hopf algebra $K_\ast(K)$. The results represent joint work with Mr. A.S. Harris.
+
+We recall from \cite{atiyahbott} that $\pi_\ast(K)$ is the ring of finite Laurent series $\mathbb{Z}[u, u^{-1}]$, where $u\in\pi_2(K)$ is the element introduced in \hyperref[sec:p2c2]{\S 2}. By \eqref{lem:p2c04.1}, $K_\ast(\mathrm{BU})$ is torsion-free. Passing to the limit along the $\mathrm{BU}$-spectrum $K$, we see that $K_\ast(K)$ is torsion-free. Therefore the map \[K_\ast(K)\lra K_\ast(K)\otimes \mathbb{Q}\] is a monomorphism. But $K_\ast(K)\otimes \mathbb{Q}$ is the ring of finite Laurent series $\mathbb{Q}[u,u^{-1},v,v^{-1}]$, where we have written $u$ for $\eta_L u$, $v$ for $\eta_R u$. We propose to describe $K_\ast(K)$ as a subring of $\mathbb{Q}[u,u^{-1},v,v^{-1}]$. It is sufficient to describe $K_0(K)$ as a subring of $K_0(K)\otimes\mathbb{Q}=\mathbb{Q}[u^{-1}v,uv^{-1}]$, but we will work in full generality. 
+
+We first observe that the operation $\psi^k$ was originally introduced as an unstable operation; to make it a stable operation we need to introduce coefficients $\mathbb{Z}\Big[\dfrac{1}{k}\Big]$. (Here $\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ is the ring of rational numbers of the form $n/k^m$.) Crudely speaking, we cannot define a map of spectra $K\lra K$ by taking each component map to be $\psi^k: \mathrm{BU}\mapsto \mathrm{BU}$, because the following diagram does not commute.
+\begin{center}
+\begin{tikzcd}
+	{S^2 \wedge \mathrm{BU}} && {\mathrm{BU}} \\
+	\\
+	{S^2\wedge\mathrm{BU}} && {\mathrm{BU}}
+	\arrow["{B}", from=1-1, to=1-3]
+	\arrow["{1\wedge\psi^k}"', from=1-1, to=3-1]
+	\arrow["{B}", from=3-1, to=3-3]
+	\arrow["{\psi^k}", from=1-3, to=3-3]
+\end{tikzcd}
+\end{center}
+We have to take the $(2n)$-th component of our map to be \[\dfrac{1}{k^n}\psi^k:\mathrm{BU}\mapsto \mathrm{BU}\mathbb{Z}\Big(\dfrac{1}{k}\Big)\]
+Here the space $\mathrm{BU}\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ is constructed by taking the spectrum $K\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ representing K-theory with coefficients in $\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ (see \cite{adams2}), converting it into an $\Omega$-spectrum, and taking the $(2n)$-th space of this $\Omega$-spectrum. 
+
+For any element $h\in K_\ast(K)$, we can form \[\langle\psi^k, h\rangle \in\pi_\ast(K)\otimes\mathbb{Z}\Big[\dfrac{1}{k}\Big]\hspace{1cm} (k\neq 0).\]
+But if we identify $h$ with a finite Laurent series $f(u,v)$, as above, then we have 
+\begin{equation}
+\tag{13.1}
+\langle\psi^k, h\rangle = f(u,ku).
+\end{equation}
+\begin{customcor}{13.2}
+\label{cor:pt2ch13.2}
+A necessary condition that a finite Laurent series $f(u,v)$ lie in the image of $K_\ast(K)$ is 
+\begin{equation}
+\label{eqn:p2c13.3}
+\tag{13.3}
+f(u,ku)\in \pi_\ast(K)\otimes\mathbb{Z}\Big[\dfrac{1}{k}\Big] \,\text{ for } k\neq 0.
+\end{equation}
+\end{customcor}
+\begin{customthm}{13.4}
+\label{thm:p2c13.4}
+(i) $K_\ast(K)$ may be identified with the set of finite Laurent series $f(u,v)$ which satisfy (13.3). 
+
+(ii) The product in $K_\ast(K)$ is the product of Laurent series.
+
+(iii) The unit maps are given by 
+\begin{align*}
+    \eta_L(u) &= u\\
+    \eta_R(u) &= v.
+\end{align*}
+
+(iv) The counit map is given by
+\begin{align*}
+    \varepsilon(u)&=u\\
+    \varepsilon(v)&=u\\
+    \varepsilon(u^{-1}v)&=1\\
+    \varepsilon(uv^{-1})&=1.
+\end{align*}
+
+(v) The conjugation map is given by
+\begin{align*}
+    c(u)&=v\\
+    c(v)&=u\\
+    c(u^{-1}v)&=uv^{-1}\\
+    c(uv^{-1})&=u^{-1}v.
+\end{align*}
+
+(vi) The coproduct map is given by
+\begin{align*}
+    \psi(u)&=u\otimes 1\\
+    \psi(v)&=1\otimes v\\
+    \psi(u^{-1}v)&=u^{-1}v\otimes u^{-1}v\\
+    \psi(uv^{-1})&=uv^{-1}\otimes uv^{-1}.
+\end{align*}
+\end{customthm}
+The proof of \eqref{thm:p2c13.4} will be built up in stages. 
+\begin{customlemma}{13.5}
+\label{lem:p2c13.5}
+The Bott map \[B_\ast:\widetilde{K}_n(\mathrm{BU})\mapsto\widetilde{K}_{n+2}(\mathrm{BU})\] annihilates decomposables, and is given by \[B_\ast\beta_j=u((j+1)\beta_j+j\beta_j)\mod{\text{decomposables}}.\]
+\end{customlemma}
+\begin{proof}
+Immediate from \eqref{prop:p2c12.5} and \eqref{prop:p2c12.6}; the values of the coefficients $a_{1r}$ come from \eqref{eqn:p2c02.6}. 
+\end{proof}
+We observe that the generator in $\pi_{2n}(\mathrm{BU})$ gives an element in $K_{2n}(\mathrm{BU})$; we write the latter element $w^n$ (noting that the multiplication involved is in the sense of the tensor-product map $t:\mathrm{BU}\wedge\mathrm{BU}\mapsto\mathrm{BU}$, and is not to be confused with our usual multiplication, which comes
+from the Whitney sum map $\mathrm{BU}\times\mathrm{BU}\mapsto\mathrm{BU}$.) If we regard $\mathrm{BU}$ as the $2m$-th term of the spectrum $K$, then the image of $w^n$ in $K_{2(n-m)}(\mathrm{BU})$ is $v^{n-m}$ (assuming $n\ge 1$). 
+\begin{customlemma}{13.6}
+\label{lem:p2c13.6}
+In $K_{2n}(\mathrm{BU})\otimes\mathbb{Q}$ we have \[\beta_n = \dfrac{u^{-1}w (u^{-1}w-1)\dots(u^{-1}w-n+1)}{1\cdot 2\cdot \ldots \cdot n}\] modulo decomposables in the sense of Whitney sum, where the product
+is taken in the sense of the tensor-product.
+\end{customlemma}
+\begin{proof}
+By induction over $n$; for $n=1$ we have $\beta_1=u^{-1} w$. Suppose the result true for $n$. Since $B_\ast w^r = w^{r+1}$, we have \[B_\ast(\beta_n) = \dfrac{u^{-1}w (u^{-1}w-1)\dots(u^{-1}w-n+1)w}{1\cdot 2\cdot \ldots \cdot n}\]
+By \eqref{lem:p2c13.5}, we have \begin{align*}
+\beta_{n+1} &= \dfrac{1}{n+1}
+(u^{-1} B_\ast \beta_n - n\beta_n)\mod{\text{decomposables}}\\
+&= \dfrac{u^{-1}w (u^{-1}w-1)\dots(u^{-1}w-n+1)(u^{-1}w-n)}{1\cdot 2\cdot \ldots \cdot n \cdot (n+1)}
+\end{align*}
+This completes the induction and proves \eqref{lem:p2c13.6}.
+\end{proof}
+\begin{customlemma}{13.7}
+\label{lem:p2c13.7}
+The image of $K_\ast(K)$ in $K_\ast(K)\otimes \mathbb{Q}$ is generated over $\mathbb{Z}[u,u^{-1},v,v^{-1}]$ by the elements \[\dfrac{u^{-1}v(u^{-1}v-1)\dots(u^{-1}v-n+1)}{1\cdot 2\cdot\ldots \cdot n}\hspace{1cm} (n=1,2,3,\ldots)\]
+\end{customlemma}
+\begin{proof}
+Immediate, since it is generated over $\mathbb{Z}[u,u^{-1}]$ by the images of the elements $\beta_n$ in the $2m$-th term of the spectrum $K$ ($n=1,2,3,\ldots; m=0,1,2,\ldots$)
+\end{proof}
+\begin{customlemma}{13.8}
+\label{lem:p2c13.8}
+A polynomial $f(x)\in\mathbb{Q}(x)$ can be written as an integral linear combination of the binomial polynomials \[\dfrac{x(x-1)\ldots(x-n+1)}{1\cdot 2 \cdot \ldots \cdot n}\hspace{1cm} (n=0,1,2,\dots)\]
+if and only if it takes integer values for $x=1,2,3,\dots$.
+\end{customlemma}
+The proof is a piece of standard algebra, which can be left to the
+reader.
+\begin{proof}[Proof of Theorem \ref{thm:p2c13.4}]
+The substantial part is part (i). First, take an element of $K_\ast(K)$; its image in $K_\ast(K)\otimes\mathbb{Q}$ is a finite Laurent series of the type described in \eqref{lem:p2c13.7}, and $f(u, ku)\in \mathbb{Z}[u,u^{-1}, 1/k]$ by \eqref{lem:p2c13.8}.
+
+Conversely, take a finite Laurent series $f(u,v)$ which satisfies \eqref{eqn:p2c13.3}; without loss of generality we may assume that $f$ is homogenous, say $f(u,v) = u^dg(u^{-1}v)$, where $g(k)\in\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ for $k=1,2,3,\dots$. The power to which $z^{-1}$ occurs in $g(z)$ is bounded, say by $\mathbb{N}$. Also $g(z)$ contains only a finite number of coefficients in $\mathbb{Q}$; their denominators contain only a finite number of prime factors $p$, and each prime $p$ occurs to a power which is bounded, say by $M$ (independent of $p$). Then \[h(z) = z^{N+M}g(z)\] has the property that $h(k) \in \mathbb{Z}$ for $k = 1,2,3,\dots$. In fact, each prime $p$ dividing $k$ cannot occur in the denominator of $h(k)$, by construction; nor can any other prime, by assumption. By Lemma \ref{lem:p2c13.8}, $h(u^{-1}v)$ is an integral linear combination of binomial polynomials \[\dfrac{u^{-1}v(u^{-1}v-1)\ldots(u^{-1}v-n+1)}{1\cdot 2 \cdot \ldots \cdot n}\hspace{1cm} (n\ge 0).\] So $f(u,v) = u^d (uv^{-1})^{N+M}h(u^{-1}v)$ is a linear combination over $\mathbb{Z}[u,u^{-1},v^{-1}]$ of these polynomials. We do not need the polynomial for $n=0$ (namely 1) since it is a multiple over $\mathbb{Z}[u,v^{-1}]$ of the polynomial for $n=1$ (namely $u^{-1}v$). By Lemma \ref{lem:p2c13.7}, $f(u,v)$ lies in the \eqref{thm:p2c13.4}(i). 
+
+The remaining parts of \eqref{thm:p2c13.4} are easy. It is only necessary to
+comment on one point. In (vi), the fact that $\psi$ is a map of bimodules
+gives \[\psi(u^{-1} v) = u^{-1}\otimes v;\] but in $K_\ast(K)\otimes_{\pi_\ast(K)} K_\ast(K)$ we have \[u^{-1}\otimes v = u^{-1}v\otimes u^{-1}v\] since the tensor product is taken over $\pi_\ast(K)$ and $v=\eta_R u$. Similarly for $\psi(uv^{-1})$.
+\end{proof}
+\end{document}

@@ -1,0 +1,30 @@
+Rules and introduction:
+1. Hey everyone! the goal of this group is to modernize the famous "blue book" of Franks adams for homotopy theory: https://people.math.rochester.edu/faculty/doug/otherpapers/Adams-SHGH.pdf
+
+2. This is a community project, you do not need any math prerequisite except working knowledge of LaTeX to take part in this. If at any point something is hard to transcribe due to hard math, feel free to ask in the thread.
+
+3.We are going to let people choose sections to LaTeX up, starting from chapter 3. the claimed section.txt page has the sections that are claimed, feel free to claim one and start working on it in a newfile. we will then \include it in the master document(the book).
+
+style choices to follow:
+1. Wherever references are made either to a different section or part, or as a citation, use the macro `\plscite`; 
+eg. `Part~\plscite{III}, section~\plscite{3}` or `refer~\plscite{[2]} for more details.` or in the case of references in Part I, `\plscite{Izvestija Akademii Nauk SSSR, Serija Matematičeskaja 31 (1967) 855-951}`
+Add a non-breaking space before the references so that they don't get orphaned on the next line.
+
+2. Since page numbers in the project won't be necessarily consistent with page numbers in the original text, please use the \pageref{} command, as well as the corresponding \label{}, for internal page references.
+
+3. We're using the subfiles package to organize the different subsections, so you can compile it seperately. See e.g. https://en.wikibooks.org/wiki/LaTeX/Modular_Documents#Subfiles
+
+4. There is an OCR file in the thread, it basically contains copy pasteable text that is mostly accurate. Feel free to use it to decrease workload.
+
+5. Words underlined in running text must be emphasized using `\emph`. Do not use underlined text in this document. Then do \index{word}, to add it to the index, or possibly a better description inside the index if you can.
+
+6. feel free to add quality of life things in the preamble, maybe run it by the thread once to make sure there is no conflicts or issues. be sure to comment a description of it.
+
+7. For functions, use a longrightarrow for the domain mapping to codomain stuff, and a \mapsto for the action of the function (adam used longrightarrow for this too due to typewriter). So for example we would say 
+$Z\longrightarrow Z, x\mapsto x+1$
+also \lar{} is a substitute for \longrightarrow, i added in the preamble.
+
+8. When you see a star, it is \ast 
+
+9. Notation for complex projective plane: \mathbb{CP} instead of \mathbb{C}P or other alternatives
+

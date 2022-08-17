@@ -1,0 +1,112 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p1c6}
+
+% Average enjoyer
+
+\chapter{The algebra of all operations}
+
+Next we need to consider a much more trivial sort of operation. Let $x$ be a fixed element in $\Omega_U^p(P)$. Let $X,Y$ be a pair, and let $c \colon X \lra F$ be the constant map; thus $c^*(x) \in \Omega_U^p(X)$. For each $y \in \Omega_U^q(X,Y)$, we define 
+\[t(y) = (c^* x)y \in \Omega_U^{p+q}(X,Y).\]
+This defines a cohomology operation
+\[t\colon \Omega_U^q(X,Y) \lra \Omega_U^{p+q}(X,Y).\]
+In fact, we can say that $\Omega_U^*(P)$ acts on all out groups $\Omega_U^*(X,Y)$, acting on the left. 
+Now suppose that we fix a dimension $d$ (positive, negative, or zero), and for each index $\alpha = (\alpha_1, \alpha_2, \alpha_3, \dots)$ we choose an element 
+\[x_\alpha \in \Omega_U^{d - 2|\alpha|}(P).\]
+(We do \emph{not} require that all but a finite number of the $x_\alpha$ are zero; they may all be non-zero if they wish.) For each $x_\alpha$ we have a corresponding operation
+\[t_\alpha \colon \Omega_U^{q + 2|\alpha|}(X,Y) \lra \Omega_U^{q+d}(X,Y).\]
+We now consider the infinite sum 
+\[\sum_\alpha t_\alpha s_\alpha \colon \Omega^q_U(X,Y) \lra \Omega_U^{q+d}(X,Y).\]
+(Here we are assuming, as usual that $X,Y$ is a CW-pair of finite homological dimension.)
+
+\begin{theorem}[Novikov]\label{thm:pc1c06.1}
+(i) This sum converges, in the sense that all but a finite number of the terms $t_\alpha s_\alpha$ yield zero.
+
+(ii) This sum defines a cohomology operation on $\Omega^*_U$ which is natural and stable.
+
+(iii) Every cohomology operation on $\Omega_U^*$ which is natural and stable can be written in this form.
+
+(iv) This way of writing a cohomology operation on $\Omega_U^*$ is unique; if 
+    \[t_\alpha s_\alpha = 0 \colon \Omega^q_U(X,Y) \lra \Omega^{q+d}_U(X,Y)\]
+    for all $X,Y$ and $q$, then $x_\alpha = 0$ for all $\alpha$.
+\end{theorem}
+\begin{proof}[Sketch proof]
+Part (i) is trivial: the group $\Omega_U^{q+2\alpha}(X,Y)$ is zero if $|\alpha|$ is large compared with the homological dimension of the pair $X,Y$. Part (ii) is also trivial.
+
+For parts (iii) and (iv), consider the spectral sequence
+\[H^*(\te{MU},\Omega_U^*(P)) \Longrightarrow \Omega^*_U(\te{MU}).\]
+It follows from Corollary \ref{cor:p1c05.3} that the elements $s_\alpha \in \Omega^*_U(\te{MU})$ constitute an $\Omega_U^*(P)$-base for the $E_2$ term of this spectral sequence.
+\end{proof}
+There is alternative method of proving part (iv), as follows.
+\begin{remark}[Novikov]\label{rmk:p1c06.2}
+The operations $\sum_\alpha t_\alpha s_\alpha$ are distinguished by their values on the classes
+\[\omega_1 \omega_2 \dots \omega_m \in \Omega_U^{2m}(\mathbb{CP}^n \times \mathbb{CP}^n \times \dots \times \mathbb{CP}^n)\]
+(where $m$ and $n$ run over all positive integers).
+\end{remark}
+\begin{proof}[Sketch proof]
+It is easily seen that $\Omega_U^{2m}(\mathbb{CP}^n \times \mathbb{CP}^n \times \dots \times \mathbb{CP}^n)$ is free over $\Omega_U^*(P)$, with an $\Omega_U^*(P)$-base consisting of the monomials 
+\[\omega_1^{i_1} \omega_2^{i_2} \dots \omega_m^{i_m}\]
+with $0 \leq i_r \leq n$ for all $r$; the remaining monomials are zero. We have \[s_\alpha(\omega_1\omega_2\dots\omega_m) = \sum_{i_1,i_2,\dots,i_m} (c_\alpha,b_{i_1} b_{i_2} \dots b_{i_m})\omega_1^{i_1 +1} \omega_2^{i_2+1} \dots \omega_m^{i_m + 1}.\]
+This will of course be zero if $\alpha_1 + \alpha_2 + \alpha_3 + \dots > m$ or if $a_i > 0$ for any $i$ with $i+1 > n$; but the remaining elements $s_\alpha(\omega_1 \omega_2 \dots \omega_m)$ are linearly independent over $\Omega_U^*(P)$.
+\end{proof}
+\begin{note}
+With the foundations indicated above, the use of $\mathbb{CP}^\infty$ instead of $\mathbb{CP}^n$ gives no trouble.
+\end{note}
+Next we need to know how to compute the composite of two operations $t_\alpha s_\alpha, t'_\beta s_\beta$. This breaks up into three problems.
+
+(i) We need to write $s_\alpha t'_\beta$ in the form $\sum_\gamma t''_\gamma s_\gamma$. This reduces to computing the action of $s_\alpha$ of $\Omega_U^*(P)$, for
+\[s_\alpha((c^* x)y) = \sum_{\beta  + \gamma = \alpha} (s_\beta c^* x)(s_\gamma y) = \sum_{\beta  + \gamma = \alpha} (c^* s_\beta x)(s_\gamma y) .\]
+This writes the operation in the required form.
+
+Now we have $\Omega_U^*(P) = \pi_*(\te{MU})$, and by Milnor (loct. cit.) the Hurewicz homomorphism
+\[\pi_*(\te{MU}) \lra H_*(\te{MU})\]
+is monomorphic. Therefore, in principal it is sufficient to know the action of $s_\alpha$ on $H_*(\te{MU})$, which has been given in Theorem \ref{thm:p1c05.2}.
+
+We will return later to the action of $s_\alpha$ on $\Omega_U^*(P)$.
+
+(ii) We need to compute the composite $t_\alpha t_\gamma ''$. This is trivial; just multiply the corresponding elements of $\Omega_U^*(P)$.
+
+(iii) We need to compute the composite $s_\gamma s_\beta$. This is done by the following theorem.
+
+\begin{theorem}\label{thm:p1c06.3}
+The set $S$ of $\mathbb{Z}$-linear combinations of the $s_\alpha$ is closed under composition. The ring $S$ is a Hopf algebra over $\bbZ$, whose dual $S_*$ is the polynomial algebra on generators $b_1'',b_2'',b_3'',\dots$, where $(s_\alpha,b_i'') = (c_\alpha,b_i)$. Set $b'' = \displaystyle\sum_{i=0}^\infty b_i''$, where $b_0'' = 1$; then the diagonal in $S_*$ is given by 
+\[\Delta b'' = \sum_{i \geq 0} (b'')^{i+1} \otimes b_i ''.\]
+\end{theorem}
+\begin{explanation}
+By separating this formula into components we obtain the value of $\Delta b_k''$; this determines the diagonal on the whole of $S_*$, and hence determines the product in $S$. The situation is similar to that arising in Milnor's work on the dual of the Steenrod Algebra.
+\end{explanation}
+Theorem \ref{thm:p1c06.3} is due to Novikov, except that he does not give the explicit formula for the diagonal in $S_*$.
+\begin{proof}[Sketch proof]
+In $\Omega_U^*(\mathbb{CP}^n \times \mathbb{CP}^n \times \dots \mathbb{CP}^n)$, $s_\beta(\omega_1 \omega_2 \dots \omega_m)$ is a $\bbZ$-linear combination of monomials $\omega_1^{i_1} \omega_2^{i_2} \dots \omega_m^{i_m}$, and hence $s_\alpha(s_\beta(\omega_1 \omega_2 \dots \omega_m))$ is a $\bbZ$-linear combination of monomials  $\omega_1^{j_1} \omega_2^{j_2} \dots \omega_m^{j_m}$. By the proof following Remark \ref{rmk:p1c06.2}, $s_\alpha s_\beta$ is a $\bbZ$-linear combination of operations $s_\gamma$.
+
+We next wish to calculate $\Delta b_k''$, that is, to find $s_\alpha s_\beta(\omega)$ for each $\alpha,\beta$, where $\omega$ is the generator in $\Omega^2(\mathbb{CP}^\infty)$. We have
+\[s_\beta \omega = \sum_i (s_\beta , b_i'')\omega^{i+1}\]
+and therefore
+\[s_\alpha s_\beta = \sum_{i,j_1,j_2,\dots,j_{i+1}} (s_\alpha, b_{j_1}'',b_{j_2}'' \dots b_{j_{i+1}}'')(s_\beta,b_i'') \omega^{i + j_1 + j_2 + \dots + j_{i+1}+1}.\]
+We conclude that
+\[\Delta b_k'' = \sum_{i + j_1 + j_2 + \dots + j_{i+1} = k}b_{j_1}'',b_{j_2}'' \dots b_{j_{i+1}}'' \otimes b_i''.\]
+Summing over $b$, we obtain the formula given.
+\end{proof}
+\begin{note}
+Now that we have introduced the dual Hopf algebra $S_*$, we can reformulate Theorem \ref{thm:p1c05.2}. Recall that $S$ acts on $H_*(\te{MU})$, acting on the left; therefore it acts on the right on $H^*(\te{MU})$; that is, we have a product map
+\[\te{MU}\colon H^*(\te{MU}) \otimes S \lra H^*(\te{MU}).\]
+Transposing again, we have a coproduct map
+\[\Delta\colon H_*(\te{MU}) \lra H_*(\te{MU}) \otimes S_*.\]
+This is related to the original action of $S$ on $H_*(\te{MU})$ as follows: if
+\[\Delta h = \sum_i h_i \otimes s_i^*\]
+then
+\[sh = \sum_i h_i(s_i^* s)\]
+for all $s \in S$. The map
+\[\Delta \colon H_*(\te{MU}) \lra H_*(\te{MU}) \otimes S_*\]
+may be described as follows.
+\end{note}
+\begin{proposition}\label{prop:p1c06.4}
+$\Delta$ preserves products, and 
+\[\Delta b' = \sum_{i \geq 0} (b')^{i+1} \otimes b_i''.\]
+This is a trivial reformulation of Theorem \ref{thm:p1c05.2}
+\end{proposition}
+
+The analogy between this formula and that in Theorem \ref{thm:p1c06.3} should be noted.
+
+At this point we possess a firm grasp of the algebra of operations on $\Omega_U^*$.
+\end{document}

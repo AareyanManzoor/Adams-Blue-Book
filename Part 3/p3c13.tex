@@ -1,0 +1,301 @@
+\documentclass[../main]{subfiles}
+
+
+\begin{document}
+%wew lads
+
+% Wew, I assume \textul{...} was meant to be a macro for underlining? Anyway, the big boys in charge want us to use \emph, so I switched it to that (since \textul was giving errors and I dont like errors). I also changed your prop environments to proposition environments (since those are the environments defined), and similar thm->theorem.
+
+%George: I corrected a few typos: longlongrightarrow -> longrightarrow and longRightarrow to longrightarrow.
+
+\chapter{A Universal Coefficient Theorem}
+\label{sec:p3c13}
+The theme for the next part of the course is the following. Let $E$ be a fixed ring-spectrum. Suppose given $E_\ast(X)$ and $E_\ast(Y)$; what can be said about $[X,Y]_\ast$? In other words, given homological information, what can we say about homotopy?
+
+I propose to treat this problem under a restrictive hypothesis; that is, I will assume that $E_\ast(X)$ is projective over $\pi_\ast(E)$. I do know how to avoid this hypothesis, but it involves extra work; one has to resolve both $X$ and $Y$ and mix the resolutions geometrically. The present hypothesis is sufficient for the applications to be given here. To see that the hypothesis is reasonable, consider two examples.
+
+\begin{examples}
+\begin{enumerate}
+    \item[(i)]Let $X=S$. Initially most people need to compute stable homotopy, that is, $[S, Y]_\ast$. Of course $E_\ast(S)$ is projective over $\pi_\ast(E)$ for any ring-spectrum E; in fact it is free on one generator. %pog wtf?
+    \item[(ii)]Let $E = H\bZ_p$. In this case $\pi_\ast(E)$ is the field $\bZ_p$, so any module over it is projective; in particular, $(H\bZ_p)_\ast(X)$ is projective over $\bZ_p$ for any $X$.
+\end{enumerate}
+\end{examples}
+
+All the same, the correct level of generality will probably turn out to be the maximum level, so ultimately we will probably want to go beyond the case in which $E_\ast(X)$ is projective over $\pi_\ast(E)$.
+
+To handle even this case, we need some results of the general type of universal coefficient theorems. The reader interested only in the case $X=S$ may without loss omit this section.
+
+In the situation of the universal coefficient theorem, $E$ is the ring-spectrum and $F$ is a module-spectrum over $E$. $E_\ast(X)$ is given and the aim is to find information about $F_\ast(X)$ and $F^\ast(X)$.
+
+\begin{lemma}\label{lem:p3ch13.1}
+Let $E$ be a ring-spectrum, $F$ a module-spectrum over $E$ and $X$ any spectrum. If $E_\ast(X) = 0$, then $F_\ast(X) = 0$ and $F^\ast(X) = 0$.
+\end{lemma}
+\begin{proof}
+$E_*(X) = 0$ is equivalent to $\pi_\ast(E\wedge X) = 0$, i.e., $E\wedge X$ is contractible. Now any morphism \[S\overset{f}{\longrightarrow}F\wedge X\]
+can be factored as
+\[\begin{tikzcd}
+	{S\wedge F \wedge X} && {E\wedge F \wedge X} \\
+	&& {} \\
+	S && {F \wedge X}
+	\arrow["{i\wedge 1\wedge1}", from=1-1, to=1-3]
+	\arrow["{\nu \wedge1}", from=1-3, to=3-3]
+	\arrow["{1\wedge f}", from=3-1, to=1-1]
+	\arrow["f", from=3-1, to=3-3]
+\end{tikzcd}\]
+and of course $E \wedge F\wedge X \cong F \wedge(E \wedge X)$, so it is contractible; hence $f=0$.
+
+Similarly, any morphism $X\overset{f}{\longrightarrow}F$ can be factored as
+\[\begin{tikzcd}
+	{E \wedge X} && {E\wedge F} \\
+	&& {} \\
+	X && F
+	\arrow["{1\wedge f}", from=1-1, to=1-3]
+	\arrow["{\nu}", from=1-3, to=3-3]
+	\arrow["{i\wedge 1}", from=3-1, to=1-1]
+	\arrow["f", from=3-1, to=3-3]
+\end{tikzcd}\]
+so $f=0$.
+\end{proof}
+Now observe that for any element $x^\ast \in F^\ast(X)$ we get a homomorphism
+\[E_\ast(X)\longrightarrow \pi_\ast(F).\]
+One way to say it is that this map is
+\[x_\ast \mapsto \langle x^\ast, x_\ast \rangle\]
+where we use the pairing 
+\[F\wedge E \overset{c}{\longrightarrow} E\wedge F \overset{\nu}{\longrightarrow} F.\]
+Another way to say it is that if $X\overset{x^\ast}{\longrightarrow}F$, we form
+\[E_\ast(X)\vra{\left(x^\ast\right)_\ast}E_\ast(F)\overset{\nu_\ast}{\longrightarrow}\pi_\ast(F).\]
+In any case, we get a homomorphism
+\[F^\ast(X)\longrightarrow \text{Hom}_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F)).\]
+We will be interested in spectra $X$ which satisfy the following condition.
+
+\begin{condition}\label{cond:p3ch13.2} $F^\ast(X)\longrightarrow\text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F))$ is an isomorphism for all module-spectra $F$ over $E$.
+\end{condition}
+\begin{condition}\label{cond:p3ch13.3} $E$ is the direct limit of finite spectra $E_\alpha$ for which $E_\ast(DE_\alpha)$ is projective over $\pi_\ast(E)$ and $DE_\alpha$ satisfies \ref{cond:p3ch13.2}.
+\end{condition}
+Here $DE_\alpha$ means the $S$-dual of $E_\alpha$.
+
+\begin{proposition}\label{prop:p3ch13.4}
+Condition \ref{cond:p3ch13.3} is satisfied by the following spectra $E$:
+\[S, H\bZ_p, \te{MO, MU, MSp, K, KO}\]
+\end{proposition}
+For the moment I postpone the proof of this proposition; it will be outlined below. Evidently one needs a lemma to say that $DE_\alpha$ satisfies \ref{cond:p3ch13.2}, but one can impose very a restrictive condition on $DE_\alpha$.
+
+The result we want is as follows.
+\begin{proposition}\label{prop:p3ch13.5} Suppose $E$ satisfies Condition \ref{cond:p3ch13.3} (e.g., $E$ may be one of the examples listed in \ref{prop:p3ch13.4}). Suppose $E_\ast(X)$ is projective over $\pi_\ast(E)$. Then \ref{cond:p3ch13.2} holds, i.e.,
+\[F^\ast(X) \longrightarrow \text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F))\]
+is an isomorphism for all module-spectra $F$ over $E$.
+\end{proposition}
+This is a special case of a more general result.
+\begin{theorem}\label{thm:p3ch13.6}
+Suppose $E$ satisfies Condition \ref{cond:p3ch13.3}. Then there is a spectral sequence
+\[
+\text{Ext}^{p, \ast}_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F)) \underset{p}{\implies}F^{\ast}(X)
+\]
+whose edge-homomorphism is the homomorphism
+\[F^\ast(X) \longrightarrow \text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F))\]
+considered above, and convergent in the sense that Theorem \ref{prop:p3ch08.2} holds.
+\end{theorem}
+\emph{Proof of \ref{prop:p3ch13.5} from \ref{thm:p3ch13.6}} \begin{proof} If $E_\ast(X)$ is projective over $\pi_\ast(E)$, then 
+\[
+\text{Ext}^{p, \ast}_{\pi_\ast(E)}(E_\ast(X),\pi_\ast(E))
+\]
+is zero for $p > 0$. Hence, the spectral sequence collapses to its edge-homomorphism. Note that we have enough convergence; condition (ii) of Theorem \ref{prop:p3ch08.2} is trivially satisfied, so (i) and (iii) of \ref{prop:p3ch08.2} hold.
+\end{proof}
+We now prove intermediate results necessary to prove Theorem \ref{thm:p3ch13.6}.
+
+The force of Condition \ref{cond:p3ch13.3} is that it allows us to make resolutions of the sort used by Atiyah in his paper on a K\"{u}nneth theorem for K-theory. Recall that $E$ is the direct limit of finite spectra $E_\alpha$. The injection $E_\alpha \longrightarrow E$ corresponds to a cohomology class $i_\alpha \in E^0(E_\alpha)$ or to a homology class $g_\alpha \in E_0(DE_\alpha)$.
+\begin{lemma}\label{lem:p3ch13.7}
+For any spectrum X and any class $e \in E_p(X)$ there is an $E_\alpha$ and a morphism $f \colon DE_\alpha \longrightarrow X$ of degree $p$ such that $e = f_\ast(g_\alpha)$.
+\end{lemma}
+\begin{proof}
+Take a class $e \in E_p(X)$. There there is a finite subspectrum $X' \overset{i}{\subset} X$ and a class $e' \in E_p(X')$ such that $i_\ast(E') = e$. We may interpret $e'$ as a morphism $DX' \longrightarrow E$ of degree $p$; here I need the fact (not proven in \S\ref{sec:p3c5}) that $D^2Y \cong Y$. By assumption, this morphism factors through some $E_\alpha$, so that 
+\[\begin{tikzcd}
+	{DX'} && E \\
+	& {E_\alpha}
+	\arrow["\phi"', from=1-1, to=2-2]
+	\arrow["{i_\alpha}"', from=2-2, to=1-3]
+	\arrow[from=1-1, to=1-3]
+\end{tikzcd}\]
+and $\phi^\ast i_\alpha = e'$ considered as an element of $E^{-p}(DX')$. Dualising back,
+\[(D\phi)_\ast g_\alpha = e' \in E_p(X').\]
+Take $f$ to be 
+\[\begin{tikzcd} 
+DE_\alpha & X' & {X} \arrow["D\phi", from=1-1, to=1-2]\arrow["i", from=1-2, to=1-3]
+\end{tikzcd}.\]
+\end{proof}
+\begin{lemma}\label{lem:p3ch13.8}
+For any spectrum $X$ there exists a spectrum of the form
+\[W = \bigvee_{\beta}S^{p(\beta)}\wedge DE_{\alpha(\beta)}\]
+and a morphism $g \colon W \longrightarrow X$ (of degree 0) such that
+\[g_\ast \colon E_\ast(W) \longrightarrow E_\ast(X)\]
+is an epimorphism.\end{lemma}
+\begin{proof} Immediate from \ref{lem:p3ch13.7}, by allowing the class $e$ in \ref{lem:p3ch13.7} to run over a set of generators for $E_\ast(X)$.\end{proof}
+
+Note that $W=\bigvee_{\beta}S^{p(\beta)}\wedge DE_{\alpha(\beta)}$ inherits from its factors the properties that $E_\ast(W)$ is projective and \ref{cond:p3ch13.2} holds, that is
+\[F^\ast(W) \longrightarrow \text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(W), \pi_\ast(F))\]
+is an isomorphism for all module-spectra $F$ over $E$.
+
+\emph{Proof of \ref{thm:p3ch13.6}} We will construct a resolution of the following form, with the properties listed below.
+\[\begin{tikzcd}
+	{X=X_0} & {X_1} & {X_2} & {X_3 \dots} \\
+	{W_0} & {W_1} & {W_2} & \dots
+	\arrow["{x_1}", from=1-2, to=1-3]
+	\arrow["{x_2}", from=1-3, to=1-4]
+	\arrow[from=1-4, to=2-3]
+	\arrow[from=2-3, to=1-3]
+	\arrow[from=1-3, to=2-2]
+	\arrow[from=2-2, to=1-2]
+	\arrow["{x_0}", from=1-1, to=1-2]
+	\arrow[from=1-2, to=2-1]
+	\arrow[from=2-1, to=1-1]
+\end{tikzcd}\]
+
+(i) The triangles
+
+\[\begin{tikzcd}
+	{X_r} & {} & {X_{r+1}} \\
+	& {W_r} & {}
+	\arrow["{x_r}", from=1-1, to=1-3]
+	\arrow[from=1-3, to=2-2]
+	\arrow[from=2-2, to=1-1]
+\end{tikzcd}\]
+
+are cofibre triangles.
+
+(ii) For each r,
+\[(x_r)_\ast \colon E_\ast(X_r) \longrightarrow E_\ast(X_{r+1})\]
+is zero.
+
+(iii) For each $r$, $E_\ast(W_r)$ is projective over $\pi_\ast(E)$.
+
+(iv) For each $r$, the map
+\[F^\ast(W_r) \longrightarrow \text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(W_r), \pi_\ast(F))\]
+is an isomorphism.
+
+Let $X_0 = X$. Assume $X_r$ is constructed. By \ref{lem:p3ch13.8}, there exists a spectrum $W_r$ and a morphism
+\[g_r \colon W_r \longrightarrow X_r\]
+as described in \ref{lem:p3ch13.8}. Form a cofibering
+\[W_r\overset{g_r}{\longrightarrow} X_r \longrightarrow X_{r+1} \longrightarrow W_r\]
+where the last morphism has degree $-1$. Without any essential loss of generality we may suppose by using a telescope that $X_0 \subset X_1 \subset X_2 \subset \dots$; let $X_\infty$ be their union. Since
+\[E_\ast(W_r) \longrightarrow E_\ast(X_r)\]
+is an epimorphism
+\[E_\ast(X_r) \longrightarrow E_\ast(X_{r+1})\]
+is zero. Therefore
+\[E_\ast(X_\infty) = \underset{\underset{r}{\longrightarrow}}{\text{Lim }} E_\ast(X_r) = 0\]
+By Lemma \ref{lem:p3ch13.1}, we have $F^\ast(X_\infty) = 0$.
+
+By applying $F^\ast$, we get a spectral sequence, convergent in the sense that Theorem \ref{prop:p3ch08.2} holds. It is convergent to $F^\ast(X_\infty, X_0) \cong F^\ast(X_0)$ and has $E_1$-term
+\[E^{p, \ast}_1 = F^\ast(W_p).\]
+Now we have arranged that
+\[F^\ast(W_r) = \text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(W_r), \pi_\ast(F))\]
+and
+\[0 \longleftarrow E_\ast(X) \longleftarrow E_\ast(W_0) \longleftarrow E_\ast(W_1) \longleftarrow E_\ast(W_2) \dots\]
+is a resolution of $E_\ast(X)$ by projective modules over $\pi_\ast(E)$. Moreover, the boundary $d_1$ in the spectral sequence is that induced by the boundary in this resolution. Therefore
+\[E_2^{p, \ast} = \text{Ext}^{p, \ast}_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F)),\]
+as claimed.
+
+It can be checked that the edge-homomorphism is the obvious map.
+
+Now we start work on the proof of Proposition \ref{prop:p3ch13.4}. We need the following lemma:
+\begin{lemma}\label{lem:p3ch13.9}
+Suppose \begin{enumerate}[label=(\roman*)]
+    \item $X$ is a finite spectrum,
+    \item the spectral sequence
+    \[H_\ast(X;\pi_\ast(E)) \longrightarrow E_\ast(X)\]
+    is trivial, i.e., it's differentials are zero, and
+    \item for each $p$, $H_p(X;\pi_\ast(E))$ is projective as a left module over $\pi_\ast(E)$.
+\end{enumerate} 
+
+
+Then $E_\ast(X)$ is projective and $X$ satisfies Condition 13.2, i.e., 
+\[F^\ast(X) \longrightarrow \text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F))\]
+is an isomorphism for all module-spectra $F$ over $E$.
+
+(The condition that $X$ is finite is not essential, but is satisfied in the applications.)
+
+In order to apply Lemma \ref{lem:p3ch13.9} to $DE_\alpha$, we simply have to check that
+\begin{enumerate}[label=(\roman*)]
+    \item the spectral sequence
+\[H^\ast(E_\alpha;\pi_\ast(E)) \longrightarrow E^\ast(E_\alpha)\]
+is trivial, and
+    \item for each $p$, $H^p(E_\alpha;\pi_\ast(E))$ is projective over $\pi_\ast(E)$.
+\end{enumerate}
+\end{lemma}
+\begin{proof} (from \cite{adams3}, Lecture 1, Prop 17). Let $E^r_{p, q}(0)$ and $E^{p, q}_r(2)$ be respectively the spectral sequences
+\begin{align*}H^\ast(X;\pi_\ast(E)) &\Longrightarrow E_\ast(X) \\
+H^\ast(X;\pi_\ast(F)) &\Longrightarrow F^\ast(X).
+\end{align*}
+It follows immediately from the assumptions on the spectral sequence $E^\ast_{\ast \ast}(0)$ that $E_\ast(X)$ is projective.
+
+The Kronecker product yields a homomorphism
+\[E_r^{p, \ast}(2) \longrightarrow \text{Hom}_{\pi_\ast(E)}(E^r_{p \ast}(0), \pi_\ast(F)).\]
+This homomorphism sends $d_r$ into $\left(d^r\right)^\ast$. (This assertion needs detailed proof from the definitions of the spectral sequences, but it can be done using only formal properties of the product and the fact that Hom is left exact.) Because of the assumption that the spectral sequence $E^\ast_{\ast \ast}(0)$ is trivial, which is used here. the groups $\text{Hom}_{\pi_\ast(E)}(E^r_{p \ast}(0), \pi_\ast(F))$, equipped with the boundaries $\left(d^r\right)^\ast$ (which happened to be zero) form a (trivial) spectral sequence $E^{p, q}_r(4)$. We now have a map of spectral sequences
+\[E^{p,q}_r(2) \longrightarrow E^{p,q}_r(4).\]
+For $r=2$ it becomes the obvious map
+\[H^p(X;\pi_\ast(F)) \longrightarrow \text{Hom}^\ast_{\pi_\ast(E)}(H_p(X;\pi_\ast(E)), \pi_\ast(F)).\]
+Since we are assuming $H_p(X;\pi_\ast(E))$ is projective over $\pi_\ast(E)$, a theorem on ordinary homology shows that for $r=2$ the map is an isomorphism. Therefore it is an isomorphism for all $r$, and the spectral sequence $E^{p,q}_r(2)$ is trivial. Since $X$ is a finite spectrum, it is easy to deduce that the map
+\[E^{p, \ast}_\infty(2) \longrightarrow \text{Hom}^{\ast}_{\pi_\ast(E)}(E^\infty_{p, \ast}(0), \pi_\ast(F))\]
+is an isomorphism, because the limit is attained for some finite value of $r$.
+
+Let us now introduce notation for the filtration quotient groups, say
+\begin{align*}
+G_{p \ast}(0) =&\; \text{Im}(E_{\ast}(X^p) \longrightarrow E_{\ast}(X)) \\
+G^{p \ast}(2) =&\; \text{Coim}(F^{\ast}(X) \longrightarrow F^{\ast}(X^p)).
+\end{align*}
+The Kronnecker product yields a homomorphism
+\[G^{p \ast}(2) \longrightarrow \text{Hom}^{\ast}_{\pi_\ast(E)}(G_{p \ast}(0), \pi_\ast(F)).\]
+(Again, the verification uses formal properties of the product and the fact that Hom is left exact.) Consider the following diagram.
+
+\[\begin{tikzcd}
+	0 && 0 \\
+	{E_{\infty}^{p\ast}(2)} && {\text{Hom}^{\ast}_{\pi_\ast(E)}(E^\infty_{p\ast}(0), \pi_\ast(F))} \\
+	{G^{p\ast}(2)} && {\text{Hom}^{\ast}_{\pi_\ast(E)}(G_{p\ast}(0), \pi_\ast(F))} \\
+	{G^{p-1\ast}}(2) && {\text{Hom}^{\ast}_{\pi_\ast(E)}(G_{p-1\ast}(0), \pi_\ast(F))} \\
+	0 && 0
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=3-1, to=4-1]
+	\arrow[from=4-1, to=5-1]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=3-3, to=4-3]
+	\arrow[from=4-3, to=5-3]
+	\arrow[from=2-1, to=2-3]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=4-1, to=4-3]
+\end{tikzcd}\]
+The second column is exact because $E^{\infty}_{p\ast}(0)$ is projective. Induction over $p$, using the short five lemma, now shows that 
+\[G^{p\ast}(2)\longrightarrow \text{Hom}^{\ast}_{\pi_\ast(E)}(G_{p\ast}(0), \pi_\ast(F))\]
+is an isomorphism. Since $X$ is a finite spectrum, in a finite number of steps we obtain the result that
+\[F^\ast(X)\longrightarrow \text{Hom}_{\pi_\ast(E)}(E_\ast(X), \pi_\ast(F))\]
+is an isomorphism.
+\end{proof}
+We now sketch the proof of \ref{prop:p3ch13.4} (See \cite{adams3}. pp. 29-30)
+
+\begin{enumerate}[label=(\roman*)]
+    \item $E=S$, the sphere spectrum. Take $E_\alpha = S$; then \ref{cond:p3ch13.3} may be verified directly.
+    \item $E=H\bZ_p$. The hypotheses of \ref{lem:p3ch13.9} are satisfied by $X$, and it is sufficient to let $E_\alpha$ run over any system of finite spectra whose limit is $H\bZ_p$.
+    \item $E=\te{MO}$. It is well known that
+    \[\te{MO} \cong \bigvee_{i} S^{n(i)}H\bZ_2 \cong \prod_i S^{n(i)} H\bZ_2.\]
+    The hypotheses of \ref{lem:p3ch13.9} are satisfied by any $X$, and it is sufficient to let $E_\alpha$ run over any system of finite spectra whose limit is $\te{MO}$.
+    \item $E = \te{MU}$. We have $H^p(\te{MU};\pi_q(\te{MU})) = 0$ unless $p$ and $q$ are even. Therefore the spectral sequence
+    \[H^{\ast}(\te{MU};\pi_\ast(\te{MU})) \Longrightarrow \te{MU}^\ast(\te{MU})\]
+    is trivial. Again, $H^p(\te{MU};\pi_\ast(\te{MU}))$ is free over $\pi_\ast(\te{MU})$. It is sufficient to let $E_\alpha$ run overt a system of finite spectra which approximate $\te{MU}$ in the sense that
+    \[i_\ast \colon H_p(E_\alpha) \longrightarrow H_p(\te{MU})\]
+    is an isomorphism for $p\leq n$, while $H_p(E_\alpha) = 0$ for $p > n$.
+    \item $E=\te{MSp}$. A simple adaptation of the method of S.P. Novikov \cite{novikov2} \cite{novikov3} from the unitary to the symplectic case shows that the spectral sequence
+    \[H^{\ast}(\te{MSp};\pi_{\ast}(\te{MSp})) \Longrightarrow \te{MSp}^\ast(\te{MSp})\]
+    is trivial. Again, $H^p(\te{MSp};\pi_\ast(\te{MSp}))$ is free over $\pi_\ast(\te{MSp})$. The rest of the argument is as in (iv).
+    \item $E=K$. Recall that in the spectrum $K$ every even term is the space $\te{BU}$. We have
+    \[H^p(\te{BU};\pi_{q}(K)) = 0 \text{ unless } p \text{ and } q \text{ are even.}\]
+    Therefore the spectral sequence
+    \[H^{\ast}(\te{BU};\pi_{\ast}(K) \Longrightarrow K^\ast(\te{BU})\]
+    is trivial. Again, $H^p(\te{BU};\pi_\ast(K))$ is free over $\pi_\ast(K)$. It is sufficient to let $E_\alpha$ run over a system of finite spectra which approximate, as in (iv) the difference space $\te{BU}$ of the spectrum $K$.
+    \item $E = \te{KO}$. Recall that in the spectrum $\te{KO}$, every eighth term is the space $\te{BSp}$. I claim that the spectral sequence
+    \[H^{\ast}(\te{BSp};\pi_\ast(\te{KO})) \Longrightarrow \te{KO}^\ast(\te{BSp})\]
+    is trivial. In fact, for each class $h \in H^{8p}(\te{BSp}(m))$ we can construct a real representation of $\te{Sp}(m)$ whose Chern character begins with $h$; for each class $h \in H^{8p+4}(\te{BSp}(m))$ we can construct a sympletctic representation of $\te{Sp}(m)$ whose Chern character begins with $h$. The rest of the argument is as for (vi).
+\end{enumerate}
+
+
+
+\end{document}

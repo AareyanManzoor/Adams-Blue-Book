@@ -1,0 +1,104 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c11}
+\chapter{$\mathrm{MU}_\ast(\mathrm{MU})$}
+It is shown in \cite[Lecture 3, pp.~56-76]{adams3} that $\mathrm{MU}_\ast(\mathrm{MU})$ may be considered as a Hopf algebra. We may think of $\mathrm{MU}^\ast(\mathrm {MU})$, the Novikov algebra of operations on MU-cohomology, as analogous to the Steenrod algebra; if we do so, we should think of $\mathrm{MU}_\ast(\mathrm {MU})$ as analogous to the dual of the Steenrod algebra, which was studied by Milnor. \cite{milnor} There is only one point at which we need to take care in generalizing from the classical case to the case of generalized homology; the Hopf algebra $\mathrm{MU}_\ast(\mathrm {MU}) = \pi_\ast(\mathrm{MU} \wedge \mathrm{MU})$ is a bimodule over the ring of coefficients $\pi_\ast(\mathrm{MU})$, because we can act either on the left hand factor of $\mathrm{MU} \wedge \mathrm{MU}$ or on the right hand factor. On this point, see \cite[Lecture 3, pp.~59-60]{adams3}.
+
+I would now advance the thesis that instead of considering $\mathrm{MU}^\ast(X)$ as a (topologised) module over the (topologised) ring $\mathrm {MU}^\ast(\mathrm{MU})$, we should consider $\mathrm{MU}_\ast(X)$ as a comodule with respect to the Hopf algebra $\mathrm{MU}_\ast(\mathrm{MU})$. For this purpose I propose to record the structure of $\mathrm{MU}_\ast(\mathrm{MU})$ as a Hopf algebra. I would like to regard this account as superseding, to a large extent, the account which I gave in my earlier Chicago notes \cite{adams2}.
+
+At this point I pause to insert various remarks intended to make the spectrum $\mathrm{MU} \wedge \mathrm{MU}$ seem more familiar. Some may like to think of it as the represented spectrum for $\te{U} \times \te{U}$-bordism; that is, we consider manifolds $M^n$, which are given embedded in a sphere $S^{n + 2p + 2q}$, and whose normal bundle is given the structure of a $\te{U}(p) \times \te{U}(q)$-bundle -- say as $\nu = \nu_1 \oplus \nu_2$. With this interpretation, some of the structure maps to be considered are obvious ones. For example, we shall consider a conjugation map or canonical anti-automorphism
+\[c: \mathrm{MU}_\ast(\mathrm{MU}) \lar{} \mathrm{MU}_\ast(\mathrm{MU});\]
+this is induced by the usual switch map
+\[\tau : \mathrm{MU} \wedge \mathrm{MU} \lar{} \mathrm{MU} \wedge \mathrm{MU}\]
+which interchanges the two factors. The effect of $c$ on $M^n$ is to leave the manifold alone and take the new $\nu_1$ to be the old $\nu_2$ and vice versa. We can easily construct $U \times U$-manifolds, for example, by taking $\mathbb {CP}^n$ and taking the stable classes of $\nu_1$, $\nu_2$ to be $p \xi$, $q \xi$, where $p + q = -(n + 1)$. However, we will make no further use of this approach. 
+
+I also remark that $\mathrm{MU} \wedge \mathrm{MU}$ is homotopy-equivalent to a wedge-sum of suitable suspensions of $\mathrm{MU}$. This follows from the following lemma, plus (\ref{lem:p2c04.5}).
+\begin{lemma}
+\label{lem:p2c11.1}
+Let $E$ be a ring-spectrum. In order that $E \wedge X$ be equivalent, as a module-spectrum over $E$, to a wedge-sum $\displaystyle \bigvee_\alpha E \wedge S^{n(\alpha)}$, it is necessary and sufficient that $\pi_\ast(E \wedge X)$ should be a free module over $\pi_\ast(E)$.
+\end{lemma}
+
+\begin{proof}
+$\displaystyle \pi_\ast \bigg(\bigvee_\alpha E \wedge S^{n(\alpha)}\bigg) \cong \sum_\alpha \pi_\ast(E \wedge S^{n(\alpha)})$ is indeed a free module over $\pi_\ast(E)$. So if $E \cap X$ is equivalent, as a module-spectrum over $E$, to $\displaystyle \bigvee_\alpha E \wedge S^{n(\alpha)}$, then $\pi_\ast(E \wedge X)$ is also free.
+
+Conversely, assume that $\pi_\ast(E \wedge X)$ is free over $\pi_\ast(E)$, with a base of elements $b_\alpha \in \pi_{n(\alpha)} (E \wedge X)$. Represent $b_\alpha$ by a map \[f_\alpha : S^{n(\alpha)} \lar{} E \wedge X,\] and consider the map \[\displaystyle f : \bigvee_\alpha E \wedge S^{n(\alpha)} \lar{} E \wedge X,\] whose $\alpha$-th component is \[E \wedge S^{n(\alpha)} \lar{1 \wedge f_\alpha} E \wedge E \wedge X \lar{\mu \wedge 1} E \wedge X.\] Then $f$ is clearly a map of module-spectra over $E$, and $f$ induces an isomorphism of homotopy groups; so $f$ is a homotopy equivalence, by Whitehead's theorem (in the category of spectra.) 
+\end{proof}
+
+Let us return to the spectra of $\mathrm{MU}_\ast(\mathrm{MU})$. Recall from (\ref{lem:p2c04.5}) that $\mathrm{MU}_\ast(\mathrm{MU})$ is free as a left module over $\pi_\ast(\mathrm{MU})$, with a base consisting of the monomials in the generators $b_i = b_i^{\mathrm{MU}} \in \mathrm{MU}_{2i}(\mathrm{MU})$.
+
+Recall also from \cite[p.~61]{adams3} that the structure maps to be constructed are as follows. 
+
+\begin{enumerate}
+    \item[(i)] A product map \[\phi : \mathrm{MU}_\ast(\mathrm{MU}) \otimes \mathrm{MU}_\ast(\mathrm{MU}) \lar{} \mathrm{MU}_\ast(\mathrm{MU}).\] This is the same product in $\mathrm{MU}_\ast(\mathrm{MU})$ that we have been using all along, and we do not need to give any formulae for it, because $\mathrm{MU}_\ast(\mathrm{MU})$ is described in terms of this product.
+    \item[(ii)] Two unit maps \[\eta_L, \eta_R : \pi_\ast(\mathrm{MU}) \lar{} \mathrm{MU}_\ast(\mathrm{MU}).\] These are induced by the maps 
+    \[\mathrm{MU} \simeq \mathrm{MU} \wedge S^0 \lar{1 \wedge i} \mathrm{MU} \wedge \mathrm{MU},\]
+    \[\mathrm{MU} \simeq S^0 \wedge \mathrm{MU} \lar{i \wedge 1} \mathrm{MU} \wedge \mathrm{MU}\]
+    respectively. They are introduced so that left multiplication by $a \in \pi_\ast(\mathrm{MU})$ is multiplication by $\eta_L(a)$, and right multiplication by $a \in \pi_\ast(\mathrm{MU})$ is multiplication by $\eta_R(a)$. The map $\eta_L$ sends $a \in \pi_\ast(\mathrm{MU})$ to a.1, and we do not need to give any other formula for it.
+
+    The map $\nu_R$ is essentially the Hurewicz homomorphism \[\pi_\ast(\mathrm{MU}) \lar{} \mathrm{MU}_\ast(\mathrm{MU}).\] It figures in the next result; to motivate it, we recall that one should describe the action of cohomology operations $h \in \mathrm{MU}^\ast(\mathrm{MU})$ on the ring of coefficients $\pi_\ast(\mathrm{MU})$; compare \cite[p.~19; Theorem 8.1, p.~23]{adams2}
+\end{enumerate}
+
+\begin{proposition}
+\label{prop:p2c11.2}
+Let $E$ be as in \cite[Lecture 3]{adams3}, and let $h \in E^\ast(E)$. Then the effect of the cohomology operation $h$ on the element $\lambda \in \pi_\ast(E)$ is given by \[h \lambda = \langle h, \eta_R \lambda\rangle.\]
+\end{proposition}
+
+This may be proved either directly from the definitions by diagram-chasing or by substituting $X = S^0$, $\psi \lambda = (\nu_L \lambda) \otimes 1$ in \cite[Proposition 2, p.~75]{adams3}.
+
+We return to listing the structure maps to be considered.
+
+\begin{enumerate}
+    \item[(iii)] A counit map \[\varepsilon : \mathrm{MU}_\ast(\mathrm{MU}) \lar{} \pi_\ast(\mathrm{MU}).\] This is induced by the product map \[\mu : \mathrm{MU} \wedge \mathrm{MU} \lar{} \mathrm{MU}.\]
+    \item[(iv)] A canonical anti-automorphism, or conjugation map \[c : \mathrm{MU}_\ast(\mathrm{MU}) \lar{} \mathrm{MU}_\ast(\mathrm{MU}).\] This is induced by the switch map \[\tau : \mathrm{MU} \wedge \mathrm{MU} \lar{} \mathrm{MU} \wedge \mathrm{MU},\] as remarked above. 
+    \item[(v)] A diagonal or coproduct map \[\psi : \mathrm{MU}_\ast(\mathrm{MU}) \lar{} \mathrm{MU}_\ast (\mathrm{MU}) \otimes_{\pi_\ast(\mathrm{MU})} \mathrm{MU}_\ast(\mathrm{MU}).\]
+\end{enumerate}
+
+The maps which have not been discussed already are given by the following result. 
+\begin{theorem}
+\label{thm:p2c11.3}
+\begin{enumerate}
+    \item[(i)] The homomorphism $\eta_L$ is calculated in \hyperref[sec:p2c6]{\S 6} and \hyperref[sec:p2c9]{\S 9}.
+    \item[(ii)] The map $\varepsilon$ is a map of algebras which are bimodules over $\pi_\ast(\mathrm{MU})$; it satisfies \[\varepsilon(1) = 1\] 
+    \[\varepsilon(b_i) = 0 \text { for } i \ge 1.\]
+    %TODO: cases to the right rather than left
+    \item[(iii)] The map $c$ is a map of rings; it satisfies \[\begin{cases}c(\eta_L a) = \eta_R a \\ c(\eta_R a) = \eta_L a\end{cases} \quad (a \in \pi_\ast(\mathrm{MU}))\] and $c(b_i) = m_i$, where $b_i$ and $m_i$ are related as in (\ref{prop:p2c07.5}).
+    \item[(iv)] The coproduct map $\psi$ is a map of bimodules over $\pi_\ast(\mathrm{MU})$. It is given by \[\displaystyle \psi b_k = \sum_{i + j = k} \bigg(\sum_{h \ge 0} b_h\bigg)_i^{j + 1} \otimes b_j.\] (Compare \cite[p.~20, Theorem 6.3]{adams2})
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We begin with (ii). The formal properties of $\varepsilon$ are given in \cite{adams3}. Instead of saying $\varepsilon$ is induced by $\mu : \mathrm{MU} \wedge \mathrm{MU} \lar{} \mathrm{MU}$, we may proceed as follows. Let $x \in \mathrm{MU}_\ast(\mathrm{MU})$, let $1 \in \mathrm{MU}^0(\mathrm{MU})$ be the class of the identity map $1 : \mathrm{MU} \lar{} \mathrm{MU}$, and let $\langle 1, x\rangle \in \pi\ast(\mathrm{MU})$ be their Kronecker product; then \[\varepsilon(x) = \langle 1, x\rangle.\] 
+
+Applying the naturality of the Kronecker product to the map $\mathrm{MU} \lar{} \mathrm{MU}$, we find that 
+
+\begin{align*}
+\langle 1, b_i\rangle & = \big\langle x^{\mathrm{MU}}, \beta_{i + 1}\big\rangle \\ & = 0 \text { for } i > 0.
+\end{align*}
+
+We turn to part (iii) of (\ref{thm:p2c11.3}). The formal properties of $c$ are given in \cite{adams3}. By \eqref{eqn:p2c09.5} we have \[x^R = \sum_{i \ge 0} b_i^{\mathrm{MU}} \big(x^L\big)^{i + 1}.\] Applying $c$, we find \[x^L = \sum_{i \ge 0} (c b_i^{\mathrm{MU}}) \big(x^R\big)^{i + 1}.\] So $c b_i = m_i^{\mathrm{MU}}$.
+
+We turn to part (iv) of (\ref{thm:p2c11.3}). The formal properties of $\psi$ are given in \cite{adams3}. We begin by determining the coproduct map \[\psi : \mathrm{MU}_\ast(\mathbb {CP}^\infty) \lar{} \mathrm{MU}_\ast(\mathrm{MU}) \otimes_{\pi_\ast(\mathrm{MU})} \mathrm{MU}_\ast(\mathbb {CP}^\infty).\] By definition, this coproduct map is the following composite.
+
+\begin{center}
+\begin{tikzcd}
+\mathrm{MU}_\ast(\mathbb {CP}^\infty) \arrow[r] & (\mathrm {MU} \wedge \mathrm {MU}) (\mathbb {CP}^\infty)                                                       \\
+                                             & \mathrm{MU}_\ast(\mathrm{MU}) \otimes_{\pi_\ast(\mathrm{MU})} \mathrm{MU}_\ast(\mathbb {CP}^\infty) \arrow[u, "\cong"']
+\end{tikzcd}
+\end{center}
+
+Here the first factor can be described by adopting the notation of the proof of \eqref{prop:p2c09.4}; it maps $\beta_i \in \mathrm{MU}_{2i} (\mathbb {CP}^\infty)$ into $\beta_i^L \in (\mathrm{MU} \wedge \mathrm{MU})_{2i}(\mathbb {CP}^\infty)$. The isomorphism maps the element $1 \otimes \beta_i$ in the tensor-product into $\beta_i^R \in (\mathrm{MU} \wedge \mathrm{MU})_{2i}(\mathbb {CP}^\infty)$. By \eqref{eqn:p2c09.5} we have \[x^R = \sum_{i \ge 0} b_i^{\mathrm{MU}} \big(x^L\big)^{i + 1}\] and therefore \[(x^R)^j = \sum_k \bigg(\sum_{i \ge 0} b_i^{\mathrm{MU}}\bigg)_k^j \big(x^L\big)^{j + k}.\]
+
+Dualizing, we find \[\beta_i^L = \sum_{0 \le j \le i} \bigg(\sum_k b_k^{\mathrm{MU}}\bigg)_{i - j}^j \otimes \beta_j^R;\] that is 
+\begin{equation}
+\tag{11.4} 
+\label{eqn:p2c11.4}
+\psi \beta_i = \sum_{0 \le j \le i} \bigg(\sum_k b_k^{\mathrm{MU}}\bigg)_{i - j}^j \otimes \beta_j.
+\end{equation}
+
+(Note that this formula determines the coaction map \[\psi : \mathrm{MU}_\ast(\mathrm {BU}) \lar{} \mathrm{MU}_\ast(\mathrm{MU}) \otimes_{\pi_\ast(\mathrm{MU})} \mathrm{MU}_\ast(\mathrm{BU})\] for the space BU) Transferring \eqref{eqn:p2c11.4} to MU by the ``inclusion'' $\mathbb {CP}^\infty = \mathrm{MU}(1) \lar{} \mathrm{MU}$, we find \[\psi b_{i - 1} = \sum_{0 \le j - 1 \le i - 1} \bigg(\sum_{\ell \ge 0} b_{\ell}\bigg)^j_{i - j} \otimes b_{j - 1},\] which is equivalent to the result given. This completes the proof of \eqref{thm:p2c11.3}.
+\end{proof}
+
+\begin{notes}
+Consider the subalgebra \[S_\ast = \bbZ[b_1, b_2, \cdots, b_n, \cdots]\] (compare \cite[p.~20, Theorem 6.3]{adams2}.) The product map $\phi$, diagonal map $\psi$ and conjugation $c$ all carry this subalgebra to itself, the counit restricts to give a map \[\varepsilon : S_\ast \lar{} \bbZ\] such that $\varepsilon(1) = 1$, $\varepsilon(b_i) = 0$ for $i \ge 1$. We conclude that the restriction of $c$ to this subalgebra must coincide with the conjugation it would have if considered in its own right as a Hopf algebra over $\bbZ$. 
+\end{notes}
+\end{document} 

@@ -1,0 +1,495 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+
+\chapter{Products}
+\label{sec:p3c09}
+\par There are four external products we need: an external product in homology, an external product in cohomology and two slant products. Perhaps I should give some motivation for the slant products. The first thing to say is that I need one of them for the duality theorems. The second is to point to the case of ordinary homology. There the Eilenberg-Zilber theorem gives one chain equivalences
+\[C_\ast(X) \otimes C_\ast(Y) \lar{\mu} C_\ast(X\times Y)\lar{\Delta}C_\ast(X) \otimes C_\ast(Y).\]
+So if we have a cycle $u$ in $X$ and a cycle $v$ in $Y$,then $\mu$ gives us a cycle $\mu(u\otimes v)$ on $X \times Y$, whence the external homology product
+\[H_\ast(X) \otimes H_\ast(Y) \lar{\mu_\ast}H_\ast(X\times Y).\]
+Also we can dualize $\Delta:$ if $u$ is a cocycle in $X$ and $v$ is a cocycle in $Y$, then $\Delta^\ast(u\otimes v)$ is a cocycle in $X \times Y$ , whence the external product in cohomology
+\[H^\ast(X)\otimes H^\ast(Y) \lar{\Delta^\ast}H^\ast(X\times Y)\]
+But you could also consider $\mu(x\otimes y)$ as a function of $x$ with $y$ fixed, and then dualize it, so as to get
+\[C^\ast(X\times Y) \lar{} C^\ast(X) \text{ depending on $y$,}\]
+that is,
+\[C^\ast(X \times Y) \otimes C_\ast(Y) \lar{} C^\ast(X),\]
+whence
+\[H^\ast(X\times Y)\otimes H_\ast(Y) \lar{} H^\ast(X).\]
+Similarly, if we had a cocycle $C_\ast(X) \lar{u} \bZ$, we could form
+\[C_\ast(X \times Y) \lar{\Delta} C_\ast(X)\otimes C_\ast(Y) \lar{u\otimes 1} C_\ast(Y),\]
+and so get
+\[H^\ast(X)\otimes H_\ast(X\times Y) \lar{} H_\ast(Y).\]
+If anything, these products are even more obvious with spectra.  Suppose I want to define products in generalized theories, say
+\[E^\ast(X) \otimes F^\ast(Y) \lar {} G_\ast(X \wedge Y)\]
+where $X$ and $Y$ are spectra, or
+\[\widetilde {E^\ast}(X) \otimes \widetilde {F^\ast}(Y) \lar{} \widetilde {G^\ast}(X \wedge Y)\]
+where $X$ and $Y$ are complexes with base-point. Then I should assume given a pairing, i.e., a map $\mu : E \wedge F \lar {} G$ of spectra. But then I might as well consider the case $G = E \wedge F$, because everything follows from it by naturality.
+\begin{enumerate}
+	\item[(i)] The external product in cohomology is a map \[E^p(X) \otimes F^q(Y) \lar{} (E \wedge F)^{p + q} (X \wedge Y)\] defined as follows. If \[f \in E^p(X) = [X, E]_{-p}, \quad g \in F^q(Y) = [Y, F]_{-q}\] then \[f \wedge g \in [X \wedge Y, E \wedge F]_{-p - q} = (E \wedge F)^{p + q}(X \wedge Y).\] The result is written $f \barwedge g$ to distinguish it from the external product in homology.
+	% TODO bar wedge
+	\item[(ii)] The external product in homology is a map \[E_p(X) \otimes F_q(Y) \lar {} (E \wedge F)_{p + q}(X \wedge Y).\] To define it, suppose \[f \in E_p(X) = [S, E \wedge X]_p, \quad g \in F_q(Y) = [S, F \wedge Y]_q,\] and form \[S \vra{f \wedge g} E \wedge X \wedge F \wedge Y \vra {1 \wedge c \wedge 1} E \wedge F \wedge X \wedge Y.\] This gives \[f \underline \wedge g \in (E \wedge F)_{p + q}(X \wedge Y),\] the external product in homology.
+\end{enumerate}
+In order to see the slant products, one way is to suppose \(X\) and \(Y\) are finite complexes. Suppose given an element of \(E^\ast(X \wedge Y)\), represented by a map
+\[S \lar{f} E \wedge (X \wedge Y)^\ast = E \wedge X^\ast \wedge Y^\ast,\]
+and suppose given an element of $F_\ast(Y)$, represented by a map 
+\[S \lar{g} F \wedge Y.\]
+Then we can form
+\[S \vra{f \wedge g} E \wedge (X^\ast \wedge Y^\ast) \wedge F \wedge Y \vra{1 \wedge c \wedge 1} E \wedge F \wedge (X^\ast \wedge Y^\ast) \wedge Y \vra{1 \wedge 1 \wedge 1 \wedge e} E \wedge F \wedge X^\ast;\]
+this gives an element of $(E \wedge F)^\ast(X)$. Similarly, suppose given an element of $E^\ast(X)$, represented by a map 
+\[S \lar{f} E \wedge X^\ast,\]
+and an element of $F_\ast(X \wedge Y)$, represented by a map 
+\[S \lar{g} F \wedge X \wedge Y.\]
+Then we get
+\[S \vra{f \wedge g} E \wedge X^\ast \wedge F \wedge X \wedge Y \vra{1 \wedge c \wedge 1 \wedge 1} E \wedge F \wedge X^\ast \wedge X \wedge Y \vra{1 \wedge 1 \wedge e \wedge 1} E \wedge F \wedge Y;\]
+this gives an element of $(E \wedge F)_\ast(Y)$.
+
+%TODO: fill in this reference
+It follows from \S\ref{sec:p3c5} that these constructions are equivalent to the following ones, which work whether $X$ and $Y$ are finite or not. 
+\begin{enumerate}
+	\item[(i)] The first slant product is a map \[E^p(X \wedge Y) \otimes F_q(Y) \lar{} (E \wedge F)^{p - q}(X).\] 
+	If $f : X \wedge Y \lar{} E$ represents an element of $E^p(X \wedge Y)$ and $g : S \lar {} F \wedge Y$ represents an element of $F_q(Y)$, we form
+	\[X \lar {1 \wedge g} X \wedge F \wedge Y \lar {1 \wedge c} X \wedge Y \wedge F \lar {f \wedge 1} E \wedge F.\]
+	The result is written $f/g$.
+	\item[(ii)] The second slant product \[E^p(X) \otimes F_q(X \wedge Y) \lar{} (E \wedge F)_{-p + q}(Y)\] is defined by taking \[X \lar{f} E \text { and } S \lar{g} F \wedge X \wedge Y\] and forming \[S \lar{g} F \wedge X \wedge Y \vra{c \wedge 1} X \wedge F \wedge Y\vra{f \wedge 1 \wedge 1} E \wedge F \wedge Y.\] This result is written $f \backslash g$. 
+\end{enumerate} 
+
+\begin{notes}
+The following conventions are useful. 
+
+\begin{enumerate}
+    \item[(i)] Fractions have the same variance as the numerator, and the opposite variance of the denominator.
+    \item [(ii)] Pay strict attention to the order of writing things on the page. 
+    
+    \begin{enumerate}
+        \item[(a)] Keep the cohomology variables (which are like functions) on the left of the homology variables. (which are like arguments) That way both $f/g$ and $f \backslash g$ means composites in which you first apply $g$ and afterwards apply $f$.
+        \item[(b)] If you have a class in $E^\ast(X \wedge Y)$ and want to ``divide off'' a homology class on one factor, by (a) you put the homology class on the right, so let it be a class in $F_\ast(Y)$ rather than $F_\ast(X)$. If you have a class in $F_\ast(X\wedge Y)$ and you want to divide it into a cohomology class on one factor, then by $(a)$ you want to put the cohomology class on the left, so let it be a class in $E^\ast(X)$ rather than $E^\ast (Y)$  
+    \end{enumerate}
+\end{enumerate}
+\end{notes} 
+
+Of course, once we have the external products for spectra, we get them for CW-complexes with base-point by specializing to suspension spectra. We then get them for relative groups by turning the handle. Note that if \(X, A\) and \(Y, B\) are pairs, then
+
+\[X/A \wedge Y/B = X \times Y/(A \times Y \cup X \times B)\]
+So for the relative groups we have the following products
+\[E^p(X, A) \otimes F^q(Y, B) \lar{\overline \times} (E \wedge F)^{p + q}(X \times Y, A \times Y \cup X \times B),\]
+\[E_p(X, A) \otimes F_q(Y, B) \lar{\underline \times} (E \wedge F)_{p + q}(X \times Y, A \times Y \cup X \times B),\]
+\[E^p(X \times Y, A \times Y \cup X \times B) \otimes F_q(Y, B) \lar{/} (E \wedge F)^{p - q}(X, A),\]
+\[E^p(X, A) \otimes F_q(X \times Y, A \times Y \cup X \times B) \lar{\backslash} (E \wedge F)_{-p + q}(Y, B).\]
+These products have various properties, of which we consider first naturality. I will do this in the case of spectra, because there we have to provide for maps of degree $r$. But first we need a remark about induced homomorphisms in cohomology. Let \(f : X \lar{} Y\) be a morphism of degree $-p$, and let $g : Y \lar{} E$ be a morphism of degree $-q$, i.e., an element of $E^q(Y)$. Then the obvious thing to do is define 
+\[f^\ast : E^q(Y) \lar{} E^{p + q}(X)\]
+by: 
+\[(g)f^\ast = gf.\]
+But we usually write $f^\ast$ on the left, and so we take care to introduce the proper sign: 
+\[f^\ast(g) = (-1)^{p q} gf\]
+For the next proposition assume for parts (i) to (iv) that we have the morphisms
+\[f : X \lar{} X' \text { and } g : Y \lar{} Y'\]
+
+\begin{proposition}\label{prop:p3ch09.1}
+\begin{enumerate}
+    \item[(i)] If \(u \in E^\ast(X')\), \(v \in F^\ast(Y')\), then \[(u \barwedge v)(f \wedge g)^\ast = (-1)^{|f||v|} u f^\ast \barwedge v g^\ast\] or equivalently \[(f \wedge g)^\ast (u \barwedge v) = (-1)^{|g| |u|} (f^\ast u) \barwedge (g^\ast v).\]
+    \item[(ii)] If \(u \in E_\ast(X)\), \(v \in F_\ast(Y)\), then \[(f \wedge g)_\ast(u \underline \wedge v) = (-1)^{|g| |u|} (f_\ast u) \underline \wedge (g_\ast v).\] 
+    \item[(iii)] If \(u \in E^\ast(X' \wedge Y')\), \(v \in F_\ast(Y)\), then \[(u(f \wedge g)^\ast)/v = (-1)^{|f|(|g| + |v|)} (u/g_\ast v)f^\ast\] or equivalently \[((f \wedge g)^\ast u)/v = (-1)^{|g| |u|} f^\ast (u/g_\ast v).\]
+    \item[(iv)] If \(u \in E^\ast(X')\), \(v \in F_\ast(X \wedge Y)\), then \[u \backslash (f \wedge v)_\ast v = (-1)^{|g|(|u| + |f|)} g_\ast((uf^\ast) \backslash v)\] or equivalently \[u \backslash (f \wedge g)_\ast v = (-1)^{|g| |u| + |g| |f| + |f| |u|} g_\ast((f^\ast u) \backslash v).\]
+    \item[(v)] With respect to morphisms $E$ and $F$, all the naturality statements are the same. Suppose given morphisms $e : E \lar{} E'$, $f : F \lar{} F'$. Then \[(e \wedge f)_\ast (u \quad v) = (-1)^{|f| |u|} (e_\ast u) \quad (f_\ast v),\] where the absence of a product symbol indicates that any of the four products may be used. 
+\end{enumerate}
+\end{proposition}
+
+The proofs are elementary diagram-chasing.
+
+\begin{proposition}\label{prop:p3ch09.2}
+All these products are biadditive.
+\end{proposition}
+
+We have two commutativity statements. 
+
+\begin{proposition}\label{prop:p3ch09.3}
+\begin{itemize}
+    \item[(i)] Suppose \(u \in E^p(X)\), \(v \in F^q(Y)\). Then \[v \barwedge u = (-1)^{pq} c_\ast c^\ast(u \barwedge v).\]
+    \item[(ii)] Suppose \(u \in E_p(X)\), \(v \in F_q(Y)\). Then \[v \underline \wedge u = (-1)^{pq} (c \wedge c)_\ast (u \underline \wedge v).\]
+\end{itemize}
+\end{proposition}
+
+Of course, if we are going to apply maps \(\mu : E \wedge F \lar{} G\) and \(\mu' : F \wedge E \lar{} G\) such that: 
+
+\begin{center}
+\begin{tikzcd}
+E \wedge F \arrow[dd, "c"] \arrow[rd, "\mu"] &   \\
+                                             & G \\
+F \wedge E \arrow[ru, "\mu'"]                &  
+\end{tikzcd}
+\end{center}
+is a commutative diagram, then this absorbs the effect of \(c : E \wedge F \lar{} F \wedge E\). 
+
+We have eight associativity statements. The first statement is obvious: suppose \[u \in E^p(X), \quad v \in F^q(Y), \quad w \in G^r(Z).\] Then we have \[(u \barwedge v) \barwedge w = u \barwedge (v \barwedge w) \in (E \wedge F \wedge G)^{p + q + r}(X \wedge Y \wedge Z).\] If we were using pairings of spectra, we would suppose that they made the following diagram commutative. 
+
+\begin{center}
+\begin{tikzcd}
+E \wedge F \wedge G \arrow[rr, "\lambda \wedge 1"] \arrow[dd, "l \wedge \mu"] &  & H \wedge G          \\
+                                                                              &  &                     \\
+E \wedge K \arrow[rr, "\pi"]                                                  &  & L \arrow[uu, "\nu"]
+\end{tikzcd}
+\end{center}
+
+(Here, of course, $H, K$ and $L$ are some spectra fitting into such a diagram.) Then we would obtain \[(u \barwedge v) \barwedge w = u \barwedge (v \barwedge w) \in L^{p + q + r}(X \wedge Y \wedge Z).\] The associativity law for the external homology product is entirely similar. With our conventions, the other six appear as very natural rules for manipulating fractions. For example, suppose \[x \in E^\ast(X), \quad v \in F^\ast(Y \wedge Z), \quad z \in G_\ast(Z).\] Then $x \barwedge v \in (E \wedge F)^\ast(X \wedge Y \wedge Z)$, $(x \barwedge v)/z \in (E \wedge F \wedge G)^\ast(X \wedge Y)$. 
+
+On the other hand, $v/z \in (F \wedge G)^\ast(Y)$, $x \barwedge (v/z) \in (E \wedge F \wedge G)^\ast(X \wedge Y)$. We have $(x \barwedge v)/z = x \barwedge (v/z)$.
+
+\begin{theorem}\label{thm:p3ch09.4}
+\begin{enumerate}
+    \item[(i)] If $x \in E^p(X)$, $y \in F^q(Y)$, $z \in G^r(Z)$ then \[(x \barwedge y) \barwedge z = x \barwedge (y \barwedge z) \in (E \wedge F \wedge G)^{p + q + r}(X \wedge Y \wedge Z).\]
+    \item[(ii)] If $x \in E^p(X)$, $u \in F^q(Y \wedge Z)$, $z \in G_r(Z)$ then \[x \barwedge (u/z) = (x \barwedge u)/z \in (E \wedge F \wedge G)^{p + q - r}(X \wedge Y).\]
+    \item[(iii)] If $v \in E^p(X \wedge Z)$, $y \in F^q(Y)$, $u \in G_r(Y \wedge Z)$ then \[v/(y \backslash u) = [(1 \wedge c)^\ast(v \barwedge y)]/u \in (E \wedge F \wedge G)^{p + q - r}(X).\]
+    \item[(iv)] If $t \in E^p(X \wedge Y \wedge Z)$, $z \in F_q(Z)$, $y \in G_r(Y)$ then \[(t/z)/y = t/(c_\ast(z \underline \wedge y)) \in (E \wedge F \wedge G)^{p - q - r}(X).\]
+    \item[(v)] If $y \in E^p(Y)$, $x \in F^q(X)$, $t \in G_r(X \wedge Y \wedge Z)$ then \[y \backslash (x \backslash t) = (c^\ast(y \barwedge x)) \backslash t \in (E \wedge F \wedge G)_{-p - q + r}(Z).\]
+    \item[(vi)] If $w \in E^p(X \wedge Y)$, $y \in F_q(Y)$, $v \in G_r(X \wedge Z)$ then \[(w/y)\backslash v = w \backslash [(c \wedge 1)_\ast (y \underline \wedge v)] \in (E \wedge F \wedge G)_{-p + q + r}(Z).\]
+    \item[(vii)] If $x \in E^p(X)$, $w \in F_q(X \wedge Y)$, $z \in G_r(Z)$ then \[(x \backslash w) \underline \wedge z = x \backslash (x \underline \wedge z) \in (E \wedge F \wedge G)_{-p + q + r}(Y \wedge Z).\]
+    \item [(viii)] If $x \in E_p(X)$, $y \in F_q(Y)$, $z \in G_r(Z)$ then \[(x \underline \wedge y) \underline \wedge z = x \underline \wedge (y \underline \wedge z) \in (E \wedge F \wedge G)_{p + q + r}(X \wedge Y \wedge Z).\]
+\end{enumerate}
+\end{theorem}
+
+The proofs, as usual, are done by diagram-chasing. 
+
+Now we recall the sphere spectrum $S$ acts as a unit for the smash-product. It follows that we can identify \[E_p(S) = [S, E]_p\] with \[E^{-p}(S) = [S, E]_p.\]
+
+\begin{proposition}\label{prop:p3ch09.5}
+Suppose $s$ is of this sort, say $s \in [S, E]_\ast$, and $y \in F_\ast(Y)$. Then \[s \backslash y = s \barwedge y \in (E \wedge F)_\ast(Y).\] Suppose $t$ is of this sort, say $t \in [S, F]_\ast$, and $x \in E^\ast(X)$. Then \[x/t = x \barwedge t \in (E \wedge F)^\ast(X).\] Suppose the result is of this sort, say $x \in E^\ast(X)$, $y \in F_\ast(X)$. Then \[x \backslash y = x/y \in [S, E \wedge F]_\ast.\]
+\end{proposition}
+
+The proof is diagram-chasing. The third case gives the \emph{Kronecker product} \index{Kronecker product} $\langle x, y\rangle$. The explicit definition is as follows. Suppose given $X \lar{x} E$, $S \lar{y} F \wedge X$. Form \[S \lar{y} F \wedge X \lar{c} X \wedge F \lar{x \wedge 1} E \wedge F.\] The naturality properties of the Kronecker product are obvious and well known. 
+
+\begin{proposition}\label{prop:p3ch09.6}
+Suppose given $f : X \lar{} X'$ (of any degree), $x \in E^\ast(X')$, $y \in F_\ast(X)$. Then \[\langle x'f^\ast, y\rangle = \langle x', f_\ast y\rangle,\] or equivalently \[\langle f^\ast x', y\rangle = (-1)^{|f| |x'|} \langle x', f_\ast y\rangle.\] 
+\end{proposition}
+
+We know that in the classical case the two slant products are obtained from the two more usual products by dualizing; in other words, they are related to them by the Kronecker product. We now state this for the generalised case.
+
+\begin{proposition}\label{prop:p3ch09.7}
+\begin{enumerate}
+    \item[(i)] Suppose $u \in E^p(X \wedge Y)$, $y \in F_q(Y)$, $x \in G_r(X)$. Then \[\langle u/y, x\rangle = \langle u, c_\ast(y \underline \wedge x)\rangle \in [S, E \wedge F \wedge G]_{-p + q + r}.\]
+    \item[(ii)] Suppose $y \in E^p(Y)$, $x \in G^q(X)$, $u \in G_r(X \wedge Y)$. Then \[\langle y, x \backslash u\rangle = \langle c^\ast(y \barwedge x), u\rangle \in [S, E \wedge F \wedge G]_{-p + q + r}.\]
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+$\langle u/y, x\rangle$ may be viewed as either $(u/y)/x$ or $(u/y) \backslash x$. So part (i) follows by substituting into the appropriate associativity relation, number (iv) or (vi) on the list. Similarly for part (ii), using (v) or (iii). 
+\end{proof}
+
+These formulae are useful as a heuristic guide. For example, suppose you know some formula for the product $y \barwedge x$, and want to know the corresponding formula for the product $x \backslash u$. I really have in mind something like a coboundary formula, but I haven't yet done quite enough to use this case as an illustration, so let me consider a naturality formula. It's rather trivial, but it will do as an illustration of the method. Suppose $y \in E^p(Y)$, $x \in F^q(X)$, $u \in G_{p + q}(X' \wedge Y')$, $g : Y' \lar{} Y$, $f : X' \lar{} X$. We write down:
+\begin{center}
+    \begin{tikzcd}[row sep=large,column sep=large]
+    \langle(y \barwedge x)(g \wedge f)^\ast, c_\ast u \rangle\arrow[d,equal]& =(-1)^{|x||g|}\langle yg^\ast \barwedge xf^\ast xf^\ast, c_\ast u \rangle\\
+    (-1)^{|f||g|}\langle y\barwedge x, c_\ast(f \wedge g)_\ast u\rangle & (-1)^{|x||g|}\langle yg^\ast,xf^\ast\backslash u\rangle\arrow[u,equal]\\
+    (-1)^{|f||g|}\langle y,x\backslash(f\wedge g)_\ast u\rangle\arrow[u,equal] & (-1)^{|x||g|}\langle y,g_\ast(xf^\ast\backslash u)\rangle.\arrow[u,equal]
+    \end{tikzcd}
+\end{center}
+If we knew that pairing with $y$ were non-singlular, we would have \[(-1)^{|f||g|}x\backslash(f\wedge g)_\ast u=(-1)^{|x||g|}g_\ast((xf^\ast)\backslash u).\] But this argument is indeed a valid proof, because we can take \[y=1 \in Y^0(Y).\]
+\begin{proposition}\label{prop:p3ch09.8}
+    Suppose $x^\ast \in E^p(X)$, $y^\ast \in F^q(Y)$, $x_\ast \in G_r(X), y_\ast \in H_s(Y)$. Then \[\langle x^\ast \barwedge y^\ast, x_\ast \barwedge y_\ast\rangle = (-1)^{qr}(1 \wedge c \wedge 1)_\ast \langle x^\ast,x_\ast\rangle\langle y^\ast,y_\ast\rangle .\] Here $1 \wedge c \wedge 1: E \wedge G \wedge F \wedge H \longrightarrow E \wedge F \wedge G \wedge H. $
+\end{proposition}
+
+\begin{proof}
+Apply \ref{prop:p3ch09.7}, commutativity, and associativity law (ii) or (vii).
+\end{proof}
+
+Now we would like to write down the properties of our products for boundary and coboundary maps, One of them is immediate, that for the Kronecker product. We simply observe that the boundary or coboundary is induced by a map \[ X/A \longrightarrow A \text{(of degree -1)};\] we have a naturality formula for the Kronecker product valid for morphisms of any degree, so we get the following formula.
+
+
+\par If $a \in E^P(A), u \in F_q(X,A)$ then $\langle a, \partial u \rangle = \langle a\delta,u\rangle=(-1)^p\langle\delta a,u\rangle$, where we make the same sign conventions as before about $f^\ast a$.
+
+\par In order to see what to expect in the other cases, let's go back to the classical case, and suppose given \[u \in C_\ast(X), \partial u \in C_\ast(A), v\in C_\ast(Y), \partial v \in C_\ast(B).\]
+
+Then we expect to have \[\partial (uv) = (\partial u)v + (-1)^{|u|}u(\partial v) \in C_\ast (A \times Y \cup X \times B).\] However the separate terms $(\partial u)v$ and $u(\partial v)$ do not define elements of $H_\ast(A \times Y \cup X \times B)$, so we have to work instead in \[H_\ast(A \times Y \cup X \times B, A \times B) = H_\ast(A \times Y, A \times B) \oplus H_\ast(X\times B, A\times B).\] Here $(\partial u)v$ defines an element in the first summand and $u(\partial v)$ in the second.
+
+\par Additional motivation can be obtained if we consider the possibility of arguments using the five lemma. We have the exact sequence \[E_p(A) \lar{} E_p(X) \lar{} E_p(X,A) \lar{} E_{p-1}(A).\]  If we tensor it with $F_q(Y,B)$ we get the left-hand column of the following diagram,
+
+%TODO: i and ii markings down left side
+\[
+\adjustbox{scale = 0.7, center} {
+\begin{tikzcd}
+{E_p(A) \otimes F_q(Y, B)} \arrow[dd] \arrow[r, "\underline \times"]                          & {(E \wedge F)_{p + q}(A \times Y, A \times B)} \arrow[rd, "\cong"]                     &                                                                            \\
+                                                                                         &                                                                                        & {(E \wedge F)_{p + q} (A \times Y \cup X \times B, X \times B)} \arrow[ld] \\
+{E_p(X) \otimes F_q(Y, B)} \arrow[d] \arrow[r, "\underline \times"]                           & {(E \wedge F)_{p + q}(X \times Y, X \times B)} \arrow[d]                               &                                                                            \\
+{E_p(X, A) \otimes F_q(Y, B)} \arrow[r, "\underline \times"] \arrow[dd, "\partial \otimes 1"] & {(E \wedge F)_{p + q} (X \times Y, A \times Y \cup X \times B)} \arrow[rd, "\partial"] &                                                                            \\
+                                                                                         &                                                                                        & {(E \wedge F)_{p + q - 1} (A \times Y \cup X \times B, X \times B)}        \\
+{E_{p - 1}(A) \otimes F_q(Y, B)} \arrow[r, "\underline \times"]                               & {(E \wedge F)_{p + q - 1}(A \times Y, A \times B)} \arrow[ru, "\cong"']                &           \arrow["I", "\shortmid"{marking}, bend right=90, no head, from=1-1, to=4-1]
+	\arrow["II", "\shortmid"{marking}, bend right=90, no head, from=4-1, to=6-1]                                                           
+\end{tikzcd}
+}\]
+
+
+\par The oblique isomorphisms identify the second column with the exact sequence of a triple. The section of the diagram labeled I is commutative by the naturality of $x$ , and we would like to know that the section labeled II is also commutative. So we wish to obtain commutative diagrams of the following form. 
+
+
+\begin{center}
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E_p(X,A) \otimes F_q(Y, B)} \arrow[dd,"\underline \times"] \arrow[r, "\partial \otimes 1"]   & {E_{p-1}(A) \otimes F_q(Y,B)} \arrow[d,"\underline \times"] \\
+                                                                                         & {(E \wedge F)_{p + q - 1}(A \times Y, A \times B)} \arrow[d,"\cong"] \\
+{(E \wedge F)_{p+q}(X\times Y, A \times Y \cup X \times B)} \arrow[r, "\partial"]        & {(E \wedge F)_{p+ q-1}(A \times Y \cup X \times B, X \times B)}  \\
+
+{E_p(X, A) \otimes F_q(Y, B)} \arrow[dd, "\underline \times"] \arrow[r, "1 \otimes \partial"] & {(E_p(X,A) \otimes F_{q-1}(B)} \arrow[d,"\underline \times"]   \\
+                                                                                         & {(E \wedge F)_{p+q-1}(X \times B, A \times B)} \arrow[d, "\cong"] \\
+{(E\wedge F)_{p+q}(X \times Y, A \times Y \cup X \times B)} \arrow[r,"\partial"] & {(E \wedge F)_{p + q - 1}(A \times Y \cup X \times B, A \times Y)}
+\end{tikzcd}}
+\end{center}
+
+Here we need a convention about signs. If $\theta : G \rightarrow G'$ and $\phi:H \rightarrow H'$ are homomorphisms of graded groups, their tensor product is defined by \[(\theta \otimes \phi)(g \otimes h) = (-1)^{|\phi||g|}\theta g \otimes \phi h.\]  In particular, $1 \otimes \partial$ is defined by $(1 \otimes \partial)(u \theta v) = (-1)^{|u|}u \otimes \partial v$.
+
+\par Of course we propose to obtain our commutative diagrams by applying the results we already have to geometrical diagrams.
+
+\begin{lemma}\label{lem:p3c09.9}  The following diagrams are commutative.
+\begin{center}
+\begin{tikzcd}
+(i) \\
+{\frac{A \wedge Y \cup X \wedge B}{X \wedge B}} \arrow[r] & {\frac{X \wedge Y}{X \wedge B}} \arrow[r] & {\frac{X \wedge Y}{A \wedge Y \cup X \wedge B}} \arrow[r,"J"] & {\frac{A \wedge Y \cup X \wedge B}{X \wedge B}} \\
+& & & {\frac{A \wedge Y}{A \wedge B}} \arrow[u,"\cong"]\\
+& & {\frac{X}{A}} \wedge \frac{Y}{B} \arrow[uu,"\cong"] \arrow[r,"j \wedge 1"] & {A \wedge \frac{Y}{B}} \arrow[u]
+\end{tikzcd}
+\end{center}
+\begin{center}
+\begin{tikzcd}
+(ii) \\
+{\frac{A \wedge Y \cup X \wedge B}{A \wedge Y}} \arrow[r] & {\frac{X \wedge Y}{A \wedge B}} \arrow[r] & {\frac{X \wedge Y}{A \wedge Y \cup X \wedge B}} \arrow[r,"J'"] & {\frac{A \wedge Y \cup X \wedge B}{A \wedge Y}} \\
+& & & {\frac{X \wedge B}{A \wedge B}} \arrow[u,"\cong"]\\
+& & {\frac{X}{A}} \wedge \frac{Y}{B} \arrow[uu,"\cong"] \arrow[r,"1 \wedge j'"] & {\frac{X}{B} \wedge B}  \arrow[u,"\cong"]
+\end{tikzcd}
+\end{center}
+\end{lemma}
+
+%TODO add reference inside this note
+\begin{notes}  The diagrams are valid as they stand for spectra. The maps $J, j, J', j'$ are the appropriate maps from the cofibre sequences, and they have degree $-1$. They may be replaced by maps of degree zero into the appropriate terms $S(\frac{A \wedge Y \cup X \wedge B}{X \wedge B}), S(\frac{A \wedge Y}{A \wedge B})$, etc, except that $1 \wedge j'$ in (ii) has to be replaced by \[\frac{X}{A} \wedge \frac{Y}{B} \xrightarrow{1\wedge j'} \frac{X}{A} \wedge S^1 \wedge B \xrightarrow{c \wedge 1} S^1 \wedge \frac{X}{A} \wedge B.\]
+
+With this interpretation the diagrams are valid if $X, Y,$ etc. are CW-complexes.  For the case of spectra, the two ways of writing the diagrams are equivalent, because we have the canonical equivalence $Z \sim S^1 \wedge Z$ of degree 1.
+
+\par It is sufficient to prove the commutativity of one of the diagrams, say the first; the other then follows by applying $c$ (and checking that $J$ corresponds to $J'$). But it is trivial to check the first diagram for CW-complexes by constructing the appropriate maps of $(X \cup CA) \wedge (Y \cup CB)$. The construction commutes with suspension on the right, and so passes
+to CW-spectra.
+
+\end{notes}
+
+%TODO ref to P3.1 and L9.9
+\par We now get the following eight commutative diagrams by applying Proposition \ref{prop:p3ch09.1} to the diagrams in Lemma \ref{lem:p3c09.9}. The morphisms $J, j$ and sign conventions are as above.
+
+\begin{theorem}\label{thm:p3ch09.10}
+The following diagrams are commutative.
+\begin{center}
+\begin{tikzcd}
+{E^p(A)\otimes F^q(\frac{Y}{B})} \arrow[d,"\barwedge"] \arrow[r,"j^\ast\otimes 1"]       & {E^{p+1}(\frac{X}{A}) \otimes F^q(\frac{Y}{B})} \arrow[d,"\barwedge"] \\
+{(E \wedge F)^{p+q}(A \wedge \frac{Y}{B})} \arrow[d,"\cong"]                        & {(E \wedge F)^{p+q+1}(\frac{X}{A} \wedge \frac{Y}{B})} \arrow[d,equals] \\
+{(E \wedge F)^{p+q}(\frac{A \wedge Y \cup X \wedge B}{A \wedge B})} \arrow[r,"J^\ast"] & {(E \wedge F)^{p+q+1}(\frac{X \wedge Y}{A \wedge Y \cup X \wedge B})}
+\end{tikzcd}
+\newline\newline\newline
+\begin{tikzcd}
+{E^p(\frac{X}{A})\otimes F^q(B)} \arrow[d,"\barwedge"] \arrow[r,"1 \otimes j^\ast"] & {E^p(\frac{X}{A}) \otimes F^{q+1}(\frac{Y}{B})} \arrow[d,"\barwedge"] \\
+{(E \wedge F)^{p+q}(\frac{X}{A} \wedge B)} \arrow[d,"\cong"]                  & {(E \wedge F)^{p+q+1}(\frac{X}{A} \wedge \frac{Y}{B})} \arrow[d,equals] \\
+{(E \wedge F)^{p+q}(\frac{A \wedge Y \cup X \wedge B}{A \wedge Y})} \arrow[r,"J^\ast"] & {(E \wedge F)^{p+q+1}(\frac{X \wedge Y}{A \wedge Y \cup X \wedge B})}
+\end{tikzcd}
+\newline\newline\newline
+\begin{tikzcd}
+{E^p(\frac{A\wedge Y \cup X \wedge B}{X \wedge B}) \otimes F_q\binom{Y}{B}} \arrow[d,"\cong \otimes 1"] \arrow[r,"J^\ast \otimes 1"] & {E^{p+1}(\frac{X\wedge Y}{A \wedge Y \cup X \wedge B}) \otimes F_q(\frac{Y}{B})} \arrow[d,equals] \\
+{E^p(A\wedge \frac{Y}{B}) \otimes F_q (\frac{Y}{B})}  \arrow[d,"/"] & {E^{p+1}(\frac{X}{A} \wedge \frac{Y}{B}) \otimes F_q (\frac{Y}{B})} \arrow[d,"/"] \\
+{(E \wedge F)^{p-q}(A)} \arrow[r,"j^\ast"] & {(E \wedge F)^{p-q+1}(\frac{X}{A})}
+\end{tikzcd}
+\newline\newline\newline
+\begin{tikzcd}
+{E^p(\frac{A\wedge Y \cup X \wedge B}{A \wedge Y})\otimes F_q(\frac{Y}{B})} \arrow[d,"\cong \otimes 1"] \arrow[r,"J^\ast \otimes 1"] & {E^{p+1}(\frac{X\wedge Y}{A \wedge Y \cup X \wedge B}) \otimes F_q(\frac{Y}{B})} \arrow[d,equals] \\
+{E^p(\frac{X}{A} \wedge B) \otimes F_q(\frac{Y}{B})} \arrow[d,"1 \otimes j_\ast"] & {E^{p+1}(\frac{X}{A} \wedge \frac{Y}{B}) \otimes F_q(\frac{Y}{B})} \arrow[d,"/"] \\
+{E^p(\frac{X}{A} \wedge B)\otimes F_{q-1}(B)} \arrow[r,"/"] & {(E \wedge F)^{p-q+1}(\frac{X}{A})}
+\end{tikzcd}
+\newline\newline\newline
+\begin{tikzcd}
+{E^p(A) \otimes F_q(\frac{A\wedge Y}{A \wedge Y \cup X \wedge B})} \arrow[d,equals] \arrow[r,"1 \otimes J_\ast"] & {E^p(A) \otimes F_{q-1}(\frac{A \wedge Y \cup X \wedge B}{X\wedge B})} \\
+{E^p(A) \otimes F_q(\frac{X}{A} \wedge \frac{Y}{B})} \arrow[d,"j^\ast \otimes 1"] & {E^p(A)\otimes F_{q-1}(A \wedge \frac{Y}{B})} \arrow[d,"\backslash"] \arrow[u,"1 \otimes \cong"]\\
+{E^{p+1}(\frac{X}{A})\otimes F_q(\frac{X}{A} \wedge \frac{Y}{B})} \arrow[r,"\backslash"] & {(E \wedge F)_{-p+q-1}(\frac{Y}{B})}
+\end{tikzcd}
+\newline\newline\newline
+\begin{tikzcd}
+{E^p(\frac{X}{A}) \otimes F_q(\frac{X\wedge Y}{A \wedge Y \cup X \wedge B})} \arrow[d,equals] \arrow[r,"1 \otimes J_\ast"] & {E^p(\frac{X}{A}) \otimes F_{q-1}(\frac{A \wedge Y \cup X \wedge B}{A\wedge Y})} \\
+{E^p(\frac{X}{A}) \otimes F_q(\frac{X}{A} \wedge \frac{Y}{B})} \arrow[d,"\backslash"] & {E^p(\frac{X}{A})\otimes F_{q-1}(\frac{X}{A}) \wedge B} \arrow[d,"\backslash"] \arrow[u,"1 \otimes \cong"]\\
+{(E\wedge F)_{-p+q}(\frac{Y}{B})} \arrow[r,"j_\ast"] & {(E \wedge F)_{-p+q-1}(B)}
+\end{tikzcd}
+\newline\newline\newline
+\begin{tikzcd}
+{E^p(\frac{X}{A}) \otimes F_q(\frac{Y}{B})} \arrow[d,"\underline{\wedge}"] \arrow[r,"j_1 \otimes 1"] & {E_{p-1}(A) \otimes F_q(\frac{Y}{B})} \arrow[d,"\underline{\wedge}"]\\
+{(E \wedge F)_{p+q}(\frac{X}{A} \wedge \frac{Y}{B})} \arrow[d,equals] & {(E\wedge F)_{p+q-1}(A \wedge \frac{Y}{B})} \arrow[d,"\cong"] \\
+{(E\wedge F)_{p+q}(\frac{X \wedge Y}{A \wedge Y \cup \wedge B})} \arrow[r,"J_\ast"] & {(E \wedge F)_{p+q-1}(\frac{A \wedge Y \cup X \wedge B}{A \wedge Y})}
+\end{tikzcd}
+\newline\newline\newline
+\begin{tikzcd}
+{E^p(\frac{X}{A}) \otimes F_q(\frac{Y}{B})} \arrow[d,"\underline{\wedge}"] \arrow[r,"1 \otimes j_\ast"] & {E_p(\frac{X}{A}) \otimes F_{q-1}(B)} \arrow[d,"\underline{\wedge}"]\\
+{(E \wedge F)_{p+q}(\frac{X}{A} \wedge \frac{Y}{B})} \arrow[d,equals] & {(E\wedge F)_{p+q-1}(\frac {X} {A} \wedge B)} \arrow[d,"\cong"] \\
+{(E\wedge F)_{p+q}(\frac{X \wedge Y}{A \wedge Y \cup X \wedge B})} \arrow[r,"J_\ast"] & {(E \wedge F)_{p+q-1}(\frac{A \wedge Y \cup X \wedge B}{A \wedge Y})}
+\end{tikzcd}
+\end{center}
+\end{theorem}
+
+By an immediate translation, we obtain commutative diagrams for the boundary and coboundary in relative groups of pairs. 
+
+\begin{theorem}
+\label{thm:p3c09.11}
+The following diagrams are commutative.
+\begin{center}
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E^p(A)\otimes F^q(Y, B)} \arrow[d,"\bar{X}"] \arrow[r,"\delta\otimes 1"] & {E^{p+1}(X, A) \otimes F^q(Y, B)} \arrow[dd,"\bar{X}"] \\
+{(E \wedge F)^{p+q}(A \times Y, A \times B)} \\
+{(E \wedge F)^{p+q}(A \times  Y \cup X \times B, X \times B)}  \arrow[u,"\cong"] \arrow[r,"\delta"] & {(E \wedge F)^{p+q+1}(X \times Y, A \times Y \cup X \times B)}
+\end{tikzcd}
+}
+\newline\newline\newline
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E^p(X, A)\otimes F^q(B)} \arrow[d,"\bar{X}"] \arrow[r,"1 \otimes \delta"] & {E^p(X, A) \otimes F^{q+1}(Y, B)} \arrow[dd,"\bar{X}"] \\
+{(E \wedge F)^{p+q}(X \times B, A \times B)} \arrow[d, "\cong"]\\
+{(E \wedge F)^{p+q}(A \times  Y \cup X \times B, A \times Y)}  \arrow[r,"\delta"] & {(E \wedge F)^{p+q+1}(X \times Y, A \times Y \cup X \times B)}
+\end{tikzcd}
+}
+\newline\newline\newline
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E^p(A \times Y \cup X \times B, X \times B)\otimes F_q(Y,B)} \arrow[d,"\cong \otimes 1"] \arrow[r,"\delta \otimes 1"] & {E^{p+1}(X\times Y, A\times Y \cup X \times B) \otimes F_q(Y, B)} \arrow[dd,"/"] \\
+{E^p(A \times Y, A \times B) \otimes F_q(Y,B)} \arrow[d, "\backslash"]\\
+{(E \wedge F)^{p-q}(A)}  \arrow[r,"\delta"] & {(E \wedge F)^{p-q+1}(X, A)}
+\end{tikzcd}
+}
+\newline\newline\newline
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E^p(A \times Y \cup X \times B, A \times Y)\otimes F_q(Y,B)} \arrow[d,"\cong \otimes 1"] \arrow[r,"\delta \otimes 1"] & {E^{p+1}(X\times Y, A\times Y \cup X \times B) \otimes F_q(Y, B)} \arrow[dd,"/"] \\
+{E^p(X \times B, A \times B) \otimes F_q(Y,B)} \arrow[d, "1 \otimes \partial"]\\
+{E^p(X \times B, A \times B) \otimes F_{q-1}{B}}  \arrow[r,"/"] & {(E \wedge F)^{p-q+1}(X, A)}
+\end{tikzcd}
+}
+\newline\newline\newline
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E^p(A) \otimes F_q(X \times Y, A \times Y  \cup X \times B)} \arrow[dd,"\delta \otimes 1"] \arrow[r,"1 \otimes \partial"] & {E^p(A)\otimes F_{q-1}(A\times Y \cup X \times B, X \times B)} \\
+& {E^p(A) \otimes F_{q-1}(A \times Y, A \times B)} \arrow[u, "1 \otimes \cong"] \arrow[d,"\backslash"] \\
+{E^{p+1}(X,A) \otimes F_q(X \times Y, A \times Y \cup X \times B)} \arrow[r,"\backslash"] & {(E \wedge F)_{-p+q-1}(Y, B)}
+\end{tikzcd}
+}
+\newline\newline\newline
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E^p(X,A) \otimes F_q(X \times Y, A \times Y  \cup X \times B)} \arrow[dd,"\backslash"] \arrow[r,"1 \otimes \partial"] & {E^p(X,A)\otimes F_{q-1}(A\times Y \cup X \times B, A \times Y)} \\
+& {E^p(X,A) \otimes F_{q-1}(X \times B, A \times B)} \arrow[u, "1 \otimes \cong"] \arrow[d,"\backslash"] \\
+{(E\wedge F)_{-p+q}(Y, B)} \arrow[r,"\partial"] & {(E \wedge F)_{-p+q-1}(B)}
+\end{tikzcd}
+}
+\newline\newline\newline
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E_p(X,A) \otimes F_q(Y, B)} \arrow[dd,"\underline{X}"] \arrow[r,"\partial \otimes 1"] & {E_{p-1}(A)\otimes F_q(Y, B)} \arrow[d, "\underline{X}"]\\
+& {(E\wedge F)_{p+q-1}(A \times Y, A \times B)} \arrow[d,"\cong"] \\
+{(E\wedge F)_{p+q}(X \times Y, A \times Y \cup X \times B)} \arrow[r,"\partial"] & {(E \wedge F)_{p+q-1}(A \times Y \cup X \times B, X \times B)}
+\end{tikzcd}
+}
+\newline\newline\newline
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+{E_p(X,A) \otimes F_q(Y, B)} \arrow[dd,"\underline{X}"] \arrow[r,"1 \otimes \partial"] & {E_p(X,A)\otimes F_{q-1}(B)} \arrow[d, "\underline{X}"]\\
+& {(E\wedge F)_{p+q-1}(X \times B, A \times B)} \arrow[d,"\cong"] \\
+{(E\wedge F)_{p+q}(X \times Y, A \times Y \cup X \times B)} \arrow[r,"\partial"] & {(E \wedge F)_{p+q-1}(A \times Y \cup X \times B, A \times Y)}
+\end{tikzcd}
+}
+\end{center}
+\end{theorem}
+
+Unfortunately, we need still more diagrams. Let's return to our original formula in the classical case, \[\partial(uv) = (\partial u) v + (-1)^{|u|} u(\partial v).\] We have written a relation between $\partial(uv)$ and $(\partial u) v$ by working in a group where we can ignore $u(\partial v)$, and a relation between $\partial(uv)$ and $u(\partial v)$ by working in a group where we can ignore $(\partial u)v$. It remains to write a relation between \[(\partial u) v \quad \text {and} \quad u(\partial v)\] by working in a group where we can ignore $\partial(uv)$. And in this case the answer is obvious. We have to say that the following diagram commutes up to a sign $-1$. 
+\[
+\adjustbox{scale = 0.9, center} {
+\begin{tikzcd}
+                                                             & {H_p(X, A) \otimes H_q(Y, B)} \arrow[ld, "\partial \otimes 1"'] \arrow[rd, "1 \otimes \partial"] &                                                             \\
+{H_{p - 1}(A) \otimes H_q(Y, B)} \arrow[dd, "\underline \times"'] &                                                                                                  & {H_p(X, A) \otimes H_{q - 1}(B)} \arrow[dd, "\underline \times"] \\
+                                                             & (-1)                                                                                             &                                                             \\
+{H_{p + q - 1}(A \times Y, A \times B)} \arrow[rd]           &                                                                                                  & {H_{p + q - 1}(X \times B, A \times B)} \arrow[ld]          \\
+                                                             & {H_{p + q - 1}(X \times Y, A \times B)}                                                          &                                                            
+\end{tikzcd}
+}\]
+
+We can easily prove such a result for the generalised case. Consider the following diagram. 
+\[
+\adjustbox{scale = 0.65, center} {
+\begin{tikzcd}
+                                                                                             & {E^p(X, A) \otimes F^q(Y, B)} \arrow[ld, "\partial \otimes 1"', dashed] \arrow[rd, "1 \otimes \partial", dashed] \arrow[dd, "\underline \times"] &                                                                                    \\
+{E_{p - 1}(A) \otimes E_q(Y, B)} \arrow[dddd, "\underline \times"', dashed, bend right=81.5]           &                                                                                                                                             & {E_p(X, A) \otimes F_{q - 1}(B)} \arrow[dddd, "\underline \times", dotted, bend left=81.5]    \\
+                                                                                             & {(E \wedge F)_{p + q}(X \times Y, A \times Y \cup X \times B)} \arrow[dd, "\partial_1"] \arrow[ld, "\partial"'] \arrow[rd, "\partial"]      &                                                                                    \\
+{(E \wedge F)_{p + q - 1}(A \times Y \cup X \times B, X \times B)}                           &                                                                                                                                             & {(E \wedge F)_{p + q - 1}(A \times Y \cup X \times B, A \times Y)}                 \\
+                                                                                             & {(E \wedge F)_{p + q - 1}(A \times Y \cup X \times B, A \times B)} \arrow[lu] \arrow[ru] \arrow[dd, "i_\ast"]                               &                                                                                    \\
+{(E \wedge F)_{p + q - 1}(A \times Y, A \times B)} \arrow[ru] \arrow[rd] \arrow[uu, "\cong"] &                                                                                                                                             & {(E \wedge F)_{p + q - 1}(X \times B, A \times B)} \arrow[uu, "\cong"'] \arrow[lu] \\
+                                                                                             & {(E \wedge F)_{p + q - 1}(X \times Y, A \times B)} \arrow[ru]                                                                               &                                                                                   
+\end{tikzcd}
+}\]
+
+The diagram displays \[(E \wedge F)_{p + q - 1} (A \times Y \cup X \times B, A \times B)\] as the direct sum \[(E \wedge F)_{p + q - 1} (A \times Y, A \times B) \oplus (E \wedge F)_{p + q - 1} (X \times B, A \times B).\] The composite $i_\ast \partial_1$ is zero, so the two paths from $(E \wedge F)_{p + q}(X \times Y, A \times Y \cup X \times B)$ to $(E\wedge F)_{p+q-1}(X\times Y, A\times B)$ around the outside of the lower hexagon gives maps whose sum is zero. This is the Eilenberg-Steenrod hexagon lemma. Of course, we know the result geometrically by \ref{lem:p3c06.9}. Now fill in the rest of the diagram by \ref{thm:p3c09.11}. 
+
+Proceeding in this way for the four products we obtain four more diagrams listed in the following theorem.
+
+\begin{theorem}\label{thm:p3ch09.12} 
+\begin{enumerate}(i) The following diagram is commutative up to a sign $-1$.
+\[
+\adjustbox{scale = 0.7, center} {
+\begin{tikzcd}
+                                                                                                 & E^p(A) \otimes F^q(B) \arrow[ld, "\delta \otimes 1"'] \arrow[rd, "1 \otimes \delta"] &                                                                                                   \\
+{E^{p + 1}(X, A) \otimes F^q(B)} \arrow[d, "\overline \times"]                                        &                                                                                      & E^p(A)\otimes F^{q + 1}(B) \arrow[d, "\overline \times"]                                               \\
+{(E \wedge F)^{p+q - 1} (X \times B, A \times B)}                                                & (-1)                                                                                 & {(E \wedge F)^{p+q - 1} (A \times Y, A \times B)}                                                 \\
+{(E \wedge F)^{p + q - 1}(A \times Y \cup X \times B, X \times B)} \arrow[rd] \arrow[u, "\cong"] &                                                                                      & {(E \wedge F)^{p + q - 1}(A \times Y \cup X \times B, X \times B)} \arrow[ld] \arrow[u, "\cong"'] \\
+                                                                                                 & (E \wedge F)^{p + q - 1}(A \times Y \cup X \times B)                                 &                                                                                                  
+\end{tikzcd}
+}\]
+
+(ii)\\
+
+\adjustbox{scale = 0.85, center} {
+\begin{tikzcd}
+                                                                                         & {E^p(A \times Y, A \times B) \otimes F_q(Y, B)} \arrow[dd, "\partial", dashed] \arrow[r, "/"] & (E \wedge F)^{p - q}(A) \arrow[dd, "\delta"] \\
+{E^p(X \times Y, A \times B)} \arrow[rd, "j^\ast"', dashed] \arrow[ru, "i^\ast", dashed] &                                                                                               &                                              \\
+                                                                                         & {E^p(X \times B, A \times B) \otimes F_{q - 1}(B)} \arrow[r, "/"]                             & {(E \wedge F)^{p - q + 1}(X, A)}            
+\end{tikzcd}
+}
+
+If $u \in E^p(X \times Y, A \times B)$ and $y \in F_q(Y, B)$, then \[\delta((i^\ast u)/y) = (-1)^{p + 1} (j^\ast u)/(\partial y).\]
+
+(iii)\\
+\adjustbox{scale = 0.85, center} {
+\begin{tikzcd}
+{(E \wedge F)_{-p + q}(Y, B)} \arrow[dddd, "\partial"'] \arrow[r, "\backslash"] & {E^p(A) \otimes F_q(A \times Y, A \times B)} \arrow[r, "\cong"] \arrow[dddd, "\delta"', dashed] & {F_q(A \times Y \cup X \times B, X \times B)}                                                                    \\
+                                                                                &                                                                                                 &                                                                                                                  \\
+                                                                                &                                                                                                 & {F_q(A \times Y, X \cup B)} \arrow[luu, "\theta"', dashed] \arrow[uu] \arrow[dd] \arrow[ldd, "\varphi"', dashed] \\
+                                                                                &                                                                                                 &                                                                                                                  \\
+(E \wedge F)_{-p + q - 1}(B) \arrow[r, "\backslash"]                            & {E^{p + 1}(X, A) \otimes F_q(X \times B, A \times B)} \arrow[r, "\cong"]                        & {F_q(A \times Y \cup X \times B, A \times Y)}                                                                   
+\end{tikzcd}
+}
+
+If $a \in E^p(A)$ and $u \in F_q(A \times Y \cup X \times B)$ then \[\partial(a \backslash (\theta u)) = -(\delta a) \backslash (\phi u).\]
+
+(iv) The following diagram is commutative up to a sign $-1$.\\
+\adjustbox{scale = 0.75, center} {
+\begin{tikzcd}
+                                                              & {E_p(X, A) \otimes F_q(Y, B)} \arrow[ld, "\partial \otimes 1"'] \arrow[rd, "1 \otimes \partial"] &                                                               \\
+{E_{p - 1}(A) \otimes F_q(Y, B)} \arrow[dd, "\underline \times"']  &                                                                                                  & {E_p(X, A) \otimes F_{q - 1}(B)} \arrow[dd, "\underline \times"]   \\
+                                                              & (-1)                                                                                             &                                                               \\
+{(E \wedge F)_{p + q - 1}(A \times Y, A \times B)} \arrow[rd] &                                                                                                  & {(E \wedge F)_{p + q - 1}(X \times B, A \times B)} \arrow[ld] \\
+                                                              & {(E \wedge F)_{p + q - 1}(X \times Y, A \times B)}                                               &                                                              
+\end{tikzcd}
+}
+\end{enumerate}
+\end{theorem}
+
+\emph{Internal Products} \index{Internal products}
+
+Following the idea of Lefschetz, these products are introduced by considering the diagonal map \[\Delta : X \lar{} X \times X.\] Here $X$ is a CW-complex. Given $u \in E^p(X, A)$, $v \in F^q(Y, B)$, we have defined \[u \overline \times v \in (E \wedge F)^{p + q}(X \times X, A \times X \cup X \times B)\] and we can define \[u \cup v = \Delta^\ast (u \overline \times v) \in (E \wedge F)^{p + q}(X, A \cup B).\] Similarly, given $u \in E^p(X, A)$, $v \in F_q(X, A \cup B)$, we can form \[\Delta_\ast v \in F_q(X \times X, A \times X \cup X \times B)\] and define \[u \cap v = u \backslash \Delta_\ast v \in (E \wedge F)_{-p + q} (X, B).\] Conversely, the $\overline \times$ and $\backslash$ products can be recovered from $\cup$ and $\cap$. Let $p_1 : X \times Y \lar{} X$, $p_2 : X \times Y \lar{} Y$ be the projections on the two factors.
+
+\begin{proposition}\label{prop:p3ch09.13}
+If $u \in E^p(X, A)$, $v \in F^q(Y, B)$ then \[u \overline \times v = (p_1^\ast u) \cup (p_2^\ast u) \in (E \wedge F)^{p + q}(X \times Y, A \times Y \cup X \times B).\] If $u \in E^p(X, A)$ and $v \in F_q(X \times Y, A \times Y \cup X \times B)$ then \[u \backslash v = p_{2^\ast} ((p_1^\ast u) \cap v) \in (E \wedge F)_{-p + q}(Y, B).\] 
+\end{proposition}
+
+The proof is immediate, by naturality. 
+
+Since we can recover the Kronecker product from either slant product, we can recover it from the cap product. 
+
+\begin{proposition}\label{prop:p3ch09.14}
+If $u \in E^p(X, A)$, $v \in F_q(X, A)$ then \[\langle u, v\rangle = \varepsilon_\ast (u \cap v) \in \pi_{-p + q}(E \cap F),\] where $\varepsilon : X \lar{} \mathrm{pt}.$ is the constant map. 
+\end{proposition}
+
+All the properties of the internal products can be deduced from those of the external ones, by naturality. The list of associativity properties, however, will look less symmetrical than in the case of the external products.
+\end{document}

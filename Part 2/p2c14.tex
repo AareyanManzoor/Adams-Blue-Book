@@ -1,0 +1,43 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\label{sec:p2c14}
+%wordslinger
+
+\chapter{The Hattori-Stong theorem}
+
+In this section I will present a slight reformulation of the result
+of Hattori and Stong. (Stong proved it first, but his name creeps to the
+back for reasons of euphony--it brings a phrase or sentence to such a
+resounding end.) This reformulation has been used by L. Smith \cite{smith}. 
+
+Recall from \cite[Lecture 3]{adams3} that for suitable spectra $E$, such as $E=K$, $E_\ast(X)$ is a comodule over the Hopf algebra $E_\ast(E)$. We say that an element in a comodule is \emph{primitive}\index{primitive element of a comodule} if $\psi x = 1\otimes x$; we write $\mathrm{PE}_\ast(X)$ for the subgroup of primitive elements in $E_\ast(X)$. One can see directly from the definition of $\psi$ that the Hurewicz homomorphism in $E$-homology, \[h:\pi_\ast(X)\lra E_\ast(X)\] maps into $\mathrm{PE}_\ast(X)$. 
+\begin{theorem}[after Stong \cite{stong} and Hattori \cite{hattori}]
+\label{thm:p2c14.1}
+The Hurewicz homomorphism in $K$-homology gives an isomorphism \[h:\pi_\ast(\mathrm{MU})\cong\mathrm{PK}_\ast(\mathrm{MU}).\]
+\end{theorem}
+\emph{Remark.} As soon as one knows that $\pi_\ast(\mathrm{MU})$ is torsion-free, it is easy to show that the Hurewicz homomorphism is a monomorphism. For example, consider the following commutative diagram.
+\begin{center}
+\begin{tikzcd}
+	{\pi_\ast(\mathrm{MU})} &&& {K_\ast(\mathrm{MU})} \\
+	\\
+	{\pi_\ast(\mathrm{MU})\otimes\mathbb{Q}} &&& {K_\ast(\mathrm{MU})\otimes\mathbb{Q}} \\
+	& {}
+	\arrow["h", from=1-1, to=1-4]
+	\arrow[from=1-4, to=3-4]
+	\arrow[from=1-1, to=3-1]
+	\arrow["{h\otimes 1}", from=3-1, to=3-4]
+\end{tikzcd}
+\end{center}
+We have $K_\ast(\mathrm{MU})\otimes\mathbb{Q}\cong\pi_\ast(K)\otimes\pi_\ast(\mathrm{MU})\otimes\mathbb{Q}$; so the bottom horizontal map and the left-hand vertical map are both monomorphisms.
+
+The essential content of the theorem, then, is that it identifies the images of $h$. 
+\begin{proof}[Proof of \ref{thm:p2c14.1}]
+For lack of time in writing out these notes to work out a direct proof, I will deduce this result from the formulation given by Hattori. (After all, Hattori's proof is very elegant.) Hattori
+proves precisely that if $x\in K_\ast(\mathrm{MU}$ and $nx\in \mathrm{Im}(h)$ for some integer
+$n\neq 0$, then $x \in\mathrm{Im}(h)$. It is rather easy to see that any primitive in $K_\ast(\mathrm{MU}) \otimes \mathbb{Q}$ lies in the image of $h\otimes 1$. So suppose $x \in \mathrm{PK}_\ast(\mathrm{MU})$; then
+by preceding sentence, $x$ lies in $\mathrm{Im}(h\otimes 1)$; that is, for some integer $n\neq 0$ we have $nx \in\mathrm{Im}(h)$. So by Hattori's form of the result, $x \in\mathrm{Im}(h)$,
+This proves \eqref{thm:p2c14.1}. 
+\end{proof}
+\emph{Exercise.} Deduce Hattori's form of the result from \eqref{thm:p2c14.1}.
+\end{document}

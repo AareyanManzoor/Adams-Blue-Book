@@ -1,0 +1,123 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c16}
+\chapter{The Brown-Peterson spectrum}
+In this section we introduce the Brown-Peterson spectrum, and discuss its properties. In particular, we prove the homology analogue of Quillen's result on the algebra $\mathrm{BP}^\ast(\mathrm {BP})$ of cohomology operations.
+
+We keep a prime $p$ fixed throughout. For any $X$, consider \[\varepsilon_\ast : \mathrm{MU} \mathbb Z_{(p)}^\ast(X) \lar{} \mathrm{MU} \mathbb Z_{(p)}^\ast(X),\] where $\varepsilon = \varepsilon_p$ as in \hyperref[sec:p2c15]{\S 15}. The image of $\varepsilon_\ast$ is a natural direct summand of $\mathrm {MU} \mathbb Z_{(p)}^\ast(X)$, so it is a functor turning cofibrations into exact sequences. It also satisfies the wedge axiom, so (by Brown's theorem in the category of spectra) it is a representable functor. We write $\mathrm{BP}$ for its representing spectrum, after Brown and Peterson \hyperref[sec:p2c7]{\S 7}. The map $\varepsilon$ is a map of ring-spectra, so the image of $\varepsilon_\ast$ is a cohomology functor with (external) products. Therefore BP is a ring spectrum. We have canonical maps of ring-spectra which make up the following commutative diagram. 
+
+\begin{center}
+\begin{tikzcd}
+\mathrm{MU} \mathbb Z_{(p)} \arrow[rr, "\varepsilon"] \arrow[rd, "\pi"'] &                                  & \mathrm{MU} \mathbb Z_{(p)} \\
+                                                            & \mathrm{BP} \arrow[ru, "\iota"'] &               
+\end{tikzcd}
+\end{center}
+
+We have $\pi_\iota = 1 : \mathrm{BP} \lar{} \mathrm{BP}$.
+
+If we were to follow Quillen's line \cite{quillen}, we would now copy the work of \ref{sec:p2c15}, taking $E = \mathrm{BP}$, to construct a whole family of cohomology operations from $\mathrm{MU} \mathbb Z_{(p)}$ to $\mathrm{BP}$, and prove that they factor through the canonical projections $\pi : \mathrm{MU} \mathbb Z_{(p)} \lar{} \mathrm{BP}$. 
+
+To construct the different operations of the family, Quillen introduces into his work formal variables $t_1, t_2, \ldots, t_n, \ldots$ and constructs an operation \[r_t : \mathrm{MU} \mathbb Z_{(p)} \lar{} \mathrm{BP}(\mathbb Z[t_1, t_2, \ldots, t_n, \ldots]).\] He then takes the components of this operation; for any sequence $\alpha = (\alpha_1, \alpha_2, \ldots, \alpha_n, \ldots)$ such that $\alpha_i = 0$ for all but a finite number of $i$, he takes the operation $r_\alpha$ to be the coefficient of $t_1^{\alpha_1} t_2^{\alpha_2} \ldots t_n^{\alpha_n}$ in $r_t$. 
+
+It would not really give us any trouble to afflict BP with coefficients $\mathbb Z[t_1, t_2, \ldots, t_n, \ldots]$; we could construct a Moore space $M$ for the graded ring $\mathbb Z[t_1, t_2, \ldots, t_n, \ldots]$ by taking a wedge of spheres of suitable dimensions, and giving it a suitable product; and then we could form $\mathrm{BP} \wedge M$. But since we are only trying to explain the direction of Quillen's work, we won't labor these details.
+
+We give BP a class $x^{\mathrm{BP}}$ by using the canonical maps $\mathrm{MU} \lar{} \mathrm{MU} \mathbb Z_{(p)} \lar{\pi} \mathrm{BP}$. The log function for BP is obtained by naturality from that for MU. Let us recall that \[m_i = \frac {[\mathbb {CP}^i]} {i + 1} \in \pi_\ast(\mathrm{MU}) \otimes \mathbb Q,\] and that $\pi : \mathrm{MU} \mathbb Z_{(p)} \lar{} \mathrm{BP}$ annihilates $m_i$ unless $i = p^f - 1$. Let us write \[m_{p - 1}, m_{p^2 - 1}, m_{p^3 - 1}, \text { etc.}\] for the images of these surviving generators in $\pi_\ast(\mathrm{BP}) \otimes \mathbb Q$. Then we have \[\log^{\mathrm{BP}} x = x + m_{p - 1} x^p + m_{p^2 - 1} x^{p^2} + m_{p^3 - 1} x^{p^3} \ldots\] 
+
+In our present language, Quillen's method is to construct $r_t$ by taking its modified log series to be 
+%TODO: not sure how to this alignment
+(Note how one can read off the effect on $r_t$ on $\pi_\ast(\mathrm{BQ}) \otimes \mathbb Q$ from this display.) The reason that the coefficients in the display are introduced is that they represent the cheapest way to get the corresponding formal power-series defined over $\pi_\ast(\mathrm{BP})$; for we have 
+
+\begin{align*}
+f^{-1} z & = \exp^{\mathrm{BP}} \mathrm{mog} z \\ & = z +_\mu t_1 z^{p} +_\mu t_2 z^{p^2} +_\mu t_3 z^{p^3} +_\mu \ldots.
+\end{align*}
+
+Here $\mu$ means $\mu^{\mathrm{BP}}$, the formal product defined over $\pi_\ast(\mathrm{BP})$.
+
+From our present point of view, Quillen's formal variables $t_i$ are crying to be located in $\mathrm{BP}_\ast(\mathrm{BP})$. That is: for any element \[u \in \mathrm{Hom}_{\mathbb Z}^\ast(\mathbb Z[t_1, t_2, \ldots], \pi_\ast(\mathrm {BP}))\] (say assigning the value $u_\alpha$ to $t_1^{\alpha_1} t_2^{\alpha_2} \ldots t_n^{\alpha_n}$) Quillen constructs a cohomology operation \[\sum_\alpha u_\alpha r_\alpha.\] 
+
+He then obtains each operation once and once only \cite[Theorem 5(i)]{quillen}, so he is asserting 
+
+\begin{align*}
+\mathrm {BP}^\ast(\mathrm {BP}) & = \mathrm{Hom}_{\mathbb Z}^\ast(\mathbb Z[t_1, t_2, \ldots], \pi_\ast(\mathrm{BP})) \\ & = \mathrm{Hom}_{\pi_\ast(\mathrm{BP})} (\mathrm{BP}_\ast(\mathrm{BP}), \pi_\ast(\mathrm {BP})).
+\end{align*}
+
+We therefore try to copy Quillen's work in homology. 
+
+\begin{theorem}
+\label{thm:p2c16.1}
+\begin{enumerate}
+    \item[(i)] There is a unique system of classes \[t_i \in \mathrm {BP}_{2(p^i - 1)} (\mathrm{BP})\] such that $t_0 = 1$ and in $\mathrm{BPQ}_\ast(\mathrm {BP})$ we have \[\eta_R (m_{p^k - 1}) = \sum_{i + j = k} m_{p^i - 1} (t_j)^{p_i}.\]
+    \item[(ii)] We have \[\mathrm{BP}_\ast(\mathrm{BP}) = \pi_\ast(\mathrm{BP}) [t_1, t_2, \ldots].\] (This describes the product map $\phi$ and the map $\eta_L$, or the structure as a left module over $\pi_\ast(\mathrm{BP})$; the map $\eta_R$, or the structure as a right module over $\pi_\ast(\mathrm{BP})$, is given by (i).)
+    \item[(iii)] The counit map is given by 
+    \[\varepsilon(1) = 1\]
+    \[\varepsilon(t_i) = 0 \text { for } i > 0.\]
+    
+    \item[(iv)] The conjugation is given by the following inductive formula. 
+    \[\sum_{h + i + j = k} m_{p^h - 1} (t_i)^{p^h} (ct_j)^{p^{h + i}} = m_{p^k - 1}.\]
+    
+    \item[(v)] The coproduct is given by the following inductive formula. \[\sum_{i + j = k} m_{p^i - 1} (\psi t_j)^{p^i} = \sum_{h + i + j = k} m_{p^h - 1} (t^i)^{p^h} \otimes (t_j)^{p^{h + i}}.\] 
+\end{enumerate}
+\end{theorem}
+
+The formula in part (i) restates that in Quillen's Theorem 5(iii) \cite{quillen}, and the formula in part (v) restates that in Quillen's Theorem 5(iv) \cite{quillen}. 
+
+As for the formulae that are claimed as ``inductive'', we note that (iv) does indeed contain the leading term $c t_k$ (take $h = 0$, $i = 0$) and otherwise contains terms in $c t_j$ with $j < k$; and similarly, (v) contains the leading term $\psi t_k$ (take $i = 0$) and otherwise contains terms in $\psi t_j$ with $j < k$. 
+
+\begin{proof}[Proof of (\ref{thm:p2c16.1})]
+We first prove the uniqueness of clause of part (i). The formula \[\eta_R (m_{p^k - 1}) = \sum_{i + j = k} m_{p^i - 1} (t_j)^{p^i}\] contains the leading term $t_k$ (take $i = 0$) and otherwise contains terms in $t_j$ with $j < k$; so by induction, it determines the image of $t_k$ in $\mathrm {BPQ}_\ast(\mathrm {BP})$. But the map \[\mathrm {BP}_\ast(\mathrm {BP}) \lar{} \mathrm{BPQ}_\ast(\mathrm{BP})\] is monomorphic, so the formula of part (i) characterises the $t_k$. 
+
+The essential part is the existence clause of part (i). We first recall the following equation from the proof of (\ref{prop:p2c09.4}): 
+\begin{equation}
+\tag{16.2}
+\label{eqn:p2c16.2}
+\sum_i \eta_R (m_i) (x^R)^{i + 1} = \sum_i m_i \bigg(\sum_{j \ge 0} M_j (x^R)^{j + 1}\bigg)^{i + 1}.
+\end{equation}
+
+Here
+
+\[m_i = \frac {[\mathbb {CP}^i]} {i + 1} \in \pi_{2i} (\mathrm {MU}) \otimes \mathbb Q\]
+\[\eta_R(m_i) \in \mathrm{MU}_{2i}(\mathrm{MU}) \otimes \mathbb Q\]
+\[M_j \in \mathrm{MU}_{2i}(\mathrm{MU}) \text { is as in Proposition } \ref{prop:p2c09.4},\]
+
+and the equation takes place in $(\mathrm {MU} \wedge \mathrm {MU} \mathbb Q)_\ast(\mathbb {CP}^\infty)$. To this equation we apply the homomorphism induced by the map $\pi \wedge \pi : \mathrm {MU} \wedge \mathrm{MU} \lar{} \mathrm{BP} \wedge \mathrm{BP}$. If, for the moment, we write $B_j$ for the image of $M_j$ in $\mathrm {BP}_{2i} (\mathrm {BP})$, we obtain the following equation in $(\mathrm {BP} \wedge \mathrm {BPQ})_\ast (\mathbb {CP}^\infty)$.
+\begin{equation}
+\tag{16.3}
+\label{eqn:p2c16.3}
+\sum_i \eta_R (m_{p^f - 1}) (x^R)^{p^f} = \sum_f (m_{p^f - 1}) \Big(\sum_{j \ge 0} N_j (x^R)^{j + 1}\Big)^{p^f - 1}.
+\end{equation}
+%I can't read this first displayed block, I doubt this transcription is correct
+Use the equation of (\ref{thm:p2c16.1})(i), namely \[\eta_{R^m_{p^k - 1}} = \sum_{i + j = k} m_{p^i - 1} (t_j)^{p^i}\] to define $t_k$ (inductively) as an element of $\mathrm {BPQ}_*(\mathrm {BP})$. Substituting in \eqref{eqn:p2c16.3} we get \[\sum_{i, j} m_{p^i - 1} (t_j)^{p^i} (x^R)^{p^{i + j}} = \sum_f (m_{p^f - 1}) \Big(\sum_{j \ge 0} N_j (x^R)^{j + 1})\Big)^{p^f}.\] 
+%CORRECTION: original source was missing parentheses
+That is, \[\sum_i \log^{\mathrm{BP}} (t_j (x^R)^{p^j}) = \log^{\mathrm{BP}} \Big(\sum_{j \ge 0} N_j (x^R)^{j + 1}\Big).\]
+
+Apply $\exp^{\mathrm{BP}}$. We get 
+\begin{equation}
+\tag{16.4}
+\label{eqn:p2c16.4}
+x^R +_\mu t_1 (x^R)^p +_\mu t_2 (x^R)^{p^2} +_\mu t_3 (x^R)^{p^3} \ldots = \sum_{j \ge 0} N_j (x^R)^{j + 1}.
+\end{equation}
+
+Here $\mu$ means $\mu^{\mathrm{BP}}$, the formal product defined over $\pi_*(\mathrm{BP})$.
+
+Suppose, as an inductive hypotheses we have shown that $t_i \in \mathrm{BP}_*(\mathrm{BP})$ for $i > k$. (The induction starts, since $t_0 = 1$) Extract from \eqref{eqn:p2c16.4} the coefficient of $(x^R)^{p^k}$. We obtain
+\begin{equation}
+\tag{16.5}
+\label{eqn:p2c16.5}
+t_k + f(t_1, t_2, \ldots, t_{k - 1}) = N_{p^k - 1}
+\end{equation}
+
+Here $N_{p^k - 1}$ lies in $\mathrm{BP}_\ast(\mathrm {BP})$; and $f(t_1, t_2, \ldots, t_{k-1})$ is a polynomial in \newline$t_1, t_2, \ldots, t_{k - 1}$, with coefficients in $\pi_\ast(\mathrm{BP})$, so it lies in $\mathrm{BP}_\ast(\mathrm{BP})$ by the inductive hypothesis. Therefore $t_k$ lies in $\mathrm {BP}_\ast(\mathrm{BP})$. This completes the induction, and proves part (i).
+
+We notice that \eqref{eqn:p2c16.5} answers the obvious question: how do the homology generators in $\mathrm{MU}_\ast(\mathrm{MU})$ map into $\mathrm{BP}_\ast(\mathrm{BP})$? That is, the image $N_j$ of $M_j$ in $\mathrm{BP}_\ast(\mathrm{BP})$ is the coefficient of $(x^R)^{j + 1}$ in the left hand side of \eqref{eqn:p2c16.4}, and this coefficient is a definite polynomial in $t_1, t_2, \ldots$. 
+
+We turn to part (ii). It is clear that $\mathrm {BP}_\ast (\mathrm {BP})$ is the image under $(\pi \wedge \pi)_\ast$ of $\mathrm{MU}_\ast(\mathrm{MU})$; so it is generated, over $\pi_\ast(\mathrm{BP})$, by the classes $N_j$. Using the last paragraph, this means that it is generated by the classes $t_k$. Similarly, $H_\ast(\mathrm{BP})$ is the image under $\pi_\ast$ of $H_\ast(\mathrm{MU})$, and so it is \[\mathbb Z_{(p)}[m_{p - 1}, m_{p^2 - 1}, m_{p^3 - 1}, \ldots].\] 
+
+Consider the spectral sequence \[H_\ast(\mathrm{BP}; \pi_\ast(\mathrm {BP})) \implies \mathrm{BP}_\ast(\mathrm{BP}).\] It is trivial, because it is a direct summand of the corresponding sequence for $\mathrm {MU} \mathbb Z_{(p)}^\ast(\mathrm {MU} \mathbb Z_{(p)})$; and in the $E_2$-term, $t_k$ is equal to $m_{p^k - 1}$ modulo decomposibles, by \eqref{eqn:p2c16.5}. Therefore \[\mathrm{BP}_\ast (\mathrm {BP}) = \pi_*(\mathrm {BP}) [t_1, t_2, \ldots].\] This proves part (ii).
+
+We turn to part (iii). It is one of the formal properties of the counit that $\varepsilon 1 = 1$. Suppose, as an inductive hypothesis, that we have proved $\varepsilon t_i = 0$ for $0 < i < k$. Apply the counit $\varepsilon$ to the formula in (\ref{thm:p2c16.1})(i). Using the fact that $\varepsilon \eta_R = 1$, and the inductive hypothesis, we find that \[m_{p^k - 1} = m_{p^k - 1} + \varepsilon t_k.\] 
+
+We turn to part (iv). Apply the conjugation map $c$ to the formula in (\ref{thm:p2c16.1})(i). Since $c \eta_R = \eta_L$ and $c \eta_L = \eta_R$, we obtain the following result. \[m_{p^k - 1} = \sum_{f + j = k} (\eta_R m_{p^f - 1}) (ct_j)^{p^i}.\] Substituting for $\eta_R m_{p^f - 1}$ from (\ref{thm:p2c16.1})(i), we find \[m_{p^k - 1} = \sum_{h + i + j = k} m_{p^h - 1} (t_i)^{p^h} (ct_j)^{p^{h + i}}.\] This proves part (iv).
+
+We turn to part (v). Take the formula in (\ref{thm:p2c16.1})(i), and apply the coproduct map $\psi$. Taking the right-hand side first, we have \[\sum_{i + j = k} m_{p^i - 1} (\psi t_j)^{p^i} = 1 \otimes \eta_R (m_{p^h - 1}).\] Substituting for $\eta_R(m_{p^h - 1})$ from (\ref{thm:p2c16.1})(i), we have \[\sum_{i + j = k} m_{p^i - 1} (\psi t_j)^{p^i} = 1 \otimes \sum_{t + j = k} m_{p^f - 1} (t_j)^{p^f}.\] Since the tensor product is taken over $\pi_\ast(\mathrm {BP})$, acting on the left of the right-hand factor and on the right of the left-hand factor, this gives \[\sum_{i + j = k} m_{p^i - 1} (\psi t_j)^{p^i} = \sum_{f + j = k} (\eta_{R^m_{p^f - 1}}) \otimes (t_j)^{p^f}.\] Substituting for $\eta_{R^m_{p^f - 1}}$ from (\ref{thm:p2c16.1})(i), we find \[\sum_{i + j = k} m_{p^i - 1} (\psi t_j)^{p^i} = \sum_{h + i + j = k} m_{p^h - 1} (t_i)^{p^h} \otimes (t_j)^{p^{h + i}}.\] This proves part (v), and the completes the proof of Theorem~\ref{thm:p2c16.1}.
+\end{proof}
+\end{document}

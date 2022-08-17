@@ -1,0 +1,61 @@
+\documentclass[../main]{subfiles}
+\begin{document}
+\label{sec:p2c3}
+
+\chapter{Reformulation}
+
+In this section we will interpret a formal group over $R$ as a group in the category of coalgebras over $R$.
+
+The results of the previous section suggest that the algebra of formal power series $R[[x]]$, which arose \hyperref[sec:p2c1]{\S 1}, is actually the dual of the object which should be considered. Let $F$ be an $R$-module which is free on generators $\beta_0,\beta_1,..,\beta_n,...$. We make $F$ into a coalgebra over $R$ by setting
+\begin{equation}
+\label{eqn:p2c03.1}
+\tag{3.1}
+\psi\beta_k=\sum_{i+j=k}\beta_i\otimes\beta_j.
+\end{equation}
+The dual of $F$, given by $F^\ast=\operatorname{Hom}_R(F,R)$, is then an algebra over $R$, and it can be identified with $R[[x]]$; the pairing between $R[[x]]$ and $F$ is given by 
+\begin{equation}
+\label{eqn:p2c03.2}
+\tag{3.2}
+\Big<\sum_{i\geq 0}c_ix^i,\beta_n\Big>=c_n.    
+\end{equation}
+(Here the coefficients $c_i$ lie in $R$.)
+
+The analogy with the case of a Lie group confirms that this procedure is reasonable. Instead of looking at analytic functions $\displaystyle\sum_{i\geq 0}c_ix^i$ on $G$, we look at differential operators, because functions are contravariant and differential operators are covariant. More precisely, we interpret $\beta_n$ as the differential operator $\frac{1}{n!}\frac{d^n}{dx^n}$, evaluated at $x=0$. The result of applying this operator to the analytic function $\displaystyle\sum_{i\geq 0}c_ix^i$ is indeed $c_n$. The coproduct in $F$ corresponds to Leibniz' formula
+\[\frac{1}{k!}\frac{d^k}{dx^k}(fg)=\sum_{i+j=k}\Big(\frac{1}{i!}\frac{d^i}{dx^i}\Big)\Big(\frac{1}{j!}\frac{d^j}{dx^j}g\Big).\]
+Since differential operators are covariant, it is reasonable that the product in $G$ should induce a product of differential operators. 
+
+To continue, let $F$ be as above; then we can form $F\otimes_R F$, and its dual, $\operatorname{Hom}_R(F\otimes_R F, R)$, may be identified with the algebra $R[[x_1,x_2]]$. The pairing $R[[x_1,x_2]]$ and $F\otimes_R F$ is given by 
+\begin{equation}
+\label{eqn:p2c03.3}
+\tag{3.3}    \Big<\sum_{i,j}c_{ij}x_1^ix_2^j, \beta_p\otimes\beta_q\Big> = c_{pq}.
+\end{equation}
+Each $R$-map
+\[m_\ast:F\otimes_R F\longrightarrow F\]
+induces a dual map
+\[m^\ast:R[[x]]\longrightarrow R[[x_1,x_2]].\]
+This induces a $1$-$1$ correspondence between maps $m_\ast$ which are filtration-preserving (in a suitable sense) and maps $m^\ast$ which are filtration-preserving; corresponding maps are given by the following formulae.
+\begin{equation}
+\label{eqn:p2c03.4}
+\tag{3.4}
+m_\ast(\beta_i\otimes\beta_j)=\sum_{k\leq i+j}a_{ij}^k\beta_k
+\end{equation}
+\begin{equation}
+\label{eqn:p2c03.5}
+\tag{3.5}
+    m^\ast x^k=\sum_{i+j\geq k}a_{ij}^kx_1^ix_2^j.
+\end{equation}
+(Here the coefficients $a_{ij}^k$ lie in our ring $R$. The coefficients $a_{ij}^1$ are the coefficients $a_{ij}$ of section~\ref{sec:p2c1}.) The map $m^\ast$ is a map of algebras if and only if the map $m_\ast$ is a map of coalgebras. It is now easy to check that the relevant conditions on $m_\ast$ (such as associativity and commutativity) are equivalent to the corresponding conditions on $m^\ast$. The map $e:R[[x]]\longrightarrow R$, which was introduced as a unit map in \hyperref[sec:p2c1]{\S 1} and defined by $e\Big(\displaystyle \sum_{i\geq 0}c_ix^i\Big)=c_0$, now has the alternative name $\beta_0$; we take $\beta_0$; we take $\beta_0$ as our unit in $F$.
+
+It is clear, of course, that if $m^\ast$ is a map of algebras, then $m^\ast x^k$ is determined by $m^\ast x$. So in this case, the coefficients $a_{ij}^k$ are determined by the $a_{ij}^1=a_{ij}$. For example, we easily obtain the following formula.
+\begin{equation}
+\label{eqn:p2c03.6}
+\tag{3.6}
+    a_{1j}^k = ka_{1,j+1-k}.
+\end{equation}
+
+\begin{exercise}
+Obtain a formula for $a_{22}^k.$
+\end{exercise}
+
+We conclude that there is a precise equivalence between group-object structures on $R[[x]]$ in the sense of \hyperref[sec:p2c1]{\S 1}, and suitable Hopf-algebra structures on $F$. A formal group is therefore a group-object in a suitable category of coalgebras.
+\end{document}
