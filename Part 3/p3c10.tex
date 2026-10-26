@@ -40,7 +40,7 @@ Let $E$ is a ring-spectrum. We say a spectrum $F$ is a \emph{module-spectrum ove
 
 \[
 \begin{tikzcd}
-E \wedge E \wedge F \arrow[dd, "1 \wedge \nu"'] \arrow[rr, "\mu \wedge 1"] &  & E \wedge F \arrow[dd, "\nu"] & S \wedge F \arrow[rr, "\eta \wedge 1"] \arrow[dd, "\cong"] &  & E \wedge E \arrow[dd, "\nu"] \\
+E \wedge E \wedge F \arrow[dd, "1 \wedge \nu"'] \arrow[rr, "\mu \wedge 1"] &  & E \wedge F \arrow[dd, "\nu"] & S \wedge F \arrow[rr, "\eta \wedge 1"] \arrow[dd, "\cong"] &  & E \wedge F \arrow[dd, "\nu"] \\
                                                                            &  &                              &                                                   &  &                              \\
 E \wedge F \arrow[rr, "\nu"]                                               &  & F                            & F \arrow[rr, "1"]                                 &  & F                           
 \end{tikzcd}
@@ -61,8 +61,8 @@ E \wedge E \arrow[rruu, "\mu"']               &  &
 
 
 If $E$ is a ring-spectrum, we can use the product map $\mu \colon E \wedge E \lra E$ to obtain products with values in $E_*$ or $E^*$ instead of $(E \wedge E)_*$ or $(E \wedge E)^*$. For example, we obtain a cup-product 
-\[E^p(X,A) \otimes E^q(X,B) \lra E^{p+q}(X,A \smile B).\]
-Similarly for an action map $\nu \colon E \wedge E \lra F$.
+\[E^p(X,A) \otimes E^q(X,B) \lra E^{p+q}(X,A \cup B).\]
+Similarly for an action map $\nu \colon E \wedge F \lra F$.
 
 Practically all the examples of spectra which I have mentioned are, in fact, ring-spectra. I will only illustrate the case $E=H$. We have
 \[\pi_r (H \wedge H) = H_r(H) = \begin{cases}
@@ -166,7 +166,7 @@ Consider the following commutative diagram.
 \[
 \adjustbox{scale=1, center}{
 \begin{tikzcd}
-\dots \arrow[r] & {\check{E}^\ast(M,\partial M)} \arrow[r] \arrow[dd] & \check{E}^\ast(M) \arrow[dd, "\cong"] \arrow[r] & \check{E}^\ast(\partial M) \arrow[dd, "\cong"] \arrow[r, "\delta"] & {E^\ast(M,\partial M)} \arrow[dd] \arrow[r] & \dots \\
+\dots \arrow[r] & {\check{E}^\ast(M,\partial M)} \arrow[r] \arrow[dd] & \check{E}^\ast(M) \arrow[dd, "\cong"] \arrow[r] & \check{E}^\ast(\partial M) \arrow[dd, "\cong"] \arrow[r, "\delta"] & {\check{E}^\ast(M,\partial M)} \arrow[dd] \arrow[r] & \dots \\
                 &                                                     &                                                 &                                                                    &                                             &       \\
 \dots \arrow[r] & {E^\ast(M,\partial M)} \arrow[r]                    & E^\ast(M) \arrow[r]                             & E^\ast(\partial M) \arrow[r, "\delta"]                             & {E^\ast(M,\partial M)} \arrow[r]            & \dots
 \end{tikzcd}
@@ -212,10 +212,11 @@ such that for each $x \in B$, the induced homomorphism
 \[i_x^* \colon H^n(E,E^0) \lra H^n(E_x,E_x^0)\]
 has $i_x^* \omega = \lambda(x)$ for any given section $\lambda$.
 
-Now in ordinary homology, the answer is yes: if you are given a section $\lambda$, there exists a cohomology class $\omega$ such that $i_x^* = \lambda(x)$ for each $x$, and $\omega$ is unique. However, the proof makes essential use of the dimension axiom. For a generalised cohomology theory the corresponding result is not true. There is an $n$-plane bundle $E \lra B$ and a section $\lambda \colon B \lra \bigcup_x \te{KO}^n(E_x,E_x^0)$ such that there exists no $w \in \te{KO}^n(E,E^0)$ with $i_x^* \omega = \lambda(x)$ for all $x$; in another such example the required $\omega$ exists but is not unique.
+Now in ordinary homology, the answer is yes: if you are given a section $\lambda$, there exists a cohomology class $\omega$ such that $i_x^*\omega = \lambda(x)$ for each $x$, and $\omega$ is unique. However, the proof makes essential use of the dimension axiom. For a generalised cohomology theory the corresponding result is not true. There is an $n$-plane bundle $E \lra B$ and a section $\lambda \colon B \lra \bigcup_x \te{KO}^n(E_x,E_x^0)$ such that there exists no $\omega \in \te{KO}^n(E,E^0)$ with $i_x^* \omega = \lambda(x)$ for all $x$; in another such example the required $\omega$ exists but is not unique.
 
-It seems best to choose our definitions so as to avoid the difficulty. First I consider the meaning to be assigned to the word ``generator.'' Let $F$ be a ring-spectrum; then $F_*(\bbR^n,\bbR^n-0) = \tilde{F}^*(S^n)$ and $F^*(\bbR^n,\bbR^n-0) = \tilde{F}^*(S^n)$ are modules over $\pi_*(F)$. In fact each is a free module on one generator, because we have canonical classes
-\[\gamma_n \in F_n(\bbR^n,\bbR^n-0), \quad \gamma^n \in F^n(R^n-0).\]
+It seems best to choose our definitions so as to avoid the difficulty. First I consider the meaning to be assigned to the word ``generator.'' Let $F$ be a ring-spectrum; then $F_*(\bbR^n,\bbR^n-0) = \tilde{F}_*(S^n)$ and $F^*(\bbR^n,\bbR^n-0) = \tilde{F}^*(S^n)$ are modules over $\pi_*(F)$. In fact each is a free module on one generator, because we have canonical classes
+\[\gamma_n \in F_n(\bbR^n,\bbR^n-0), \quad \gamma^n \in F^n(\bbR^n,\bbR^n-0).\]
+\noindent Editorial correction: the original omits the first member of the relative pair in the group containing $\gamma^n$.
 I will say that $\varphi \in F^*(\bbR^n,\bbR^n-0)$ is a \emph{generator} \index{generator of ring-spectrum} if $\{\varphi\}$ is a $\pi_*(F)$-base for $F^*(\bbR^n,\bbR^n-0)$. $\varphi$ is a generator if and only if $\varphi = u \gamma^n$, where $u$ is a unit in $\pi_*(F)$. $\varphi$ need not lie in $F^n(\bbR^n,\bbR^n-0)$, because we may have units of non-zero degree in $\pi_*(F)$; e.g., this occurs if $F=K$.
 
 The property which I need of generators is the following. Let $G$ be a module-spectrum over $F$. Then the map \[G_*(\bbR^n,\bbR^n-0) \lra \pi_*(G)\]
@@ -266,14 +267,14 @@ I claim $D$ is natural for inclusion maps. First, suppose $U'' \subset U$, $V'' 
 
 \[
 \begin{tikzcd}
-                          & {F_p(V',U'')} \arrow[ldd] \arrow[rdd] &                    \\
+                          & {F_p(V',U')} \arrow[ldd] \arrow[rdd] &                    \\
                           &                                       &                    \\
 {F^{d-p}(U,V)} \arrow[rr] &                                       & {F^{d-p}(U'',V'')}
 \end{tikzcd}
 \]
 
 
-Next suppose $V''',U''' \subset V',U'$. Again $U''' \cap U' = \emptyset$, $V''' \cap V = \emptyset$. The following diagram commutes.
+Next suppose $V''',U''' \subset V',U'$. Again $U''' \cap U = \emptyset$, $V''' \cap V = \emptyset$. The following diagram commutes.
 \[
 \begin{tikzcd}
 {F_p(V''', U''')} \arrow[rd] \arrow[rr] &                   & {F_p(V', U')} \arrow[ld] \\
@@ -301,19 +302,22 @@ commutes up to the sign $(-1)^{d+1}$. For we can easily reduce it to the case $W
 \end{tikzcd}
 }\]
 
-Now since $\omega \in E^d(U \times W',V \times V')$ and by \ref{thm:p3ch09.12}(ii) we have
+Now since $\omega \in E^d(M \times M,M \times M-\Delta)$ and $V\cap V'=\emptyset$, the class $\omega$ comes via $E^d(U \times W',V \times V')$, and by \ref{thm:p3ch09.12}(ii) we have
 \[\delta((i^* \omega)/x) = (-1)^{d+1}(j^* \omega)/\partial x.\]
 
-Now we can start to pass to limits. Let us take a compact pair $K,L \subset M$ and consider the complementary open pair $M-L,M-K$. We vary $V',U'$ over open pairs contained in $M-L,M-K$, of course arranging that $U \cap U' = \emptyset$, $V \cap V' = \emptyset$. Now $\check{F}^*(K,L) = \varinjlim F^*(U,V)$, so with a class in $\check{F}^*(U,V)$ for any $U,V$ we get an image in $\check{F}^*(K,L)$. Now I claim that for any $x \in F_p(V',U')$, its image in $\check{F}^{d-p}(K,L)$ is independent of the choice of pair $U,V$, provided, of course, that there exists a pair $U,V \supset K,L$ with $U \cap U' = \emptyset$, $V \cap V' = \emptyset$. And this is immediate, by the following diagram.
+Now we can start to pass to limits. Let us take a compact pair $K,L \subset M$ and consider the complementary open pair $M-L,M-K$. We vary the pair $U,V$ over open pairs containing $K,L$. We vary $V',U'$ over open pairs contained in $M-L,M-K$, of course arranging that $U \cap U' = \emptyset$, $V \cap V' = \emptyset$. Now $\check{F}^*(K,L) = \varinjlim F^*(U,V)$, so with a class in $F^*(U,V)$ for any $U,V$ we get an image in $\check{F}^*(K,L)$. Now I claim that for any $x \in F_p(V',U')$, its image in $\check{F}^{d-p}(K,L)$ is independent of the choice of pair $U,V$, provided, of course, that there exists a pair $U,V \supset K,L$ with $U \cap U' = \emptyset$, $V \cap V' = \emptyset$. And this is immediate, by the following diagram.
 \[
 \begin{tikzcd}
                              & {F_p(V', U')} \arrow[dd] \arrow[rd] \arrow[ld] &                                  \\
-{F_{d - p}(U, V)} \arrow[rd] &                                                & {F_{d - p}(U'', V'')} \arrow[ld] \\
-                             & {F_{d - p}(U \cap U'', V \cap V'')}            &                                 
+{F^{d - p}(U, V)} \arrow[rd] &                                                & {F^{d - p}(U'', V'')} \arrow[ld] \\
+                             & {F^{d - p}(U \cap U'', V \cap V'')}            &
 \end{tikzcd}
 \]
+\noindent Editorial correction: the original prints homological subscripts on these three target groups; the slant product takes values in cohomology.
 So now we have a well-defined function 
 \[D \colon F_p(V',U') \lra \check{F}^{d-p}(K,L).\]
+which of course gives
+\[D \colon \varinjlim_{(V',U')} F_p(V',U') \lra \check{F}^{d-p}(K,L).\]
 (In fact, if $V''',U''' \subset V',U'$ and there exists a pair $U,V$ with $U \cap U' = \emptyset, V \cap V' = \emptyset$, then the following diagram commutes.)
 \[
 \begin{tikzcd}
@@ -322,8 +326,8 @@ So now we have a well-defined function
 \end{tikzcd}
 \]
 But I claim we have
-\[\varinjlim_{(V',U')} F_p(V',U') \lra F_p(M-L,M-K).\]
-For this we need only check, by general topology, that the available pairs $(V',U')$ satisfy \ref{rmk:p3c10.10}.
+\[\varinjlim_{(V',U')} F_p(V',U') \xrightarrow{\cong} F_p(M-L,M-K).\]
+For this we need only check, by general topology, that the available pairs $(V',U')$ satisfy Proposition \ref{prop:p3c10.1}.
 
 At this stage, then, we have a transformation
 \[D \colon F_p(M-L,M-K) \lra \check{F}^{d-p}(K,L)\]
@@ -348,7 +352,7 @@ Here $g(y) = \langle i_x^* \omega, y \rangle$. Our assumption is that $i_x^* \om
 The commutativity of the diagram follows easily from naturality. We can begin by supposing that we start from a class in $F_p(M,M-x)$ which comes from $y \in F_p(M,M-B)$, where $B$ is a small closed ball in a coordinate neighbourhood. (This uses \ref{prop:p3c10.1}.) If we apply $D$ and the map into $F^{d-p}(x)$, we obtain
 \[j^*((i^* \omega)/y),\]
 where $j \colon x \lra \Int B$ is the injection. We have
-\[j^*((i^*\omega/y) = ((j \times 1)^* i^* \omega)/y = i_x^*\omega/y = \langle i_x^* \omega, y \rangle.\]
+\[j^*((i^*\omega)/y) = ((j \times 1)^* i^* \omega)/y = i_x^*\omega/y = \langle i_x^* \omega, y \rangle.\]
 \end{proof}
 \begin{remark}\label{rmk:p3c10.8}
 Suppose $K$ is a rectilinear simplex in a coordinate neighborhood and $L$ is one face of $K$ (which may be $K$ but must not be $\emptyset$). Then $D$ is an isomorphism between groups which are zero.
@@ -397,7 +401,7 @@ Suppose $K_1,L_1$ and $K_2,L_2$ are compact pairs in $M$ with $K_1 \cap \partial
 \begin{proof}
 Consider the diagram of Mayer-Vietoris sequences on the following page. The Mayer-Vietoris sequences are slightly more general than those considered in Eilenberg and Steenrod but none the worse for that. The second row works because $K_1 \cap L_2 = L_1 \cap K_2$; this is the condition that the Mayer-Vietoris sequence may be replaced by one in which the subspaces remain fixed (namely at $L_1 \cup L_2$). The first row works for the dual reason that
 \[(M-K_1) \cup (M-L_2) = (M-L_1) \cup (M-K_2);\]
-this is the condition that the Mayer-Vietoris sequence may be replaced by one in which the subapces remain fixed (namely at $(M-L_1) \cup (M-L_2)$) and the subspaces vary. We have the excision necessary for the first row because all the subspaces are open, and for the second because excision always holds for \v{C}ech $F$-cohomology on compact spaces.
+this is the condition that the Mayer-Vietoris sequence may be replaced by one in which the total spaces remain fixed (namely at $(M-L_1) \cap (M-L_2)$) and the subspaces vary. We have the excision necessary for the first row because all the subspaces are open, and for the second because excision always holds for \v{C}ech $F$-cohomology on compact spaces.
 
 The result follows from the five lemma.
 \end{proof}
@@ -413,10 +417,11 @@ By barycentric subdivision we can suppose that for each simplex $\sigma$ of $K$,
 \begin{tikzcd}[ampersand replacement=\&]
 F_p \begin{pmatrix}M - L_1 \cap M - L_2, \\ M - K_1 \cap M - K_2\end{pmatrix} \arrow[rr] \arrow[dd] \&  \& {F_p \begin{pmatrix}M - L_1, \\ M - K_1\end{pmatrix} \oplus F_p \begin{pmatrix}M - L_2, \\ M - K_2\end{pmatrix}} \arrow[rr] \arrow[dd] \&  \& F_p \begin{pmatrix}M - L_1 \cup M - L_2, \\ M - K_1 \cup M - K_2\end{pmatrix} \arrow[rr, "\partial"] \arrow[dd] \&              \& F_{p - 1} \begin{pmatrix}M - L_1 \cap M - L_2, \\ M - K_1 \cap M - K_2\end{pmatrix} \arrow[dd] \\
                                                                                                        \&  \&                                                                                                                                        \&  \&                                                                                                                    \& (-1)^{d + 1} \&                                                                                                   \\
-\breve F^{d - p} \begin{pmatrix}K_1 \cup K_2, \\ L_1 \cup L_2\end{pmatrix} \arrow[rr]               \&  \& {\breve F^{d - p}(K_1, L_1) \oplus \breve F^{d - p}(K_2, L_2)} \arrow[rr]                                                              \&  \& \breve F \begin{pmatrix}K_1 \cap K_2, \\ L_1 \cap L_2\end{pmatrix} \arrow[rr]                                   \&              \& F^{d - p + 1} \begin{pmatrix}K_1 \cup K_2, \\ L_1 \cup L_2\end{pmatrix}                       
+\breve F^{d - p} \begin{pmatrix}K_1 \cup K_2, \\ L_1 \cup L_2\end{pmatrix} \arrow[rr]               \&  \& {\breve F^{d - p}(K_1, L_1) \oplus \breve F^{d - p}(K_2, L_2)} \arrow[rr]                                                              \&  \& \breve F^{d-p} \begin{pmatrix}K_1 \cap K_2, \\ L_1 \cap L_2\end{pmatrix} \arrow[rr, "\delta"]                                   \&              \& \breve F^{d - p + 1} \begin{pmatrix}K_1 \cup K_2, \\ L_1 \cup L_2\end{pmatrix}
 \end{tikzcd}               
 }
 }\]
+\noindent Editorial correction: the last group in the original's lower Mayer-Vietoris row lacks the \v{C}ech decoration; the entire lower row is \v{C}ech cohomology.
 \begin{remark}\label{rmk:p3c10.12}
 Suppose $K,L$ is any compact pair in a single coordinate neighbourhood. Then $D$ is an isomorphism.
 \end{remark}
@@ -424,7 +429,7 @@ Suppose $K,L$ is any compact pair in a single coordinate neighbourhood. Then $D$
 Pass to direct limits from finite simplicial neighbourhoods $U,V$.
 \end{proof}
 \begin{proof}[Proof of Theorem \ref{thm:p3c10.6}]
-Each point of $K$ is in the interior of a compact neighbourhood. Hence, $K$ can be covered by finitely many such subsets. Now argue by induction on the number of such subsets; if the number is one, \ref{rmk:p3c10.12} gives us the result; the inductive step is immediate from \ref{rmk:p3c10.10}.
+Each point of $K$ is in the interior of a compact neighbourhood which is in a single coordinate neighbourhood. Hence, $K$ can be covered by finitely many such subsets. Now argue by induction on the number of such subsets; if the number is one, \ref{rmk:p3c10.12} gives us the result; the inductive step is immediate from \ref{rmk:p3c10.10}.
 \end{proof}
 \begin{corollary}[Poincar\'e duality]\label{cor:p3c10.13}\index{Poincar\'e duality}
 Let $M$ be a compact topological manifold without boundary, oriented over $E^*$. Then we have an isomorphism
@@ -461,7 +466,7 @@ using the pairings from the first and second rows of the diagram.
 Now we want the following associativity formulae.
 \begin{lemma}\label{lem:p3c10.15}
 If
-\[\omega \in E^d(X \times Y, A \times Y \smile X \times B), \ u \in F^p(Y,C), \ v \in G_q(Y,B \smile C)\]
+\[\omega \in E^d(X \times Y, A \times Y \cup X \times B), \ u \in F^p(Y,C), \ v \in G_q(Y,B \cup C)\]
 then 
 \[\omega / (u \frown v) = (\omega \smile p_2^*u)/v \in (E \wedge F \wedge G)^{d+p-q}(X,A).\]
 If \[u \in F^p(X,A), \ \omega \in E^d(X \times Y, B \times Y \cup X \times C), \ v \in G_q(Y,C)\]
@@ -472,25 +477,25 @@ The proof is immediate from the associativity formulae we have, by naturality.
 
 This gives
 \[D(u \frown v) = (\omega \smile p_2^* u)/v\]
-\[u \smile (Dv) = p_1^* u \smile \omega)/v\]
+\[u \smile (Dv) = (p_1^* u \smile \omega)/v\]
 where we are still using the pairing from the second row of the diagram for the second formula. However, because the diagram of pairings is commutative we can write 
 \[u \smile (Dv) = (-1)^{dp}(\omega \smile p_1^* u)/v\]
 using the pairing from the top row of the diagram. Now it is sufficient to prove
-\[\omega \smile p_1^* u = \omega \smile p_2^*.\]
+\[\omega \smile p_1^* u = \omega \smile p_2^*u.\]
 
 Consider the maps
 \[p_1 \colon M \times M \lra M\]
 \[p_2 \colon M \times M \lra M.\]
-They have the same restriction to $\Delta$; a fortiori they are homeomorphic on $\Delta$. By \ref{lem:p3c10.2}(ii) there is an open neighbourhood $U$ of $\Delta$ in $M$ and a homotopy $h \colon U \lra M$  between $p_1|U$ and $p_2|U$. Hence, if we apply
+They have the same restriction to $\Delta$; a fortiori they are homotopic on $\Delta$. By \ref{lem:p3c10.2}(ii) there is an open neighbourhood $U$ of $\Delta$ in $M\times M$ and a homotopy $h \colon I\times U \lra M$ between $p_1|U$ and $p_2|U$.\footnote{Editorial correction: the original places $U$ in $M$ and writes the homotopy as $h:U\to M$; its domain is $I\times U$, with $U\subset M\times M$.} Hence, if we apply
 \[i^*\colon F^p(M \times M) \lra F^p(U),\]
 we have
 \[i^* p^*_1 u = i^* p^*_2 u \in F^p(U).\]
 But by excision,
 \[(E \wedge F)^{d+p}(M \times M, M \times M - \Delta) \lra (E \wedge F)^{d+p}(U,U-\Delta)\]
 is an isomorphism. The classes 
-\[\omega \smile p_1^*, \ \omega \smile p_2^*u\]
+\[\omega \smile p_1^*u, \ \omega \smile p_2^*u\]
 restrict to 
-\[(i^*\omega) \smile (i^*p_1^*u), \ (i^*\omega) \smile (i^* p_2^* \omega),\]
+\[(i^*\omega) \smile (i^*p_1^*u), \ (i^*\omega) \smile (i^* p_2^*u),\]
 that is, they restrict to the same thing. Therefore they were already equal in
 \[(E \wedge F)^{d+p}(M \times M, M \times M - \Delta).\]
 This proves \ref{prop:p3c10.14}.
@@ -510,12 +515,12 @@ This homomorphism is the inverse of $D$, up to a sign $(-1)^{dp}$; it is therefo
 In \ref{prop:p3c10.14}, take $E$ and $G$ to be $E$; take $F$ and $G'$ to be $F$. The resulting diagram is commutative even without the assumption that $E$ is a commutative ring-spectrum. Then
 \[D(u \frown [M]) = (-1)^{dp}u \smile D([M]) = (-1)^{dp}u.\]
 \end{proof}
-The relative version of Poincar\'e duality is called Leftschetz duality. It asserts that we have the following diagram, commutative up to sign.
+The relative version of Poincar\'e duality is called Lefschetz duality. It asserts that we have the following diagram, commutative up to sign.
 
 \[
 \adjustbox{scale=0.7, center}{
 \begin{tikzcd}
-F_p(\partial M) \arrow[dd, "\cong"'] \arrow[rr] &     & F_p(M) \arrow[rr] \arrow[dd, "\cong"'] &     & {F_p(M, \partial M)} \arrow[rr, "\delta"] \arrow[dd, "\cong"'] &     & F_{p - 1}(\partial M) \arrow[r] \arrow[dd, "\cong"'] & \ldots \\
+F_p(\partial M) \arrow[dd, "\cong"'] \arrow[rr] &     & F_p(M) \arrow[rr] \arrow[dd, "\cong"'] &     & {F_p(M, \partial M)} \arrow[rr, "\partial"] \arrow[dd, "\cong"'] &     & F_{p - 1}(\partial M) \arrow[r] \arrow[dd, "\cong"'] & \ldots \\
                                                 & \pm &                                        & \pm &                                                                & \pm &                                                      &        \\
 F^{d - 1 - p}(\partial M) \arrow[rr, "\delta"]  &     & {F^{d - p}(M, \partial M)} \arrow[rr]  &     & F^{d - p}(M) \arrow[rr]                                        &     & F^{d - p}(\partial M) \arrow[r]                      & \ldots
 \end{tikzcd}

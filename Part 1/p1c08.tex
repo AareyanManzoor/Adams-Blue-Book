@@ -1,6 +1,5 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p1c8}
 
 % to number Formula 8.2
 \numberwithin{equation}{chapter}
@@ -8,6 +7,7 @@
 % (I didn't want to redefine the main theorem environment to number with equation, as this might affect other sections)
 
 \chapter{Complex Manifolds} % Zach, CHapter 8, Page 23
+\label{sec:p1c8}
 % Finished by Average enjoyer
 
 Next it is necessary to recall that a stable almost-complex manifold $M^n$ defines an element $[M^n]$ of $\Omega^{-n}_U(P)$. If we are given such a stable almost-complex manifold $M^n$, it is natural to ask for the value of $s_\alpha [M^n]$. It is especially reasonable to ask this for manifolds $\mathbb{CP}^n$, since these manifolds are familiar and are known to provide a set of generators for the polynomial ring $\Omega_U^*(P) \otimes \mathbb{Q}$ (where $\mathbb{Q}$ is the ring of rational numbers).
@@ -48,11 +48,11 @@ It is easily to see that this checks; for it yields
     &= \sum_{i \geq 0, j \geq 0} (c_\alpha, b_i \cdot \chi b_j)(b')^{i+j} \\
     &= (c_\alpha, b_0)1,
 \end{align*}
-as it should. But this manipulation allows one to prove the formula for $s_\alpha((b'')^{-1})_d$ by double induction over $|\alpha|$ and $d$, starting from the trivial cases $|\alpha| = 0$ and $d = 0$.
+as it should. But this manipulation allows one to prove the formula for $s_\alpha((b')^{-1})_d$ by double induction over $|\alpha|$ and $d$, starting from the trivial cases $|\alpha| = 0$ and $d = 0$.
 
 From (\ref{eqn:p1c08.2}) we deduce that
-\[s_\alpha((b')^{-n-1})_n = \sum_{i_1 + i_2 + \dots + i_{n+1} = |\alpha|} (c_\alpha , \chi(b_{i_1} b_{i_2} \dots b_{i_{n+1}}))((b')^{|\alpha| - n - 1})){n-|\alpha|}.\]
-This is the class of $[\mathbb{CP}^{n-|\alpha|}]$ in $H^{2n-2|\alpha|}(\te{MU})$, up to a factor $(c_\alpha, b^{-n-1})$. Now the result follows from the fact that the Hurewicz homomorphism
+\[s_\alpha((b')^{-n-1})_n = \sum_{i_1 + i_2 + \dots + i_{n+1} = |\alpha|} (c_\alpha , \chi(b_{i_1} b_{i_2} \dots b_{i_{n+1}}))\big((b')^{|\alpha| - n - 1}\big)_{n-|\alpha|}.\]
+This is the class of $[\mathbb{CP}^{n-|\alpha|}]$ in $H_{2n-2|\alpha|}(\te{MU})$,\footnote{Editor's correction: the original puts this Hurewicz class in cohomology instead of homology.} up to a factor $(c_\alpha, b^{-n-1})$. Now the result follows from the fact that the Hurewicz homomorphism
 \[\pi_*(\te{MU}) \lra H_*(\te{MU})\]
 is monomorphic.
 \end{proof}
@@ -65,7 +65,7 @@ is defined to be the following composite.
 \[\begin{tikzcd}
 H^q(M) \arrow[dd, "d"']    &  &  & H^{n-m+q}(N) \arrow[dd, "d"'] \\
                            &  &  &                               \\
-H_{m-q} \arrow[rrr, "f_*"] &  &  & H_{m-q}(N)                   
+H_{m-q}(M) \arrow[rrr, "f_*"] &  &  & H_{m-q}(N)
 \end{tikzcd}\]
 Here $d$ is the Poincar\'e duality isomorphism.
 
@@ -82,10 +82,10 @@ Suppose that we embed the manifold $M$ in a high-dimensional sphere $S^{m+2p}$, 
                                                                                 &  &  &  &                                         \\
 {\Omega_U^{q+2p}(E,E_0)}                                                        &  &  &  &                                         \\
                                                                                 &  &  &  &                                         \\
-{\Omega_U^{q+qp}(S^{m+2p}, C \hspace{0.1cm} \Int E)} \arrow[uu, "\varphi"] \arrow[rrrr, "j^*"] &  &  &  & {\Omega_U^{q+qp}(S^{m+2p}, D^{m+2p})} 
+{\Omega_U^{q+2p}(S^{m+2p}, C \hspace{0.1cm} \Int E)} \arrow[uu, "\cong"] \arrow[rrrr, "j^*"] &  &  &  & {\Omega_U^{q+2p}(S^{m+2p}, D^{m+2p})}
 \end{tikzcd}
 \]
-Here $\varphi$ is the Thom isomorphism; $E$ and $E_0$ refer to the normal bundle $\nu$ of $M$; and $C \hspace{0.1cm} \Int E$ is the complement of the interior of $E$. (If one wished one could replace $\Omega_U^{q+qp}(S^{m+2p}, C \hspace{0.1cm} \Int E)$ by $\Omega_U^{q+2p}(S^{m+2p}, CM)$; ths would make it clearer that this group is standing in for a bordism group of $M$, via Alexander duality or $S$-duality.) Further, $D^{m+2p}$ is a small disc contained in $C \hspace{0.1cm} \Int E$, and the right-hand vertical arrow is the usual iterated suspension; this may be viewed as the analogue of the left-hand column, with $M$ replaced by $P$.
+Here $\varphi$ is the Thom isomorphism; $E$ and $E_0$ refer to the normal bundle $\nu$ of $M$; and $C \hspace{0.1cm} \Int E$ is the complement of the interior of $E$.\footnote{Editor's correction: the bottom-left group in the original diagram has the misprinted degree $q+qp$; excision requires $q+2p$ in both bottom groups.} (If one wished one could replace $\Omega_U^{q+2p}(S^{m+2p}, C \hspace{0.1cm} \Int E)$ by $\Omega_U^{q+2p}(S^{m+2p}, CM)$; this would make it clearer that this group is standing in for a bordism group of $M$, via Alexander duality or $S$-duality.) Further, $D^{m+2p}$ is a small disc contained in $C \hspace{0.1cm} \Int E$, and the right-hand vertical arrow is the usual iterated suspension; this may be viewed as the analogue of the left-hand column, with $M$ replaced by $P$.
 
 We will accept this composite as our definition of $c_!$. If any reader who is familiar with bordism prefers a different definition, we may leave it to them to reconcile their definition with this one.
 
@@ -94,6 +94,6 @@ Now we come to Novikov's formula. Take a stably almost complex manifold $M^m$, r
 \begin{thm}[Novikov]\label{thm:p1c08.3}
 $s_\alpha[M^m] = c_!cf_\alpha(\nu)$.
 \end{thm}
-This result follows easily from the definition of $s_\alpha$ in \S\ref{sec:p1c5}.
+This result follows easily from the definition of $s_\alpha$ in \S\ref{sec:p1c5}, by naturality.
 
 \end{document}

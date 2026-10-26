@@ -1,8 +1,8 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p2c7}
 
 \chapter{The Structure of Lazard's Universal Ring \texorpdfstring{$L$}{L}}
+\label{sec:p2c7}
 We propose to prove: 
 
 \begin{theorem}
@@ -12,7 +12,7 @@ The graded ring $L$ is a polynomial algebra over $\bbZ$ on generators of dimensi
 
 In order to prove this, we will use a faithful representation of $L$. Its construction is suggested by the results of the last section. As a matter of pure algebra, we define a (graded) commutative ring $R$ by \[R = \bbZ[b_1, b_2, \ldots, b_n, \ldots]\] where $b_i$ is assigned degree $2i$; $b_0$ is interpreted as $1$ if it arises. The generator $b_i$ is to be distinguished from the generator $\beta_i$ in \hyperref[sec:p2c3]{\S 3}.
 
-We define a formal power-series \[\exp(y) = R[[y]]\] by 
+We define a formal power-series \[\exp(y) \in R[[y]]\] by
 \begin{equation}
 \tag{7.2} 
 \label{eqn:p2c07.2}
@@ -52,7 +52,7 @@ m_1 & = -b_1, \\ m_2 & = 2 b_1^2 - b_2 \\ m_3 & = -5b_1^3 + 5b_1b_2 - b_3 \quad 
 If \[\omega = \sum_{i \ge -N} c_i y^i \mathrm d y,\] define $\mathrm{res} \, \omega$ to be $c_{-1}$, the residue of $\omega$ at $y=0$. This definition of the residue is purely algebraic, and the property of the residue which we shall can be established purely algebraically. Set
 
 \begin{align*}
-x & = \sum_{i \ge 0} b_i y^{i + 1} \\ y & = \sum_{j \ge 0} m_i y^{j + 1}.
+x & = \sum_{i \ge 0} b_i y^{i + 1} \\ y & = \sum_{j \ge 0} m_j x^{j + 1}.
 \end{align*}
 
 Then $\displaystyle \bigg(\sum_{i \ge 0} b_i\bigg)_n^{-n - 1}$ is the coefficient of $y^n$ in $\displaystyle \bigg(\sum_{i \ge 0} b_i y^i\bigg)^{-n - 1}$, that is, the coefficient of $y^{-1}$ in $\displaystyle \bigg(\sum_{i \ge 0} b_i y^{i + 1}\bigg)^{-n - 1}$. So we have 
@@ -67,7 +67,7 @@ Of course, the relation between the coefficients $b_i$ and $m_i$ of the two inve
 In the future, whenever symbols $b_i$ and $m_i$ appear in various contexts, they will be related as in (\ref{prop:p2c07.5}).
 
 \begin{customremark}{7.6}\label{rem:p2c07.6}
-Suppose that instead of $\bbZ$ we have in sight a ring $U$, that we replace $R$ by \[U[b_1, b_2, \ldots, b_n, \ldots],\] and that we replace our series $\exp$ by \[x = u^{-1} \sum_{I \ge 0} b_i y^{i + 1}\] where $u$ is invertible in $U$. (An application is given in \eqref{lem:p2c06.3}, \eqref{eqn:p2c06.4}.) Then we have \[y = \sum_{j \ge 0} m_j u^{j + 1} x^{j + 1},\] by substituting $u x$ for $x$ in our previous work.
+Suppose that instead of $\bbZ$ we have in sight a ring $U$, that we replace $R$ by \[U[b_1, b_2, \ldots, b_n, \ldots],\] and that we replace our series $\exp$ by \[x = u^{-1} \sum_{i \ge 0} b_i y^{i + 1}\] where $u$ is invertible in $U$. (An application is given in \eqref{lem:p2c06.3}, \eqref{cor:p2c06.7}.) Then we have \[y = \sum_{j \ge 0} m_j u^{j + 1} x^{j + 1},\] by substituting $u x$ for $x$ in our previous work.
 \end{customremark}
 
 
@@ -102,17 +102,17 @@ It is clear that $Q_m(L)$ and $Q_m(R)$ are both zero unless $m = 2n$, $n > 0$. I
 \end{customlemma}
 
 \begin{proof}
-Part (i) is immediate. Part (iii) follows from \eqref{eqn:p2c07.7} by an easy calculation, ignoring coefficients in $I^2$. Since $L$ is generated as a ring by the $a_{ij}$, $Q_{2n}(L)$ is certainly generated as an abelian group by the $a_{ij}$ with $i + j = n + 1$, $i \ge 1$, $j \ge 1$. To prove part (iii) we need only show that the highest common factor of the binomial coefficients \[\frac {(i+j)!} {i! j!} \quad (i + j = n + 1, \, i \ge 1, \, j \ge 1)\] is the integer $d$ defined in the enunciation.
+Part (i) is immediate. Part (ii) follows from \eqref{eqn:p2c07.7} by an easy calculation, ignoring coefficients in $I^2$. Since $L$ is generated as a ring by the $a_{ij}$, $Q_{2n}(L)$ is certainly generated as an abelian group by the $a_{ij}$ with $i + j = n + 1$, $i \ge 1$, $j \ge 1$. To prove part (iii) we need only show that the highest common factor of the binomial coefficients \[\frac {(i+j)!} {i! j!} \quad (i + j = n + 1, \, i \ge 1, \, j \ge 1)\] is the integer $d$ defined in the enunciation.
 
-It is well known and easy to see, that if $n + 1 = p^f$ all these binomial coefficients are divisible by $p$, and that if $n + 1 \ne p^f$ at least one of them is not divisible by $p$. One has only to add that if $n + 1 = p^f$, then the binomial coefficient with $i = \lambda p^{f - 1}$, $j = \mu p^{f - 1}$ is \[\frac {p!} {\lambda! u!} \mod p^2.\] and it is divisible by $p$ but not by $p^2$. 
+It is well known and easy to see, that if $n + 1 = p^f$ all these binomial coefficients are divisible by $p$, and that if $n + 1 \ne p^f$ at least one of them is not divisible by $p$. One has only to add that if $n + 1 = p^f$, then the binomial coefficient with $i = \lambda p^{f - 1}$, $j = \mu p^{f - 1}$ is \[\frac {p!} {\lambda! \mu!} \mod p^2.\] and it is divisible by $p$ but not by $p^2$.
 \end{proof}
 
-Topologists will note that this calculation is exactly the same one as one which Milnor made in the topological case. He was, of course, computing the image of \[Q_{2n}(\pi_\ast(\mathrm{MU})) \lar{} Q_{2n}(H_\ast(\mathrm{MU})).\] The ``Milnor genus'' may be regarded as the projection \[H_{2n}(\mathrm{MU}) \lar{} Q_{2n}(H_\ast(\mathrm{MU})),\] and the ``hypersurfaces of type $(1,1)$ in $\mathbb {CP}^i \times \mathbb {CP}^j$'' are related to the elements $a_{ij} \in \pi_\ast(\mathrm{MU})$ (see Corollary \ref{rmk:p3c10.9}). 
+Topologists will note that this calculation is exactly the same one as one which Milnor made in the topological case. He was, of course, computing the image of \[Q_{2n}(\pi_\ast(\mathrm{MU})) \lar{} Q_{2n}(H_\ast(\mathrm{MU})).\] The ``Milnor genus'' may be regarded as the projection \[H_{2n}(\mathrm{MU}) \lar{} Q_{2n}(H_\ast(\mathrm{MU})),\] and the ``hypersurfaces of type $(1,1)$ in $\mathbb {CP}^i \times \mathbb {CP}^j$'' are related to the elements $a_{ij} \in \pi_\ast(\mathrm{MU})$ (see Corollary \ref{cor:p2c10.7}).\footnote{Editorial correction: the original cites Corollary 10.9, which does not exist; Corollary 10.7 gives the stated relation.}
 
 In order to obtain the structure of $Q_\ast(L)$, we propose to consider formal groups defined over graded rings $S$ of a particular form. Given an abelian group $A$, and an integer $n > 0$, we can make $\bbZ \oplus A$ into a graded ring so that 
 
 \begin{align*}
-S_0 & = \mathbb Z \\ S_{2n} & = A \\ S_r & \ne 0 \text { for } r \ne 0, \, 2n.
+S_0 & = \mathbb Z \\ S_{2n} & = A \\ S_r & = 0 \text { for } r \ne 0, \, 2n.
 \end{align*}
 
 \begin{customlemma}{7.10}
@@ -153,7 +153,7 @@ Here the coefficients $a_{ij}^k$ are coefficients in $A$, which have to be deter
 \begin{equation}
 \tag{7.13}
 \label{eqn:p2c07.13}
-a_{ij}^l = \frac 1 d \frac {(i + j)!} {i! j!} a
+a_{ij}^1 = \frac 1 d \frac {(i + j)!} {i! j!} a
 \end{equation}
 
 for some fixed element $a \in A$; for the required map $\phi$ from $T_n$ to $A$ will be defined by $\phi(d[b_n]) = a$. 
@@ -163,15 +163,15 @@ We emphasise that the product $\beta_i \beta_j$ is known, from \eqref{eqn:p2c07.
 Case (i). $A \cong \bZ$; let us write as if $A = \bZ$. We have \[(\beta_1)^{n + 1} = (n + 1)! \bigg(\beta_{n + 1} + \frac a d \beta_1\bigg)\] for some $a \in \bbQ$. When $i + j = n + 1$ we have 
 
 \begin{align*}
-(i! \beta_i) (j! \beta_j) & = (\beta_1)^i (\beta_1)^i = (\beta_1)^{n + 1} \\ & = (i + j)! \bigg(\beta_{i + j} + \frac a d \beta_1\bigg)
+(i! \beta_i) (j! \beta_j) & = (\beta_1)^i (\beta_1)^j = (\beta_1)^{n + 1} \\ & = (i + j)! \bigg(\beta_{i + j} + \frac a d \beta_1\bigg)
 \end{align*}
 
-Comparing this with (\ref{lem:p2c07.9}) we have \[a_{ij}^1 = \frac {(i + j)!} {i! j!} \frac a d.\] Here $a$ is a rational number such that $\displaystyle \frac {(i + j)!} {i! j!} \frac a d$ is an integer for $i + j = n + 1$, $i \ge 1$, $j \ge 1$. The highest common factor of the numbers $\displaystyle \frac {(i + j)!} {i! j!} \frac 1 d$ is $1$, so $a$ is an integer, and we have obtained the required result \eqref{eqn:p2c07.13} in this case.
+Comparing this with \eqref{eqn:p2c07.12} we have \[a_{ij}^1 = \frac {(i + j)!} {i! j!} \frac a d.\] Here $a$ is a rational number such that $\displaystyle \frac {(i + j)!} {i! j!} \frac a d$ is an integer for $i + j = n + 1$, $i \ge 1$, $j \ge 1$. The highest common factor of the numbers $\displaystyle \frac {(i + j)!} {i! j!} \frac 1 d$ is $1$, so $a$ is an integer, and we have obtained the required result \eqref{eqn:p2c07.13} in this case.\footnote{Editorial correction: the original comparison cites (7.9), instead of the product formula (7.12).}
 
 Case (ii). $A \cong \bZ_p$. Take $i, j$ such that $i + j = n + 1$, $i \ge 1$, $j \ge 1$ and write 
 
 \begin{align*}
-i & = \lambda_0 + \lambda_1 p + \lambda_2 p^2 + \ldots + \lambda_r p^r, \\ j & = \mu_0 + \mu_1 p + \mu_1 p^2 + \ldots + \mu_r p^r,
+i & = \lambda_0 + \lambda_1 p + \lambda_2 p^2 + \ldots + \lambda_r p^r, \\ j & = \mu_0 + \mu_1 p + \mu_2 p^2 + \ldots + \mu_r p^r,
 \end{align*}
 
 where $0 \le \lambda_i < p$, $0 \le \mu_i < p$ for each $i$. Then \[\beta_1^{\lambda_0} \beta_p^{\lambda_1} \beta_{p^2}^{\lambda_2} \ldots \beta_{p^r}^{\lambda_r} = c'\beta_i\] \[\beta_1^{\mu_0} \beta_p^{\mu_1} \beta_{p^2}^{\mu_2} \ldots \beta_{p^r}^{\mu_r} = c''\beta_j\] where the coefficients $c'$ and $c''$ are non-zero mod p; in fact,
@@ -196,7 +196,19 @@ Case (c). Suppose $n + 1 \ne p^f$ and $\lambda_i + \mu_i < p$ for all $i$. If we
 a_{ij}^1 & = \frac c {c' c''} a \\ & = \frac {(i + j)!} {i! j!} a.
 \end{align*}
 
-So the required formula \eqref{eqn:p2c07.13} holds if $n + 1 \ne p^f$. This completes case (ii). 
+So the required formula \eqref{eqn:p2c07.13} holds if $n + 1 \ne p^f$.
+
+Case (d). The only remaining case is that in which $n+1=p^f$, $i=\lambda_{f-1}p^{f-1}$, $j=\mu_{f-1}p^{f-1}$. In this case we can set, once for all,
+\[
+\big(\beta_{p^{f-1}}\big)^p=e\beta_{n+1}+(p-1)!\,a\beta_1
+\]
+where $a\in A$ and $e=(p^f)!/(p^{f-1}!)^p$ is the coefficient prescribed by the coproduct. Then we have
+\begin{align*}
+a_{ij}^1
+&=\frac{(p-1)!}{\lambda_{f-1}!\mu_{f-1}!}\,a\\
+&=\frac1p\frac{(i+j)!}{i!j!}\,a.
+\end{align*}
+So the required formula \eqref{eqn:p2c07.13} holds if $n+1=p^f$. This completes case (ii).
 
 Case (iii). $A \cong \bbZ_{p^f}$. We first remark that a homomorphism of graded rings $\bbZ \oplus A \lar{} \bbZ \oplus A'$ is equivalent to a homomorphism of abelian groups $A \lar{} A'$. We proceed by induction over $f$, and assume the result true for $f - 1$. Suppose given a homomorphism $Q_{2n}(L) \lar{\theta} \bbZ_{p^f};$ and the form the following diagram.
 
@@ -208,7 +220,7 @@ T_n \arrow[rr, "\alpha", dashed] \arrow[rruu, "\beta", dashed] &  & \mathbb Z_p
 \end{tikzcd}
 \end{center}
 
-By case (ii) the homomorphism $q'\theta$ factors in the form $\alpha q$. Since $T_n$ is free, we can factor $\alpha$ in the form $q' \beta$. Then $q'(\theta - \beta q) = 0$, and so $\theta - \beta q$ maps into $\bZ_{p^f - 1}$. By the inductive hypothesis, $\theta - \beta q$ factors in the form $\gamma q$. Therefore $\theta = (\beta + \gamma)q$. This completes the induction, and finishes case (iii).
+By case (ii) the homomorphism $q'\theta$ factors in the form $\alpha q$. Since $T_n$ is free, we can factor $\alpha$ in the form $q' \beta$. Then $q'(\theta - \beta q) = 0$, and so $\theta - \beta q$ maps into $\bZ_{p^{f - 1}}$. By the inductive hypothesis, $\theta - \beta q$ factors in the form $\gamma q$. Therefore $\theta = (\beta + \gamma)q$. This completes the induction, and finishes case (iii).
 
 Case (iv). $A$ is any finitely-generated abelian group. Then $A$ can be written as a direct sum of groups $\bbZ$ and $\bbZ_{p^f}$. The result follows from cases (i) and (iii).
 

@@ -1,8 +1,8 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p2c1}
 
 \chapter{Formal Groups}
+\label{sec:p2c1}
 We may understand formal groups by an analogy. Let $G$ be a real Lie group of dimension $1$. By choosing a chart, we may identify a neighbourhood of the unit in $G$ with a neighbourhood of zero in ${\bbR}^1$, so that the unit of $G$ corresponds to zero. The product in $G$ is then given by a power-series:
 
 \begin{equation}
@@ -56,12 +56,12 @@ So we may write our formal power-series in the following form
 \begin{equation}
 \tag{1.7}
 \label{eqn:p2c01.7}
-\mu(x, y) = x + y + \sum_{i, j \ge 0} a_{ij} x^i y^j.
+\mu(x, y) = x + y + \sum_{i, j \ge 1} a_{ij} x^i y^j.
 \end{equation}
 
 Condition \eqref{eqn:p2c01.3} involves substituting one formal power-series into another, but this involves no difficulty since our formal power-series have their constant terms zero.
 
-We observe that so far we are only discussing the case of dimension $1$. That is, in the general case one would start from a Lie group of dimension $1$, and proceed by analogy. %typo in adams here
+We observe that so far we are only discussing the case of dimension $1$. That is, in the general case one would start from a Lie group of dimension $n$, and proceed by analogy.
 
 Given a formal product $\mu$, a \emph{formal inverse} $\iota$ is a formal power-series
 \begin{equation}
@@ -84,7 +84,7 @@ Given any formal product $\mu$, there is a formal inverse $\iota$, and it is uni
 
 The proof is trivial. 
 
-We have two examples; with the ``additive product'' of \eqref{eqn:p2c01.4} we have \[\iota(x) = -x,\] and with the ``multiplicative product'' of \eqref{eqn:p2c01.5} we have \[\iota(x) = -x + x^2 - x^3 + x^4 \ldots.\] So far, a ``formal product'' is like a grin without a Cheshire cat behind it. A ``formal group'' must, of course, be a group object in a suitable category; I take this notion as known. If $X$ is to be a group object in the category $C$, then Cartesian products such as $X^n$ must exist in $C$ for $n = 0, 1, 2, 3$; and $X$ must be provided with structure maps in the category $C$, namely a product map $m : X^2 \lar{} X$, a unit map $e : X^0 \lar{} X$ and an inverse map $i : X \lar{} X$. These maps must satisfy the obvious conditions. For example, consider the category of smooth manifolds and smooth maps; a group in this category is a Lie group. Again, consider the category of commutative maps and homomorphisms of rings, and let $C$ be the opposite category; with a little goodwill $C$ may be regarded as the category of affine algebraic varieties. A group in this category is an ``algebraic group''.\\
+We have two examples; with the ``additive product'' of \eqref{eqn:p2c01.4} we have \[\iota(x) = -x,\] and with the ``multiplicative product'' of \eqref{eqn:p2c01.5} we have \[\iota(x) = -x + x^2 - x^3 + x^4 \ldots.\] So far, a ``formal product'' is like a grin without a Cheshire cat behind it. A ``formal group'' must, of course, be a group object in a suitable category; I take this notion as known. If $X$ is to be a group object in the category $C$, then Cartesian products such as $X^n$ must exist in $C$ for $n = 0, 1, 2, 3$; and $X$ must be provided with structure maps in the category $C$, namely a product map $m : X^2 \lar{} X$, a unit map $e : X^0 \lar{} X$ and an inverse map $i : X \lar{} X$. These maps must satisfy the obvious conditions. For example, consider the category of smooth manifolds and smooth maps; a group in this category is a Lie group. Again, consider the category of commutative rings and homomorphisms of rings, and let $C$ be the opposite category; with a little goodwill $C$ may be regarded as the category of affine algebraic varieties. A group in this category is an ``algebraic group''.\\
 
 Now consider the category in which the objects are filtered commutative algebras over $R$, which are complete and Hausdorff for the filtration topology; the morphisms are filtration-preserving homomorphisms. Let $C$ be the opposite category. The ring of formal power-series \[R[[x_1, x_2, \ldots, x_n]],\] with the obvious filtration, is an object in $C$. The objects $R[[x_1, x_2, \ldots, x_n]]$ and $R[[y_1, y_2, \ldots, y_m]]$ have a Cartesian product in $C$, namely \[R[[x_1, x_2, \ldots, x_n, y_1, y_2, \ldots, y_m]].\] Let $X$ be the object $R[[x]]$ in $C$, then a map $m : X^2 \lar{} X$ in $C$ is a filtration-preserving homomorphism \[m : R[[x]] \lar{} R[[x_1, x_2]];\] such a map $m$ is determined by giving $m(x)$, which is a formal power-series $\mu(x_1, x_2)$ with zero constant term. It is now easy to check that each ``formal product'' $\mu$ determines a structure map $m$ which makes $R[[x]]$ into a group object, and conversely. (The unit map $e : R[[x]] \lar{} R$ defined by $\displaystyle e \Big(\sum_{i \ge 0} c_i x^i\Big) = c_0$; inverse  maps come free of charge by Lemma~\ref{lem:p2c01.10}). It is now clear how to proceed in dimension $n$; we have to consider the object $R[[x_1, x_2, \ldots, x_n]]$, and study the ways of making it into a group-object in $C$. A ``formal group'', then, is a group-object in the category $C$, whose underlying object is $R[[x_1, x_2, \ldots, x_n]]$.
 

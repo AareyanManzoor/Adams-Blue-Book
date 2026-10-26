@@ -116,7 +116,8 @@
 \usepackage{xcolor}
 \newcommand{\plscite}[1]{{\color{purple} #1}} %Changed from green to purple to stop the eye massacre
 
-\usepackage[bookmarks=true, colorlinks=true, linkcolor=blue, citecolor= red]{hyperref}
+% Automatic destination IDs remain unique when the book restarts visible counters.
+\usepackage[bookmarks=true, colorlinks=true, linkcolor=blue, citecolor= red, hypertexnames=false]{hyperref}
 
 %fix for equals arrows
 %copy & paste

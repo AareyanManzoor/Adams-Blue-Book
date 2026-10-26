@@ -1,10 +1,10 @@
 \documentclass[../main]{subfiles}
 \renewcommand{\labelenumi}{(\roman{enumi})}
 \begin{document}
-\label{sec:p2c13} % using this
 %wordslinger
 
 \chapter{\texorpdfstring{$K_\ast(K)$}{KK}}
+\label{sec:p2c13} % using this
 
 In this section we compute the Hopf algebra $K_\ast(K)$. The results represent joint work with Mr. A.S. Harris.
 
@@ -23,7 +23,7 @@ We first observe that the operation $\psi^k$ was originally introduced as an uns
 \end{tikzcd}
 \end{center}
 We have to take the $(2n)$-th component of our map to be \[\dfrac{1}{k^n}\psi^k:\mathrm{BU}\mapsto \mathrm{BU}\mathbb{Z}\Big(\dfrac{1}{k}\Big)\]
-Here the space $\mathrm{BU}\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ is constructed by taking the spectrum $K\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ representing K-theory with coefficients in $\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ (see \cite{adams2}), converting it into an $\Omega$-spectrum, and taking the $(2n)$-th space of this $\Omega$-spectrum. 
+Here the space $\mathrm{BU}\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ is constructed by taking the spectrum $K\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ representing K-theory with coefficients in $\mathbb{Z}\Big[\dfrac{1}{k}\Big]$ (see \hyperref[sec:p2c2]{\S2}), converting it into an $\Omega$-spectrum, and taking the $(2n)$-th space of this $\Omega$-spectrum.
 
 For any element $h\in K_\ast(K)$, we can form \[\langle\psi^k, h\rangle \in\pi_\ast(K)\otimes\mathbb{Z}\Big[\dfrac{1}{k}\Big]\hspace{1cm} (k\neq 0).\]
 But if we identify $h$ with a finite Laurent series $f(u,v)$, as above, then we have 
@@ -79,18 +79,19 @@ f(u,ku)\in \pi_\ast(K)\otimes\mathbb{Z}\Big[\dfrac{1}{k}\Big] \,\text{ for } k\n
 The proof of \eqref{thm:p2c13.4} will be built up in stages. 
 \begin{customlemma}{13.5}
 \label{lem:p2c13.5}
-The Bott map \[B_\ast:\widetilde{K}_n(\mathrm{BU})\mapsto\widetilde{K}_{n+2}(\mathrm{BU})\] annihilates decomposables, and is given by \[B_\ast\beta_j=u((j+1)\beta_j+j\beta_j)\mod{\text{decomposables}}.\]
+The Bott map \[B_\ast:\widetilde{K}_n(\mathrm{BU})\mapsto\widetilde{K}_{n+2}(\mathrm{BU})\] annihilates decomposables, and is given by \[B_\ast\beta_j=u((j+1)\beta_{j+1}+j\beta_j)\mod{\text{decomposables}}.\]
 \end{customlemma}
 \begin{proof}
-Immediate from \eqref{prop:p2c12.5} and \eqref{prop:p2c12.6}; the values of the coefficients $a_{1r}$ come from \eqref{eqn:p2c02.6}. 
+Immediate from \eqref{prop:p2c12.5} and \eqref{prop:p2c12.6}; the values of the coefficients $a_{1r}$ come from \ref{ex:p2c02.9}.
 \end{proof}
 We observe that the generator in $\pi_{2n}(\mathrm{BU})$ gives an element in $K_{2n}(\mathrm{BU})$; we write the latter element $w^n$ (noting that the multiplication involved is in the sense of the tensor-product map $t:\mathrm{BU}\wedge\mathrm{BU}\mapsto\mathrm{BU}$, and is not to be confused with our usual multiplication, which comes
-from the Whitney sum map $\mathrm{BU}\times\mathrm{BU}\mapsto\mathrm{BU}$.) If we regard $\mathrm{BU}$ as the $2m$-th term of the spectrum $K$, then the image of $w^n$ in $K_{2(n-m)}(\mathrm{BU})$ is $v^{n-m}$ (assuming $n\ge 1$). 
+from the Whitney sum map $\mathrm{BU}\times\mathrm{BU}\mapsto\mathrm{BU}$.) If we regard $\mathrm{BU}$ as the $2m$-th term of the spectrum $K$, then the image of $w^n$ in $K_{2(n-m)}(K)$ is $v^{n-m}$ (assuming $n\ge 1$).\footnote{Editorial correction: the original gives the target as $K_{2(n-m)}(\mathrm{BU})$; passage to the spectrum gives a class in $K_{2(n-m)}(K)$.}
 \begin{customlemma}{13.6}
 \label{lem:p2c13.6}
-In $K_{2n}(\mathrm{BU})\otimes\mathbb{Q}$ we have \[\beta_n = \dfrac{u^{-1}w (u^{-1}w-1)\dots(u^{-1}w-n+1)}{1\cdot 2\cdot \ldots \cdot n}\] modulo decomposables in the sense of Whitney sum, where the product
+In $K_0(\mathrm{BU})\otimes\mathbb{Q}$ we have \[\beta_n = \dfrac{u^{-1}w (u^{-1}w-1)\dots(u^{-1}w-n+1)}{1\cdot 2\cdot \ldots \cdot n}\] modulo decomposables in the sense of Whitney sum, where the product
 is taken in the sense of the tensor-product.
 \end{customlemma}
+\noindent Editorial correction: the original places this identity in $K_{2n}(\mathrm{BU})$. Since $x^K$ has degree zero, its dual $\beta_n$ and the displayed polynomial in $u^{-1}w$ both have degree zero.
 \begin{proof}
 By induction over $n$; for $n=1$ we have $\beta_1=u^{-1} w$. Suppose the result true for $n$. Since $B_\ast w^r = w^{r+1}$, we have \[B_\ast(\beta_n) = \dfrac{u^{-1}w (u^{-1}w-1)\dots(u^{-1}w-n+1)w}{1\cdot 2\cdot \ldots \cdot n}\]
 By \eqref{lem:p2c13.5}, we have \begin{align*}

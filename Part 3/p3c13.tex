@@ -97,9 +97,10 @@ considered above, and convergent in the sense that Theorem \ref{prop:p3ch08.2} h
 \end{theorem}
 \emph{Proof of \ref{prop:p3ch13.5} from \ref{thm:p3ch13.6}} \begin{proof} If $E_\ast(X)$ is projective over $\pi_\ast(E)$, then 
 \[
-\text{Ext}^{p, \ast}_{\pi_\ast(E)}(E_\ast(X),\pi_\ast(E))
+\text{Ext}^{p, \ast}_{\pi_\ast(E)}(E_\ast(X),\pi_\ast(F))
 \]
 is zero for $p > 0$. Hence, the spectral sequence collapses to its edge-homomorphism. Note that we have enough convergence; condition (ii) of Theorem \ref{prop:p3ch08.2} is trivially satisfied, so (i) and (iii) of \ref{prop:p3ch08.2} hold.
+\noindent\textit{Editorial note.} The original has $\pi_\ast(E)$ here; the coefficients required by Theorem \ref{thm:p3ch13.6} are $\pi_\ast(F)$.
 \end{proof}
 We now prove intermediate results necessary to prove Theorem \ref{thm:p3ch13.6}.
 
@@ -108,7 +109,7 @@ The force of Condition \ref{cond:p3ch13.3} is that it allows us to make resoluti
 For any spectrum X and any class $e \in E_p(X)$ there is an $E_\alpha$ and a morphism $f \colon DE_\alpha \longrightarrow X$ of degree $p$ such that $e = f_\ast(g_\alpha)$.
 \end{lemma}
 \begin{proof}
-Take a class $e \in E_p(X)$. There there is a finite subspectrum $X' \overset{i}{\subset} X$ and a class $e' \in E_p(X')$ such that $i_\ast(E') = e$. We may interpret $e'$ as a morphism $DX' \longrightarrow E$ of degree $p$; here I need the fact (not proven in \S\ref{sec:p3c5}) that $D^2Y \cong Y$. By assumption, this morphism factors through some $E_\alpha$, so that 
+Take a class $e \in E_p(X)$. Then there is a finite subspectrum $X' \overset{i}{\subset} X$ and a class $e' \in E_p(X')$ such that $i_\ast(e') = e$.\footnote{The original prints $E'$ in place of the class $e'$.} We may interpret $e'$ as a morphism $DX' \longrightarrow E$ of degree $p$; here I need the fact (not proven in \S\ref{sec:p3c5}) that $D^2Y \cong Y$. By assumption, this morphism factors through some $E_\alpha$, so that 
 \[\begin{tikzcd}
 	{DX'} && E \\
 	& {E_\alpha}
@@ -184,7 +185,7 @@ is zero. Therefore
 \[E_\ast(X_\infty) = \underset{\underset{r}{\longrightarrow}}{\text{Lim }} E_\ast(X_r) = 0\]
 By Lemma \ref{lem:p3ch13.1}, we have $F^\ast(X_\infty) = 0$.
 
-By applying $F^\ast$, we get a spectral sequence, convergent in the sense that Theorem \ref{prop:p3ch08.2} holds. It is convergent to $F^\ast(X_\infty, X_0) \cong F^\ast(X_0)$ and has $E_1$-term
+By applying $F^\ast$, we get a spectral sequence, convergent in the sense that Theorem \ref{prop:p3ch08.2} holds. It is convergent to $F^{\ast+1}(X_\infty, X_0) \cong F^\ast(X_0)$ and has $E_1$-term\footnote{The relative group has been shifted by one degree: the connecting isomorphism is $F^n(X_0)\cong F^{n+1}(X_\infty,X_0)$. The original suppresses this shift.}
 \[E^{p, \ast}_1 = F^\ast(W_p).\]
 Now we have arranged that
 \[F^\ast(W_r) = \text{Hom}^\ast_{\pi_\ast(E)}(E_\ast(W_r), \pi_\ast(F))\]
@@ -222,9 +223,10 @@ is trivial, and
 \end{enumerate}
 \end{lemma}
 \begin{proof} (from \cite{adams3}, Lecture 1, Prop 17). Let $E^r_{p, q}(0)$ and $E^{p, q}_r(2)$ be respectively the spectral sequences
-\begin{align*}H^\ast(X;\pi_\ast(E)) &\Longrightarrow E_\ast(X) \\
+\begin{align*}H_\ast(X;\pi_\ast(E)) &\Longrightarrow E_\ast(X) \\
 H^\ast(X;\pi_\ast(F)) &\Longrightarrow F^\ast(X).
 \end{align*}
+\noindent\textit{Editorial note.} The first spectral sequence is homological; the original incorrectly prints $H^\ast$.
 It follows immediately from the assumptions on the spectral sequence $E^\ast_{\ast \ast}(0)$ that $E_\ast(X)$ is projective.
 
 The Kronecker product yields a homomorphism

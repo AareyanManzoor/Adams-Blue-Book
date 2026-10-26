@@ -13,7 +13,7 @@ $K^\ast (\mathbb{CP}^n)$ is free over $\pi_\ast (K)$ with a base consisting of $
 \end{proposition}
 \par We need a cohomology operation in $K$-theory.
 \begin{proposition}\label{prop:p3ch11.2}
-There exists a function $\psi^2:K^0(X)\longrightarrow K^0(X)$ such that \begin{enumerate}
+There exists a function $\Psi^2:K^0(X)\longrightarrow K^0(X)$ such that \begin{enumerate}
     \item $\Psi^2$ is natural,
     \item $\Psi^2$ is a homomorphism of rings, and
     \item if $\eta$ is a line bundle, then $\Psi^2(\eta)=\eta^2$
@@ -35,7 +35,8 @@ There is an orientation $\omega$ for each complex vector-bundle $\xi$ which sati
 \[\chi_F(\xi)=\zeta^\ast \omega.\]
 Its formal properties are: naturality (if $\omega$ is natural):
 \[\chi_F(\xi'+\xi'')=\chi_F(\xi')\chi_F(\xi''),\]
-(if $\omega$ satisfies the axiom on Whitney sums); and normalisation (if $\omega$ satisfies the normalisation axiom). For example, in the case of complex $K$-theory we have \[K^{(\eta)}=\eta-1 \quad \text{ where } \eta \text{ is a line bundle.} \]
+(if $\omega$ satisfies the axiom on Whitney sums); and normalisation (if $\omega$ satisfies the normalisation axiom). For example, in the case of complex $K$-theory we have \[\chi_K(\eta)=\eta-1 \quad \text{ where } \eta \text{ is a line bundle.} \]
+\noindent Editorial correction: the original's malformed $K^{(\eta)}$ denotes the Euler class $\chi_K(\eta)$.
 \begin{proposition}\label{prop:p3ch11.4}
 Suppose the bundle in question is the tangent bundle $\tau$ of a compact smooth manifold $M^n$, orientable for ordinary homology. Then
 \[\chi_F(\tau)=f^\ast i^\ast \omega\]
@@ -44,7 +45,7 @@ Here $i^\ast \omega$ is the restriction of the orientation $\omega$ to one fibre
 and $f:M^n\longrightarrow S^n$ is a map of degree $\chi(M)$, this being the ordinary Euler characteristic for $M$.
 \end{proposition}
 \begin{proof}
-By a result going back to Hopf, we can construct on $M$ a field $\gamma$ of tangent vectors with non-degenerate singularities, so that the number of singularities, when counted with appropriate signs, is $\chi(M)$. But now the zero section $\zeta:M\longrightarrow E(\tau)$ is homotopic to a section $\lambda$, which crosses the zero-section transversely a total $\xi(M)$ times. So $\zeta^\ast \omega=\lambda^\ast \omega$. But here the contribution comes from many small discs, each of which constributes $\pm i^\ast \omega$.
+By a result going back to Hopf, we can construct on $M$ a field $\gamma$ of tangent vectors with non-degenerate singularities, so that the number of singularities, when counted with appropriate signs, is $\chi(M)$. But now the zero section $\zeta:M\longrightarrow E(\tau)$ is homotopic to a section $\lambda$, which crosses the zero-section transversely a total $\chi(M)$ times. So $\zeta^\ast \omega=\lambda^\ast \omega$. But here the contribution comes from many small discs, each of which contributes $\pm i^\ast \omega$.
 \end{proof}
 \par Given an orientation, we can also construct a Thom isomorphism. This allows us to copy Thom's treatment of the Stiefel-Whitney classes. We consider the following diagram.
 \[\begin{tikzcd}
@@ -63,7 +64,8 @@ $\rho_2(\xi)\in K^0(X)$ is a characteristic class with the following properties.
     \item Naturality
     \item $\rho_2(\xi\oplus\eta)=\rho_2(\xi)\rho_2(\eta)$
     \item If $\eta$ is a line bundle,
-    \[2^{(\eta)}=1+\eta.\]
+    \[\rho_2(\eta)=1+\eta.\]
+    Editorial correction: the original's $2^{(\eta)}$ is a misprint for $\rho_2(\eta)$.
 \end{enumerate}
 \end{proposition}
 \begin{proposition}\label{prop:p3ch11.6}
@@ -79,8 +81,8 @@ $K^\ast (\mathbb{CP}^n\times\mathbb{CP}^n)$ is free over $\pi_\ast (K)$ with a b
 \end{proposition}
 \par The difficulty is that the construction of $\omega$ refers to a tubular neighbourhood of the diagonal, and it is not clear how to relate that to the whole of $M\times M$. 
 \begin{lemma} \label{prop:p3ch11.8}
-Consider \[j^\ast :K^\ast (\mathbb{CP}^n \times \mathbb{CP}^n, \mathbb{CP}\times \mathbb{CP}^n - \Delta) \longrightarrow K^\ast (\mathbb{CP}^n\times \mathbb{CP}^n).\]
-Of $k\in\operatorname{Im}j^\ast $, then $x_1 k = x_2 k$.
+Consider \[j^\ast :K^\ast (\mathbb{CP}^n \times \mathbb{CP}^n, \mathbb{CP}^n\times \mathbb{CP}^n - \Delta) \longrightarrow K^\ast (\mathbb{CP}^n\times \mathbb{CP}^n).\]
+If $k\in\operatorname{Im}j^\ast $, then $x_1 k = x_2 k$.
 \end{lemma}
 See the proof of \ref{prop:p3c10.14}.
 \begin{lemma} \label{lem:p3ch11.9}
@@ -94,7 +96,7 @@ We have \[j^\ast \omega=1\cdot p_0+a_1p_1+a_2p_2+...+a_np_n, \quad a_i\in \mathb
 \begin{proof}
 By Lemmas \ref{prop:p3ch11.8} and \ref{lem:p3ch11.9} we have 
 \[j^\ast \omega=\sum_ia_ip_i.\]
-Now consider the restriction of $j^\ast $ to the diagonal. $p_0$ restricts to $(n+1)x^n$; $p_i$ restricts to $0$ for $i>0$. But $j^\ast \omega$ restricts to the Euler class; $\chi(\mathbb{CP}^n)=(n+1)$, and the orientation was chosen so that $1^\ast i^\ast \omega = x^n$. So $a_0=1$.
+Now consider the restriction of $j^\ast \omega$ to the diagonal. $p_0$ restricts to $(n+1)x^n$; $p_i$ restricts to $0$ for $i>0$. But $j^\ast \omega$ restricts to the Euler class; $\chi(\mathbb{CP}^n)=(n+1)$, and the orientation was chosen so that $\ell^\ast i^\ast \omega = x^n$, where $\ell:\mathbb{CP}^n\to S^{2n}$ has degree one. So $a_0=1$.
 \end{proof}
 \begin{lemma}\label{lem:p3ch11.11}
 $j^\ast \omega$ satisfies
@@ -118,7 +120,7 @@ Suppose as an inductive hypothesis that $a_1,...,a_{i-1}$ are determined. Then
 \[\Psi^2(a_ip_i)=2^{n+i}a_ip_i+T_1,\] 
 where $T_1$ is a sum of terms in $p_{i+1},...,p_n$; so 
 \[\Psi^2(j^\ast \omega)=T_2+2^{n+i}a_ip_i+T_3,\]
-where $T_2$ is a sum of known terms and $T_3$ is a sum of terms in $P_{i+1},...,p_n.$ Similarly, $(\rho_2\tau)(j^\ast \omega)$ is the sum of known terms, terms in $p_{i+1},...,p_n$ and the term $2^na_ip_i$. So we can find $a_i$ by equating the coefficients of $p_i$.
+where $T_2$ is a sum of known terms and $T_3$ is a sum of terms in $p_{i+1},...,p_n.$ Similarly, $(\rho_2\tau)(j^\ast \omega)$ is the sum of known terms, terms in $p_{i+1},...,p_n$ and the term $2^na_ip_i$. So we can find $a_i$ by equating the coefficients of $p_i$.
 \end{proof}
 \begin{lemma}\label{lem:p3ch11.13}
 We have 
@@ -131,12 +133,12 @@ therefore
 \[\Psi^2(x_1-x_2)\Psi^2p_0=\Psi^2x_1^{n+1}-\Psi^2x_2^{n+1},\]
 i.e.,
 \begin{align}
-    (2x_1+x_1^2-2x_2-x_2^2)\Psi^2p_0 &= (2x_j+x_1^2)^{n+1}-(2x_2+x_2^2)^{n+1} \nonumber \\
+    (2x_1+x_1^2-2x_2-x_2^2)\Psi^2p_0 &= (2x_1+x_1^2)^{n+1}-(2x_2+x_2^2)^{n+1} \nonumber \\
     &=\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^i(x_1^{n+1+j}-x_2^{n+1+j}). \nonumber
 \end{align}
 Dividing by $x_1-x_2$, which is not a zero-divisor in $K^0(\mathbb{CP}^\infty\times\mathbb{CP}^\infty),$ we have 
 \[(2+x_1+x_2)\Psi^2p_0=\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^ip_j.\]
-Now restricting to $K^0(\mathbb{CP}^n\times\mathbb{CP}^\infty),$ we get
+Now restricting to $K^0(\mathbb{CP}^n\times\mathbb{CP}^n),$ we get
 \[2(1+x)\Psi^2p_0=\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^ix^jp_0=(2+x)^{n+1}p_0.\]
 This proves \ref{lem:p3ch11.13}
 \end{proof}
@@ -174,7 +176,7 @@ The index is a homomorphism of rings from the cobordism ring of weakly almost co
 \[\rho_2(\tau)=\frac{1}{2}(2+x)^{n+1}.\]
 So 
 \begin{align*} 
-\bigg\langle\rho_2(\tau),[\mathbb{CP}^n]_K\bigg\langle &= \bigg\langle\frac{1}{2}(2+x)^{n+1},[\mathbb{CP}^n]_K\bigg\rangle \nonumber \\
+\bigg\langle\rho_2(\tau),[\mathbb{CP}^n]_K\bigg\rangle &= \bigg\langle\frac{1}{2}(2+x)^{n+1},[\mathbb{CP}^n]_K\bigg\rangle \nonumber \\
 &= \frac{1}{2}\sum_{i+j=n+1}\frac{(n+1)!}{i!j!}2^i\left<x^j,[\mathbb{CP}^n]_K\right> \nonumber \\
 &= \frac{1}{2}\bigg[\sum_{i+j=n+1}\left(\frac{(n+1)!}{i!j!}2^i(-1)^{n-j}\right) + 1\bigg] \nonumber \\
 &= \frac{1}{2}\left[(-1)^n(2-1)^{n+1}+1\right] \nonumber \\
@@ -183,7 +185,7 @@ So
   1  & (n\equiv 0 \quad (2)) \\
   0 & (n\equiv 1 \quad (2))
 \end{cases} \nonumber \\
-&=\operatorname{Im}(\mathbb{CP}^n).
+&=\operatorname{Index}(\mathbb{CP}^n).
 \end{align*}
 \end{proof}
 \end{document}

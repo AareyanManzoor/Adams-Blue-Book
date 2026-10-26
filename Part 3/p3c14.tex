@@ -28,13 +28,13 @@ There exists a category $F$, called the category of fractions, and a functor
 
 \begin{enumerate}[label=(\roman*)]
   \item if $e\colon X \lar{} Y $ is an $E$-equivalence in $C$, then  $T (e)$ is an actual equivalence in $F$, i.e., it has an inverse  $T (e)^{-1}$.
-  \item  $T$ is an universal with respect this property; given a category $C$ and a functor $U\colon C \lar{} G$ such that $e$ an $E$-equivalence implies  $U(e)$ is an equivalence in $G$, then there exists one and only functor  $V\colon F \lar{} G  $ such that $U = VT$. 
+  \item $T$ is universal with respect to this property; given a category $G$ and a functor $U\colon C \lar{} G$ such that $e$ an $E$-equivalence implies $U(e)$ is an equivalence in $G$, then there exists one and only one functor $V\colon F \lar{} G$ such that $U=VT$.
 \[\begin{tikzcd}
-	C &&&& G \\
+	C &&&& F \\
 	\\
 	\\
 	\\
-	&&&& F
+	&&&& G
 	\arrow["T", from=1-1, to=1-5]
 	\arrow["U"', from=1-1, to=5-5]
 	\arrow["V", dashed, from=1-5, to=5-5]
@@ -169,7 +169,7 @@ For the next result, we assume that $E$ is a commutative ring-spectrum, that  $ 
   \item [(ia)] Suppose $\pi_{0}(E)=\bZ$, then $Y^E=Y$ and $T\colon \left[X,Y\right]^{}_{\ast} \lar{} \left[X,Y\right]^{E}_{\ast}$ is an isomorphism. 
   \item [(ib)] Suppose $ \pi_{0}(E)$ is a subring $R$ of the rationals and $X$ is a finite spectrum. Then 
     \[
-      \left[X,Y\right]^{E}_{\ast} = \left[X,YI_{m}\right]^{}_{\ast} = \left[X,Y\right]^{}_{\ast} \otimes R \text{  by \ref{prop:p3c06.7}}
+      \left[X,Y\right]^{E}_{\ast} = \left[X,YR\right]^{}_{\ast} = \left[X,Y\right]^{}_{\ast} \otimes R \text{  by \ref{prop:p3c06.7}}
     \] 
   \item [(iia)] Suppose $ \pi_{0}(E)=\bZ_{m}$, $ \pi_{r}(Y)$ is finitely generated for all $r$ and $X$ is a finite spectrum. Then
     \[
@@ -180,7 +180,7 @@ For the next result, we assume that $E$ is a commutative ring-spectrum, that  $ 
     \left[S,S\right]^{E}_{r} = 
       \begin{cases} 
         0 & (r<0)\\
-        1_{p} & (r=0)\\
+        I_{p} & (r=0)\\
         \text{the p-component of of $\left[S,S\right]^{}_{r}$ if $r>0$}.  
       \end{cases}
     \] 
@@ -193,7 +193,7 @@ It is very plausible that the classical Adams spectral sequence should converge 
 
     \item [(ii)] Consider parts (ii) and (iii) of the theorem, in which $\pi_{0}(E)=\mathbb{Z}_{m}$. Results of the form given do require some assumption on $Y$ beyond the fact it is connective. For example, take $Y = S(\bQ/\bZ)$ It can be shown that 
       \[
-        \left[S,Y\right]_{1} = 0 \text{  and so } \left[S,Y\right]_{1} \otimes I_{m} = 0, \text{  but } \left[S,Y\right]^E _{I} = I_{m}.
+        \left[S,Y\right]_{1} = 0 \text{  and so } \left[S,Y\right]_{1} \otimes I_{m} = 0, \text{  but } \left[S,Y\right]^E _{1} = I_{m}.
       \] 
   If one takes $m$ to be a prime $p$ and checks the behavior of the classical Adams spectral sequence based on $E=H\bZ_{p}$, one sees that it converges to $ \left[S,Y\right]^E _{1}$, as indeed it must do by the theorem so be proved in the next section. So something which was previously a counterexample can now be used as evidence to support the theory.
 \end{enumerate}
@@ -225,7 +225,7 @@ in which $e$ is an $E$-equivalence. Then we can complete it to a commutative dia
 	\arrow["e", from=1-1, to=4-1]
 	\arrow["f"', from=1-1, to=1-5]
 	\arrow["{e'}"', from=1-5, to=4-5]
-	\arrow["g"', from=4-5, to=4-1]
+	\arrow["g"', from=4-1, to=4-5]
 \end{tikzcd} 
 } 
 in which $e'$ is an $E$-equivalence. If f is also an $E$-equivalence, so is $g$.
@@ -252,7 +252,7 @@ in which $e'$ is an $E$-equivalence. If f is also an $E$-equivalence, so is $g$.
 	\arrow["e", from=1-1, to=4-1]
 	\arrow["f"', from=1-1, to=1-5]
 	\arrow["{e'}"', from=1-5, to=4-5]
-	\arrow["g"', from=4-5, to=4-1]
+	\arrow["g"', from=4-1, to=4-5]
 \end{tikzcd} 
 } ~\\~\\
 in which $e$ is an $E$-equivalence. If $g$ is also an $E$-equivalence, so is f.
@@ -270,7 +270,7 @@ in which $e$ is an $E$-equivalence. If $g$ is also an $E$-equivalence, so is f.
   \[
   X' \lar{e}X \overunderset{f}{g}{\rightrightarrows} Y
   \] 
-  Where $e'$ is an $E$-equivalence and fe=ge. Then we can construct 
+  where $e$ is an $E$-equivalence and $fe=ge$. Then we can construct
   \[
   X \overunderset{f}{g}{\rightrightarrows} Y \vra{e'} Y'
   \] 
@@ -346,7 +346,7 @@ To define composition in the category, suppose given the two diagrams shown belo
 \begin{tikzcd}
 	&&&&&& {Z''} \\
 	\\
-	&&& {Y'} && {Y'} \\
+	&&& {Y'} && {Z'} \\
 	\\
 	X && Y && Z
 	\arrow["{f_1}", from=5-1, to=3-4]
@@ -374,7 +374,7 @@ One checks that this is a functor, It is now almost trivial to verify properties
 
 On the other hand, precisely the dual construction works using \ref{lem:p3ch14.7} (ii) and \ref{lem:p3ch14.8} (ii) to show that one can construct $F$ so as to have properties (i)-(iii) and (v). But of course F is characterized by (i)-(iii), so it must have both properties (iv) and (v). 
 
-Now we turn to Proposition \ref{prop:p3ch14.2}. First, suppose $E_{\ast}(X)=0$. Then it is clear that the morphism $\te{pt}. \lar{} X$ is cofinal among $E$-equivalences. $e'\colon X' \lar{} X$. So we have $ \left[X,Y\right]_{\ast} = 0$. If we assume that $T\colon \left[X,Y\right]_{\ast} \lar{} \left[X,Y\right]^E_{\ast}=0$ is an isomorphism, then clearly we deduce that $ \left[X,Y\right]_{\ast}=0$. So condition (i) of \ref{prop:p3ch14.2} implies condition (ii). The proof that(ii) implies (i) will be given together with the proof of part of Theorem \ref{thm:p3ch14.4} to be considered below. This requires three lemmas, numbered \ref{lem:p3ch14.9}, \ref{lem:p3ch14.10}, and \ref{lem:p3ch14.11}. 
+Now we turn to Proposition \ref{prop:p3ch14.2}. First, suppose $E_{\ast}(X)=0$. Then it is clear that the morphism $\te{pt}. \lar{} X$ is cofinal among $E$-equivalences $e'\colon X' \lar{} X$. So we have $\left[X,Y\right]^E_{\ast}=0$.\footnote{The original omits the superscript $E$ in this first vanishing statement.} If we assume that $T\colon \left[X,Y\right]_{\ast} \lar{} \left[X,Y\right]^E_{\ast}=0$ is an isomorphism, then clearly we deduce that $\left[X,Y\right]_{\ast}=0$. So condition (i) of \ref{prop:p3ch14.2} implies condition (ii). The proof that (ii) implies (i) will be given together with the proof of part of Theorem \ref{thm:p3ch14.4} to be considered below. This requires three lemmas, numbered \ref{lem:p3ch14.9}, \ref{lem:p3ch14.10}, and \ref{lem:p3ch14.11}.
 \begin{lemma} \label{lem:p3ch14.9}
 Let $A \lar{} B \lar{} C$ be a cofibering. Then
 \[
@@ -488,9 +488,9 @@ is an isomorphism.
 \end{lemma}
 Now we start the proof of \ref{thm:p3ch14.4}. Consider $ \left[X,Y\right]^E_{\ast}$. Hold $Y$ fixed and vary $X$. By \ref{lem:p3ch14.9} and \ref{lem:p3ch14.10}, we have the data for E. H. Brown's Theorem, and we deduce that  $ \left[X,Y\right]^E_{\ast}$ is a representable functor of $X$. That is, there is a spectrum Z and a natural transformation
 \[
-U\colon  \left[X,Y\right]_{\ast} \vra{\cong}  \left[X,Y\right]^E_{\ast}
+U\colon \left[X,Z\right]_{\ast} \vra{\cong} \left[X,Y\right]^E_{\ast}
 \] 
-Here $Z$ satisfies condition (ii) of \ref{prop:p3ch14.2}. For suppose $E_{\ast}(X)=0$; then $ \left[X,Y\right]^E_{\ast}=0$, as we have remarked; so $ \left[X,Y\right]_{\ast}=0$, since $U$ is an isomorphism.
+Here $Z$ satisfies condition (ii) of \ref{prop:p3ch14.2}. For suppose $E_{\ast}(X)=0$; then $\left[X,Y\right]^E_{\ast}=0$, as we have remarked; so $\left[X,Z\right]_{\ast}=0$, since $U$ is an isomorphism.
 
 Now consider $1 \in \left[ Z,Z \right] $ and $U(1) \in \left[Z,Y\right]^E  $. the latter is represented by this diagram
 ~\\~\\
@@ -550,18 +550,18 @@ Now consider $1 \in \left[Y,Y\right]^E_{\ast}$; there exists $\epsilon\colon Y  
 	\arrow["\epsilon"', from=4-1, to=2-2]
 	\arrow["i"', from=2-2, to=1-4]
 	\arrow["{e''}", from=4-3, to=1-4]
-	\arrow["{e_1}", from=4-5, to=1-4]
+	\arrow["{e_1}", from=1-4, to=4-5]
 \end{tikzcd}
 }  
 ~\\~\\
 We conclude that $i_{\ast}: E_{\ast}(Z) \lar{} E_{\ast}(Z \vee \te{Susp}(X))$ is an epimorphism.
-Therefore $E_{\ast}(Z \vee \te{Susp}(X))=0$. Hence, $i_{\ast}: E_{\ast}(Z) \lar{} E_{\ast}(Z \vee \te{Susp}(X))$ and $ \epsilon_{\ast}: E_{\ast}(Y) \lar{} E_{\ast}(Z)$ are isomorphisms.
+Therefore $E_{\ast}(\te{Susp}(X))=0$. Hence, $i_{\ast}: E_{\ast}(Z) \lar{} E_{\ast}(Z \vee \te{Susp}(X))$ and $\epsilon_{\ast}: E_{\ast}(Y) \lar{} E_{\ast}(Z)$ are isomorphisms.
 
-Since we now know that $\epsilon\colon Y  \lar{} Z $ is an $E$-equivalence, we allow ourselves to change its name to $e\colon  Y \lar{}  Z $. We have proved that any spectrum $Y$ admits an $E$-equivalence $e\colon  Y \lar{}  Z $, where $E_{\ast}(X)=0$ implies $ \left[X,Y\right]_{\ast}=0$. 
+Since we now know that $\epsilon\colon Y \lar{} Z$ is an $E$-equivalence, we allow ourselves to change its name to $e\colon Y \lar{} Z$. We have proved that any spectrum $Y$ admits an $E$-equivalence $e\colon Y \lar{} Z$, where $E_{\ast}(X)=0$ implies $\left[X,Z\right]_{\ast}=0$.
 
 We will now forget everything about $Z$ except these two properties.
 \begin{lemma} \label{lem:p3ch14.11}
-Suppose $e\colon  Y \lar{}  Z $ is an $E$-equivalence, and  $E_{\ast}(X)=0$ implies $ \left[X,Y\right]_{\ast}=0$. Then \ref{thm:p3ch14.4} (ii) and (iv) hold. 
+Suppose $e\colon Y \lar{} Z$ is an $E$-equivalence, and $E_{\ast}(X)=0$ implies $\left[X,Z\right]_{\ast}=0$. Then \ref{thm:p3ch14.4} (ii) and (iv) hold.
 
 This will complete the proof of Proposition \ref{prop:p3ch14.2}; for we take $e\colon  Y \lar{}  Z $ to be  $1\colon  Y \lar{}  Y $, and deduce that 
 \[
@@ -592,7 +592,7 @@ is an isomorphism. Moreover, it will obviously complete the proof of \ref{thm:p3
 
 This shows that $e\colon  Y \lar{}  Z $ is universal. Then clearly the single object $Y\vra{e} Z$ is cofinal in the directed category used to construct $ \left[X,Y\right]^E_{\ast}$ so we have an isomorphism
 \[
-  \left[X,Y\right]_\ast \lar{} \left[X,Y\right]^E_{\ast} 
+  \left[X,Z\right]_\ast \lar{} \left[X,Y\right]^E_{\ast}
 \] 
 given by assigning to a morphism $f\colon  X \lar{}  Z $ the class of the diagram
 ~\\~\\
@@ -613,7 +613,7 @@ i.e., the element $T(e)^{-1}T(f) \in \left[X,Y\right]^E_{\ast}$. This completes 
 Now we start working toward the proof of \ref{prop:p3ch14.5}.
 
 \begin{lemma} \label{lem:p3ch14.12}
-Suppose $ \pi_{r}(E)=0$ for $r<0$. Suppose a morphism $f\colon  X \lar{}  Y $ induces an isomorphism $E_{\ast}(X) \lar{} E_{\ast}(Y)$. Then it induces an isomorphism $H_{\ast}(X'; \pi_{0}(E)) \lar{} H_{\ast}(Y;\pi_{0}(E))$. 
+Suppose $\pi_{r}(E)=0$ for $r<0$. Suppose a morphism $f\colon X \lar{} Y$ induces an isomorphism $E_{\ast}(X) \lar{} E_{\ast}(Y)$. Then it induces an isomorphism $H_{\ast}(X;\pi_{0}(E)) \lar{} H_{\ast}(Y;\pi_{0}(E))$.
 \begin{proof} 
     First a remark. Let $E$ be any spectrum, not necessarily a ring-spectrum, and not necessarily connective; then I claim
     \[
@@ -646,13 +646,13 @@ Suppose $ \pi_{r}(E)=0$ for $r<0$. Suppose a morphism $f\colon  X \lar{}  Y $ in
 Suppose $E$ is a commutative ring-spectrum and $ \pi_{r}(E)=0$ for $r<0$. Suppose $X$ and $Y$ are connective and $f\colon  X \lar{}  Y $ induces an isomorphism $H_{\ast}(X;\pi_{0}(E)) \lar{} H_{\ast}(Y, \pi_{0}(E))$. Then it induces an isomorphism $E_{\ast}(X) \lar{} E_{\ast}(Y)$.
 
 \begin{proof} 
-  As before, we form the cofibering $X \vra{f} Y \lar{} Z$. Then Z is connective; we have $H_{\ast}(Z;\pi_{0}(E))$, and it is sufficient to prove $E_{\ast}(Z)=0$.
+  As before, we form the cofibering $X \vra{f} Y \lar{} Z$. Then $Z$ is connective; we have $H_{\ast}(Z;\pi_{0}(E))=0$, and it is sufficient to prove $E_{\ast}(Z)=0$.
 
   Since $ \pi_{0}(E)$ is a commutative ring and $ \pi_{r}(E)$ is a module over $ \pi_{0}(E)$, we have the universal coefficient theorem in the form of the spectral sequence
   \[
-  \te{Tor}_{p_{\ast}}^{\pi_{0}(E)} \left( H_{\ast}(Z;\pi_{0}(E)), \pi_{r}(E)\right) \underset{p}{\implies} H_{\ast}(Z;\pi_{r}(E)). 
+  \te{Tor}_{p,\ast}^{\pi_{0}(E)} \left(H_{\ast}(Z;\pi_{0}(E)),\pi_{r}(E)\right) \underset{p}{\implies} H_{\ast}(Z;\pi_{r}(E)).
   \] 
-  This is a quarter-plan spectral sequence convergent in the naive sense. We see that $H_{\ast}(Z;\pi_{0}(E))=0$. We now consider the Atiyah-Hirzebruch spectral sequence
+  This is a quarter-plane spectral sequence convergent in the naive sense. We see that $H_{\ast}(Z;\pi_{r}(E))=0$. We now consider the Atiyah-Hirzebruch spectral sequence
   \[
     H_{p}(Z;\pi_{q}(E)) \underset{p}{\implies} E_{p+q} (Z). 
   \] 
@@ -664,7 +664,7 @@ This condition that $X$ and $Y$ are connective cannot be omitted (take $E = \te{
 \end{lemma}
 
 \begin{proof}[Proof of \ref{prop:p3ch14.5}] 
-  recall that we wish to show that if $E$ is a commutative ring spectrum and $\pi_{r}(E)=0$ for $r<0$, then for any connective spectrum Y, $\left[X,Y\right]^E_{\ast}$ depends only on  $\pi_{0}(E)$. More precisely, we show that $\left[X,Y\right]^E_{\ast}=\left[X,Y\right]^{E'}_{\ast}$, where $E= H \pi_{0}(E)$.
+  Recall that we wish to show that if $E$ is a commutative ring spectrum and $\pi_{r}(E)=0$ for $r<0$, then for any connective spectrum $Y$, $\left[X,Y\right]^E_{\ast}$ depends only on $\pi_{0}(E)$. More precisely, we show that $\left[X,Y\right]^E_{\ast}=\left[X,Y\right]^{E'}_{\ast}$, where $E'=H\pi_{0}(E)$.
   \begin{enumerate} 
     \item [(i)] By \ref{lem:p3ch14.12}, we have that any morphism $f\colon  Y \lar{}  Y' $ which induces an isomorphism in $E$-homology also induces an isomorphism in $E'$-homology.
     \item [(ii)] Consider the directed category used in the construction of $\left[X,Y\right]^{E'}_{\ast}$. I claim that morphism $f\colon  Y \lar{}  Y' $ which induce an isomorphism in $E$-homology are cofinal in those which induce an isomorphism in $E'$-homology. Once this is proved, \ref{prop:p3ch14.5} follows. We need a lemma.
@@ -744,13 +744,14 @@ Where $X'$ is connective and $H_{r}(X') \begin{cases}\simeq H_{r}(X) & (r \ge N)
  \end{align*} 
  Then 
  \[
- H_{r}(B) \otimes_{Z} \pi_{0}(E)=0, \te{Tor}^\bZ_{1} (H_{r}(A), \pi_{0}(E))=0 
+ H_{r}(B) \otimes_{\bZ} \pi_{0}(E)=0, \qquad \te{Tor}^\bZ_{1}(H_{r}(B),\pi_{0}(E))=0.
  \] 
  and so 
  \[
    H_{r}(B; \pi_{0}(E))=0 
  \] 
  for all $r$. Now we can form the following diagram of cofiberings.
+\noindent\textit{Editorial note.} The original has $H_r(A)$ in the Tor term; both terms here concern $B$.
  ~\\~\\
  \adjustbox{scale=1, center}{%
  \begin{tikzcd}
@@ -769,7 +770,7 @@ Where $X'$ is connective and $H_{r}(X') \begin{cases}\simeq H_{r}(X) & (r \ge N)
  \end{tikzcd}
  }  
  ~\\~\\
- Here $Y^{\prime\prime}$ is connective, and $Y \lar{} Y^{\prime\prime}$ is an $E'$-equivalence, so it is an $E$-equivalence by \ref{lem:p3ch14.13} proof of (iii) above, and so completes the proof of  \ref{prop:p3ch14.5}
+ Here $Y^{\prime\prime}$ is connective, and $Y \lar{} Y^{\prime\prime}$ is an $E'$-equivalence, so it is an $E$-equivalence by \ref{lem:p3ch14.13}. This completes the proof of (ii) above, and so completes the proof of \ref{prop:p3ch14.5}.\footnote{The original refers to (iii), but the cofinality assertion being proved is (ii).}
 \end{proof}
 \end{lemma}
 
@@ -777,29 +778,29 @@ Now we turn to Theorem \ref{thm:p3ch14.6}. We have to take $YR$, or  $YI_{m}$, o
 
 Consider the first condition. In case (i), suppose $\pi_{0}(E)$ is a subring $R$ of the rationals $\bQ$. Consider the product 
  \[
-  \Sigma R \wedge \Sigma(R/\bZ).
+  SR \wedge S(R/\bZ).
 \] 
 By the K\"unneth theorem we have 
 \[
-  H_{\ast}(\Sigma R \wedge \Sigma(R /\bZ)) =0; 
+  H_{\ast}(SR \wedge S(R/\bZ))=0;
 \] 
-for $R \otimes_{\bZ} (R/ \bZ)=0, \te{  Tor}^\bZ_{1}(R, R / \bZ)=0$, The spectrum is connective, so $\Sigma R \wedge \Sigma(R / \bZ)$ is contractible by the theorem of J. H. C. Whitehead. 
+for $R \otimes_{\bZ}(R/\bZ)=0$, $\te{Tor}^\bZ_{1}(R,R/\bZ)=0$. The spectrum is connective, so $SR \wedge S(R/\bZ)$ is contractible by the theorem of J. H. C. Whitehead.
 
 Now we have a cofibering 
 \[
-  Y \lar{} YR \lar{} Y \wedge \Sigma ( R /\bZ).
+  Y \lar{} YR \lar{} Y \wedge S(R/\bZ).
 \] 
 Here we have 
 \[
-  HR_{\ast}(Y \wedge \Sigma (R /\bZ)) = \pi_{\ast}(H \wedge \Sigma R \wedge Y \wedge \Sigma(R /\bZ))=0, 
+  (HR)_{\ast}(Y \wedge S(R/\bZ))=\pi_{\ast}(H \wedge SR \wedge Y \wedge S(R/\bZ))=0,
 \] 
-for $H \wedge \Sigma R \wedge Y \wedge \Sigma(R /\bZ)$ is contractible. So
+for $H \wedge SR \wedge Y \wedge S(R/\bZ)$ is contractible. So
 \[
 (HR)_{\ast}(Y) \lar{} (HR)_{\ast}(YR)
 \] 
 is an isomorphism. 
 
-We proceed similiarly for case (ii), starting from the fact that $\Sigma \bZ_{m} \wedge \Sigma ( I_{m} / \bZ)$ is contractible. 
+We proceed similarly for case (ii), starting from the fact that $S\bZ_m \wedge S(I_m/\bZ)$ is contractible.
 
 In case (iii) it is trivial that $Y \vra{1} Y $ is an $E$-equivalence.
 
@@ -819,8 +820,9 @@ H^{n+1}(X;\pi_{n+1}(YI_{m}))=0
 .\]
 Here we have $\pi_{n+1}(YI_{m})=\pi_{n+1}(Y)\otimes I_{m}$ by \ref{prop:p3c06.7}, and $\pi_{n+1}(Y)$ is a finitely-generated group. And in this case we start by knowing that 
 \[
-  H^\ast(X;\bZ_{m})=0.
+  H_\ast(X;\bZ_m)=0.
 \] 
+\noindent\textit{Editorial note.} The original prints cohomology here; the hypothesis used in the following homology exact sequence is homological.
 The exact sequence $0 \lar{} \bZ \vra{m} \bZ \lar{} \bZ_{m} \lar{} 0 $ induces a long exact sequence in homology; it follows that $H_{\ast}(X) \vra{m} H_{\ast}(X) $ is an isomorphism, hence $H_{\ast}(X) \vra{m^t}  H_{\ast}(X)$ is an isomorphism. Now consider 
 \[
 \te{Hom}_{\bZ} (H_{r}(X), \bZ_{m^t}), \quad \te{Ext}^1_{\bZ}(H_{r}(X),\bZ_{m^t}).
@@ -862,11 +864,12 @@ Finally we consider case (iii). Let $f\colon  X \lar{}  Y $ be a morphism. By Le
 	& {X'}
 	\arrow["f", from=1-1, to=1-3]
 	\arrow[from=1-1, to=3-2]
-	\arrow[from=1-3, to=3-2]
+	\arrow[from=3-2, to=1-3]
 \end{tikzcd}
 }  
 ~\\~\\
 where $X'$ is connective; $H_{r}(X') \cong H_{r}(X), r \ge N, $ and $H_{r}(X') =0$ for $r < N$, for some  $N \in \bZ$.
+\noindent\textit{Editorial note.} The arrow $X'\to Y$ in this factorization is reversed in the original.
 
 As above, 
 \[

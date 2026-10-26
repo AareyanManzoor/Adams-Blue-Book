@@ -4,8 +4,8 @@
 
 \begin{document}
 %DarQ
-\label{sec:p3c06}
 \chapter{Homology and Cohomology}
+\label{sec:p3c06}
 
 
 Suppose given a spectrum $E$. Then we define the $E$-homology and $E$-cohomology of other spectra $X$ as follows.
@@ -72,7 +72,7 @@ if $X$ is a finite spectrum, $E_n(X^\ast) \cong E^{-n}(X)$
 \end{proposition}
 
 \begin{proof}
-$[S, E\wedge X^\ast]_n \lar{T} [X, E]_n$ is an isomorphism by \ref{rmk:p3ch05.3}.
+$[S, E\wedge X^\ast]_n \lar{T} [X, E]_n$ is an isomorphism by \ref{prop:p3ch05.4}.
 \end{proof}
 This shows that generalized homology and cohomology behave correctly under $S$-duality.
 
@@ -119,12 +119,12 @@ $SG$ means $S\wedge M = M$, so a Moore spectrum of type $G$ may be written $SG$.
 \begin{enumerate}
     \item There exists an exact sequence
     % TODO: that weird l again + not sure if that's a Z or \bZ
-    \[0\lra \pi_n(E)\otimes G \lra \pi_n(EG) \lra \mathrm{Tor}_1^\bZ \left(\pi_{n-1}(E)\right) \lra 0\]
+    \[0\lra \pi_n(E)\otimes G \lra \pi_n(EG) \lra \mathrm{Tor}_1^\bZ \left(\pi_{n-1}(E),G\right) \lra 0\]
     (This need not split, e.g., take $E=\te{KO}, G=\bZ_2$.)
     \item More generally, there exists exact sequences
     \[0\lra E_n(X)\otimes G \lra (EG)_n(X)\lra \mathrm{Tor}_1^\bZ \left(E_{n-1}(X), G\right) \lra 0\]
     and (if $X$ is a finite spectrum or $G$ is finitely generated)
-    \[0\lra E^n(E)\otimes G \lra (EG)^n(X)\lra \mathrm{Tor}_1^\bZ \left(E^{n+1}(X), G\right) \lra 0\]
+    \[0\lra E^n(X)\otimes G \lra (EG)^n(X)\lra \mathrm{Tor}_1^\bZ \left(E^{n+1}(X), G\right) \lra 0\]
 \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -181,8 +181,6 @@ and more generally,
 	\arrow["\cong", from=1-3, to=2-3]
 	\arrow["{i\otimes 1}", from=2-2, to=2-3]
 \end{tikzcd}\]
-\end{proof}
-% TODO: I think the proof ended here but I'm not sure
 
 To get the isomorphisms in the last case we assume either that $X$ is a finite spectrum or that $\alpha$ and $\beta$ run over finite sets, which we can arrange if $G$ is finitely generated. Now the cokernel and kernel of $i\otimes l$ are, according to the case
 \begin{align}
@@ -190,9 +188,10 @@ To get the isomorphisms in the last case we assume either that $X$ is a finite s
     G\otimes E_n(X) && \text{and} && \mathrm{Tor}_1^\bZ \left( G, E_n(X) \right) \nonumber \\
     G\otimes E^n(X) && \text{and} && \mathrm{Tor}_1^\bZ \left( G, E^n(X) \right) \nonumber
 \end{align}
+\end{proof}
 
 \begin{example}
-If $H$ means an Eilenberg-Mac Lane spectrum of type $\bZ$, then $H\bZ$ does indeed mean the Eilenberg-MacLane spectrum of type $G$.
+If $H$ means an Eilenberg-Mac Lane spectrum of type $\bZ$, then $HG$ does indeed mean the Eilenberg-MacLane spectrum of type $G$.\footnote{Editorial correction: the original prints $H\bZ$ where $HG$ is intended.}
 \end{example}
 
 \begin{proof}
@@ -265,12 +264,12 @@ Now we give a checklist of the standard spectra corresponding to the usual gener
     G &n=0 \\
     0 &n\neq 0
     \end{cases}\]
-    The theories $(HG)_\ast$, $(GH)^\ast$ are ordinary homology and cohomology with coefficients in $G$.
+    The theories $(HG)_\ast$, $(HG)^\ast$ are ordinary homology and cohomology with coefficients in $G$.
     
     For greater interest, let $G_\ast$ be a graded group, and define \newline $H(G_\ast)=\bigvee_n H(G_n, n)\cong \prod_n H(G_n, n)$; the second map is an equivalence by \ref{prop:p3ch03.14} Then by the first form
     \[H(G_\ast)_r(X)=\sum_n H_{r-n}(X;G_n)\]
     and by the second
-    \[H(G_\ast)^r(X)=\sum_n H^{r+n}(X;G_n)\]
+    \[H(G_\ast)^r(X)=\prod_n H^{r+n}(X;G_n)\]
     \item $S$, the sphere spectrum. The corresponding homology and cohomology theories are stable homotopy and stable cohomotopy. With all due respect to anyone who is interested in them, the coefficient groups $\pi_n(S)$ are a mess. There is a lot of detailed information known about them, but I won't try to summarize it.
     \item $K$, the classical $\te{BU}$-spectrum. This is an $\Omega$- or $\Omega_0$-spectrum; each even term is space $\te{BU}$ or $\bZ\times \te{BU}$; each odd term is the space $\te{U}$.
     
@@ -286,13 +285,13 @@ Now we give a checklist of the standard spectra corresponding to the usual gener
     \item $K$-theory with coefficients. Suppose we are willing to localize $\bZ$ at the prime $p$; i.e., let $\bZ_{(p)}$ be the ring of fractions $a/b$ with $b$ prime to $p$. Then we can form $K\bZ_{(p)}$. It splits as the sum or product of $(p-1)$ similar spectra $E$. The typical one has
     \[\pi_n(E)=
     \begin{cases}
-    \bZ_{(p)} &(n\equiv 0 \pmod{2(p-1)} \\
+    \bZ_{(p)} &(n\equiv 0 \pmod{2(p-1)}) \\
     0 & \text{otherwise}
     \end{cases}\]
     Of course you may just want to split $K$ into the sum or product of $d$ similar Spectra, so that a typical one has
     \[\pi_n(E)=
     \begin{cases}
-    R &(n\equiv 0 \pmod{2(p-1)} \\
+    R &(n\equiv 0 \pmod{2d}) \\
     0 & \text{otherwise}
     \end{cases}\]
     % TODO: again, not sure if that's Z or \bZ
@@ -319,26 +318,26 @@ Now we give a checklist of the standard spectra corresponding to the usual gener
     
     \item $\te{KO}$-theory with coefficients. The quickest thing to say is that by a theorem of Reg Wood, $\te{KO}\wedge \left( S^0\cup_\eta e^2 \right) \simeq K$. Here $S^0\cup_\eta e^2$ means the suspension spectrum whose second term is $\mathbb{CP}^2$. The attaching map $\eta$ is stable of order $2$. So $S\bZ[1/2]\vra{\eta\wedge 1}S\bZ[1/2]$ factors through $\left( S^0\cup_2e^1 \right) \bZ[1/2]$, which is contractible. So
     \begin{align}
-        K\bZ[1/2] &\simeq \te{KO}\wedge \left( S^0\cup_\eta e^1 \right) \bZ[1/2] \nonumber \\
+        K\bZ[1/2] &\simeq \te{KO}\wedge \left( S^0\cup_\eta e^2 \right) \bZ[1/2] \nonumber \\
         &\simeq \te{KO} \wedge \bigg( S^0\bigvee S^2 \bigg) \bZ[1/2] \nonumber \\
         &\simeq \te{KO}\bZ[1/2]\bigg( S^0\bigvee S^2 \bigg) \nonumber
     \end{align}
     So the two summands into which $K\bZ[1/2]$ splits are actually copies of $\te{KO}\bZ[1/2]$, it follows that if you introduce a ring of coefficients containing $1/2$, $K$ cannot be distinguished from two copies of $\te{KO}$. Of course this is classical, by a more direct proof.
     \item Connective real $K$-theory. $\te{bo}$ \index{bo/Connective real $K$-theory} is a spectrum having a map $\te{bo}\lra \te{KO}$ with properties like those of $\te{bu}\lra K$
     \item $\te{KSC}$, the self-conjugate $K$-theory \index{KSC/Self-conjugate $K$ theory} of Anderson and Green, The quickest way to say it is this. To each bundle $\xi$ we have its complex conjugate $\overline{\xi}$ which has the same underlying space but a new $C$-module structure on each fiber; the new action of $z$ is the old action of $\overline{z}$. Stably, this is induced by a map $\bZ \times \te{BU} \vra{t} \bZ \times \te{BU}$. We can define a map of spectra $T\colon K\lra K$ which has components $t$ in dimensions divisible by $4$, and $-t$ in dimensions of the form $4r+2$. Now take $\te{KSC}$ to be the fiber of
-    \[K\vra{1-\tau}K\]
+    \[K\vra{1-T}K\]
     You can read its homotopy groups off from the exact sequence of this fibering: we have 
     \[\ialign{$\hfil#$&\quad$#$&&\quad$#$\hfil\cr
     n&\equiv&0&1&2&3&4&\pmod 4\cr
-    \pi_n(\te{KO})&=&\bZ&\bZ_2&0&\bZ&\bZ.\cr}\]
+    \pi_n(\te{KSC})&=&\bZ&\bZ_2&0&\bZ&\bZ.\cr}\]
     \item $\te{MO}$, the Thom spectrum of the group $\te{O}$ . The corresponding theories are unoriented bordism and cobordism. To connect our definition of $\te{MO}_\ast(X)$ with a geometrical definition in terms of manifolds one  has to make use of a transversality theorem at some point; see e.g \cite{connerfloyd}.
     
     We have
     \[\te{MO}\simeq H \left( \pi_\ast(\te{MO}) \right)\]
     $\pi_\ast(\te{MO})$ is a polynomial algebra over $\bZ_2$, with one generator in every dimension $d>0$ such that $d+1$ is not a power of $2$, The decomposition of $\te{MO}$ as a wedge of copies of $H\bZ_2$, shows that the theories $\te{MO}_\ast$ and $\te{MO}^\ast$ are not very powerful, but they are good for studying unoriented manifolds.
-    \item $\te{MSO}$. The corresponding theories are oriented bordism and cobordism. We have\footnote{Adam's originally just had $\te{MSO}$ as the Eilenberg-Maclane spectrum, however this is only true after localizing at $2$.}
+    \item $\te{MSO}$. The corresponding theories are oriented bordism and cobordism. We have\footnote{Editorial correction retained from the retyping: Adams states the splitting without localization, but it holds only after localizing at $2$. Accordingly its free coefficient summands are $\bZ_{(2)}$, not $\bZ$.}
     \[\te{MSO}_{(2)}\simeq H \left( \pi_\ast(\te{MSO}_{(2)}) \right)\]
-    $\pi_\ast(\te{MSO}_{(2)})$ is a direct sum of copies of $\bZ$ and $\bZ_2$. It is known but somewhat complicated to describe.
+    $\pi_\ast(\te{MSO}_{(2)})$ is a direct sum of copies of $\bZ_{(2)}$ and $\bZ_2$. It is known but somewhat complicated to describe.
     \item $\te{MU}$. The corresponding theories are complex bordism and cobordism. $\pi_\ast(\te{MU})$ is a polynomial algebra over $\bZ$ with generators of dimension $2,4,6,8\dots$ There is a very good map $\te{MU}\lra K$  due to Atiyah-Hirzebruch, Conner-Floyd \cite{atiyahhirzebruch}, \cite{connerfloyd}. The theories $\te{MU}_\ast$, $\te{MU}^\ast$ are powerful.
     \item $\te{MU}$ with coefficients. If one takes $\te{MU}\bZ_{(p)}$ , it splits as a sum of suspensions of similar spectra. A typical one is $\te{BP}$, the Brown-Peterson spectrum. $\pi_\ast(\te{BP})$ is a polynomial algebra over $\bZ_{(p)}$, on generators of dimension $2(p^f-1)$ for $f=1, 2, \dots$
     \item $\te{MSpin}$, $\te{MSU}$, $\te{MSp}$. $\pi_\ast(\te{MSpin})$ and $\pi_\ast(\te{MSU})$ are known but $\pi_\ast(\te{MSp})$ is not yet known. %add reference if changed
@@ -411,9 +410,9 @@ Now we give a checklist of the standard spectra corresponding to the usual gener
     \end{align}
     This gets my suspension isomorphism in a form convenient for later work, and makes the boundary and coboundary quite precise.
 
-Now we would like to assure ourselves that all the contents of Eilenberg-Steenrod, Chapter I, go through. But we can also put the question in this form: is there anything in Eilenberg-Steenrod Chapter I which can't be derived from our constructions? The grand conclusion should be that the homology groups of spheres are the right thing, and we already know that
+Now we would like to assure ourselves that all the contents of Eilenberg-Steenrod, Chapter I, go through. But we can also put the question in this form: is there anything in Eilenberg-Steenrod Chapter I which can't be derived from our constructions? The grand conclusion should be that the homology groups of spheres are the right thing, and we already know that\footnote{Editorial correction: the original starts with $[S^n,E]_r$; the definition of $E$-homology instead gives $[S^0,E\wedge S^n]_r$.}
 \begin{align}
-    \widetilde{E}_r( S^n) &= [S^n, E]_r \nonumber \\
+    \widetilde{E}_r( S^n) &= [S^0, E\wedge S^n]_r \nonumber \\
     &\cong [S^0, E]_{r-n} \nonumber \\
     &\cong \pi_{r-n}(E) \nonumber
 \end{align}
@@ -422,7 +421,7 @@ The only problem is to compute $\pi_\ast(E)$ for a given $E$, So what about the 
 Here $\Delta$ is the composite
 \[E_n(X,Y) \vra{\delta} E_{n-1}(Y)\vra{j_\ast} E_{n-1}(Y, Z)\]
 No special proof is needed. We know that the following is a cofibering:
-\[Y^+/Z^+ \vra{} X^+/Z^+\vra{}X^+/Y^+ \vra{} \Sigma(Y^+/Z^+) \vra{} \Sigma(X^+/Y^+)\]
+\[Y^+/Z^+ \vra{} X^+/Z^+\vra{}X^+/Y^+ \vra{} \Sigma(Y^+/Z^+) \vra{} \Sigma(X^+/Z^+)\]
 Therefore I know that I have an exact sequence
 \[E_n(Y,Z) \vra{i_\ast} E_n(X, Z)\vra{j_\ast}E_n(X, Y) \vra{\partial} E_{n-1}(Y, Z) \vra{i_\ast} E_{n-1}(X, Z)\]
 provided that $\partial$ is induced by the top line of the following commutative diagram.

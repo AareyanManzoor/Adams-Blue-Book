@@ -1,12 +1,12 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p1c6}
 
 % Average enjoyer
 
 \chapter{The algebra of all operations}
+\label{sec:p1c6}
 
-Next we need to consider a much more trivial sort of operation. Let $x$ be a fixed element in $\Omega_U^p(P)$. Let $X,Y$ be a pair, and let $c \colon X \lra F$ be the constant map; thus $c^*(x) \in \Omega_U^p(X)$. For each $y \in \Omega_U^q(X,Y)$, we define 
+Next we need to consider a much more trivial sort of operation. Let $x$ be a fixed element in $\Omega_U^p(P)$. Let $X,Y$ be a pair, and let $c \colon X \lra P$ be the constant map;\footnote{Editor's correction: the original gives the target of this constant map as $F$, rather than the point $P$.} thus $c^*(x) \in \Omega_U^p(X)$. For each $y \in \Omega_U^q(X,Y)$, we define
 \[t(y) = (c^* x)y \in \Omega_U^{p+q}(X,Y).\]
 This defines a cohomology operation
 \[t\colon \Omega_U^q(X,Y) \lra \Omega_U^{p+q}(X,Y).\]
@@ -27,11 +27,11 @@ We now consider the infinite sum
 (iii) Every cohomology operation on $\Omega_U^*$ which is natural and stable can be written in this form.
 
 (iv) This way of writing a cohomology operation on $\Omega_U^*$ is unique; if 
-    \[t_\alpha s_\alpha = 0 \colon \Omega^q_U(X,Y) \lra \Omega^{q+d}_U(X,Y)\]
-    for all $X,Y$ and $q$, then $x_\alpha = 0$ for all $\alpha$.
+    \[\sum_\alpha t_\alpha s_\alpha = 0 \colon \Omega^q_U(X,Y) \lra \Omega^{q+d}_U(X,Y)\]
+    for all $X,Y$ and $q$, then $x_\alpha = 0$ for all $\alpha$.\footnote{Editor's correction: the summation sign is missing in the original statement of (iv).}
 \end{theorem}
 \begin{proof}[Sketch proof]
-Part (i) is trivial: the group $\Omega_U^{q+2\alpha}(X,Y)$ is zero if $|\alpha|$ is large compared with the homological dimension of the pair $X,Y$. Part (ii) is also trivial.
+Part (i) is trivial: the group $\Omega_U^{q+2|\alpha|}(X,Y)$ is zero if $|\alpha|$ is large compared with the homological dimension of the pair $X,Y$.\footnote{Editor's correction: the original prints $q+2\alpha$ for this degree.} Part (ii) is also trivial.
 
 For parts (iii) and (iv), consider the spectral sequence
 \[H^*(\te{MU},\Omega_U^*(P)) \Longrightarrow \Omega^*_U(\te{MU}).\]
@@ -44,7 +44,7 @@ The operations $\sum_\alpha t_\alpha s_\alpha$ are distinguished by their values
 (where $m$ and $n$ run over all positive integers).
 \end{remark}
 \begin{proof}[Sketch proof]
-It is easily seen that $\Omega_U^{2m}(\mathbb{CP}^n \times \mathbb{CP}^n \times \dots \times \mathbb{CP}^n)$ is free over $\Omega_U^*(P)$, with an $\Omega_U^*(P)$-base consisting of the monomials 
+It is easily seen that $\Omega_U^*(\mathbb{CP}^n \times \mathbb{CP}^n \times \dots \times \mathbb{CP}^n)$ is free over $\Omega_U^*(P)$, with an $\Omega_U^*(P)$-base consisting of the monomials
 \[\omega_1^{i_1} \omega_2^{i_2} \dots \omega_m^{i_m}\]
 with $0 \leq i_r \leq n$ for all $r$; the remaining monomials are zero. We have \[s_\alpha(\omega_1\omega_2\dots\omega_m) = \sum_{i_1,i_2,\dots,i_m} (c_\alpha,b_{i_1} b_{i_2} \dots b_{i_m})\omega_1^{i_1 +1} \omega_2^{i_2+1} \dots \omega_m^{i_m + 1}.\]
 This will of course be zero if $\alpha_1 + \alpha_2 + \alpha_3 + \dots > m$ or if $a_i > 0$ for any $i$ with $i+1 > n$; but the remaining elements $s_\alpha(\omega_1 \omega_2 \dots \omega_m)$ are linearly independent over $\Omega_U^*(P)$.
@@ -82,14 +82,14 @@ In $\Omega_U^*(\mathbb{CP}^n \times \mathbb{CP}^n \times \dots \mathbb{CP}^n)$, 
 We next wish to calculate $\Delta b_k''$, that is, to find $s_\alpha s_\beta(\omega)$ for each $\alpha,\beta$, where $\omega$ is the generator in $\Omega^2(\mathbb{CP}^\infty)$. We have
 \[s_\beta \omega = \sum_i (s_\beta , b_i'')\omega^{i+1}\]
 and therefore
-\[s_\alpha s_\beta = \sum_{i,j_1,j_2,\dots,j_{i+1}} (s_\alpha, b_{j_1}'',b_{j_2}'' \dots b_{j_{i+1}}'')(s_\beta,b_i'') \omega^{i + j_1 + j_2 + \dots + j_{i+1}+1}.\]
+\[s_\alpha s_\beta\omega = \sum_{i,j_1,j_2,\dots,j_{i+1}} (s_\alpha, b_{j_1}''b_{j_2}'' \dots b_{j_{i+1}}'')(s_\beta,b_i'') \omega^{i + j_1 + j_2 + \dots + j_{i+1}+1}.\]
 We conclude that
-\[\Delta b_k'' = \sum_{i + j_1 + j_2 + \dots + j_{i+1} = k}b_{j_1}'',b_{j_2}'' \dots b_{j_{i+1}}'' \otimes b_i''.\]
-Summing over $b$, we obtain the formula given.
+\[\Delta b_k'' = \sum_{i + j_1 + j_2 + \dots + j_{i+1} = k}b_{j_1}''b_{j_2}'' \dots b_{j_{i+1}}'' \otimes b_i''.\]
+Summing over $k$, we obtain the formula given.\footnote{Editor's correction: the original says ``Summing over $b$''; $k$ is the component index.}
 \end{proof}
 \begin{note}
 Now that we have introduced the dual Hopf algebra $S_*$, we can reformulate Theorem \ref{thm:p1c05.2}. Recall that $S$ acts on $H_*(\te{MU})$, acting on the left; therefore it acts on the right on $H^*(\te{MU})$; that is, we have a product map
-\[\te{MU}\colon H^*(\te{MU}) \otimes S \lra H^*(\te{MU}).\]
+\[\mu\colon H^*(\te{MU}) \otimes S \lra H^*(\te{MU}).\]
 Transposing again, we have a coproduct map
 \[\Delta\colon H_*(\te{MU}) \lra H_*(\te{MU}) \otimes S_*.\]
 This is related to the original action of $S$ on $H_*(\te{MU})$ as follows: if

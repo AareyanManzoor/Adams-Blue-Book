@@ -1,7 +1,7 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p2c9}
 \chapter{Corollaries}
+\label{sec:p2c9}
 In this section we will record various results which follow from the results in \hyperref[sec:p2c8]{\S 8}, or supplement them, and are needed later.
 
 Recall that the complex manifold $\mathbb {CP}^n$ defines an element $[\mathbb {CP}^n] \in \pi_{2n} (\mathrm {MU})$.
@@ -27,7 +27,7 @@ Suppose that $R \subset S$ are subrings of the rationals. Then a map \[f : \te{M
 \end{lemma}
 
 \begin{proof}
-There are many variants possible; we argue as follows. Applying \eqref{lem:p2c04.1} as in the proof of \eqref{thm:p2c08.1}, we see that $f$ is determined up to homotopy by \[f_\ast : \te{MU}R_\ast(\te{MU}R) \lar{} \te{MU}R_\ast(\mathrm {MUS}_\ast).\] Since $\pi_\ast(\mathrm{MU})$ is torsion-free by \ref{thm:p2c08.1}, we see that the vertical arrows of the following commutative diagram are monomorphisms.
+There are many variants possible; we argue as follows. Applying \eqref{lem:p2c04.2} as in the proof of \eqref{lem:p2c04.6}, we see that $f$ is determined up to homotopy by \[f_\ast : \te{MU}R_\ast(\te{MU}R) \lar{} \te{MU}R_\ast(\mathrm {MU}S).\] Since $\pi_\ast(\mathrm{MU})$ is torsion-free by \ref{thm:p2c08.1}, we see that the vertical arrows of the following commutative diagram are monomorphisms.
 
 %TODO: bottom two arrows to the left and the right need a rotated \simeq
 \begin{center}
@@ -37,6 +37,7 @@ There are many variants possible; we argue as follows. Applying \eqref{lem:p2c04
 \pi_\ast(\mathrm {MUQ}) \otimes \pi_\ast(\mathrm {MUR}) \arrow[rr, "1 \otimes f_\ast"] &  & \pi_\ast(\mathrm {MUQ}) \otimes \pi_\ast(\te{MU}S)        
 \end{tikzcd}
 \end{center}
+So $f$ is determined by $f_\ast:\pi_\ast(\mathrm{MU}R)\lar{}\pi_\ast(\mathrm{MU}S)$. This proves the lemma.
 \end{proof}
 
 Next we go back to the work of \eqref{cor:p2c06.8}. We now know that the Hurewicz homomorphism \[\eta_R : \pi_\ast (\mathrm{MU}) \lar{} \mathrm {MU}_\ast (\mathrm {MU})\] is adequately described by giving \[\eta_R \otimes 1 : \pi_\ast(\mathrm {MU}) \otimes \bbQ \lar{} \mathrm{MU}_\ast(\mathrm {MU}) \otimes \bbQ,\] and this can be done by giving its effect on the generators $m_i = m_i^H \in \pi_{2i} (\mathrm{MU}) \otimes \bbQ$. For this purpose we propose the following formula. We write $M_j$ for the generator $m_j^{\mathrm{MU}} \in \mathrm{MU}_{2j} (\mathrm {MU})$, to distinguish it from $m_j = m_j^H$.
@@ -48,8 +49,8 @@ Next we go back to the work of \eqref{cor:p2c06.8}. We now know that the Hurewic
 
 \begin{proof}
 Consider again the two maps \[\eta_L : \mathrm{MU} \simeq \mathrm{MU} \wedge S^0 \lar{1 \wedge i} \mathrm{MU} \wedge \mathrm{MU}\] 
-\[\eta_L : \mathrm{MU} \simeq S^0 \wedge \mathrm{MU} \lar{i \wedge 1} \mathrm{MU} \wedge \mathrm{MU}\] 
-of \eqref{cor:p2c06.8}. Applying them to $x^{\mathrm{MU}}$, we obtain the two generators in $(\mathrm{MU} \wedge \mathrm {MU})^2 (\mathbb {CP}^\infty)$; we call these generators $x^L$ and $x^R$. (We no longer need $L$ for the Lazard ring) Applying Lemma \ref{lem:p2c06.3}, we find
+\[\eta_R : \mathrm{MU} \simeq S^0 \wedge \mathrm{MU} \lar{i \wedge 1} \mathrm{MU} \wedge \mathrm{MU}\]
+of \eqref{cor:p2c06.8}.\footnote{Editorial correction: the original repeats $\eta_L$ on the second map, which is the right unit $\eta_R$.} Applying them to $x^{\mathrm{MU}}$, we obtain the two generators in $(\mathrm{MU} \wedge \mathrm {MU})^2 (\mathbb {CP}^\infty)$; we call these generators $x^L$ and $x^R$. (We no longer need $L$ for the Lazard ring) Applying Lemma \ref{lem:p2c06.3}, we find
 
 \begin{equation}
 \label{eqn:p2c09.5}

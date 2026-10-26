@@ -20,7 +20,7 @@ corresponds to composing operations,
 
 \begin{examples}
 
-Suppose given a prime $p$; take $E=H\bZ_p$. Then $A^\ast={(H\bZ_p)}^\ast(H\bZ_p)$ is the \emph{mod $p$ Steenrod algebra}\index{Steenrod algebra mod p}, the algebra of stable cohomology operations on ordinary chomology with $\bZ_p$ coefficients. That it is an algebra over $\bZ_p$ is clear from the fact that it contains $\bZ_p$.
+Suppose given a prime $p$; take $E=H\bZ_p$. Then $A^\ast={(H\bZ_p)}^\ast(H\bZ_p)$ is the \emph{mod $p$ Steenrod algebra}\index{Steenrod algebra mod p}, the algebra of stable cohomology operations on ordinary cohomology with $\bZ_p$ coefficients. That it is an algebra over $\bZ_p$ is clear from the fact that it contains $\bZ_p$.
 
 \end{examples} % TODO: Not sure where the example is supposed to end...
 
@@ -56,11 +56,12 @@ Then
 There exists one and only one element $\sum\limits_i a'_i\otimes a''_i$ such that this formula is true for all $x$ and $y$. Of course the formula is then true for $x\bar\times y$ % TODO: \bar or \overline?
 and $x\smile y$. % TODO: \smile or \cup
 For example,
-\[ \mathrm{Sq}^k(xy)=\sum_{i+j=k} (\mathrm{Sq}^ix)(\mathrm{Sq}^iy) \]
+\[ \mathrm{Sq}^k(xy)=\sum_{i+j=k} (\mathrm{Sq}^ix)(\mathrm{Sq}^jy) \]
+\noindent Editorial correction: the original repeats $i$ on the second square; the Cartan formula requires $j$.
 so that
 \[ \psi \mathrm{Sq}^k=\sum_{i+j=k} \mathrm{Sq}^i\otimes \mathrm{Sq}^j. \]
 
-It can easily be shown that in this way $A^\ast$ becomes a Hopf algebra. Dually, $A_\ast$ becomes a Hopf coalgebra; its coproduct is the dual of the composition product in $A^\ast$. %to check, is it hopf coalgebra?
+It can easily be shown that in this way $A^\ast$ becomes a Hopf algebra. Dually, $A_\ast$ becomes a Hopf algebra; its coproduct is the dual of the composition product in $A^\ast$.
 
 More generally, let $X$ be a space such that $(H\bZ_p)_\ast(X)$ is finite-dimensional in each degree. Then $(H\bZ_p)^\ast(X)$ is a module over $A^\ast$. The action is given by a map:
 \[ A^\ast\otimes{(H\bZ_p)}^\ast(X)\longrightarrow{(H\bZ_p)}^\ast(X) . \]
@@ -89,7 +90,7 @@ The action of $a\in A^\ast$ on ${(H\bZ_2)}^1(\mbb{RP}^\infty)$ is given by
 
 \end{proposition}
 
-For $x$ is a morphism and the suspension spectrum of $\mbb{RP}^\infty$ to $H\bZ_2$ of degree $-1$, and
+For $x$ is a morphism from the suspension spectrum of $\mbb{RP}^\infty$ to $H\bZ_2$ of degree $-1$, and
 \[ \iprod{ax,b_j} = \iprod{x^\ast a,b_j} = \iprod{a,x_\ast b_j} = \begin{cases} 0 & \text{if $j\neq 2^r$ for some $r$} \\ \iprod{a,\xi_r} & \text{if } j=2^r \end{cases} . \]
 
 From this it is rather easy to work out the effect of $a$ on $x^2$, $x^4$, etc. We get:
@@ -141,7 +142,7 @@ This induces
 Composing this with the inverse of the isomorphism in Lemma \ref{lem:p3ch12.5}, we obtain a homomorphism
 \[ \psi_X\colon E_\ast(X)\longrightarrow E_\ast(E)\otimes_{\pi_\ast(E)}E_\ast(X) . \]
 Specialising to the case $X=E$, we obtain the homomorphism:
-\[ \psi_E\colon E_\ast(X)\longrightarrow E_\ast(E)\otimes_{\pi_\ast(E)}E_\ast(E) . \]
+\[ \psi_E\colon E_\ast(E)\longrightarrow E_\ast(E)\otimes_{\pi_\ast(E)}E_\ast(E) . \]
 
 We also define a counit map
 \[ \varepsilon\colon E_\ast(E)\longrightarrow\pi_\ast(E) , \]

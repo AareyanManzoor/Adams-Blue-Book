@@ -1,9 +1,9 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p2c6}
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
 \chapter{More calculations in \texorpdfstring{$E$}{E}-Homology}
+\label{sec:p2c6}
 The element $a_{ij}$ in $\pi_{2(i+j-1)}(\te{MU})$ can be represented by a weakly almost-complex manifold; we might well be asked to compute the (normal) characteristic numbers of this manifold. It is equivalent to ask for the image of $a_{ij}$ under the Hurewicz homomorphism
 \[\pi_\ast(\te{MU})\longrightarrow H_\ast(\te{MU}).\]
 It is the object of this section to this answer this question.
@@ -61,7 +61,8 @@ The proof of the lemma from the definitions is easy diagram-chasing. The lemma i
 
 Let $E$ be a ring-spectrum which satisfies the assumptions made in \hyperref[sec:p2c2]{\S 2}. Then we can consider the following two maps.
 \[E\simeq E\wedge S^0\longrightarrow E\wedge \te{MU}\]
-\[\te{MU}\simeq S^0\wedge E\Longrightarrow E\wedge \te{MU}.\]
+\[\te{MU}\simeq S^0\wedge \te{MU}\longrightarrow E\wedge \te{MU}.\]
+Here the second map is induced by the unit of $E$.\footnote{Editorial correction: the original writes $S^0\wedge E$ in the source of this map, instead of $S^0\wedge\mathrm{MU}$.}
 Both are of course maps of ring-spectra. The generators $x^E$ and $x^{\te{MU}}$ will yield two generators in $(E\wedge \te{MU})^\ast(\mathbb{CP}^\infty)$, and these generators may well be different. In order to remember which is which, we call them $x^E$ and $x^{\te{MU}}$ also (abusing notation to avoid complicating it). Our next task is to compare $x^E$ and $x^{\te{MU}}$.
 \begin{lemma}
 \label{lem:p2c06.3}
@@ -73,7 +74,8 @@ Note that the coefficients $\big(u^E\big)^{-1}b_i^E$ lie in $\pi_\ast(E\wedge \t
 Apply Lemma \ref{lem:p2c06.2} to the case $X=\mathbb{CP}^\infty$, $Y=\te{MU}$. Since $x^{\te{MU}}$ is a reduced class, so is $\te{B}x^{\te{MU}}.$ by definition, we have 
 \[\big(\alpha x^{\te{MU}}\big)\big(u^E\beta_{i+1}^E\big)=b_i^E.\]
 But we also have 
-\[\Big(p\big(x^E\big)^j\Big)\big(b_i^E\big)=\begin{cases}1 & (i=j) \\ 0 &(i\neq j)\end{cases}\]
+\[\Big(p\big(x^E\big)^j\Big)\big(\beta_i^E\big)=\begin{cases}1 & (i=j) \\ 0 &(i\neq j)\end{cases}\]
+\footnote{Editorial correction: the original evaluates this pairing on $b_i^E$. It must be evaluated on the projective-space class $\beta_i^E$, which is dual to $(x^E)^i$.}
 The result follows by comparing these formulae, since $p$ is an isomorphism. 
 \end{proof}
 
@@ -106,7 +108,7 @@ where
 \[\exp^H(x)=\sum_{i\geq 0}b_ix^{i+1},\]
 $b_i\in H_{2i}(\te{MU})$ are the usual generators coming from $H_{2i+2}(\te{MU}(1))$, and $\log^H$ is the formal power-series inverse to $\exp^H$.
 \end{customcor}
-This is immediate from \eqref{cor:p2c06.5}, using (\hyperref[ex:p2c02.9]{2.9}).
+This is immediate from \eqref{cor:p2c06.5}, using (\hyperref[ex:p2c02.8]{2.8}).
 
 This corollary yields a method of calculating the image of $a_{ij}$ in $H_{2(i+j-1)}(\te{MU})$, in terms of the usual base in $H_\ast(\te{MU})$. For example we have 
 \begin{align*}
@@ -130,7 +132,7 @@ This corollary yields a method of calculating the image of $a_{ij}$ in $K_{2(i+j
 \begin{align*}
     a_{11} &\longrightarrow u(1+2b_1)  \\
     a_{12} &\longrightarrow u^2(b_1+3b_2-2b_1^2)  \\ 
-    a_{13} &\longrightarrow u^3(2b_2-2b_1^1+4b_3-8b_1b_2+4b_1^3)  \\
+    a_{13} &\longrightarrow u^3(2b_2-2b_1^2+4b_3-8b_1b_2+4b_1^3)  \\
     a_{22} &\longrightarrow u^3(b_1+6b_2-3b_1^2+6b_3-6b_1b_2+2b_1^3) \quad \text{etc.} 
 \end{align*}
 
@@ -159,7 +161,7 @@ This corollary is strictly on the same footing as the preceding two.
 This yields a method of calculating $\eta_R(a_{ij})$. For example, we find
 \begin{align*}
     \eta_R(a_{11})&=2b_1+a_{11} \\ 
-    \eta_R(a_{12})&=(2b_2-2b_1^2)+a_{11}b_1 + a_{12 } \\ 
+    \eta_R(a_{12})&=(3b_2-2b_1^2)+a_{11}b_1 + a_{12 } \\
     \eta_R(a_{13})&=(4b_3-8b_1b_2+4b_1^3)+a_{11}(2b_2-2b_1^2) + a_{13} \\ 
     \eta_R(a_{22})&=(6b_3-6b_1b_2+2b_1^3)+a_{11}(6b_2-3b_1^2) + (2a_{12}+a_{11}^2)b_1+a_{22}. 
 \end{align*}

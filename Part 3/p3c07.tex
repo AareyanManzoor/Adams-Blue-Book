@@ -1,17 +1,17 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p3c07}
 % Manan
 
 % Lot of instances of using Z, not sure if some of them were meant to be \mathbb Z instead. Can be reviewed.
 
 \chapter{The Atiyah-Hirzebruch Spectral Sequence}
+\label{sec:p3c07}
 In this section we study the machine which plays the same role in the study of generalized homology theories as the Eilenberg-Steenrod uniqueness theorem plays for ordinary homology theories. Let us suppose for convenience that $X$ is a finite-dimensional CW-complex.
 
 % need an unnumbered theorem environment
 
 \begin{theorem*}
-For each CW-spectrum $F$ there exist spectral sequences 
+For each CW-spectrum $F$ there exist spectral sequences\footnote{Editorial correction retained from the retyping: the original has $\pi_q(F)$ in the cohomological sequence; the coefficient is $\pi_{-q}(F)=F^q(\mathrm{pt.})$.}
 \begin{center}
     \begin{tikzcd}[column sep=large]
     H_p(X;\pi_q(F))\arrow[r,Rightarrow,"p"]&F_{p+q}(X)\\

@@ -1,8 +1,8 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p3ch03}
 %johnDS
 \chapter{Elementary properties of the category of CW-spectra}
+\label{sec:p3ch03}
 %\chaptermark{\protect\parbox{0.7\linewidth}{Elementary properties of the category of CW-spectra}}
 
 
@@ -150,7 +150,7 @@ This theorem assures us that in some sense we did succeed in getting into a stab
 \begin{proof}
 We have the following commutative diagram.
 \[\begin{tikzcd}
-{[X,Y]_\ast} \arrow[d, "\te{Susp}"] \arrow[rr, "\te{Cone}"] &  & {[\te{Cone}(X),X; \te{Susp}(Y),Y]_\ast} \arrow[d, "j_\ast"] \\
+{[X,Y]_\ast} \arrow[d, "\te{Susp}"] \arrow[rr, "\te{Cone}"] &  & {[\te{Cone}(X),X; \te{Cone}(Y),Y]_\ast} \arrow[d, "j_\ast"] \\
 {[\te{Susp}(X),\te{Susp}(Y)]_\ast} \arrow[rr, "j^\ast"]     &  & {[\te{Cone}(X),X; \te{Susp}(Y),\te{pt.}]_\ast}             
 \end{tikzcd}\]
 Now the map $\te{Cone}$ is clearly injective (since restriction gives an inverse for it) and surjective (by Lemma \ref{lem:p3ch03.3}). Also $j^\ast$ is clearly a 1-1
@@ -169,8 +169,8 @@ Consider the following commutative diagram:
 \begin{tikzcd}
 {\pi_{n+r+1}(I\wedge Y_n,Y_n)} \arrow[swap]{r}{\cong}[swap]{\partial} \arrow[dd] \arrow[rrrd, "j_\ast", bend left=35] &   \pi_{n+r}(Y_n) \arrow[d]                                                                   &  &                                                                       \\
                                                                                                         & \pi_{n+r+1} (Y_n \wedge S^1) \arrow[d, "(\eta_n)_\ast"] \arrow[rr, "(-1)^{n+r} \tau_\ast"] &  & \pi_{n+r+1}(S^1\wedge Y_n) \arrow[d]                                  \\
-{\pi_{n+r+2}(I\wedge Y_{n+1},Y_{n+1})} \arrow[swap]{r}{\cong}[swap]{\partial} \arrow[rrrd, "j_\ast", bend right=35]    & \pi_{n+r+1} (Y_{n+1}) \arrow[d]                                                            &  & \pi_{n+r+2}(S^1\wedge Y\wedge S^1) \arrow[d, "(1\wedge \eta_n)_\ast"] \\
-                                                                                                        & \pi_{n+r+2} (Y_{n+1} \wedge S^1) \arrow[rr, "(-1)^{n+r+1} \tau_\ast"]                      &  & \pi_{n+r+2}(S^1\wedge Y_n)                                           
+{\pi_{n+r+2}(I\wedge Y_{n+1},Y_{n+1})} \arrow[swap]{r}{\cong}[swap]{\partial} \arrow[rrrd, "j_\ast", bend right=35]    & \pi_{n+r+1} (Y_{n+1}) \arrow[d]                                                            &  & \pi_{n+r+2}(S^1\wedge Y_n\wedge S^1) \arrow[d, "(1\wedge \eta_n)_\ast"] \\
+                                                                                                        & \pi_{n+r+2} (Y_{n+1} \wedge S^1) \arrow[rr, "(-1)^{n+r+1} \tau_\ast"]                      &  & \pi_{n+r+2}(S^1\wedge Y_{n+1})
 \end{tikzcd}
 }\]
 $\pi_\ast(\te{Cone}(Y),Y)$ is the direct limit of the left-hand column, and the

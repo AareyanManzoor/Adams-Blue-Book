@@ -1,11 +1,11 @@
 \documentclass[../main]{subfiles}
 \begin{document}
-\label{sec:p2c12}
 %wordslinger
 
 \chapter{Behaviour of the Bott map}
+\label{sec:p2c12}
 We recall that in the spectrum $K$, every even term is the space $\mathrm{BU}$, and the maps between them are all the same; each is the map \[B:S^2\wedge \mathrm{BU} \lra  \mathrm{BU}\] adjoint to the Bott equivalence \[B':\mathrm{BU}\simeq\:\Omega^2_0\,\mathrm{BU}.\]%
-(Here $\Omega^2_0$ means the complement of the base-point in the double loop space $\Omega^2$.)
+(Here $\Omega^2_0$ means the component of the base-point in the double loop space $\Omega^2$.)
 
 In order to compute $E_\ast(\mathrm{BU})$, it is therefore desirable to compute \[B_\ast:\widetilde{E}_n(\mathrm{BU}) \lra \widetilde{E}_{n+2}( \mathrm{BU})\]
 This will be done in \eqref{prop:p2c12.5}, \eqref{prop:p2c12.6}.
@@ -46,8 +46,9 @@ This is well-known.
 \end{customprop}
 
 \begin{proof}
-Write \eqref{eqn:p2c12.2} in the form \[(-1)^{n-1}s_n + b_1(-1)^{n-2}s_{n-1} + \dots + b_{n-1} s_1 = nb_n\]
+Write \eqref{eqn:p2c12.2} in the form \[(-1)^{n-1}s_n + \beta_1(-1)^{n-2}s_{n-1} + \dots + \beta_{n-1} s_1 = n\beta_n\]
 and add over $n\ge 1$; we find \[\bigg(\sum^\infty_{n=1}(-1)^{n-1} s_n \bigg)\bigg(\sum^\infty_{t=0}\beta_t\bigg) = \sum^\infty_{s=1}s\beta_s\]
+\footnote{Editorial correction: the original uses $b_i$ in the preceding restatement of (12.2); these are the elements $\beta_i$, not the Thom-spectrum generators $b_i$.}
 This yields \eqref{eqn:p2c12.3}.
 \end{proof}
 We next consider the tensor product map. We recall that the map \[ \mathrm{BU}(n)\times \mathrm{BU}(m)\vra{} \mathrm{BU}(nm)\]
@@ -94,8 +95,9 @@ c_\ast(\beta_{i_4}\otimes\beta_{j_4}) &= \begin{cases}1 & (i_4=j_4=0)\\0&(\text{
 \end{align*}
 So we obtain
 \begin{align*}
-t_\ast(\beta_{i}\otimes\beta_{j}) = \sum_{\substack{i_1+i_2=i\\ j_1+j_3=j\\k\le i_1+j_1}} a^k_{{i_1}{j_1}} b_k \bigg(\sum^\infty_{l=0}\beta_l\bigg)_{i_2}^{-1} \bigg(\sum^\infty_{l=0} \beta_l\bigg)^{-1}_{j_3}
+t_\ast(\beta_{i}\otimes\beta_{j}) = \sum_{\substack{i_1+i_2=i\\ j_1+j_3=j\\k\le i_1+j_1}} a^k_{{i_1}{j_1}} \beta_k \bigg(\sum^\infty_{l=0}\beta_l\bigg)_{i_2}^{-1} \bigg(\sum^\infty_{l=0} \beta_l\bigg)^{-1}_{j_3}
 \end{align*}
+Here again the original's $b_k$ is corrected to $\beta_k$.
 This proves \eqref{prop:p2c12.4}.
 \end{proof}
 \begin{customprop}{12.5}
@@ -114,14 +116,14 @@ We have the following commutative diagram.
 	\arrow["{B_\ast}", from=1-3, to=3-3]
 \end{tikzcd}
 \end{center}
-Here the bottom horizontal map $\sigma^2$ is the appropriate double suspension, and it is well-known that it annihilates products, providing the products in $\widetilde{E}_{n+2}(S^2\wedge\mathrm{BU})$ are those induced by the loop-space product; the proof for ordinary homology goes over. But $\mathrm{BU}$ is an $H$-space, so the loop-space product $\mu_\Omega$ on $\Omega_0^2(\mathrm{BU})$ is homotopic to the product $\mu_H$ induced from the $H$-space product in $\mathrm{BU}$. Now the periodicity isomorphism \[\widetilde{\mathrm{BU}}^0(X)\cong \widetilde{\mathrm{BU}}(S^2\wedge X)\] is an isomorphism of additive groups; this says that under $B':\mathrm{BU}\lra\Omega^2_0\mathrm{BU}$ the $H$-space product in $\mathrm{BU}$ corresponds to the product $\mu_H$ in $\Omega_0^2\mathrm{BU}$. So $\sigma^2\beta'_\ast$ annihilates elements which are decomposable in the usual sense.
+Here the bottom horizontal map $\sigma^2$ is the appropriate double suspension, and it is well-known that it annihilates products, providing the products in $\widetilde{E}_n(\Omega_0^2\mathrm{BU})$ are those induced by the loop-space product; the proof for ordinary homology goes over. But $\mathrm{BU}$ is an $H$-space, so the loop-space product $\mu_\Omega$ on $\Omega_0^2(\mathrm{BU})$ is homotopic to the product $\mu_H$ induced from the $H$-space product in $\mathrm{BU}$. Now the periodicity isomorphism \[\widetilde{\mathrm{BU}}^0(X)\cong \widetilde{\mathrm{BU}}^0(S^2\wedge X)\] is an isomorphism of additive groups; this says that under $B':\mathrm{BU}\lra\Omega^2_0\mathrm{BU}$ the $H$-space product in $\mathrm{BU}$ corresponds to the product $\mu_H$ in $\Omega_0^2\mathrm{BU}$. So $\sigma^2B'_\ast$ annihilates elements which are decomposable in the usual sense.
 \end{proof}
 \begin{customprop}{12.6}
 \label{prop:p2c12.6}
 If $j>0$ we have
 \begin{align*}
-B_\ast(\beta_j) &= \sum_{\substack{r+t=j+1\\t>0}} u^{E_{a_{1r}}} (-1)^{t-1_{s_t}}\\
-&\equiv \sum_{\substack{r+t=j+1\\t>0}} u^{E_{a_{1r}}} t\beta_t \mod{\text{decomposables}}.
+B_\ast(\beta_j) &= \sum_{\substack{r+t=j+1\\t>0}} u^E a_{1r} (-1)^{t-1}s_t\\
+&\equiv \sum_{\substack{r+t=j+1\\t>0}} u^E a_{1r} t\beta_t \mod{\text{decomposables}}.
 \end{align*}
 \end{customprop}
 \begin{proof}
